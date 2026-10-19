@@ -30,6 +30,22 @@
     font-family: inherit;
   }
 
+  /* Arabic uses Almarai. Keyed on <html lang> (set by the language toggle) so it
+     also applies on the static export, where pages are pre-rendered in English. */
+  html[lang="ar"] body,
+  html[lang="ar"] .font-sans,
+  html[lang="ar"] .font-display,
+  html[lang="ar"] .heading-display {
+    font-family: var(--font-almarai), system-ui, sans-serif;
+  }
+
+  /* Letter-spacing breaks the joins between Arabic letters. */
+  html[lang="ar"] [class*="tracking-"],
+  html[lang="ar"] .eyebrow,
+  html[lang="ar"] .btn {
+    letter-spacing: 0;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     text-align: start !important;
   }
