@@ -1,0 +1,1078 @@
+[
+  {
+    "slug": "l8",
+    "name": "Lepas L8",
+    "tagline": "أداء فاخر. مساحة للجميع.",
+    "shortDescription": "سيارة Lepas الذكية الرائدة، بمحرك 1.5TGDI وناقل حركة 7DCT وخيار سوبر هايبرد بمدى مشترك يصل إلى 1,300 كم.",
+    "startingPrice": 99900,
+    "currency": "AED",
+    "heroImageLabel": "Lepas L8 — سيارة SUV الذكية، منظر خارجي",
+    "heroImage": "/design/assets/hero-l8.webp",
+    "gallery": [
+      "/design/assets/L8-v2.webp",
+      "/design/assets/hero-l8-phev.webp",
+      "/design/assets/lifestyle/l8-drive.webp",
+      "/design/assets/interior/l8/twotone-a.webp",
+      "/design/assets/interior/l8/display-a.webp",
+      "/design/assets/exterior/l8/headlights-on.webp"
+    ],
+    "overview": "Lepas L8 هي الطراز الأعلى في مجموعة سيارات Lepas الذكية. مستوحاة من جماليات الفهد، تجمع بين تصميم واثق ومعبّر ومحرك 1.5TGDI من الجيل الثالث ومقصورة بلونين ونظام صوت فاخر من Sony. اختر محرك الاحتراق، أو L8 سوبر هايبرد بمدى مشترك يصل إلى 1,300 كم.",
+    "specs": [
+      {
+        "label": "مجموعة الحركة",
+        "items": [
+          {
+            "label": "المحرك",
+            "value": "1.5TGDI (الجيل الثالث)"
+          },
+          {
+            "label": "ناقل الحركة",
+            "value": "7DCT (الجيل الرابع)"
+          },
+          {
+            "label": "القوة / عزم الدوران الأقصى",
+            "value": "184 حصاناً / 290 نيوتن متر"
+          }
+        ]
+      },
+      {
+        "label": "سوبر هايبرد (الهجينة القابلة للشحن)",
+        "items": [
+          {
+            "label": "المدى المشترك",
+            "value": "1,300 كم"
+          },
+          {
+            "label": "ناقل حركة الهجينة",
+            "value": "1DHT"
+          },
+          {
+            "label": "القوة / العزم الأقصى للهجينة",
+            "value": "342 حصاناً / 525 نيوتن متر"
+          }
+        ]
+      },
+      {
+        "label": "الأبعاد",
+        "items": [
+          {
+            "label": "قاعدة العجلات",
+            "value": "2,800 مم"
+          },
+          {
+            "label": "المقاعد",
+            "value": "5"
+          },
+          {
+            "label": "الهيكل",
+            "value": "هيكل أحادي"
+          }
+        ]
+      },
+      {
+        "label": "الضمان",
+        "items": [
+          {
+            "label": "المحرك",
+            "value": "10 سنوات / 1,000,000 كم"
+          },
+          {
+            "label": "السيارة",
+            "value": "7 سنوات / 200,000 كم"
+          },
+          {
+            "label": "المساعدة على الطريق",
+            "value": "7 سنوات"
+          }
+        ]
+      }
+    ],
+    "features": [
+      "مقصورة بلونين",
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "تكييف هواء أوتوماتيكي ثنائي المناطق",
+      "نظام صوت فاخر من Sony",
+      "حامل السقف"
+    ],
+    "technology": [
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "كاميرا رؤية بانورامية عالية الدقة 540°",
+      "نظام المساعدة على الركن الآلي APA (الهجينة القابلة للشحن)",
+      "نظام الركن عن بُعد RPA (الهجينة القابلة للشحن)",
+      "نظام الاتصال بالطوارئ eCall"
+    ],
+    "safety": [
+      "تنبيه حركة المرور الخلفية المتقاطعة (RCTA)",
+      "كاميرا رؤية بانورامية عالية الدقة 540°",
+      "نقاط تثبيت مقاعد الأطفال ISOFIX",
+      "6 وسائد هوائية",
+      "نظام القفل التلقائي"
+    ],
+    "exterior": [
+      "مصابيح LED أمامية منخفضة",
+      "هيكل أحادي",
+      "حامل السقف",
+      "مرايا جانبية مطابقة لمواصفات GSO"
+    ],
+    "interior": [
+      "مقصورة بلونين",
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "تكييف هواء أوتوماتيكي ثنائي المناطق",
+      "نظام صوت فاخر من Sony"
+    ],
+    "colours": [
+      {
+        "name": "أخضر",
+        "hex": "#5E9DA5",
+        "image": "/design/assets/shades/l8/l8-shade-hero-green-colors11.webp"
+      },
+      {
+        "name": "بنفسجي",
+        "hex": "#726F8B",
+        "image": "/design/assets/shades/l8/l8-shade-hero-purple-colors11.webp"
+      },
+      {
+        "name": "أبيض",
+        "hex": "#E9E9E9",
+        "image": "/design/assets/shades/l8/l8-shade-hero-white-colors11.webp"
+      },
+      {
+        "name": "أسود",
+        "hex": "#38414A",
+        "image": "/design/assets/shades/l8/l8-shade-hero-black-colors11.webp"
+      },
+      {
+        "name": "رمادي",
+        "hex": "#9BA5AE",
+        "image": "/design/assets/shades/l8/l8-shade-hero-grey-colors11.webp"
+      }
+    ],
+    "interiorColours": [
+      {
+        "name": "بلونين",
+        "hex": "#3f6f73",
+        "image": "/design/assets/interior/l8/twotone-a.webp"
+      }
+    ],
+    "variants": [
+      {
+        "id": "ice",
+        "name": "L8 بمحرك احتراق",
+        "priceDelta": 0,
+        "powerHp": "184 حصاناً",
+        "rangeKm": "2,800 مم"
+      },
+      {
+        "id": "phev",
+        "name": "L8 سوبر هايبرد (الهجينة القابلة للشحن)",
+        "priceDelta": 0,
+        "powerHp": "342 حصاناً",
+        "rangeKm": "2,800 مم"
+      }
+    ],
+    "detailPage": {
+      "heroHeadline": "Lepas L8 — سيارة SUV الذكية في الإمارات",
+      "heroSubcopy": "أداء فاخر. مساحة للجميع. الطراز الأعلى من Lepas، متوفر بمحرك احتراق أو سوبر هايبرد بمدى مشترك يصل إلى 1,300 كم.",
+      "statsEyebrow": "المواصفات الرئيسية",
+      "stats": [
+        {
+          "label": "المحرك",
+          "value": "1.5TGDI"
+        },
+        {
+          "label": "ناقل الحركة",
+          "value": "7DCT"
+        },
+        {
+          "label": "القوة / عزم الدوران الأقصى",
+          "value": "184HP/290NM"
+        },
+        {
+          "label": "قاعدة العجلات",
+          "value": "2800MM"
+        },
+        {
+          "label": "المدى المشترك (الهجينة)",
+          "value": "1300KM"
+        }
+      ],
+      "exteriorImageLabel": "Lepas L8 — مزايا السلامة، منظر مقطعي",
+      "designEyebrow": "السلامة",
+      "designTitle": "السلامة",
+      "designGallery": [
+        {
+          "imageLabel": "Lepas L8 — نظام القفل التلقائي",
+          "image": "/design/assets/safety/l8/1.png",
+          "heading": "نظام القفل التلقائي",
+          "body": "تُقفل الأبواب تلقائياً بمجرد الانطلاق، لتبقى مقصورتك آمنة دون عناء."
+        },
+        {
+          "imageLabel": "Lepas L8 — وسائد هوائية جانبية أمامية",
+          "image": "/design/assets/safety/l8/2.png",
+          "heading": "وسائد هوائية جانبية أمامية",
+          "body": "جزء من نظام ست وسائد هوائية يحمي ركاب المقاعد الأمامية عند التصادم الجانبي."
+        },
+        {
+          "imageLabel": "Lepas L8 — نظام الاتصال بالطوارئ eCall",
+          "image": "/design/assets/safety/l8/3.png",
+          "heading": "نظام الاتصال بالطوارئ eCall",
+          "body": "يصلك بخدمات الطوارئ عند الحاجة، أينما أخذك الطريق."
+        }
+      ],
+      "highlightsEyebrow": "السلامة",
+      "highlightsTitle": "السلامة",
+      "highlights": [
+        {
+          "x": 27.2,
+          "y": 56.2,
+          "imageLabel": "تنبيه حركة المرور الخلفية المتقاطعة (RCTA)",
+          "title": "تنبيه حركة المرور الخلفية المتقاطعة (RCTA)",
+          "body": "ينبهك إلى المركبات القادمة من الجانب أثناء الرجوع من موقف السيارات."
+        },
+        {
+          "x": 56.8,
+          "y": 36.4,
+          "imageLabel": "كاميرا رؤية بانورامية عالية الدقة 540°",
+          "title": "كاميرا رؤية بانورامية عالية الدقة 540°",
+          "body": "رؤية عالية الدقة حول السيارة وأسفلها للمناورة بثقة في الأماكن الضيقة."
+        },
+        {
+          "x": 40.7,
+          "y": 50.8,
+          "imageLabel": "نقاط تثبيت مقاعد الأطفال ISOFIX",
+          "title": "نقاط تثبيت مقاعد الأطفال ISOFIX",
+          "body": "نقاط تثبيت قياسية تجعل تركيب مقعد الطفل سريعاً وآمناً."
+        },
+        {
+          "x": 59,
+          "y": 43.3,
+          "imageLabel": "6 وسائد هوائية",
+          "title": "6 وسائد هوائية",
+          "body": "ست وسائد هوائية تحيط بالمقصورة لحماية السائق والركاب."
+        }
+      ],
+      "terrainEyebrow": "التصميم الخارجي",
+      "terrainItems": [
+        {
+          "title": "مصابيح LED أمامية منخفضة",
+          "body": "مصابيح أمامية مستوحاة من عيني الفهد تمنح L8 مظهراً مميزاً ليلاً ونهاراً.",
+          "imageLabel": "Lepas L8 — مصابيح LED أمامية منخفضة",
+          "image": "/design/assets/exterior/l8/headlights-on.webp"
+        },
+        {
+          "title": "هيكل أحادي",
+          "body": "هيكل أحادي متين يوفّر قيادة متزنة وبنية أمان قوية.",
+          "imageLabel": "Lepas L8 — هيكل أحادي",
+          "image": "/design/assets/exterior/l8/unibody-frame.webp"
+        },
+        {
+          "title": "حامل السقف",
+          "body": "حامل سقف مدمج يضيف سعة تحميل عملية لمغامرات نهاية الأسبوع.",
+          "imageLabel": "Lepas L8 — حامل السقف",
+          "image": "/design/assets/exterior/l8/roof-rack-on.webp"
+        },
+        {
+          "title": "مرايا جانبية مطابقة لمواصفات GSO",
+          "body": "مرايا جانبية مطابقة لمواصفات GSO توفر رؤية واضحة للطريق من حولك.",
+          "imageLabel": "Lepas L8 — مرايا جانبية مطابقة لمواصفات GSO",
+          "image": "/design/assets/exterior/l8/side-mirrors-on.webp"
+        }
+      ],
+      "exteriorEyebrow": "الأداء",
+      "exteriorItems": [
+        {
+          "title": "محرك 1.5TGDI (الجيل الثالث)",
+          "body": "يقدّم أداءً توربينياً متقدماً بقوة أكبر واستجابة أكثر سلاسة.",
+          "imageLabel": "Lepas L8 — محرك 1.5TGDI",
+          "image": "/design/assets/performance/l8/engine.webp"
+        },
+        {
+          "title": "ناقل حركة 7DCT (الجيل الرابع)",
+          "body": "يختار الترس التالي مسبقاً لتبديل شبه فوري بأقل انقطاع.",
+          "imageLabel": "Lepas L8 — ناقل حركة 7DCT",
+          "image": "/design/assets/performance/l8/transmission.webp"
+        },
+        {
+          "title": "الكبح المتجدد (الهجينة القابلة للشحن)",
+          "body": "في نسخة سوبر هايبرد، يحوّل استرداد الطاقة القابل للتعديل طاقة الكبح إلى كهرباء تساعد على شحن البطارية.",
+          "imageLabel": "Lepas L8 — الكبح المتجدد",
+          "image": "/design/assets/performance/l8/regen-braking.webp"
+        }
+      ],
+      "cabinEyebrow": "المقصورة الداخلية",
+      "cabinTitle": "المقصورة الداخلية",
+      "cabinIntro": "صُممت حول الإنسان، بتقنيات ذكية وتحكم يسهّل الحياة اليومية.",
+      "cabinTabs": [
+        {
+          "label": "مقصورة بلونين",
+          "heading": "مقصورة بلونين",
+          "body": "مقصورة أنيقة بلونين مع مواد ناعمة الملمس وتفاصيل راقية.",
+          "imageLabel": "Lepas L8 — مقصورة بلونين",
+          "image": "/design/assets/interior/l8/twotone-a.webp"
+        },
+        {
+          "label": "شاشة LCD مقاس 13.2 بوصة",
+          "heading": "شاشة LCD مركزية مقاس 13.2 بوصة",
+          "body": "شاشة مركزية كبيرة تضع الملاحة والوسائط وإعدادات السيارة في متناول يدك.",
+          "imageLabel": "Lepas L8 — الشاشة المركزية مقاس 13.2 بوصة",
+          "image": "/design/assets/interior/l8/display-a.webp"
+        },
+        {
+          "label": "التكييف",
+          "heading": "تكييف هواء أوتوماتيكي ثنائي المناطق",
+          "body": "يضبط السائق والراكب الأمامي درجة الحرارة المفضلة لكل منهما لراحة في جميع الفصول.",
+          "imageLabel": "Lepas L8 — تكييف ثنائي المناطق",
+          "image": "/design/assets/interior/l8/climate.webp"
+        },
+        {
+          "label": "صوت Sony",
+          "heading": "نظام صوت فاخر من Sony",
+          "body": "يملأ نظام الصوت الفاخر من Sony المقصورة بصوت غني ودقيق.",
+          "imageLabel": "Lepas L8 — نظام صوت فاخر من Sony",
+          "image": "/design/assets/interior/l8/sound-a.webp"
+        }
+      ],
+      "utilityTitle": "الملكية والضمان",
+      "utilityIntro": "تأتي كل L8 بحماية طويلة الأمد من Lepas والغرير للتنقل.",
+      "utilitySpecs": [
+        {
+          "label": "ضمان المحرك",
+          "value": "10 سنوات / 1,000,000 كم"
+        },
+        {
+          "label": "ضمان السيارة",
+          "value": "7 سنوات / 200,000 كم"
+        },
+        {
+          "label": "ضمان بطارية الهجينة",
+          "value": "8 سنوات / 160,000 كم"
+        },
+        {
+          "label": "المساعدة على الطريق",
+          "value": "7 سنوات"
+        }
+      ],
+      "accessoriesTitle": "المزايا",
+      "accessories": [
+        "مقصورة بلونين",
+        "شاشة LCD مركزية مقاس 13.2 بوصة",
+        "تكييف هواء أوتوماتيكي ثنائي المناطق",
+        "نظام صوت فاخر من Sony",
+        "مصابيح LED أمامية منخفضة",
+        "حامل السقف",
+        "مرايا جانبية مطابقة لمواصفات GSO",
+        "هيكل أحادي"
+      ],
+      "factoryOptionalEquipmentTitle": "السلامة والمساعدة",
+      "factoryOptionalEquipment": [
+        "تنبيه حركة المرور الخلفية المتقاطعة (RCTA)",
+        "كاميرا رؤية بانورامية عالية الدقة 540°",
+        "نقاط تثبيت مقاعد الأطفال ISOFIX",
+        "6 وسائد هوائية",
+        "نظام القفل التلقائي",
+        "نظام الاتصال بالطوارئ eCall",
+        "نظام المساعدة على الركن الآلي APA (الهجينة القابلة للشحن)",
+        "نظام الركن عن بُعد RPA (الهجينة القابلة للشحن)"
+      ],
+      "chargingLabel": "القيادة المثالية لأسلوب حياتك.",
+      "chargingBody": "أناقة بكامل حضورها، للمدينة وما بعدها.",
+      "chargingImageLabel": "Lepas L8 — سيارة SUV الذكية في مشاهد القيادة اليومية وأسلوب الحياة",
+      "dimensionsTitle": "الأبعاد",
+      "dimensions": [
+        {
+          "label": "قاعدة العجلات",
+          "value": "2,800 مم"
+        },
+        {
+          "label": "المقاعد",
+          "value": "5"
+        }
+      ],
+      "dimensionsImageLabel": "Lepas L8 — منظر جانبي"
+    }
+  },
+  {
+    "slug": "l6",
+    "name": "Lepas L6",
+    "tagline": "ذكية في الشارع، دائماً متقدمة بخطوة.",
+    "shortDescription": "سيارة SUV ذكية ومريحة بمحرك 1.5TCI وناقل حركة 6DCT وفتحة سقف بانورامية وجنوط مقاس 18 بوصة مطلية بالكامل.",
+    "startingPrice": 84900,
+    "currency": "AED",
+    "heroImageLabel": "Lepas L6 — سيارة SUV الذكية، منظر خارجي",
+    "heroImage": "/design/assets/teaser-l6.webp",
+    "gallery": [
+      "/design/assets/L6-v2.webp",
+      "/design/assets/home/hero-l6.webp",
+      "/design/assets/lifestyle/l6.webp",
+      "/design/assets/interior/l6/display-a.webp",
+      "/design/assets/interior/l6/seats-a.webp",
+      "/design/assets/exterior/l6/sunroof.webp"
+    ],
+    "overview": "Lepas L6 ذكية في الشارع ودائماً متقدمة بخطوة. يقدّم محرك 1.5TCI من الجيل الثالث وناقل الحركة 6DCT من الجيل الرابع أداءً راقياً وفعّالاً، فيما تضع المقاعد الجلدية وفتحة السقف البانورامية والشاشة مقاس 13.2 بوصة الراحة أولاً.",
+    "specs": [
+      {
+        "label": "مجموعة الحركة",
+        "items": [
+          {
+            "label": "المحرك",
+            "value": "1.5TCI (الجيل الثالث)"
+          },
+          {
+            "label": "ناقل الحركة",
+            "value": "6DCT (الجيل الرابع)"
+          },
+          {
+            "label": "القوة / عزم الدوران الأقصى",
+            "value": "145 حصاناً / 225 نيوتن متر"
+          }
+        ]
+      },
+      {
+        "label": "الأبعاد",
+        "items": [
+          {
+            "label": "قاعدة العجلات",
+            "value": "2,700 مم"
+          },
+          {
+            "label": "المقاعد",
+            "value": "5"
+          },
+          {
+            "label": "الهيكل",
+            "value": "هيكل أحادي"
+          }
+        ]
+      },
+      {
+        "label": "الضمان",
+        "items": [
+          {
+            "label": "المحرك",
+            "value": "10 سنوات / 1,000,000 كم"
+          },
+          {
+            "label": "السيارة",
+            "value": "7 سنوات / 200,000 كم"
+          },
+          {
+            "label": "المساعدة على الطريق",
+            "value": "7 سنوات"
+          }
+        ]
+      }
+    ],
+    "features": [
+      "فتحة سقف بانورامية مع ستارة شمسية",
+      "جنوط مقاس 18 بوصة مطلية بالكامل",
+      "مقاعد جلدية",
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "تكييف هواء أوتوماتيكي ثنائي المناطق"
+    ],
+    "technology": [
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "كاميرا رؤية بانورامية عالية الدقة 540°",
+      "مفتاح عن بُعد ودخول بدون مفتاح",
+      "فرامل انتظار إلكترونية"
+    ],
+    "safety": [
+      "كاميرا رؤية بانورامية عالية الدقة 540°",
+      "واجهة تثبيت ISOFIX",
+      "أنظمة الكبح والثبات المتقدمة",
+      "فرامل انتظار إلكترونية"
+    ],
+    "exterior": [
+      "جنوط مقاس 18 بوصة مطلية بالكامل",
+      "فتحة سقف بانورامية مع ستارة شمسية",
+      "هيكل أحادي",
+      "مصابيح أمامية أوتوماتيكية"
+    ],
+    "interior": [
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "مقاعد جلدية",
+      "تكييف هواء أوتوماتيكي ثنائي المناطق"
+    ],
+    "colours": [
+      {
+        "name": "برتقالي",
+        "hex": "#C5763E",
+        "image": "/design/assets/shades/l6/orange-l6v2.png"
+      },
+      {
+        "name": "فضي",
+        "hex": "#D7D7D5",
+        "image": "/design/assets/shades/l6/silver-l6v2.png"
+      },
+      {
+        "name": "أسود",
+        "hex": "#292828",
+        "image": "/design/assets/shades/l6/black-l6v2.png"
+      },
+      {
+        "name": "أبيض",
+        "hex": "#E8E8E8",
+        "image": "/design/assets/shades/l6/white-l6v2.png"
+      },
+      {
+        "name": "رمادي",
+        "hex": "#A8B2C4",
+        "image": "/design/assets/shades/l6/grey-l6v2.png"
+      }
+    ],
+    "interiorColours": [
+      {
+        "name": "جلد",
+        "hex": "#2b2b2b",
+        "image": "/design/assets/interior/l6/seats-a.webp"
+      }
+    ],
+    "variants": [
+      {
+        "id": "ice",
+        "name": "L6 1.5TCI",
+        "priceDelta": 0,
+        "powerHp": "145 حصاناً",
+        "rangeKm": "2,700 مم"
+      }
+    ],
+    "detailPage": {
+      "heroHeadline": "Lepas L6 — سيارة SUV الذكية في الإمارات",
+      "heroSubcopy": "ذكية في الشارع، دائماً متقدمة بخطوة. الراحة في المقدمة مع Lepas L6.",
+      "statsEyebrow": "المواصفات الرئيسية",
+      "stats": [
+        {
+          "label": "المحرك",
+          "value": "1.5TCI"
+        },
+        {
+          "label": "ناقل الحركة",
+          "value": "6DCT"
+        },
+        {
+          "label": "القوة / عزم الدوران الأقصى",
+          "value": "145HP/225NM"
+        },
+        {
+          "label": "قاعدة العجلات",
+          "value": "2700MM"
+        }
+      ],
+      "exteriorImageLabel": "Lepas L6 — مزايا السلامة، منظر علوي",
+      "designEyebrow": "السلامة",
+      "designTitle": "السلامة",
+      "designGallery": [
+        {
+          "imageLabel": "Lepas L6 — مفتاح عن بُعد ودخول بدون مفتاح",
+          "image": "/design/assets/safety/l6/remote-key.webp",
+          "heading": "مفتاح عن بُعد ودخول بدون مفتاح",
+          "body": "افتح L6 وشغّلها دون الحاجة لإخراج المفتاح."
+        },
+        {
+          "imageLabel": "Lepas L6 — أنظمة الكبح والثبات المتقدمة",
+          "image": "/design/assets/safety/l6/braking.webp",
+          "heading": "أنظمة الكبح والثبات المتقدمة",
+          "body": "تساعد أنظمة الكبح والثبات الإلكترونية على إبقاء L6 متزنة وتحت السيطرة."
+        },
+        {
+          "imageLabel": "Lepas L6 — فرامل انتظار إلكترونية",
+          "image": "/design/assets/safety/l6/parking-brake.webp",
+          "heading": "فرامل انتظار إلكترونية",
+          "body": "فرامل انتظار إلكترونية بلمسة واحدة توفّر المساحة وتسهّل الانطلاق على المنحدرات."
+        }
+      ],
+      "highlightsEyebrow": "السلامة",
+      "highlightsTitle": "السلامة",
+      "highlights": [
+        {
+          "x": 39.6,
+          "y": 49.9,
+          "imageLabel": "كاميرا رؤية بانورامية عالية الدقة 540°",
+          "title": "كاميرا رؤية بانورامية عالية الدقة 540°",
+          "body": "رؤية عالية الدقة حول السيارة وأسفلها للمناورة بثقة في الأماكن الضيقة."
+        },
+        {
+          "x": 63.5,
+          "y": 49.9,
+          "imageLabel": "واجهة تثبيت ISOFIX",
+          "title": "واجهة تثبيت ISOFIX",
+          "body": "نقاط تثبيت قياسية تجعل تركيب مقعد الطفل سريعاً وآمناً."
+        }
+      ],
+      "terrainEyebrow": "التصميم الخارجي",
+      "terrainItems": [
+        {
+          "title": "جنوط مقاس 18 بوصة مطلية بالكامل",
+          "body": "تكمل الجنوط المطلية بالكامل مقاس 18 بوصة الوقفة الواثقة لسيارة L6.",
+          "imageLabel": "Lepas L6 — جنوط مقاس 18 بوصة",
+          "image": "/design/assets/exterior/l6/rim18-on.webp"
+        },
+        {
+          "title": "فتحة سقف بانورامية مع ستارة شمسية",
+          "body": "فتحة سقف بانورامية تملأ المقصورة بالضوء، مع ستارة شمسية لأشد الأيام حرارة.",
+          "imageLabel": "Lepas L6 — فتحة السقف البانورامية",
+          "image": "/design/assets/exterior/l6/sunroof.webp"
+        },
+        {
+          "title": "هيكل أحادي",
+          "body": "هيكل أحادي متين يوفّر قيادة متزنة وبنية أمان قوية.",
+          "imageLabel": "Lepas L6 — هيكل أحادي",
+          "image": "/design/assets/exterior/l6/unibody.webp"
+        },
+        {
+          "title": "مصابيح أمامية أوتوماتيكية",
+          "body": "تعمل المصابيح تلقائياً مع خفوت الضوء، لتركّز على الطريق.",
+          "imageLabel": "Lepas L6 — مصابيح أمامية أوتوماتيكية",
+          "image": "/design/assets/exterior/l6/headlights.webp"
+        }
+      ],
+      "exteriorEyebrow": "الأداء",
+      "exteriorItems": [
+        {
+          "title": "محرك 1.5TCI (الجيل الثالث)",
+          "body": "يقدّم أداءً توربينياً راقياً باستجابة سريعة وتشغيل فعّال.",
+          "imageLabel": "Lepas L6 — محرك 1.5TCI",
+          "image": "/design/assets/performance/l6/engine.webp"
+        },
+        {
+          "title": "ناقل حركة 6DCT (الجيل الرابع)",
+          "body": "يختار الترس التالي مسبقاً لتبديل شبه فوري بأقل انقطاع.",
+          "imageLabel": "Lepas L6 — ناقل حركة 6DCT",
+          "image": "/design/assets/performance/l6/transmission.webp"
+        }
+      ],
+      "cabinEyebrow": "المقصورة الداخلية",
+      "cabinTitle": "المقصورة الداخلية",
+      "cabinIntro": "الراحة في المقدمة مع Lepas L6، بتقنيات تجعل الحياة اليومية أسهل.",
+      "cabinTabs": [
+        {
+          "label": "شاشة LCD مقاس 13.2 بوصة",
+          "heading": "شاشة LCD مركزية مقاس 13.2 بوصة",
+          "body": "شاشة مركزية كبيرة تضع الملاحة والوسائط وإعدادات السيارة في متناول يدك.",
+          "imageLabel": "Lepas L6 — الشاشة المركزية مقاس 13.2 بوصة",
+          "image": "/design/assets/interior/l6/display-a.webp"
+        },
+        {
+          "label": "مقاعد جلدية",
+          "heading": "مقاعد جلدية",
+          "body": "مقاعد جلدية داعمة تجعل كل رحلة مريحة.",
+          "imageLabel": "Lepas L6 — مقاعد جلدية",
+          "image": "/design/assets/interior/l6/seats-a.webp"
+        },
+        {
+          "label": "التكييف",
+          "heading": "تكييف هواء أوتوماتيكي ثنائي المناطق",
+          "body": "يضبط السائق والراكب الأمامي درجة الحرارة المفضلة لكل منهما لراحة في جميع الفصول.",
+          "imageLabel": "Lepas L6 — تكييف ثنائي المناطق",
+          "image": "/design/assets/interior/l6/ac-a.webp"
+        }
+      ],
+      "utilityTitle": "الملكية والضمان",
+      "utilityIntro": "تأتي كل L6 بحماية طويلة الأمد من Lepas والغرير للتنقل.",
+      "utilitySpecs": [
+        {
+          "label": "ضمان المحرك",
+          "value": "10 سنوات / 1,000,000 كم"
+        },
+        {
+          "label": "ضمان السيارة",
+          "value": "7 سنوات / 200,000 كم"
+        },
+        {
+          "label": "المساعدة على الطريق",
+          "value": "7 سنوات"
+        },
+        {
+          "label": "المقاعد",
+          "value": "5"
+        }
+      ],
+      "accessoriesTitle": "المزايا",
+      "accessories": [
+        "فتحة سقف بانورامية مع ستارة شمسية",
+        "جنوط مقاس 18 بوصة مطلية بالكامل",
+        "مقاعد جلدية",
+        "شاشة LCD مركزية مقاس 13.2 بوصة",
+        "تكييف هواء أوتوماتيكي ثنائي المناطق",
+        "مصابيح أمامية أوتوماتيكية",
+        "هيكل أحادي"
+      ],
+      "factoryOptionalEquipmentTitle": "السلامة والمساعدة",
+      "factoryOptionalEquipment": [
+        "كاميرا رؤية بانورامية عالية الدقة 540°",
+        "واجهة تثبيت ISOFIX",
+        "مفتاح عن بُعد ودخول بدون مفتاح",
+        "أنظمة الكبح والثبات المتقدمة",
+        "فرامل انتظار إلكترونية"
+      ],
+      "chargingLabel": "الراحة في المقدمة مع Lepas L6.",
+      "chargingBody": "ذكية في الشارع، دائماً متقدمة بخطوة.",
+      "chargingImageLabel": "Lepas L6 — سيارة SUV الذكية في مشاهد القيادة اليومية وأسلوب الحياة",
+      "dimensionsTitle": "الأبعاد",
+      "dimensions": [
+        {
+          "label": "قاعدة العجلات",
+          "value": "2,700 مم"
+        },
+        {
+          "label": "المقاعد",
+          "value": "5"
+        }
+      ],
+      "dimensionsImageLabel": "Lepas L6 — منظر جانبي"
+    }
+  },
+  {
+    "slug": "l4",
+    "name": "Lepas L4",
+    "tagline": "هيكل خفيف. تحكم بسرعة الضوء.",
+    "shortDescription": "سيارة SUV ذكية مدمجة للمدينة، بمحرك 1.5TCI وناقل حركة 6DCT وفتحة سقف كهربائية ومقعد سائق مهوّى.",
+    "startingPrice": 74900,
+    "currency": "AED",
+    "heroImageLabel": "Lepas L4 — سيارة SUV الذكية، منظر خارجي",
+    "heroImage": "/design/assets/hero-l4.webp",
+    "gallery": [
+      "/design/assets/L4-v2.webp",
+      "/design/assets/home/offer-l4.webp",
+      "/design/assets/lifestyle/l4-drive.webp",
+      "/design/assets/interior/l4/lcd-display.webp",
+      "/design/assets/interior/l4/moonlight-grey.webp",
+      "/design/assets/exterior/l4/spoiler-on.webp"
+    ],
+    "overview": "تحقق Lepas L4 التوازن المثالي لحياتك اليومية. هيكل خفيف ومحرك 1.5TCI من الجيل الثالث وناقل حركة 6DCT تمنحها تحكماً فائق السرعة، فيما تجعل أنظمة ADAS وكاميرا 540° والمقصورة بلون الرمادي القمري كل رحلة أسهل.",
+    "specs": [
+      {
+        "label": "مجموعة الحركة",
+        "items": [
+          {
+            "label": "المحرك",
+            "value": "1.5TCI (الجيل الثالث)"
+          },
+          {
+            "label": "ناقل الحركة",
+            "value": "6DCT (الجيل الرابع)"
+          },
+          {
+            "label": "القوة / عزم الدوران الأقصى",
+            "value": "145 حصاناً / 225 نيوتن متر"
+          }
+        ]
+      },
+      {
+        "label": "الأبعاد",
+        "items": [
+          {
+            "label": "قاعدة العجلات",
+            "value": "2,700 مم"
+          },
+          {
+            "label": "المقاعد",
+            "value": "5"
+          },
+          {
+            "label": "الهيكل",
+            "value": "هيكل أحادي"
+          }
+        ]
+      },
+      {
+        "label": "الضمان",
+        "items": [
+          {
+            "label": "المحرك",
+            "value": "10 سنوات / 1,000,000 كم"
+          },
+          {
+            "label": "السيارة",
+            "value": "7 سنوات / 200,000 كم"
+          },
+          {
+            "label": "المساعدة على الطريق",
+            "value": "7 سنوات"
+          }
+        ]
+      }
+    ],
+    "features": [
+      "فتحة سقف كهربائية",
+      "قفل صندوق أمتعة كهربائي",
+      "مقعد سائق مهوّى",
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "مقصورة بلون الرمادي القمري"
+    ],
+    "technology": [
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "أنظمة مساعدة السائق المتقدمة (ADAS)",
+      "نظام كاميرا بانورامية عالية الدقة 540°",
+      "مراقبة ضغط الإطارات"
+    ],
+    "safety": [
+      "أنظمة مساعدة السائق المتقدمة (ADAS)",
+      "دعم الركن والرؤية",
+      "نظام كاميرا بانورامية عالية الدقة 540°",
+      "مراقبة ضغط الإطارات"
+    ],
+    "exterior": [
+      "الجناح الخلفي",
+      "قفل صندوق أمتعة كهربائي",
+      "فتحة سقف كهربائية",
+      "مصابيح أمامية أوتوماتيكية"
+    ],
+    "interior": [
+      "شاشة LCD مركزية مقاس 13.2 بوصة",
+      "مقعد سائق مهوّى",
+      "مقصورة بلون الرمادي القمري"
+    ],
+    "colours": [
+      {
+        "name": "أحمر",
+        "hex": "#A4182A",
+        "image": "/design/assets/shades/l4/l4-shade-hero-red-v2.webp"
+      },
+      {
+        "name": "أصفر",
+        "hex": "#DBBA3B",
+        "image": "/design/assets/shades/l4/l4-shade-hero-yellow-v2.webp"
+      },
+      {
+        "name": "فضي",
+        "hex": "#AAAFB5",
+        "image": "/design/assets/shades/l4/l4-shade-hero-silver-v2.webp"
+      },
+      {
+        "name": "أخضر",
+        "hex": "#385F25",
+        "image": "/design/assets/shades/l4/l4-shade-hero-green-v2.webp"
+      },
+      {
+        "name": "أبيض",
+        "hex": "#E6E8E4",
+        "image": "/design/assets/shades/l4/l4-shade-hero-white-v2.webp"
+      },
+      {
+        "name": "أسود",
+        "hex": "#292828",
+        "image": "/design/assets/shades/l4/l4-shade-hero-black-v2.webp"
+      }
+    ],
+    "interiorColours": [
+      {
+        "name": "رمادي قمري",
+        "hex": "#8c8f94",
+        "image": "/design/assets/interior/l4/moonlight-grey.webp"
+      }
+    ],
+    "variants": [
+      {
+        "id": "ice",
+        "name": "L4 1.5TCI",
+        "priceDelta": 0,
+        "powerHp": "145 حصاناً",
+        "rangeKm": "2,700 مم"
+      }
+    ],
+    "detailPage": {
+      "heroHeadline": "Lepas L4 — سيارة SUV الذكية في الإمارات",
+      "heroSubcopy": "هيكل خفيف. تحكم بسرعة الضوء. التوازن المثالي لحياتك اليومية.",
+      "statsEyebrow": "المواصفات الرئيسية",
+      "stats": [
+        {
+          "label": "المحرك",
+          "value": "1.5TCI"
+        },
+        {
+          "label": "ناقل الحركة",
+          "value": "6DCT"
+        },
+        {
+          "label": "القوة / عزم الدوران الأقصى",
+          "value": "145HP/225NM"
+        },
+        {
+          "label": "قاعدة العجلات",
+          "value": "2700MM"
+        }
+      ],
+      "exteriorImageLabel": "Lepas L4 — مزايا السلامة، منظر مقطعي",
+      "designEyebrow": "السلامة",
+      "designTitle": "السلامة",
+      "designGallery": [
+        {
+          "imageLabel": "Lepas L4 — أنظمة مساعدة السائق المتقدمة (ADAS)",
+          "image": "/design/assets/safety/l4/adas.webp",
+          "heading": "أنظمة مساعدة السائق المتقدمة (ADAS)",
+          "body": "تساعدك أنظمة مساعدة السائق على البقاء متيقظاً ومتحكماً في كل رحلة."
+        },
+        {
+          "imageLabel": "Lepas L4 — مراقبة ضغط الإطارات",
+          "image": "/design/assets/safety/l4/tyre-pressure.webp",
+          "heading": "مراقبة ضغط الإطارات",
+          "body": "يراقب كل إطار وينبهك عند انخفاض الضغط."
+        },
+        {
+          "imageLabel": "Lepas L4 — نظام كاميرا بانورامية عالية الدقة 540°",
+          "image": "/design/assets/safety/l4/panoramic-camera.webp",
+          "heading": "نظام كاميرا بانورامية عالية الدقة 540°",
+          "body": "رؤية عالية الدقة حول السيارة وأسفلها للمناورة بثقة."
+        },
+        {
+          "imageLabel": "Lepas L4 — دعم الركن والرؤية",
+          "image": "/design/assets/safety/l4/parking-support.webp",
+          "heading": "دعم الركن والرؤية",
+          "body": "تجعل المستشعرات والكاميرات الركن في أماكن المدينة الضيقة أمراً سهلاً."
+        }
+      ],
+      "highlightsEyebrow": "السلامة",
+      "highlightsTitle": "السلامة",
+      "highlights": [
+        {
+          "x": 61.8,
+          "y": 34.2,
+          "imageLabel": "أنظمة مساعدة السائق المتقدمة (ADAS)",
+          "title": "أنظمة مساعدة السائق المتقدمة (ADAS)",
+          "body": "تساعدك أنظمة مساعدة السائق على البقاء متيقظاً ومتحكماً في كل رحلة."
+        },
+        {
+          "x": 59.7,
+          "y": 40.3,
+          "imageLabel": "دعم الركن والرؤية",
+          "title": "دعم الركن والرؤية",
+          "body": "تجعل المستشعرات والكاميرات الركن في أماكن المدينة الضيقة أمراً سهلاً."
+        },
+        {
+          "x": 59.7,
+          "y": 32.6,
+          "imageLabel": "نظام كاميرا بانورامية عالية الدقة 540°",
+          "title": "نظام كاميرا بانورامية عالية الدقة 540°",
+          "body": "تندمج عدة كاميرات عالية الدقة في رؤية واحدة متكاملة حول السيارة."
+        },
+        {
+          "x": 26.6,
+          "y": 59,
+          "imageLabel": "كاميرا رؤية بانورامية عالية الدقة 540°",
+          "title": "كاميرا رؤية بانورامية عالية الدقة 540°",
+          "body": "شاهد ما حول L4 وأسفلها للمناورة بثقة."
+        }
+      ],
+      "terrainEyebrow": "التصميم الخارجي",
+      "terrainItems": [
+        {
+          "title": "الجناح الخلفي",
+          "body": "جناح خلفي منحوت يعزّز الطابع الرياضي لسيارة L4.",
+          "imageLabel": "Lepas L4 — الجناح الخلفي",
+          "image": "/design/assets/exterior/l4/spoiler-on.webp"
+        },
+        {
+          "title": "قفل صندوق أمتعة كهربائي",
+          "body": "افتح صندوق الأمتعة وأغلقه بلمسة زر.",
+          "imageLabel": "Lepas L4 — قفل صندوق أمتعة كهربائي",
+          "image": "/design/assets/exterior/l4/trunk-on.webp"
+        },
+        {
+          "title": "فتحة سقف كهربائية",
+          "body": "فتحة سقف كهربائية تُدخل الضوء والهواء النقي متى شئت.",
+          "imageLabel": "Lepas L4 — فتحة سقف كهربائية",
+          "image": "/design/assets/exterior/l4/electric-sunroof-on.webp"
+        },
+        {
+          "title": "مصابيح أمامية أوتوماتيكية",
+          "body": "تعمل المصابيح تلقائياً مع خفوت الضوء، لتركّز على الطريق.",
+          "imageLabel": "Lepas L4 — مصابيح أمامية أوتوماتيكية",
+          "image": "/design/assets/exterior/l4/headlights-on.webp"
+        }
+      ],
+      "exteriorEyebrow": "الأداء",
+      "exteriorItems": [
+        {
+          "title": "محرك 1.5TCI (الجيل الثالث)",
+          "body": "يقدّم أداءً توربينياً ثابتاً للاستخدام اليومي.",
+          "imageLabel": "Lepas L4 — محرك 1.5TCI",
+          "image": "/design/assets/performance/l4/engine.webp"
+        },
+        {
+          "title": "ناقل حركة 6DCT (الجيل الرابع)",
+          "body": "يختار الترس التالي مسبقاً لتبديل شبه فوري بأقل انقطاع.",
+          "imageLabel": "Lepas L4 — ناقل حركة 6DCT",
+          "image": "/design/assets/performance/l4/transmission.webp"
+        }
+      ],
+      "cabinEyebrow": "المقصورة الداخلية",
+      "cabinTitle": "المقصورة الداخلية",
+      "cabinIntro": "التوازن المثالي لحياتك اليومية، بتقنيات ذكية وراحة في كل مقعد.",
+      "cabinTabs": [
+        {
+          "label": "شاشة LCD مقاس 13.2 بوصة",
+          "heading": "شاشة LCD مركزية مقاس 13.2 بوصة",
+          "body": "شاشة مركزية كبيرة تضع الملاحة والوسائط وإعدادات السيارة في متناول يدك.",
+          "imageLabel": "Lepas L4 — الشاشة المركزية مقاس 13.2 بوصة",
+          "image": "/design/assets/interior/l4/lcd-display.webp"
+        },
+        {
+          "label": "مقعد مهوّى",
+          "heading": "مقعد سائق مهوّى",
+          "body": "مقعد سائق مهوّى يبقيك منتعشاً طوال صيف الإمارات.",
+          "imageLabel": "Lepas L4 — مقعد سائق مهوّى",
+          "image": "/design/assets/interior/l4/ventilated-seat.webp"
+        },
+        {
+          "label": "رمادي قمري",
+          "heading": "مقصورة بلون الرمادي القمري",
+          "body": "مقصورة هادئة بلون الرمادي القمري تمنحك إحساساً بالخفة والحداثة والرحابة.",
+          "imageLabel": "Lepas L4 — مقصورة بلون الرمادي القمري",
+          "image": "/design/assets/interior/l4/moonlight-grey.webp"
+        }
+      ],
+      "utilityTitle": "الملكية والضمان",
+      "utilityIntro": "تأتي كل L4 بحماية طويلة الأمد من Lepas والغرير للتنقل.",
+      "utilitySpecs": [
+        {
+          "label": "ضمان المحرك",
+          "value": "10 سنوات / 1,000,000 كم"
+        },
+        {
+          "label": "ضمان السيارة",
+          "value": "7 سنوات / 200,000 كم"
+        },
+        {
+          "label": "المساعدة على الطريق",
+          "value": "7 سنوات"
+        },
+        {
+          "label": "المقاعد",
+          "value": "5"
+        }
+      ],
+      "accessoriesTitle": "المزايا",
+      "accessories": [
+        "فتحة سقف كهربائية",
+        "قفل صندوق أمتعة كهربائي",
+        "الجناح الخلفي",
+        "مصابيح أمامية أوتوماتيكية",
+        "مقعد سائق مهوّى",
+        "شاشة LCD مركزية مقاس 13.2 بوصة",
+        "مقصورة بلون الرمادي القمري"
+      ],
+      "factoryOptionalEquipmentTitle": "السلامة والمساعدة",
+      "factoryOptionalEquipment": [
+        "أنظمة مساعدة السائق المتقدمة (ADAS)",
+        "دعم الركن والرؤية",
+        "نظام كاميرا بانورامية عالية الدقة 540°",
+        "مراقبة ضغط الإطارات"
+      ],
+      "chargingLabel": "التوازن المثالي لحياتك اليومية.",
+      "chargingBody": "تصميم بلا تنازلات، وحماية بلا استثناء.",
+      "chargingImageLabel": "Lepas L4 — سيارة SUV الذكية في مشاهد القيادة اليومية وأسلوب الحياة",
+      "dimensionsTitle": "الأبعاد",
+      "dimensions": [
+        {
+          "label": "قاعدة العجلات",
+          "value": "2,700 مم"
+        },
+        {
+          "label": "المقاعد",
+          "value": "5"
+        }
+      ],
+      "dimensionsImageLabel": "Lepas L4 — منظر جانبي"
+    }
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "roadside-assistance",
+    "title": "Roadside Assistance",
+    "description": "Supported by a trusted service network that keeps help within reach, with fast response and dependable assistance so your journey continues without interruption. For roadside assistance, call 600 5462005.",
+    "imageLabel": "Roadside Assistance"
+  },
+  {
+    "id": "warranty",
+    "title": "Lepas Warranty",
+    "description": "10 years/1,000,000 km engine warranty, 7 years/200,000 km vehicle warranty and 8 years/160,000 km PHEV battery warranty.",
+    "imageLabel": "Lepas Warranty"
+  },
+  {
+    "id": "servicing-genuine-parts",
+    "title": "Servicing & Genuine Parts",
+    "description": "Servicing and genuine Lepas parts are available through Al Ghurair Mobility's authorised service network across the UAE.",
+    "imageLabel": "Servicing & Genuine Parts"
+  },
+  {
+    "id": "al-quoz-after-sales",
+    "title": "Al Quoz After-Sales Facility",
+    "description": "Our dedicated after-sales facility in Al Quoz Industrial Area 4, Dubai, looks after maintenance and repairs for every Lepas.",
+    "imageLabel": "Al Quoz After-Sales Facility"
+  }
+]

@@ -1,0 +1,1078 @@
+[
+  {
+    "slug": "l8",
+    "name": "Lepas L8",
+    "tagline": "Premium performance. Space for all.",
+    "shortDescription": "The flagship Lepas smart SUV, with a 1.5TGDI engine, 7DCT transmission and a Super Hybrid option with up to 1,300 km combined range.",
+    "startingPrice": 99900,
+    "currency": "AED",
+    "heroImageLabel": "Lepas L8 smart SUV, exterior view",
+    "heroImage": "/design/assets/hero-l8.webp",
+    "gallery": [
+      "/design/assets/L8-v2.webp",
+      "/design/assets/hero-l8-phev.webp",
+      "/design/assets/lifestyle/l8-drive.webp",
+      "/design/assets/interior/l8/twotone-a.webp",
+      "/design/assets/interior/l8/display-a.webp",
+      "/design/assets/exterior/l8/headlights-on.webp"
+    ],
+    "overview": "The Lepas L8 is the flagship of the Lepas smart SUV range. Guided by Leopard Aesthetics, it pairs a confident, expressive design with a 3rd-generation 1.5TGDI engine, a two-tone cabin and a Sony premium sound system. Choose ICE, or the L8 Super Hybrid with up to 1,300 km combined range.",
+    "specs": [
+      {
+        "label": "Powertrain",
+        "items": [
+          {
+            "label": "Engine",
+            "value": "1.5TGDI (3rd generation)"
+          },
+          {
+            "label": "Transmission",
+            "value": "7DCT (4th generation)"
+          },
+          {
+            "label": "Max. Power/Torque",
+            "value": "184 HP / 290 Nm"
+          }
+        ]
+      },
+      {
+        "label": "Super Hybrid (PHEV)",
+        "items": [
+          {
+            "label": "Combined Range",
+            "value": "1,300 km"
+          },
+          {
+            "label": "PHEV Transmission",
+            "value": "1DHT"
+          },
+          {
+            "label": "PHEV Max. Power/Torque",
+            "value": "342 HP / 525 Nm"
+          }
+        ]
+      },
+      {
+        "label": "Dimensions",
+        "items": [
+          {
+            "label": "Wheelbase",
+            "value": "2,800 mm"
+          },
+          {
+            "label": "Seats",
+            "value": "5"
+          },
+          {
+            "label": "Body",
+            "value": "Unibody frame"
+          }
+        ]
+      },
+      {
+        "label": "Warranty",
+        "items": [
+          {
+            "label": "Engine",
+            "value": "10 yrs / 1,000,000 km"
+          },
+          {
+            "label": "Vehicle",
+            "value": "7 yrs / 200,000 km"
+          },
+          {
+            "label": "Roadside Assistance",
+            "value": "7 years"
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Two-tone interior",
+      "13.2-inch central LCD display",
+      "Dual-zone automatic air conditioning",
+      "Sony premium sound system",
+      "Roof rack"
+    ],
+    "technology": [
+      "13.2-inch central LCD display",
+      "540° HD panoramic view camera",
+      "APA automated parking assist (PHEV)",
+      "RPA remote parking assist (PHEV)",
+      "eCall emergency call system"
+    ],
+    "safety": [
+      "RCTA (Rear Cross Traffic Alert)",
+      "540° HD panoramic view camera",
+      "ISOFIX child seat anchors",
+      "6 airbags",
+      "Auto locking system"
+    ],
+    "exterior": [
+      "LED dipped headlights",
+      "Unibody frame",
+      "Roof rack",
+      "GSO side mirrors"
+    ],
+    "interior": [
+      "Two-tone interior",
+      "13.2-inch central LCD display",
+      "Dual-zone automatic air conditioning",
+      "Sony premium sound system"
+    ],
+    "colours": [
+      {
+        "name": "Green",
+        "hex": "#5E9DA5",
+        "image": "/design/assets/shades/l8/l8-shade-hero-green-colors11.webp"
+      },
+      {
+        "name": "Purple",
+        "hex": "#726F8B",
+        "image": "/design/assets/shades/l8/l8-shade-hero-purple-colors11.webp"
+      },
+      {
+        "name": "White",
+        "hex": "#E9E9E9",
+        "image": "/design/assets/shades/l8/l8-shade-hero-white-colors11.webp"
+      },
+      {
+        "name": "Black",
+        "hex": "#38414A",
+        "image": "/design/assets/shades/l8/l8-shade-hero-black-colors11.webp"
+      },
+      {
+        "name": "Grey",
+        "hex": "#9BA5AE",
+        "image": "/design/assets/shades/l8/l8-shade-hero-grey-colors11.webp"
+      }
+    ],
+    "interiorColours": [
+      {
+        "name": "Two-Tone",
+        "hex": "#3f6f73",
+        "image": "/design/assets/interior/l8/twotone-a.webp"
+      }
+    ],
+    "variants": [
+      {
+        "id": "ice",
+        "name": "L8 ICE",
+        "priceDelta": 0,
+        "powerHp": "184 HP",
+        "rangeKm": "2,800 mm"
+      },
+      {
+        "id": "phev",
+        "name": "L8 Super Hybrid (PHEV)",
+        "priceDelta": 0,
+        "powerHp": "342 HP",
+        "rangeKm": "2,800 mm"
+      }
+    ],
+    "detailPage": {
+      "heroHeadline": "Lepas L8 smart SUV in the UAE",
+      "heroSubcopy": "Premium performance. Space for all. The flagship Lepas, available as ICE or Super Hybrid with up to 1,300 km combined range.",
+      "statsEyebrow": "Key Specs",
+      "stats": [
+        {
+          "label": "Engine",
+          "value": "1.5TGDI"
+        },
+        {
+          "label": "Transmission",
+          "value": "7DCT"
+        },
+        {
+          "label": "Max. Power/Torque",
+          "value": "184HP/290NM"
+        },
+        {
+          "label": "Wheelbase",
+          "value": "2800MM"
+        },
+        {
+          "label": "Combined Range (PHEV)",
+          "value": "1300KM"
+        }
+      ],
+      "exteriorImageLabel": "Lepas L8 safety features, cutaway view",
+      "designEyebrow": "Safety",
+      "designTitle": "Safety",
+      "designGallery": [
+        {
+          "imageLabel": "Lepas L8 auto locking system",
+          "image": "/design/assets/safety/l8/1.png",
+          "heading": "Auto Locking System",
+          "body": "Doors lock automatically once you drive away, so your cabin stays secure without a second thought."
+        },
+        {
+          "imageLabel": "Lepas L8 front side airbags",
+          "image": "/design/assets/safety/l8/2.png",
+          "heading": "Front Side Airbags",
+          "body": "Part of a six-airbag system that protects front occupants in the event of a side impact."
+        },
+        {
+          "imageLabel": "Lepas L8 eCall emergency call system",
+          "image": "/design/assets/safety/l8/3.png",
+          "heading": "eCall Emergency Call System",
+          "body": "Connects you to emergency services when you need help, wherever the road takes you."
+        }
+      ],
+      "highlightsEyebrow": "Safety",
+      "highlightsTitle": "Safety",
+      "highlights": [
+        {
+          "x": 27.2,
+          "y": 56.2,
+          "imageLabel": "RCTA rear cross traffic alert",
+          "title": "RCTA (Rear Cross Traffic Alert)",
+          "body": "Warns you of vehicles approaching from the side as you reverse out of a parking space."
+        },
+        {
+          "x": 56.8,
+          "y": 36.4,
+          "imageLabel": "540° HD panoramic view camera",
+          "title": "540° HD Panoramic View Camera",
+          "body": "A high-definition view around and beneath the vehicle for confident manoeuvring in tight spaces."
+        },
+        {
+          "x": 40.7,
+          "y": 50.8,
+          "imageLabel": "ISOFIX child seat anchors",
+          "title": "ISOFIX Child Seat Anchors",
+          "body": "Standardised anchor points make fitting a child seat quick and secure."
+        },
+        {
+          "x": 59,
+          "y": 43.3,
+          "imageLabel": "6 airbags",
+          "title": "6 Airbags",
+          "body": "Six airbags surround the cabin to protect driver and passengers."
+        }
+      ],
+      "terrainEyebrow": "Exterior",
+      "terrainItems": [
+        {
+          "title": "LED Dipped Headlights",
+          "body": "Headlights inspired by the eyes of the leopard give the L8 an unmistakable look, day and night.",
+          "imageLabel": "Lepas L8 LED dipped headlights",
+          "image": "/design/assets/exterior/l8/headlights-on.webp"
+        },
+        {
+          "title": "Unibody Frame",
+          "body": "A rigid unibody frame delivers a composed ride and a strong safety structure.",
+          "imageLabel": "Lepas L8 unibody frame",
+          "image": "/design/assets/exterior/l8/unibody-frame.webp"
+        },
+        {
+          "title": "Roof Rack",
+          "body": "An integrated roof rack adds practical carrying capacity for weekend adventures.",
+          "imageLabel": "Lepas L8 roof rack",
+          "image": "/design/assets/exterior/l8/roof-rack-on.webp"
+        },
+        {
+          "title": "GSO Side Mirrors",
+          "body": "GSO-compliant side mirrors offer a clear view of the road around you.",
+          "imageLabel": "Lepas L8 GSO side mirrors",
+          "image": "/design/assets/exterior/l8/side-mirrors-on.webp"
+        }
+      ],
+      "exteriorEyebrow": "Performance",
+      "exteriorItems": [
+        {
+          "title": "1.5TGDI Engine (3rd Generation)",
+          "body": "Delivers advanced turbocharged performance with stronger output and smoother response.",
+          "imageLabel": "Lepas L8 1.5TGDI engine",
+          "image": "/design/assets/performance/l8/engine.webp"
+        },
+        {
+          "title": "7DCT Transmission (4th Generation)",
+          "body": "Pre-selects the next gear to deliver near-instant shifts with minimal interruption.",
+          "imageLabel": "Lepas L8 7DCT transmission",
+          "image": "/design/assets/performance/l8/transmission.webp"
+        },
+        {
+          "title": "Regenerative Braking (PHEV)",
+          "body": "On the Super Hybrid, adjustable energy recovery converts braking energy into electrical power to help recharge the battery.",
+          "imageLabel": "Lepas L8 regenerative braking",
+          "image": "/design/assets/performance/l8/regen-braking.webp"
+        }
+      ],
+      "cabinEyebrow": "Interior",
+      "cabinTitle": "Interior",
+      "cabinIntro": "Designed around the people, with smart technology and control that eases everyday life.",
+      "cabinTabs": [
+        {
+          "label": "Two-Tone Interior",
+          "heading": "Two-Tone Interior",
+          "body": "A refined two-tone cabin with soft-touch materials and elegant detailing.",
+          "imageLabel": "Lepas L8 two-tone interior",
+          "image": "/design/assets/interior/l8/twotone-a.webp"
+        },
+        {
+          "label": "13.2\" LCD Display",
+          "heading": "13.2-inch Central LCD Display",
+          "body": "A large central display puts navigation, media and vehicle settings within easy reach.",
+          "imageLabel": "Lepas L8 13.2-inch central display",
+          "image": "/design/assets/interior/l8/display-a.webp"
+        },
+        {
+          "label": "Climate",
+          "heading": "Dual-Zone Automatic Air Conditioning",
+          "body": "Driver and front passenger each set their own temperature for comfort in every season.",
+          "imageLabel": "Lepas L8 dual-zone climate control",
+          "image": "/design/assets/interior/l8/climate.webp"
+        },
+        {
+          "label": "Sony Sound",
+          "heading": "Sony Premium Sound System",
+          "body": "A Sony premium sound system fills the cabin with rich, detailed audio.",
+          "imageLabel": "Lepas L8 Sony premium sound system",
+          "image": "/design/assets/interior/l8/sound-a.webp"
+        }
+      ],
+      "utilityTitle": "Ownership & Warranty",
+      "utilityIntro": "Every L8 comes with long-term protection from Lepas and Al Ghurair Mobility.",
+      "utilitySpecs": [
+        {
+          "label": "Engine Warranty",
+          "value": "10 yrs / 1,000,000 km"
+        },
+        {
+          "label": "Vehicle Warranty",
+          "value": "7 yrs / 200,000 km"
+        },
+        {
+          "label": "PHEV Battery Warranty",
+          "value": "8 yrs / 160,000 km"
+        },
+        {
+          "label": "Roadside Assistance",
+          "value": "7 years"
+        }
+      ],
+      "accessoriesTitle": "Features",
+      "accessories": [
+        "Two-tone interior",
+        "13.2-inch central LCD display",
+        "Dual-zone automatic air conditioning",
+        "Sony premium sound system",
+        "LED dipped headlights",
+        "Roof rack",
+        "GSO side mirrors",
+        "Unibody frame"
+      ],
+      "factoryOptionalEquipmentTitle": "Safety & Assistance",
+      "factoryOptionalEquipment": [
+        "RCTA (Rear Cross Traffic Alert)",
+        "540° HD panoramic view camera",
+        "ISOFIX child seat anchors",
+        "6 airbags",
+        "Auto locking system",
+        "eCall emergency call system",
+        "APA automated parking assist (PHEV)",
+        "RPA remote parking assist (PHEV)"
+      ],
+      "chargingLabel": "The perfect drive for your lifestyle.",
+      "chargingBody": "Elegance at full scale, for the city and beyond.",
+      "chargingImageLabel": "Lepas L8 smart SUV in everyday driving and lifestyle scenes",
+      "dimensionsTitle": "Dimensions",
+      "dimensions": [
+        {
+          "label": "Wheelbase",
+          "value": "2,800 mm"
+        },
+        {
+          "label": "Seats",
+          "value": "5"
+        }
+      ],
+      "dimensionsImageLabel": "Lepas L8 side profile"
+    }
+  },
+  {
+    "slug": "l6",
+    "name": "Lepas L6",
+    "tagline": "Street smart, always one move ahead.",
+    "shortDescription": "A smart, comfortable SUV with a 1.5TCI engine, 6DCT transmission, panoramic sunroof and 18-inch fully painted rims.",
+    "startingPrice": 84900,
+    "currency": "AED",
+    "heroImageLabel": "Lepas L6 smart SUV, exterior view",
+    "heroImage": "/design/assets/teaser-l6.webp",
+    "gallery": [
+      "/design/assets/L6-v2.webp",
+      "/design/assets/home/hero-l6.webp",
+      "/design/assets/lifestyle/l6.webp",
+      "/design/assets/interior/l6/display-a.webp",
+      "/design/assets/interior/l6/seats-a.webp",
+      "/design/assets/exterior/l6/sunroof.webp"
+    ],
+    "overview": "The Lepas L6 is street smart and always one move ahead. A 3rd-generation 1.5TCI engine and 4th-generation 6DCT transmission deliver refined, efficient performance, while leather seats, a panoramic sunroof and a 13.2-inch display put comfort first.",
+    "specs": [
+      {
+        "label": "Powertrain",
+        "items": [
+          {
+            "label": "Engine",
+            "value": "1.5TCI (3rd generation)"
+          },
+          {
+            "label": "Transmission",
+            "value": "6DCT (4th generation)"
+          },
+          {
+            "label": "Max. Power/Torque",
+            "value": "145 HP / 225 Nm"
+          }
+        ]
+      },
+      {
+        "label": "Dimensions",
+        "items": [
+          {
+            "label": "Wheelbase",
+            "value": "2,700 mm"
+          },
+          {
+            "label": "Seats",
+            "value": "5"
+          },
+          {
+            "label": "Body",
+            "value": "Unibody frame"
+          }
+        ]
+      },
+      {
+        "label": "Warranty",
+        "items": [
+          {
+            "label": "Engine",
+            "value": "10 yrs / 1,000,000 km"
+          },
+          {
+            "label": "Vehicle",
+            "value": "7 yrs / 200,000 km"
+          },
+          {
+            "label": "Roadside Assistance",
+            "value": "7 years"
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Panoramic sunroof with sunshade",
+      "18-inch fully painted rims",
+      "Leather seats",
+      "13.2-inch central LCD display",
+      "Dual-zone automatic air conditioning"
+    ],
+    "technology": [
+      "13.2-inch central LCD display",
+      "540° HD panoramic view camera",
+      "Remote key and keyless entry",
+      "Electronic parking brake"
+    ],
+    "safety": [
+      "540° HD panoramic view camera",
+      "ISOFIX interface",
+      "Advanced braking and stability systems",
+      "Electronic parking brake"
+    ],
+    "exterior": [
+      "18-inch fully painted rims",
+      "Panoramic sunroof with sunshade",
+      "Unibody frame",
+      "Automatic headlights"
+    ],
+    "interior": [
+      "13.2-inch central LCD display",
+      "Leather seats",
+      "Dual-zone automatic air conditioning"
+    ],
+    "colours": [
+      {
+        "name": "Orange",
+        "hex": "#C5763E",
+        "image": "/design/assets/shades/l6/orange-l6v2.png"
+      },
+      {
+        "name": "Silver",
+        "hex": "#D7D7D5",
+        "image": "/design/assets/shades/l6/silver-l6v2.png"
+      },
+      {
+        "name": "Black",
+        "hex": "#292828",
+        "image": "/design/assets/shades/l6/black-l6v2.png"
+      },
+      {
+        "name": "White",
+        "hex": "#E8E8E8",
+        "image": "/design/assets/shades/l6/white-l6v2.png"
+      },
+      {
+        "name": "Grey",
+        "hex": "#A8B2C4",
+        "image": "/design/assets/shades/l6/grey-l6v2.png"
+      }
+    ],
+    "interiorColours": [
+      {
+        "name": "Leather",
+        "hex": "#2b2b2b",
+        "image": "/design/assets/interior/l6/seats-a.webp"
+      }
+    ],
+    "variants": [
+      {
+        "id": "ice",
+        "name": "L6 1.5TCI",
+        "priceDelta": 0,
+        "powerHp": "145 HP",
+        "rangeKm": "2,700 mm"
+      }
+    ],
+    "detailPage": {
+      "heroHeadline": "Lepas L6 smart SUV in the UAE",
+      "heroSubcopy": "Street smart, always one move ahead. Comfort leads the way in the Lepas L6.",
+      "statsEyebrow": "Key Specs",
+      "stats": [
+        {
+          "label": "Engine",
+          "value": "1.5TCI"
+        },
+        {
+          "label": "Transmission",
+          "value": "6DCT"
+        },
+        {
+          "label": "Max. Power/Torque",
+          "value": "145HP/225NM"
+        },
+        {
+          "label": "Wheelbase",
+          "value": "2700MM"
+        }
+      ],
+      "exteriorImageLabel": "Lepas L6 safety features, top-down view",
+      "designEyebrow": "Safety",
+      "designTitle": "Safety",
+      "designGallery": [
+        {
+          "imageLabel": "Lepas L6 remote key and keyless entry",
+          "image": "/design/assets/safety/l6/remote-key.webp",
+          "heading": "Remote Key and Keyless Entry",
+          "body": "Unlock and start the L6 without reaching for your key."
+        },
+        {
+          "imageLabel": "Lepas L6 advanced braking and stability systems",
+          "image": "/design/assets/safety/l6/braking.webp",
+          "heading": "Advanced Braking and Stability Systems",
+          "body": "Electronic braking and stability systems help keep the L6 composed and in control."
+        },
+        {
+          "imageLabel": "Lepas L6 electronic parking brake",
+          "image": "/design/assets/safety/l6/parking-brake.webp",
+          "heading": "Electronic Parking Brake",
+          "body": "A one-touch electronic parking brake frees up space and simplifies hill starts."
+        }
+      ],
+      "highlightsEyebrow": "Safety",
+      "highlightsTitle": "Safety",
+      "highlights": [
+        {
+          "x": 39.6,
+          "y": 49.9,
+          "imageLabel": "540° HD panoramic view camera",
+          "title": "540° HD Panoramic View Camera",
+          "body": "A high-definition view around and beneath the vehicle for confident manoeuvring in tight spaces."
+        },
+        {
+          "x": 63.5,
+          "y": 49.9,
+          "imageLabel": "ISOFIX interface",
+          "title": "ISOFIX Interface",
+          "body": "Standardised anchor points make fitting a child seat quick and secure."
+        }
+      ],
+      "terrainEyebrow": "Exterior",
+      "terrainItems": [
+        {
+          "title": "18-inch Fully Painted Rims",
+          "body": "Fully painted 18-inch rims complete the L6's confident stance.",
+          "imageLabel": "Lepas L6 18-inch rims",
+          "image": "/design/assets/exterior/l6/rim18-on.webp"
+        },
+        {
+          "title": "Panoramic Sunroof with Sunshade",
+          "body": "A panoramic sunroof fills the cabin with light, with a sunshade for the hottest days.",
+          "imageLabel": "Lepas L6 panoramic sunroof",
+          "image": "/design/assets/exterior/l6/sunroof.webp"
+        },
+        {
+          "title": "Unibody Frame",
+          "body": "A rigid unibody frame delivers a composed ride and a strong safety structure.",
+          "imageLabel": "Lepas L6 unibody frame",
+          "image": "/design/assets/exterior/l6/unibody.webp"
+        },
+        {
+          "title": "Automatic Headlights",
+          "body": "Headlights switch on automatically as light fades, so you can focus on the road.",
+          "imageLabel": "Lepas L6 automatic headlights",
+          "image": "/design/assets/exterior/l6/headlights.webp"
+        }
+      ],
+      "exteriorEyebrow": "Performance",
+      "exteriorItems": [
+        {
+          "title": "1.5TCI Engine (3rd Generation)",
+          "body": "Offers refined turbo performance with quick response and efficient operation.",
+          "imageLabel": "Lepas L6 1.5TCI engine",
+          "image": "/design/assets/performance/l6/engine.webp"
+        },
+        {
+          "title": "6DCT Transmission (4th Generation)",
+          "body": "Pre-selects the next gear to deliver near-instant shifts with minimal interruption.",
+          "imageLabel": "Lepas L6 6DCT transmission",
+          "image": "/design/assets/performance/l6/transmission.webp"
+        }
+      ],
+      "cabinEyebrow": "Interior",
+      "cabinTitle": "Interior",
+      "cabinIntro": "Comfort leads the way in the Lepas L6, with technology that eases everyday life.",
+      "cabinTabs": [
+        {
+          "label": "13.2\" LCD Display",
+          "heading": "13.2-inch Central LCD Display",
+          "body": "A large central display puts navigation, media and vehicle settings within easy reach.",
+          "imageLabel": "Lepas L6 13.2-inch central display",
+          "image": "/design/assets/interior/l6/display-a.webp"
+        },
+        {
+          "label": "Leather Seats",
+          "heading": "Leather Seats",
+          "body": "Supportive leather seats keep every journey comfortable.",
+          "imageLabel": "Lepas L6 leather seats",
+          "image": "/design/assets/interior/l6/seats-a.webp"
+        },
+        {
+          "label": "Climate",
+          "heading": "Dual-Zone Automatic Air Conditioning",
+          "body": "Driver and front passenger each set their own temperature for comfort in every season.",
+          "imageLabel": "Lepas L6 dual-zone climate control",
+          "image": "/design/assets/interior/l6/ac-a.webp"
+        }
+      ],
+      "utilityTitle": "Ownership & Warranty",
+      "utilityIntro": "Every L6 comes with long-term protection from Lepas and Al Ghurair Mobility.",
+      "utilitySpecs": [
+        {
+          "label": "Engine Warranty",
+          "value": "10 yrs / 1,000,000 km"
+        },
+        {
+          "label": "Vehicle Warranty",
+          "value": "7 yrs / 200,000 km"
+        },
+        {
+          "label": "Roadside Assistance",
+          "value": "7 years"
+        },
+        {
+          "label": "Seats",
+          "value": "5"
+        }
+      ],
+      "accessoriesTitle": "Features",
+      "accessories": [
+        "Panoramic sunroof with sunshade",
+        "18-inch fully painted rims",
+        "Leather seats",
+        "13.2-inch central LCD display",
+        "Dual-zone automatic air conditioning",
+        "Automatic headlights",
+        "Unibody frame"
+      ],
+      "factoryOptionalEquipmentTitle": "Safety & Assistance",
+      "factoryOptionalEquipment": [
+        "540° HD panoramic view camera",
+        "ISOFIX interface",
+        "Remote key and keyless entry",
+        "Advanced braking and stability systems",
+        "Electronic parking brake"
+      ],
+      "chargingLabel": "Comfort leads the way in the Lepas L6.",
+      "chargingBody": "Street smart, always one move ahead.",
+      "chargingImageLabel": "Lepas L6 smart SUV in everyday driving and lifestyle scenes",
+      "dimensionsTitle": "Dimensions",
+      "dimensions": [
+        {
+          "label": "Wheelbase",
+          "value": "2,700 mm"
+        },
+        {
+          "label": "Seats",
+          "value": "5"
+        }
+      ],
+      "dimensionsImageLabel": "Lepas L6 side profile"
+    }
+  },
+  {
+    "slug": "l4",
+    "name": "Lepas L4",
+    "tagline": "Lightweight body. Light-speed control.",
+    "shortDescription": "A compact smart SUV for the city, with a 1.5TCI engine, 6DCT transmission, electric sunroof and ventilated driver seat.",
+    "startingPrice": 74900,
+    "currency": "AED",
+    "heroImageLabel": "Lepas L4 smart SUV, exterior view",
+    "heroImage": "/design/assets/hero-l4.webp",
+    "gallery": [
+      "/design/assets/L4-v2.webp",
+      "/design/assets/home/offer-l4.webp",
+      "/design/assets/lifestyle/l4-drive.webp",
+      "/design/assets/interior/l4/lcd-display.webp",
+      "/design/assets/interior/l4/moonlight-grey.webp",
+      "/design/assets/exterior/l4/spoiler-on.webp"
+    ],
+    "overview": "The Lepas L4 strikes the right balance for your everyday. A lightweight body, 3rd-generation 1.5TCI engine and 6DCT transmission give it light-speed control, while ADAS, a 540° camera system and a Moonlight Grey interior make every drive easy.",
+    "specs": [
+      {
+        "label": "Powertrain",
+        "items": [
+          {
+            "label": "Engine",
+            "value": "1.5TCI (3rd generation)"
+          },
+          {
+            "label": "Transmission",
+            "value": "6DCT (4th generation)"
+          },
+          {
+            "label": "Max. Power/Torque",
+            "value": "145 HP / 225 Nm"
+          }
+        ]
+      },
+      {
+        "label": "Dimensions",
+        "items": [
+          {
+            "label": "Wheelbase",
+            "value": "2,700 mm"
+          },
+          {
+            "label": "Seats",
+            "value": "5"
+          },
+          {
+            "label": "Body",
+            "value": "Unibody frame"
+          }
+        ]
+      },
+      {
+        "label": "Warranty",
+        "items": [
+          {
+            "label": "Engine",
+            "value": "10 yrs / 1,000,000 km"
+          },
+          {
+            "label": "Vehicle",
+            "value": "7 yrs / 200,000 km"
+          },
+          {
+            "label": "Roadside Assistance",
+            "value": "7 years"
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Electric sunroof",
+      "Power-operated trunk lock",
+      "Ventilated driver seat",
+      "13.2-inch central LCD display",
+      "Moonlight Grey interior"
+    ],
+    "technology": [
+      "13.2-inch central LCD display",
+      "ADAS (Advanced Driver Assistance Systems)",
+      "540° HD panoramic camera system",
+      "Tyre pressure monitoring"
+    ],
+    "safety": [
+      "ADAS (Advanced Driver Assistance Systems)",
+      "Parking and visibility support",
+      "540° HD panoramic camera system",
+      "Tyre pressure monitoring"
+    ],
+    "exterior": [
+      "Spoiler",
+      "Power-operated trunk lock",
+      "Electric sunroof",
+      "Automatic headlights"
+    ],
+    "interior": [
+      "13.2-inch central LCD display",
+      "Ventilated driver seat",
+      "Moonlight Grey interior"
+    ],
+    "colours": [
+      {
+        "name": "Red",
+        "hex": "#A4182A",
+        "image": "/design/assets/shades/l4/l4-shade-hero-red-v2.webp"
+      },
+      {
+        "name": "Yellow",
+        "hex": "#DBBA3B",
+        "image": "/design/assets/shades/l4/l4-shade-hero-yellow-v2.webp"
+      },
+      {
+        "name": "Silver",
+        "hex": "#AAAFB5",
+        "image": "/design/assets/shades/l4/l4-shade-hero-silver-v2.webp"
+      },
+      {
+        "name": "Green",
+        "hex": "#385F25",
+        "image": "/design/assets/shades/l4/l4-shade-hero-green-v2.webp"
+      },
+      {
+        "name": "White",
+        "hex": "#E6E8E4",
+        "image": "/design/assets/shades/l4/l4-shade-hero-white-v2.webp"
+      },
+      {
+        "name": "Black",
+        "hex": "#292828",
+        "image": "/design/assets/shades/l4/l4-shade-hero-black-v2.webp"
+      }
+    ],
+    "interiorColours": [
+      {
+        "name": "Moonlight Grey",
+        "hex": "#8c8f94",
+        "image": "/design/assets/interior/l4/moonlight-grey.webp"
+      }
+    ],
+    "variants": [
+      {
+        "id": "ice",
+        "name": "L4 1.5TCI",
+        "priceDelta": 0,
+        "powerHp": "145 HP",
+        "rangeKm": "2,700 mm"
+      }
+    ],
+    "detailPage": {
+      "heroHeadline": "Lepas L4 smart SUV in the UAE",
+      "heroSubcopy": "Lightweight body. Light-speed control. The right balance for your everyday.",
+      "statsEyebrow": "Key Specs",
+      "stats": [
+        {
+          "label": "Engine",
+          "value": "1.5TCI"
+        },
+        {
+          "label": "Transmission",
+          "value": "6DCT"
+        },
+        {
+          "label": "Max. Power/Torque",
+          "value": "145HP/225NM"
+        },
+        {
+          "label": "Wheelbase",
+          "value": "2700MM"
+        }
+      ],
+      "exteriorImageLabel": "Lepas L4 safety features, cutaway view",
+      "designEyebrow": "Safety",
+      "designTitle": "Safety",
+      "designGallery": [
+        {
+          "imageLabel": "Lepas L4 ADAS",
+          "image": "/design/assets/safety/l4/adas.webp",
+          "heading": "ADAS (Advanced Driver Assistance Systems)",
+          "body": "Driver assistance systems help you stay alert and in control on every journey."
+        },
+        {
+          "imageLabel": "Lepas L4 tyre pressure monitoring",
+          "image": "/design/assets/safety/l4/tyre-pressure.webp",
+          "heading": "Tyre Pressure Monitoring",
+          "body": "Keeps an eye on every tyre and alerts you when pressure drops."
+        },
+        {
+          "imageLabel": "Lepas L4 540° HD panoramic camera system",
+          "image": "/design/assets/safety/l4/panoramic-camera.webp",
+          "heading": "540° HD Panoramic Camera System",
+          "body": "A high-definition view around and beneath the vehicle for confident manoeuvring."
+        },
+        {
+          "imageLabel": "Lepas L4 parking and visibility support",
+          "image": "/design/assets/safety/l4/parking-support.webp",
+          "heading": "Parking and Visibility Support",
+          "body": "Sensors and cameras make parking in tight city spaces simple."
+        }
+      ],
+      "highlightsEyebrow": "Safety",
+      "highlightsTitle": "Safety",
+      "highlights": [
+        {
+          "x": 61.8,
+          "y": 34.2,
+          "imageLabel": "ADAS",
+          "title": "ADAS (Advanced Driver Assistance Systems)",
+          "body": "Driver assistance systems help you stay alert and in control on every journey."
+        },
+        {
+          "x": 59.7,
+          "y": 40.3,
+          "imageLabel": "Parking and visibility support",
+          "title": "Parking and Visibility Support",
+          "body": "Sensors and cameras make parking in tight city spaces simple."
+        },
+        {
+          "x": 59.7,
+          "y": 32.6,
+          "imageLabel": "540° HD panoramic camera system",
+          "title": "540° HD Panoramic Camera System",
+          "body": "Multiple HD cameras combine into one seamless view around the vehicle."
+        },
+        {
+          "x": 26.6,
+          "y": 59,
+          "imageLabel": "540° HD panoramic view camera",
+          "title": "540° HD Panoramic View Camera",
+          "body": "See around and beneath the L4 for confident manoeuvring."
+        }
+      ],
+      "terrainEyebrow": "Exterior",
+      "terrainItems": [
+        {
+          "title": "Spoiler",
+          "body": "A sculpted rear spoiler sharpens the L4's sporty profile.",
+          "imageLabel": "Lepas L4 spoiler",
+          "image": "/design/assets/exterior/l4/spoiler-on.webp"
+        },
+        {
+          "title": "Power-Operated Trunk Lock",
+          "body": "Open and close the trunk at the touch of a button.",
+          "imageLabel": "Lepas L4 power-operated trunk lock",
+          "image": "/design/assets/exterior/l4/trunk-on.webp"
+        },
+        {
+          "title": "Electric Sunroof",
+          "body": "An electric sunroof lets in light and fresh air whenever you want it.",
+          "imageLabel": "Lepas L4 electric sunroof",
+          "image": "/design/assets/exterior/l4/electric-sunroof-on.webp"
+        },
+        {
+          "title": "Automatic Headlights",
+          "body": "Headlights switch on automatically as light fades, so you can focus on the road.",
+          "imageLabel": "Lepas L4 automatic headlights",
+          "image": "/design/assets/exterior/l4/headlights-on.webp"
+        }
+      ],
+      "exteriorEyebrow": "Performance",
+      "exteriorItems": [
+        {
+          "title": "1.5TCI Engine (3rd Generation)",
+          "body": "Offers consistent turbocharged performance for daily use.",
+          "imageLabel": "Lepas L4 1.5TCI engine",
+          "image": "/design/assets/performance/l4/engine.webp"
+        },
+        {
+          "title": "6DCT Transmission (4th Generation)",
+          "body": "Pre-selects the next gear to deliver near-instant shifts with minimal interruption.",
+          "imageLabel": "Lepas L4 6DCT transmission",
+          "image": "/design/assets/performance/l4/transmission.webp"
+        }
+      ],
+      "cabinEyebrow": "Interior",
+      "cabinTitle": "Interior",
+      "cabinIntro": "The right balance for your everyday, with smart technology and comfort in every seat.",
+      "cabinTabs": [
+        {
+          "label": "13.2\" LCD Display",
+          "heading": "13.2-inch Central LCD Display",
+          "body": "A large central display puts navigation, media and vehicle settings within easy reach.",
+          "imageLabel": "Lepas L4 13.2-inch central display",
+          "image": "/design/assets/interior/l4/lcd-display.webp"
+        },
+        {
+          "label": "Ventilated Seat",
+          "heading": "Ventilated Driver Seat",
+          "body": "A ventilated driver seat keeps you cool through the UAE summer.",
+          "imageLabel": "Lepas L4 ventilated driver seat",
+          "image": "/design/assets/interior/l4/ventilated-seat.webp"
+        },
+        {
+          "label": "Moonlight Grey",
+          "heading": "Moonlight Grey Interior",
+          "body": "A calm Moonlight Grey cabin that feels light, modern and spacious.",
+          "imageLabel": "Lepas L4 Moonlight Grey interior",
+          "image": "/design/assets/interior/l4/moonlight-grey.webp"
+        }
+      ],
+      "utilityTitle": "Ownership & Warranty",
+      "utilityIntro": "Every L4 comes with long-term protection from Lepas and Al Ghurair Mobility.",
+      "utilitySpecs": [
+        {
+          "label": "Engine Warranty",
+          "value": "10 yrs / 1,000,000 km"
+        },
+        {
+          "label": "Vehicle Warranty",
+          "value": "7 yrs / 200,000 km"
+        },
+        {
+          "label": "Roadside Assistance",
+          "value": "7 years"
+        },
+        {
+          "label": "Seats",
+          "value": "5"
+        }
+      ],
+      "accessoriesTitle": "Features",
+      "accessories": [
+        "Electric sunroof",
+        "Power-operated trunk lock",
+        "Spoiler",
+        "Automatic headlights",
+        "Ventilated driver seat",
+        "13.2-inch central LCD display",
+        "Moonlight Grey interior"
+      ],
+      "factoryOptionalEquipmentTitle": "Safety & Assistance",
+      "factoryOptionalEquipment": [
+        "ADAS (Advanced Driver Assistance Systems)",
+        "Parking and visibility support",
+        "540° HD panoramic camera system",
+        "Tyre pressure monitoring"
+      ],
+      "chargingLabel": "The right balance for your everyday.",
+      "chargingBody": "Designed without compromise, protected without exception.",
+      "chargingImageLabel": "Lepas L4 smart SUV in everyday driving and lifestyle scenes",
+      "dimensionsTitle": "Dimensions",
+      "dimensions": [
+        {
+          "label": "Wheelbase",
+          "value": "2,700 mm"
+        },
+        {
+          "label": "Seats",
+          "value": "5"
+        }
+      ],
+      "dimensionsImageLabel": "Lepas L4 side profile"
+    }
+  }
+]

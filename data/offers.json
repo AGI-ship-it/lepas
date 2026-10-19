@@ -1,0 +1,120 @@
+[
+  {
+    "slug": "l4",
+    "title": "The city has a new silhouette",
+    "shortDescription": "The L4 from AED 1,135 a month. Designed without compromise, protected without exception.",
+    "description": "The L4 from AED 1,135 a month. Designed without compromise, protected without exception.",
+    "imageLabel": "Red Lepas L4 on a red stage. Starting from AED 1,135 per month.",
+    "image": "/design/assets/offers/l4.webp",
+    "validUntil": "2026-12-31",
+    "terms": [
+      "Free insurance for one year",
+      "Free roadside assistance (RSA) for 7 years",
+      "10 years/1,000,000 km engine warranty",
+      "7 years/200,000 km vehicle warranty"
+    ],
+    "termsSections": [
+      {
+        "heading": "What's included",
+        "items": [
+          {
+            "text": "Free insurance for one year"
+          },
+          {
+            "text": "Free roadside assistance (RSA) for 7 years"
+          },
+          {
+            "text": "10 years/1,000,000 km engine warranty"
+          },
+          {
+            "text": "7 years/200,000 km vehicle warranty"
+          }
+        ]
+      },
+      {
+        "heading": "Terms & Conditions",
+        "body": "Terms & Conditions apply. Monthly instalments are indicative and subject to bank approval, eligibility and vehicle availability. Offers may be amended or withdrawn at any time. Contact your nearest Lepas showroom or call 6005LEPAS for full details."
+      }
+    ]
+  },
+  {
+    "slug": "l8",
+    "title": "The unmistakable apex",
+    "shortDescription": "The LEPAS L8 from AED 1,533 a month. Elegance at full scale.",
+    "description": "The LEPAS L8 from AED 1,533 a month. Elegance at full scale.",
+    "imageLabel": "Green Lepas L8 on a green stage. Starting from AED 1,533 per month.",
+    "image": "/design/assets/offers/l8.webp",
+    "validUntil": "2026-12-31",
+    "terms": [
+      "Free insurance for one year",
+      "Free roadside assistance (RSA) for 7 years",
+      "10 years/1,000,000 km engine warranty",
+      "7 years/200,000 km vehicle warranty"
+    ],
+    "termsSections": [
+      {
+        "heading": "What's included",
+        "items": [
+          {
+            "text": "Free insurance for one year"
+          },
+          {
+            "text": "Free roadside assistance (RSA) for 7 years"
+          },
+          {
+            "text": "10 years/1,000,000 km engine warranty"
+          },
+          {
+            "text": "7 years/200,000 km vehicle warranty"
+          }
+        ]
+      },
+      {
+        "heading": "Terms & Conditions",
+        "body": "Terms & Conditions apply. Monthly instalments are indicative and subject to bank approval, eligibility and vehicle availability. Offers may be amended or withdrawn at any time. Contact your nearest Lepas showroom or call 6005LEPAS for full details."
+      }
+    ]
+  },
+  {
+    "slug": "l8-super-hybrid",
+    "title": "Instinct, fully charged",
+    "shortDescription": "The L8 Super Hybrid from AED 1,886 a month, protected from the engine to the battery.",
+    "description": "The L8 Super Hybrid from AED 1,886 a month, protected from the engine to the battery.",
+    "imageLabel": "Green Lepas L8 Super Hybrid with 1,300 km combined range. Starting from AED 1,886 per month.",
+    "image": "/design/assets/offers/l8-super-hybrid.webp",
+    "validUntil": "2026-12-31",
+    "terms": [
+      "Free insurance for one year",
+      "Free roadside assistance (RSA) for 7 years",
+      "10 years/1,000,000 km engine warranty",
+      "7 years/200,000 km vehicle warranty",
+      "8 years/160,000 km battery warranty"
+    ],
+    "termsSections": [
+      {
+        "heading": "What's included",
+        "items": [
+          {
+            "text": "Free insurance for one year"
+          },
+          {
+            "text": "Free roadside assistance (RSA) for 7 years"
+          },
+          {
+            "text": "10 years/1,000,000 km engine warranty"
+          },
+          {
+            "text": "7 years/200,000 km vehicle warranty"
+          },
+          {
+            "text": "8 years/160,000 km battery warranty"
+          }
+        ]
+      },
+      {
+        "heading": "Terms & Conditions",
+        "body": "Terms & Conditions apply. Monthly instalments are indicative and subject to bank approval, eligibility and vehicle availability. Offers may be amended or withdrawn at any time. Contact your nearest Lepas showroom or call 6005LEPAS for full details."
+      }
+    ]
+  }
+]

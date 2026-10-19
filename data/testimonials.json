@@ -1,0 +1,23 @@
+[
+  {
+    "id": "customer-deira-1",
+    "quote": "The team at the Deira showroom walked me through the L8 without any pressure. The test drive sold it for me.",
+    "name": "Lepas Customer",
+    "role": "Lepas L8 Owner",
+    "rating": 5
+  },
+  {
+    "id": "customer-deira-2",
+    "quote": "I wanted a compact SUV that still felt premium. The L4 cabin and the 13.2-inch display surprised me.",
+    "name": "Lepas Customer",
+    "role": "Lepas L4 Owner",
+    "rating": 5
+  },
+  {
+    "id": "customer-sharjah-1",
+    "quote": "Booking a test drive was simple, and the warranty cover gave me real peace of mind.",
+    "name": "Lepas Customer",
+    "role": "Test Drive Guest",
+    "rating": 4
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "po-1001",
+    "year": 2026,
+    "km": 4200,
+    "price": 129000,
+    "engineSize": "1.5TGDI",
+    "model": "Lepas L8",
+    "colour": "Green",
+    "transmission": "7DCT",
+    "fuelType": "Petrol",
+    "bodyStyle": "SUV",
+    "imageLabel": "Pre-owned Lepas L8 in Green",
+    "description": "Sample listing: a 2026 Lepas L8 in Green with 4,200 km, 1.5TGDI engine and 7DCT transmission, inspected by Al Ghurair Mobility with the balance of the Lepas warranty."
+  },
+  {
+    "id": "po-1002",
+    "year": 2026,
+    "km": 8900,
+    "price": 124000,
+    "engineSize": "1.5TGDI",
+    "model": "Lepas L8",
+    "colour": "Grey",
+    "transmission": "7DCT",
+    "fuelType": "Petrol",
+    "bodyStyle": "SUV",
+    "imageLabel": "Pre-owned Lepas L8 in Grey",
+    "description": "Sample listing: a 2026 Lepas L8 in Grey with 8,900 km, 1.5TGDI engine and 7DCT transmission, inspected by Al Ghurair Mobility with the balance of the Lepas warranty."
+  },
+  {
+    "id": "po-1003",
+    "year": 2026,
+    "km": 3100,
+    "price": 99000,
+    "engineSize": "1.5TCI",
+    "model": "Lepas L6",
+    "colour": "Orange",
+    "transmission": "6DCT",
+    "fuelType": "Petrol",
+    "bodyStyle": "SUV",
+    "imageLabel": "Pre-owned Lepas L6 in Orange",
+    "description": "Sample listing: a 2026 Lepas L6 in Orange with 3,100 km, 1.5TCI engine and 6DCT transmission, inspected by Al Ghurair Mobility with the balance of the Lepas warranty."
+  },
+  {
+    "id": "po-1004",
+    "year": 2026,
+    "km": 6500,
+    "price": 84000,
+    "engineSize": "1.5TCI",
+    "model": "Lepas L4",
+    "colour": "Red",
+    "transmission": "6DCT",
+    "fuelType": "Petrol",
+    "bodyStyle": "SUV",
+    "imageLabel": "Pre-owned Lepas L4 in Red",
+    "description": "Sample listing: a 2026 Lepas L4 in Red with 6,500 km, 1.5TCI engine and 6DCT transmission, inspected by Al Ghurair Mobility with the balance of the Lepas warranty."
+  },
+  {
+    "id": "po-1005",
+    "year": 2026,
+    "km": 2800,
+    "price": 87000,
+    "engineSize": "1.5TCI",
+    "model": "Lepas L4",
+    "colour": "White",
+    "transmission": "6DCT",
+    "fuelType": "Petrol",
+    "bodyStyle": "SUV",
+    "imageLabel": "Pre-owned Lepas L4 in White",
+    "description": "Sample listing: a 2026 Lepas L4 in White with 2,800 km, 1.5TCI engine and 6DCT transmission, inspected by Al Ghurair Mobility with the balance of the Lepas warranty."
+  }
+]
