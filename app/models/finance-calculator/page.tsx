@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
 import FinanceCalculator from "@/components/finance/FinanceCalculator";
@@ -9,11 +10,7 @@ export const metadata: Metadata = {
   description: "Estimate your monthly payments for any Lepas model.",
 };
 
-export default function FinanceCalculatorPage({
-  searchParams,
-}: {
-  searchParams: { model?: string };
-}) {
+export default function FinanceCalculatorPage() {
   const { dict } = getServerDictionary();
 
   return (
@@ -27,7 +24,9 @@ export default function FinanceCalculatorPage({
         backLabel={dict.common.backToModels}
       />
       <Section>
-        <FinanceCalculator initialSlug={searchParams.model} />
+        <Suspense>
+          <FinanceCalculator />
+        </Suspense>
       </Section>
     </>
   );

@@ -197,6 +197,8 @@ const ar: Dictionary = {
     bookService: "احجز خدمة",
     bookServiceDescription:
       "أخبرنا عن سيارتك وموعدك المفضل، وسيؤكد فريق الخدمة حجزك قريبًا.",
+    nextServiceTitle: "احجز موعد خدمتك القادم",
+    nextServiceDescription: "تحدث مع مستشاري الخدمة لدينا أو احجز موعدًا في أقرب مركز إليك.",
     bookServiceCtaTitle: "هل أنت مستعد لحجز خدمتك؟",
     bookServiceCtaDescription:
       "احجز الصيانة أو الإصلاح في مركز ليباس لخدمات ما بعد البيع في القوز خلال دقائق.",

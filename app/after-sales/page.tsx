@@ -6,6 +6,7 @@ import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import FeaturedNews from "@/components/home/FeaturedNews";
+import CtaBand from "@/components/ui/CtaBand";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getServices } from "@/lib/i18n/data";
 
@@ -81,6 +82,12 @@ export default function AfterSalesPage() {
           ))}
         </div>
       </Section>
+
+      <CtaBand
+        title={dict.afterSales.nextServiceTitle}
+        description={dict.afterSales.nextServiceDescription}
+        primary={{ label: dict.afterSales.bookService, href: "/after-sales/book-service" }}
+      />
 
       <FeaturedNews />
     </>

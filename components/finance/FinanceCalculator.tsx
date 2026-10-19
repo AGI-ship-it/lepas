@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { VehicleModel } from "@/lib/types";
 import { calculateLoan, formatCurrency } from "@/lib/financeMath";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -19,12 +20,9 @@ interface Selection {
   variant: VehicleModel["variants"][number];
 }
 
-export default function FinanceCalculator({
-  initialSlug,
-}: {
-  initialSlug?: string;
-}) {
+export default function FinanceCalculator() {
   const { locale, dict } = useLocale();
+  const initialSlug = useSearchParams().get("model") ?? undefined;
   const models = getModels(locale);
 
   const options: Selection[] = useMemo(

@@ -195,6 +195,8 @@ const en = {
     bookService: "Book a Service",
     bookServiceDescription:
       "Tell us about your vehicle and preferred appointment, and our service team will confirm shortly.",
+    nextServiceTitle: "Book your next service appointment",
+    nextServiceDescription: "Speak with our service advisors or reserve a slot at a centre near you.",
     bookServiceCtaTitle: "Ready to Book a Service?",
     bookServiceCtaDescription:
       "Reserve maintenance or repairs at the Lepas Al Quoz After-Sales Facility in a few minutes.",
