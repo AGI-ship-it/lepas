@@ -292,6 +292,13 @@ export default function TestDriveForm() {
   const showroomOptions = locationOptions(locale, t.noPreference, t.comingSoon);
   const slotDisabled = (slot: string) => isPastSlot(selectedDate, slot, now);
 
+  // Default to today's date. Set after mount so the statically exported page
+  // doesn't carry its build date, and restore it whenever the date is cleared
+  // (after submitting, or when switching back from "no preference").
+  useEffect(() => {
+    if (!selectedDate && !noPreference) setValue("date", toLocalIso(new Date()));
+  }, [selectedDate, noPreference, setValue]);
+
   const onSubmit = async () => {
     await new Promise((r) => setTimeout(r, 600));
     setSubmitted(true);
@@ -468,6 +475,9 @@ export default function TestDriveForm() {
                       />
                     ))}
                   </div>
+                  {[...TIME_SLOTS, ...TIME_WINDOWS].every(slotDisabled) && (
+                    <p className="mt-3 text-xs text-lepas-error">{t.noSlotsLeft}</p>
+                  )}
                   <p className="mt-5 text-sm text-lepas-steel">{t.preferredWindow}</p>
                   <div className="mt-2 grid grid-cols-2 gap-2">
                     {TIME_WINDOWS.map((slot) => (

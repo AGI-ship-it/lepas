@@ -728,6 +728,7 @@ const ar: Dictionary = {
     },
   },
   testDriveFlow: {
+    noSlotsLeft: "لا توجد أوقات متاحة اليوم. يرجى اختيار تاريخ آخر.",
     selectDate: "اختر التاريخ",
     today: "اليوم",
     close: "إغلاق",

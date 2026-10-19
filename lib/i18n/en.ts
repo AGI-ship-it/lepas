@@ -726,6 +726,7 @@ const en = {
     },
   },
   testDriveFlow: {
+    noSlotsLeft: "No times left today. Please choose another date.",
     selectDate: "Select a date",
     today: "Today",
     close: "Close",
