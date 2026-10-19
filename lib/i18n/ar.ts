@@ -160,6 +160,9 @@ const ar: Dictionary = {
     remove: "إزالة",
   },
   finance: {
+    heroTitle: "حاسبة تمويل السيارة",
+    heroDescription:
+      "اختر الدفعة الأولى ومدة التمويل لمعرفة القسط الشهري التقديري للسيارة ليباس التي ترغب في قيادتها.",
     eyebrow: "خطط لعملية الشراء",
     title: "حاسبة التمويل",
     description:

@@ -158,6 +158,9 @@ const en = {
     remove: "Remove",
   },
   finance: {
+    heroTitle: "Car Finance Calculator",
+    heroDescription:
+      "Configure your down payment and term to see an indicative monthly payment, tailored to the Lepas you want to drive.",
     eyebrow: "Plan Your Purchase",
     title: "Finance Calculator",
     description:

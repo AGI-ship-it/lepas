@@ -275,12 +275,12 @@ export default function ServiceBookingForm() {
           <div className="mt-4 flex flex-wrap items-end gap-3 border border-lepas-fog p-4">
             <div className="flex-1">
               <Field label={dict.forms.phoneNumber} required>
-                <div className="flex">
-                  <span className="flex items-center border border-e-0 border-lepas-fog bg-lepas-fog/40 px-3 text-sm text-lepas-steel">
+                <div className="phone-field-light">
+                  <span className="phone-prefix">
                     🇦🇪 +971
                   </span>
                   <input
-                    className="input-field-light"
+                    className="phone-input"
                     type="tel"
                     placeholder="50 123 4567"
                     value={lookupPhone}
@@ -293,7 +293,7 @@ export default function ServiceBookingForm() {
               type="button"
               onClick={lookupCustomer}
               disabled={lookingUp || !lookupPhone.trim()}
-              className="btn-primary shrink-0"
+              className="btn-primary h-[46px] shrink-0"
             >
               {lookingUp ? dict.forms.booking : locale === "ar" ? "بحث" : "Find My Details"}
             </button>
@@ -327,11 +327,11 @@ export default function ServiceBookingForm() {
           <input className="input-field-light" {...register("lastName")} />
         </Field>
         <Field label={dict.forms.phoneNumber}>
-          <div className="flex">
-            <span className="flex items-center border border-e-0 border-lepas-fog bg-lepas-fog/40 px-3 text-sm text-lepas-steel">
+          <div className="phone-field-light">
+            <span className="phone-prefix">
               🇦🇪 +971
             </span>
-            <input className="input-field-light" type="tel" placeholder="50 123 4567" {...register("phone")} />
+            <input className="phone-input" type="tel" placeholder="50 123 4567" {...register("phone")} />
           </div>
         </Field>
         <Field label={dict.forms.emailAddress} required error={errors.email?.message}>

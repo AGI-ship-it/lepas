@@ -98,7 +98,7 @@ function SelectChevron({ open }: { open: boolean }) {
       viewBox="0 0 12 8"
       fill="none"
       aria-hidden="true"
-      className={`shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+      className={`shrink-0 text-lepas-amber transition-transform duration-300 ${open ? "rotate-180" : ""}`}
     >
       <path
         d="M1 1.5L6 6.5L11 1.5"
@@ -532,11 +532,11 @@ export default function TestDriveForm() {
             <input className="input-field-light" type="email" {...register("email")} />
           </FormField>
           <FormField label={dict.forms.phoneNumber}>
-            <div className="flex">
-              <span className="flex shrink-0 items-center whitespace-nowrap border border-e-0 border-lepas-fog bg-lepas-fog/40 px-3 text-sm text-lepas-steel">
+            <div className="phone-field-light">
+              <span className="phone-prefix">
                 🇦🇪 +971
               </span>
-              <input className="input-field-light" type="tel" placeholder="50 123 4567" {...register("phone")} />
+              <input className="phone-input" type="tel" placeholder="50 123 4567" {...register("phone")} />
             </div>
           </FormField>
           <div className="sm:col-span-2">

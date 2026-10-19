@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import PageHero from "@/components/ui/PageHero";
+import SimpleHero from "@/components/ui/SimpleHero";
 import Section from "@/components/ui/Section";
 import FinanceCalculator from "@/components/finance/FinanceCalculator";
 import { getServerDictionary } from "@/lib/i18n/server";
@@ -15,13 +15,10 @@ export default function FinanceCalculatorPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow={dict.finance.eyebrow}
-        title={dict.finance.title}
-        description={dict.finance.description}
-        imageLabel="Lepas finance"
-        backHref="/models"
-        backLabel={dict.common.backToModels}
+      <SimpleHero
+        homeLabel={dict.testDriveFlow.home}
+        title={dict.finance.heroTitle}
+        description={dict.finance.heroDescription}
       />
       <Section>
         <Suspense>

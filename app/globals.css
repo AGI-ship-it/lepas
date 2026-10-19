@@ -105,6 +105,53 @@
     @apply w-full rounded-lg border border-lepas-fog bg-white px-4 py-3 text-sm text-lepas-ink outline-none transition-colors placeholder:text-lepas-ash focus:border-lepas-amber;
   }
 
+  /* Phone number: country prefix and input share one bordered field. */
+  .phone-field-light {
+    @apply flex w-full overflow-hidden rounded-lg border border-lepas-fog bg-white transition-colors focus-within:border-lepas-amber;
+  }
+
+  .phone-field {
+    @apply flex w-full overflow-hidden rounded-lg border border-white/15 bg-lepas-form-ink transition-colors focus-within:border-lepas-amber;
+  }
+
+  .phone-prefix {
+    @apply flex shrink-0 items-center gap-2 whitespace-nowrap border-e px-3 text-sm;
+  }
+
+  .phone-field-light .phone-prefix {
+    @apply border-lepas-fog bg-lepas-sand/60 text-lepas-steel;
+  }
+
+  .phone-field .phone-prefix {
+    @apply border-white/15 text-white/70;
+  }
+
+  .phone-input {
+    @apply min-w-0 flex-1 bg-transparent px-4 py-3 text-sm outline-none;
+  }
+
+  .phone-field-light .phone-input {
+    @apply text-lepas-ink placeholder:text-lepas-ash;
+  }
+
+  .phone-field .phone-input {
+    @apply text-white placeholder:text-white/40;
+  }
+
+  /* Native selects: replace the browser arrow with a spaced amber chevron. */
+  select.input-field-light,
+  select.input-field {
+    @apply cursor-pointer appearance-none bg-no-repeat pe-11;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23eb9201' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: right 1rem center;
+    background-size: 12px 8px;
+  }
+
+  [dir="rtl"] select.input-field-light,
+  [dir="rtl"] select.input-field {
+    background-position: left 1rem center;
+  }
+
   .checkbox-field-light {
     @apply h-4 w-4 rounded border-lepas-fog bg-white text-lepas-amber accent-lepas-amber;
   }

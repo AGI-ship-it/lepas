@@ -118,11 +118,11 @@ export default function ContactForm() {
             <input className="input-field-light" type="email" {...register("email")} />
           </Field>
           <Field label={dict.forms.phoneNumber}>
-            <div className="flex">
-              <span className="flex items-center border border-e-0 border-lepas-fog bg-lepas-fog/40 px-3 text-sm text-lepas-steel">
+            <div className="phone-field-light">
+              <span className="phone-prefix">
                 🇦🇪 +971
               </span>
-              <input className="input-field-light" type="tel" placeholder="50 123 4567" {...register("phone")} />
+              <input className="phone-input" type="tel" placeholder="50 123 4567" {...register("phone")} />
             </div>
           </Field>
         </div>

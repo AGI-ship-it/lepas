@@ -82,11 +82,11 @@ export default function CallbackForm({ defaultModel = "" }: { defaultModel?: str
         <input className="input-field" type="email" autoComplete="email" {...register("email")} />
       </Field>
       <Field label={dict.forms.phoneNumber} error={errors.phone?.message}>
-        <div className="flex">
-          <span className="flex items-center border border-e-0 border-white/15 px-3 text-sm text-white/70">
+        <div className="phone-field">
+          <span className="phone-prefix">
             🇦🇪 +971
           </span>
-          <input className="input-field" type="tel" autoComplete="tel-national" {...register("phone")} />
+          <input className="phone-input" type="tel" autoComplete="tel-national" {...register("phone")} />
         </div>
       </Field>
       <Field label={t.dealership} error={errors.dealership?.message}>
