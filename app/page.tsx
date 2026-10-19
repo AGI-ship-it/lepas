@@ -1,4 +1,5 @@
 import HeroSlider from "@/components/home/HeroSlider";
+import WordmarkVideoReveal from "@/components/home/WordmarkVideoReveal";
 import ModelsSection from "@/components/home/ModelsSection";
 import LifeTechSection from "@/components/home/LifeTechSection";
 import InspiredSection from "@/components/home/InspiredSection";
@@ -14,6 +15,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSlider />
+      <WordmarkVideoReveal />
       <ModelsSection />
       <LifeTechSection />
       <InspiredSection />

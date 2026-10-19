@@ -90,6 +90,23 @@ const en = {
         imageLabel: "The Lepas L6, L8 and L4 smart SUVs lined up at sunset",
       },
     ],
+    heroOffers: {
+      badge: "Special offer",
+      startingFrom: "Starting from",
+      perMonth: "/ month*",
+      firstCustomers: "For the first 100 customers to book any model",
+      terms: "*Terms & Conditions apply.",
+      perks: [
+        { value: "1", label: "Year free insurance" },
+        { value: "3", label: "Years free service" },
+        { value: "7", label: "Years free roadside assistance" },
+        { value: "Free", label: "Window tinting on all models" },
+      ],
+      slides: [
+        { eyebrow: "Lepas L8", imageLabel: "Green Lepas L8 parked by a curved landmark building, with a man in a suit beside it" },
+        { eyebrow: "Lepas L4", imageLabel: "Red Lepas L4 parked by a glass building, with a man in a yellow cardigan leaning in" },
+      ],
+    },
     rangeEyebrow: "Our Models",
     rangeTitle: "Drive Your Elegance with Lepas SUVs.",
     rangeDescription:

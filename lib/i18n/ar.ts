@@ -92,6 +92,23 @@ const ar: Dictionary = {
         imageLabel: "سيارات ليباس L6 وL8 وL4 مصطفة عند الغروب",
       },
     ],
+    heroOffers: {
+      badge: "عرض خاص",
+      startingFrom: "ابتداءً من",
+      perMonth: "/ شهرياً*",
+      firstCustomers: "لأول 100 عميل يحجزون أي موديل",
+      terms: "*تطبق الشروط والأحكام.",
+      perks: [
+        { value: "1", label: "سنة تأمين مجاني" },
+        { value: "3", label: "سنوات خدمة مجانية" },
+        { value: "7", label: "سنوات مساعدة مجانية على الطريق" },
+        { value: "مجاناً", label: "تظليل النوافذ لجميع الموديلات" },
+      ],
+      slides: [
+        { eyebrow: "ليباس L8", imageLabel: "ليباس L8 خضراء متوقفة بجوار مبنى منحني مميز ويقف بجانبها رجل ببدلة" },
+        { eyebrow: "ليباس L4", imageLabel: "ليباس L4 حمراء متوقفة بجوار مبنى زجاجي ورجل بسترة صفراء ينحني نحوها" },
+      ],
+    },
     rangeEyebrow: "موديلاتنا",
     rangeTitle: "قُد أناقتك مع سيارات ليباس SUV.",
     rangeDescription:
