@@ -6,47 +6,25 @@ import { z } from "zod";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getModels } from "@/lib/i18n/data";
-import { formatCurrency } from "@/lib/financeMath";
+import { NO_PREFERENCE, locationOptions } from "@/components/forms/locations";
+import DatePicker from "@/components/forms/DatePicker";
 
-function buildTimeSlots(startMins: number, endMins: number): string[] {
-  const slots: string[] = [];
-  for (let mins = startMins; mins <= endMins; mins += 30) {
-    const h = String(Math.floor(mins / 60)).padStart(2, "0");
-    const m = String(mins % 60).padStart(2, "0");
-    slots.push(`${h}:${m}`);
-  }
-  return slots;
+// Hourly appointments 10:00–17:00, plus two broader windows as a fallback.
+const TIME_SLOTS = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+const TIME_WINDOWS = ["10:00 - 12:00", "15:00 - 17:00"];
+
+function toLocalIso(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-// Operating hours: 9:00 AM – 7:00 PM, for both standard and Private Viewing bookings.
-const OPEN_MINS = 9 * 60;
-const CLOSE_MINS = 19 * 60;
-const TIME_SLOTS = buildTimeSlots(OPEN_MINS, CLOSE_MINS);
-// Private Viewing shares the same 9:00 AM–7:00 PM window; the 4-hour notice
-// rule (applied below) is what actually restricts which of these are bookable.
-const PRIVATE_VIEWING_TIME_SLOTS = TIME_SLOTS;
-
-const SHOWROOM_OPTIONS = ["Lepas Deira Showroom", "Lepas Sharjah Showroom", "Private Viewing"] as const;
-const PRIVATE_VIEWING_NOTICE_HOURS = 4;
-
-/**
- * A Private Viewing slot is only bookable if it falls on/after
- * (referenceTime + noticeHours). `referenceTime` must be the *actual* moment
- * of the check — pass Date.now() at submit time and a live-ticking clock for
- * on-screen slot rendering — never a value captured once when the form loaded.
- */
-function isSlotWithinNotice(
-  date: string,
-  time: string,
-  noticeHours: number,
-  referenceTime: number = Date.now()
-): boolean {
-  if (!date || !time) return false;
-  const slot = new Date(`${date}T${time}:00`);
-  const earliestAllowed = new Date(referenceTime + noticeHours * 60 * 60 * 1000);
-  return slot < earliestAllowed;
+// A window counts as past once its start time has passed.
+function isPastSlot(date: string, slot: string, referenceTime: number): boolean {
+  if (!date || !slot) return false;
+  const start = slot.slice(0, 5);
+  return new Date(`${date}T${start}:00`).getTime() <= referenceTime;
 }
 
 const carImages: Record<string, string> = {
@@ -59,8 +37,8 @@ const schema = z
   .object({
     model: z.string().min(1),
     showroom: z.string().min(1),
-    date: z.string().min(1),
-    time: z.string().min(1),
+    date: z.string(),
+    time: z.string(),
     title: z.string().min(1),
     firstName: z.string().min(1),
     lastName: z.string().min(1),
@@ -74,29 +52,40 @@ const schema = z
     if (!data.acceptTerms) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["acceptTerms"], message: "Required" });
     }
-    if (
-      data.showroom === "Private Viewing" &&
-      data.date &&
-      data.time &&
-      isSlotWithinNotice(data.date, data.time, PRIVATE_VIEWING_NOTICE_HOURS)
-    ) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ["time"],
-        message: "Private Viewing requires a minimum of 4 hours' notice.",
-      });
+    // Date and time are only needed when the visitor picks a location.
+    if (data.showroom && data.showroom !== NO_PREFERENCE) {
+      if (!data.date) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["date"], message: "Required" });
+      if (!data.time) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["time"], message: "Required" });
     }
   });
 
 type FormValues = z.infer<typeof schema>;
 
-function SectionHeader({ index, title }: { index: number; title: string }) {
+function SectionHeader({
+  index,
+  title,
+  hint,
+  active = true,
+}: {
+  index: number;
+  title: string;
+  hint?: string;
+  active?: boolean;
+}) {
   return (
-    <div className="mb-6 flex items-center gap-3 border-b border-lepas-fog pb-4">
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lepas-black text-xs font-bold text-white">
+    <div className="mb-6 flex flex-wrap items-center gap-3">
+      <span
+        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors ${
+          active ? "bg-lepas-black text-white" : "bg-lepas-fog text-lepas-ash"
+        }`}
+      >
         {index}
       </span>
-      <h3 className="text-sm font-semibold uppercase tracking-widest2 text-lepas-black">{title}</h3>
+      <h3 className={`text-lg ${active ? "text-lepas-ink" : "text-lepas-ash"}`}>
+        {title}
+        <span className="text-lepas-amber"> *</span>
+      </h3>
+      {hint && <span className="text-xs text-lepas-ash">{hint}</span>}
     </div>
   );
 }
@@ -130,7 +119,7 @@ function LightSelect({
 }: {
   value: string;
   onChange: (v: string) => void;
-  options: { value: string; label: string }[];
+  options: { value: string; label: string; description?: string; badge?: string; disabled?: boolean }[];
   placeholder: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -157,17 +146,32 @@ function LightSelect({
               <button
                 key={o.value}
                 type="button"
+                disabled={o.disabled}
                 onClick={() => {
                   onChange(o.value);
                   setOpen(false);
                 }}
-                className={`block w-full px-4 py-3 text-start text-sm transition-colors ${
-                  value === o.value
+                className={`flex w-full items-start justify-between gap-3 px-4 py-3 text-start text-sm transition-colors ${
+                  o.disabled
+                    ? "cursor-not-allowed text-lepas-ash"
+                    : value === o.value
                     ? "bg-lepas-amber text-white"
                     : "text-lepas-black hover:bg-lepas-amber/15"
                 }`}
               >
-                {o.label}
+                <span>
+                  <span className="block">{o.label}</span>
+                  {o.description && (
+                    <span className={`mt-0.5 block text-xs ${value === o.value && !o.disabled ? "text-white/80" : "text-lepas-ash"}`}>
+                      {o.description}
+                    </span>
+                  )}
+                </span>
+                {o.badge && (
+                  <span className="shrink-0 rounded-full bg-lepas-amber px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+                    {o.badge}
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -177,22 +181,33 @@ function LightSelect({
   );
 }
 
-function ShowroomSelect({
-  value,
-  onChange,
-  placeholder,
+function SlotButton({
+  label,
+  selected,
+  disabled,
+  onClick,
 }: {
-  value: string;
-  onChange: (v: string) => void;
-  placeholder: string;
+  label: string;
+  selected: boolean;
+  disabled: boolean;
+  onClick: () => void;
 }) {
   return (
-    <LightSelect
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      options={SHOWROOM_OPTIONS.map((s) => ({ value: s, label: s }))}
-    />
+    <button
+      type="button"
+      disabled={disabled}
+      aria-pressed={selected}
+      onClick={onClick}
+      className={`border px-2 py-3 text-sm tracking-[0.12em] transition-colors ${
+        disabled
+          ? "cursor-not-allowed border-lepas-fog bg-white text-lepas-mist line-through"
+          : selected
+          ? "border-lepas-amber bg-lepas-amber text-white"
+          : "border-lepas-fog bg-lepas-sand/60 text-lepas-ink hover:border-lepas-amber"
+      }`}
+    >
+      {label}
+    </button>
   );
 }
 
@@ -214,7 +229,7 @@ export function FormField({
         {required && " *"}
       </label>
       {children}
-      {error && <p className="mt-1.5 text-xs text-lepas-mist">{error}</p>}
+      {error && <p className="mt-1.5 text-xs text-lepas-error">{error}</p>}
     </div>
   );
 }
@@ -222,12 +237,14 @@ export function FormField({
 export default function TestDriveForm() {
   const { locale, dict } = useLocale();
   const models = getModels(locale);
+  const t = dict.testDriveFlow;
+  const searchParams = useSearchParams();
+  const initialModel = models.some((m) => m.slug === searchParams.get("model"))
+    ? (searchParams.get("model") as string)
+    : "";
   const [submitted, setSubmitted] = useState(false);
 
-  // Live clock used only to keep the Private Viewing 4-hour notice window
-  // accurate while the form sits open (e.g. left open for a couple of
-  // hours). The definitive check still re-runs against the real submission
-  // instant inside the zod schema when the form is actually submitted.
+  // Live clock so today's already-passed slots disable while the form is open.
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
     const id = setInterval(() => setNow(Date.now()), 30_000);
@@ -244,7 +261,7 @@ export default function TestDriveForm() {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      model: models[0]?.slug ?? "",
+      model: initialModel,
       showroom: "",
       date: "",
       time: "",
@@ -263,20 +280,23 @@ export default function TestDriveForm() {
   const selectedTime = watch("time");
   const selectedShowroom = watch("showroom");
   const selectedDate = watch("date");
-  const selectedModel = models.find((m) => m.slug === selectedModelSlug) ?? models[0];
+  const selectedModel = models.find((m) => m.slug === selectedModelSlug);
+  const unlocked = Boolean(selectedModel);
+  const lockedClass = unlocked ? "" : "pointer-events-none select-none opacity-40";
+  const notes = watch("notes") ?? "";
+  const today = new Date(now);
+  const minDate = toLocalIso(today);
+  const maxDate = toLocalIso(new Date(today.getFullYear(), today.getMonth() + 3, today.getDate()));
 
-  const isPrivateViewing = selectedShowroom === "Private Viewing";
-  const visibleTimeSlots = isPrivateViewing ? PRIVATE_VIEWING_TIME_SLOTS : TIME_SLOTS;
-  const slotDisabled = (t: string) =>
-    isPrivateViewing && isSlotWithinNotice(selectedDate, t, PRIVATE_VIEWING_NOTICE_HOURS, now);
-  const hasValidSlotsForDate =
-    !isPrivateViewing || !selectedDate || visibleTimeSlots.some((t) => !slotDisabled(t));
+  const noPreference = selectedShowroom === NO_PREFERENCE;
+  const showroomOptions = locationOptions(locale, t.noPreference, t.comingSoon);
+  const slotDisabled = (slot: string) => isPastSlot(selectedDate, slot, now);
 
   const onSubmit = async () => {
     await new Promise((r) => setTimeout(r, 600));
     setSubmitted(true);
     reset({
-      model: models[0]?.slug ?? "",
+      model: "",
       showroom: "",
       date: "",
       time: "",
@@ -310,162 +330,172 @@ export default function TestDriveForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="border border-lepas-fog bg-white p-8 md:p-10" noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 shadow-[0_20px_60px_-30px_rgba(10,10,10,0.25)] md:p-10" noValidate>
       <SectionHeader index={1} title={dict.testDrive.chooseYourMhero} />
-      <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-lepas-fog/40 lg:aspect-auto">
-          {selectedModel && (
-            <Image
-              key={selectedModel.slug}
-              src={carImages[selectedModel.slug]}
-              alt={selectedModel.name}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-contain p-6"
-            />
+      <div className="mb-6 flex items-center gap-3 border border-lepas-amber/40 bg-lepas-amber/5 px-4 py-3 text-xs text-lepas-steel">
+        <span aria-hidden="true" className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-lepas-amber text-[10px] font-bold text-lepas-amber">
+          i
+        </span>
+        {t.licenseNote}
+      </div>
+      <div className="grid gap-4 lg:grid-cols-[1.15fr_1fr]">
+        <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden border border-lepas-fog bg-lepas-sand/60">
+          {selectedModel ? (
+            <>
+              <span
+                aria-hidden="true"
+                className="heading-display pointer-events-none absolute inset-x-0 top-6 select-none text-center text-[clamp(72px,12vw,160px)] leading-none text-lepas-ink/[0.06]"
+              >
+                {selectedModel.slug.toUpperCase()}
+              </span>
+              <Image
+                key={selectedModel.slug}
+                src={carImages[selectedModel.slug]}
+                alt={selectedModel.name}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-contain p-8 pt-16"
+              />
+            </>
+          ) : (
+            <p className="px-6 text-center text-sm text-lepas-ash">{t.selectModelToContinue}</p>
           )}
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="grid content-start grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
           {models.map((m) => {
             const isActive = m.slug === selectedModelSlug;
             return (
               <button
                 type="button"
                 key={m.slug}
-                onClick={() => setValue("model", m.slug)}
-                className={`flex items-center gap-3 border p-3 text-start transition-colors ${
-                  isActive ? "border-lepas-amber bg-lepas-amber/5" : "border-lepas-fog hover:border-lepas-black/40"
+                aria-pressed={isActive}
+                onClick={() => setValue("model", m.slug, { shouldValidate: true })}
+                className={`group flex flex-col border text-start transition-colors ${
+                  isActive ? "border-lepas-amber bg-lepas-amber/5" : "border-lepas-fog bg-lepas-sand/40 hover:border-lepas-ink/40"
                 }`}
               >
-                <div className="relative h-16 w-24 shrink-0 overflow-hidden bg-lepas-fog">
-                  <Image src={carImages[m.slug]} alt={m.name} fill sizes="96px" className="object-contain p-1" />
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <span
+                    aria-hidden="true"
+                    className="heading-display pointer-events-none absolute inset-x-0 top-2 select-none text-center text-5xl leading-none text-lepas-ink/[0.07]"
+                  >
+                    {m.slug.toUpperCase()}
+                  </span>
+                  <Image src={carImages[m.slug]} alt="" fill sizes="200px" className="object-contain p-3 pt-6" />
                 </div>
-                <div>
-                  <p className="text-sm font-bold text-lepas-black">{m.name}</p>
-                  <p className="mt-1 text-xs text-lepas-steel">
-                    {dict.common.startingFrom} {formatCurrency(m.startingPrice, m.currency)}
-                  </p>
-                  {isActive && (
-                    <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-widest2 text-lepas-black">
-                      {locale === "ar" ? "محدد" : "Selected"}
-                    </p>
-                  )}
-                </div>
+                <span className={`px-3 pb-3 text-xs font-semibold uppercase tracking-[0.15em] ${isActive ? "text-lepas-amber" : "text-lepas-ink"}`}>
+                  {m.name}
+                </span>
               </button>
             );
           })}
         </div>
       </div>
+      {errors.model && <p className="mt-2 text-xs text-lepas-error">{t.selectModelToContinue}</p>}
 
-      <div className="mt-10">
-        <SectionHeader index={2} title={dict.testDrive.whenAndWhere} />
+      <div className={`mt-10 transition-opacity ${lockedClass}`} aria-disabled={!unlocked}>
+        <SectionHeader
+          index={2}
+          title={dict.testDrive.whenAndWhere}
+          active={unlocked}
+          hint={unlocked ? undefined : t.selectModelToContinue}
+        />
         <div className="space-y-5">
           <FormField label={dict.testDrive.preferredShowroom} required error={errors.showroom?.message}>
-            <ShowroomSelect
+            <LightSelect
               value={selectedShowroom}
               onChange={(v) => {
                 setValue("showroom", v, { shouldValidate: true });
-                if (
-                  v === "Private Viewing" &&
-                  selectedTime &&
-                  (!PRIVATE_VIEWING_TIME_SLOTS.includes(selectedTime) ||
-                    isSlotWithinNotice(selectedDate, selectedTime, PRIVATE_VIEWING_NOTICE_HOURS))
-                ) {
-                  setValue("time", "", { shouldValidate: true });
+                if (v === NO_PREFERENCE) {
+                  setValue("date", "");
+                  setValue("time", "");
                 }
               }}
-              placeholder="—"
+              placeholder={t.selectShowroom}
+              options={showroomOptions}
             />
-            {selectedShowroom === "Private Viewing" && (
-              <div className="mt-3 flex items-start gap-3 border border-lepas-amber bg-lepas-amber/25 px-4 py-3 text-sm text-lepas-black">
-                <span
-                  aria-hidden="true"
-                  className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-lepas-amber text-xs font-bold text-white"
-                >
-                  !
-                </span>
-                <p>
-                  <span className="font-semibold">{locale === "ar" ? "إشعار: " : "Notice: "}</span>
-                  {locale === "ar"
-                    ? "تتطلب المعاينة الخاصة حدًا أدنى 4 ساعات من الإشعار المسبق."
-                    : "Private Viewing requires a minimum of 4 hours' notice."}
-                </p>
-              </div>
-            )}
           </FormField>
 
+          {noPreference ? (
+            <p className="flex items-center gap-3 border border-lepas-amber/40 bg-lepas-amber/5 px-4 py-4 text-sm text-lepas-steel">
+              <span aria-hidden="true" className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-lepas-amber text-[11px] font-bold text-lepas-amber">
+                i
+              </span>
+              {t.teamWillContact}
+            </p>
+          ) : (
           <div className="grid gap-5 sm:grid-cols-2">
             <FormField label={dict.forms.preferredDate} required error={errors.date?.message}>
-              <input
-                className="input-field-light"
-                type="date"
-                min={new Date().toISOString().slice(0, 10)}
-                {...register("date", {
-                  onChange: (e) => {
-                    if (
-                      isPrivateViewing &&
-                      selectedTime &&
-                      isSlotWithinNotice(e.target.value, selectedTime, PRIVATE_VIEWING_NOTICE_HOURS)
-                    ) {
-                      setValue("time", "", { shouldValidate: true });
-                    }
-                  },
-                })}
+              <DatePicker
+                value={selectedDate}
+                min={minDate}
+                max={maxDate}
+                locale={locale}
+                placeholder={t.selectDate}
+                todayLabel={t.today}
+                closeLabel={t.close}
+                invalid={Boolean(errors.date)}
+                onChange={(iso) => {
+                  setValue("date", iso, { shouldValidate: true });
+                  if (selectedTime && isPastSlot(iso, selectedTime, Date.now())) {
+                    setValue("time", "", { shouldValidate: true });
+                  }
+                }}
               />
+              <p className="mt-1.5 text-xs text-lepas-ash">{t.bookableAhead}</p>
             </FormField>
             <div>
               <label className="mb-2 block text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
                 {dict.forms.preferredTime} *
               </label>
-              {isPrivateViewing && selectedDate && !hasValidSlotsForDate ? (
-                <p className="border border-lepas-fog bg-lepas-fog/30 px-3 py-3 text-xs text-lepas-steel">
-                  {selectedDate === new Date(now).toISOString().slice(0, 10)
-                    ? locale === "ar"
-                      ? "لا تتوفر مواعيد معاينة خاصة اليوم. أقرب موعد متاح هو غدًا الساعة 9:00 صباحًا."
-                      : "No private viewing times are available today. The next available time is tomorrow at 9:00 AM."
-                    : locale === "ar"
-                    ? "لا تتوفر مواعيد معاينة خاصة صالحة في هذا التاريخ. الرجاء اختيار تاريخ آخر."
-                    : "No Private Viewing slots are available for this date. Please choose another date."}
+              {!selectedShowroom ? (
+                <p className="flex items-center gap-2 border border-lepas-amber/40 bg-lepas-amber/5 px-4 py-3 text-xs text-lepas-steel">
+                  <span aria-hidden="true" className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-lepas-amber text-[10px] font-bold text-lepas-amber">
+                    i
+                  </span>
+                  {t.selectShowroomForTimes}
                 </p>
               ) : (
-                <div className="grid grid-cols-4 gap-2">
-                  {visibleTimeSlots.map((t) => {
-                    const disabled = slotDisabled(t);
-                    return (
-                      <button
-                        type="button"
-                        key={t}
-                        disabled={disabled}
-                        onClick={() => setValue("time", t, { shouldValidate: true })}
-                        title={
-                          disabled
-                            ? locale === "ar"
-                              ? "خارج نافذة الإشعار لمدة 4 ساعات"
-                              : "Outside the 4-hour notice window"
-                            : undefined
-                        }
-                        className={`border px-2 py-2 text-xs font-semibold transition-colors ${
-                          disabled
-                            ? "cursor-not-allowed border-lepas-fog text-lepas-fog line-through"
-                            : selectedTime === t
-                            ? "border-lepas-black bg-lepas-black text-white"
-                            : "border-lepas-fog text-lepas-steel hover:border-lepas-black/40"
-                        }`}
-                      >
-                        {t}
-                      </button>
-                    );
-                  })}
-                </div>
+                <>
+                  <div className="grid grid-cols-4 gap-2">
+                    {TIME_SLOTS.map((slot) => (
+                      <SlotButton
+                        key={slot}
+                        label={slot}
+                        selected={selectedTime === slot}
+                        disabled={slotDisabled(slot)}
+                        onClick={() => setValue("time", slot, { shouldValidate: true })}
+                      />
+                    ))}
+                  </div>
+                  <p className="mt-5 text-sm text-lepas-steel">{t.preferredWindow}</p>
+                  <div className="mt-2 grid grid-cols-2 gap-2">
+                    {TIME_WINDOWS.map((slot) => (
+                      <SlotButton
+                        key={slot}
+                        label={slot}
+                        selected={selectedTime === slot}
+                        disabled={slotDisabled(slot)}
+                        onClick={() => setValue("time", slot, { shouldValidate: true })}
+                      />
+                    ))}
+                  </div>
+                </>
               )}
-              {errors.time && <p className="mt-1.5 text-xs text-lepas-mist">{errors.time.message}</p>}
+              {errors.time && <p className="mt-1.5 text-xs text-lepas-error">{errors.time.message}</p>}
             </div>
           </div>
+          )}
         </div>
       </div>
 
-      <div className="mt-10">
-        <SectionHeader index={3} title={dict.forms.personalInformation} />
+      <div className={`mt-10 transition-opacity ${lockedClass}`} aria-disabled={!unlocked}>
+        <SectionHeader
+          index={3}
+          title={t.yourDetails}
+          active={unlocked}
+          hint={unlocked ? undefined : t.selectModelToContinue}
+        />
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="sm:col-span-2 sm:max-w-xs">
             <FormField label={dict.forms.title} required error={errors.title?.message}>
@@ -493,25 +523,31 @@ export default function TestDriveForm() {
           </FormField>
           <FormField label={dict.forms.phoneNumber}>
             <div className="flex">
-              <span className="flex items-center border border-e-0 border-lepas-fog bg-lepas-fog/40 px-3 text-sm text-lepas-steel">
+              <span className="flex shrink-0 items-center whitespace-nowrap border border-e-0 border-lepas-fog bg-lepas-fog/40 px-3 text-sm text-lepas-steel">
                 🇦🇪 +971
               </span>
               <input className="input-field-light" type="tel" placeholder="50 123 4567" {...register("phone")} />
             </div>
           </FormField>
           <div className="sm:col-span-2">
-            <FormField label={dict.testDrive.additionalNotes}>
-              <textarea
-                className="input-field-light min-h-[100px]"
-                placeholder={dict.testDrive.additionalNotesPlaceholder}
-                {...register("notes")}
-              />
-            </FormField>
+            <div className="mb-2 flex items-baseline justify-between">
+              <label htmlFor="td-notes" className="text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+                {dict.testDrive.additionalNotes} <span className="normal-case tracking-normal">({t.optional})</span>
+              </label>
+              <span className="text-xs text-lepas-ash">{notes.length}/2000</span>
+            </div>
+            <textarea
+              id="td-notes"
+              maxLength={2000}
+              className="input-field-light min-h-[100px]"
+              placeholder={dict.testDrive.additionalNotesPlaceholder}
+              {...register("notes")}
+            />
           </div>
         </div>
       </div>
 
-      <div className="mt-8 space-y-3">
+      <div className={`mt-8 space-y-3 transition-opacity ${lockedClass}`}>
         <label className="flex cursor-pointer items-start gap-3 text-sm text-lepas-steel">
           <input type="checkbox" className="checkbox-field-light mt-0.5" {...register("acceptTerms")} />
           <span>
@@ -522,7 +558,7 @@ export default function TestDriveForm() {
             *
           </span>
         </label>
-        {errors.acceptTerms && <p className="text-xs text-lepas-mist">{errors.acceptTerms.message}</p>}
+        {errors.acceptTerms && <p className="text-xs text-lepas-error">{errors.acceptTerms.message}</p>}
         <label className="flex cursor-pointer items-start gap-3 text-sm text-lepas-steel">
           <input type="checkbox" className="checkbox-field-light mt-0.5" {...register("marketingConsent")} />
           <span>{dict.testDrive.marketingConsent}</span>
@@ -531,7 +567,7 @@ export default function TestDriveForm() {
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-lepas-fog pt-6">
         <p className="max-w-sm text-xs text-lepas-ash">{dict.testDrive.submitNote}</p>
-        <button type="submit" disabled={isSubmitting} className="btn-primary shrink-0">
+        <button type="submit" disabled={isSubmitting || !unlocked} className="btn-primary shrink-0 uppercase tracking-[0.15em]">
           {isSubmitting ? dict.forms.booking : dict.testDrive.confirmRequest}
         </button>
       </div>

@@ -81,7 +81,7 @@ export default function ModelHero({
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
           className="mt-8 flex flex-wrap gap-4"
         >
-          <Link href="/models/test-drive" className="btn-primary text-center">
+          <Link href={`/models/test-drive?model=${model.slug}`} className="btn-primary text-center">
             {dict.common.bookTestDrive}
           </Link>
           <Link

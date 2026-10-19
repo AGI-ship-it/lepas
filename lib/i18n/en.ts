@@ -192,10 +192,10 @@ const en = {
     description:
       "Supported by a trusted service network that keeps help within reach, with fast response and dependable assistance that ensures your journey continues without interruption.",
     scheduleEyebrow: "Schedule",
-    bookService: "Book Your Service",
+    bookService: "Book a Service",
     bookServiceDescription:
       "Tell us about your vehicle and preferred appointment, and our service team will confirm shortly.",
-    bookServiceCtaTitle: "Ready to Book Your Service?",
+    bookServiceCtaTitle: "Ready to Book a Service?",
     bookServiceCtaDescription:
       "Reserve maintenance or repairs at the Lepas Al Quoz After-Sales Facility in a few minutes.",
     bookServiceTitle: "Book a Service Appointment",
@@ -616,6 +616,12 @@ const en = {
       contactUs: "Contact Us",
     },
     footer: {
+      discover: "Discover",
+      getInTouch: "Get in Touch",
+      bookService: "Book a Service",
+      whatsappUs: "WhatsApp Us",
+      compareModels: "Compare Models",
+      financeCalculator: "Finance Calculator",
       models: "Models",
       aboutUs: "About Us",
       alGhurairMobility: "Al Ghurair Mobility",
@@ -708,7 +714,7 @@ const en = {
       roadsidePrefix: "For roadside assistance, please call",
       roadsideNumber: "600 5462005",
       heroImageAlt: "Lepas L4 smart SUV in a showroom. For roadside assistance, please call 600 5462005.",
-      bookYourService: "Book your service",
+      bookYourService: "Book a Service",
       warrantyTitle: "Warranty & coverage",
       warranty: [
         { years: "10 years", text: "1,000,000 km engine warranty." },
@@ -716,6 +722,28 @@ const en = {
         { years: "8 years", text: "160,000 km PHEV battery warranty." },
       ],
     },
+  },
+  testDriveFlow: {
+    selectDate: "Select a date",
+    today: "Today",
+    close: "Close",
+    preferredWindow: "No suitable slot? Pick a preferred window instead",
+    noPreference: "No preference — please contact me",
+    comingSoon: "Coming soon",
+    teamWillContact: "Our team will contact you to arrange a date, time and showroom for this model.",
+    home: "Home",
+    heroTitle: "Feel the drive before you decide",
+    heroDescription:
+      "The best way to understand Lepas is behind the wheel. Choose your preferred model, location, and time, and we'll take care of the rest.",
+    warrantyMeta: "7-Year / 200,000 km Warranty",
+    findShowroom: "Find a showroom",
+    licenseNote: "Note that a valid UAE license is required for test drive.",
+    selectModelToContinue: "Select a model to continue",
+    selectShowroom: "Select a location",
+    selectShowroomForTimes: "Select a showroom to see the available times.",
+    bookableAhead: "Bookable up to 3 months ahead.",
+    optional: "optional",
+    yourDetails: "Your details",
   },
   chatbot: {
     title: "Lepas Assistant",

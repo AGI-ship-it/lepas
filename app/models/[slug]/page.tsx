@@ -191,7 +191,7 @@ export default function ModelDetailPage({
             {locale === "ar" ? `جاهز لتجربة ${model.name}؟` : `Ready to experience the ${model.name}?`}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="#callback" className="btn-primary">
+            <Link href={`/models/test-drive?model=${model.slug}`} className="btn-primary">
               {dict.common.bookTestDrive}
             </Link>
             <Link
