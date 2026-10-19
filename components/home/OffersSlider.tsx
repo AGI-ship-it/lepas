@@ -37,17 +37,19 @@ export default function OffersSlider() {
 
   return (
     <section
-      className="relative h-[85vh] min-h-[520px] w-full overflow-hidden bg-lepas-black"
+      className="relative w-full overflow-hidden bg-lepas-black"
       aria-roledescription="carousel"
       aria-label="Current offers"
     >
+      {/* Offer banners carry their own price and warranty copy, so show them uncropped. */}
+      <div className="relative mx-auto aspect-[1728/970] w-full max-w-[1728px]">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0"
         >
           {offer.image ? (
@@ -64,9 +66,9 @@ export default function OffersSlider() {
           )}
         </motion.div>
       </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/10" />
+      </div>
 
-      <div className="container-lepas relative flex h-full flex-col justify-end pb-24 pt-32">
+      <div className="container-lepas relative flex flex-col gap-8 py-10 md:flex-row md:items-end md:justify-between md:py-12">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -74,20 +76,20 @@ export default function OffersSlider() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="max-w-xl"
+            className="max-w-2xl"
           >
             {meta && (
               <p className="eyebrow">
                 {meta.model[locale]} {dict.lepasUi.from} AED {meta.monthly} {dict.lepasUi.perMonth}
               </p>
             )}
-            <h2 className="heading-display mt-4 text-3xl text-white sm:text-4xl md:text-5xl">
+            <h2 className="heading-display mt-3 text-2xl text-white sm:text-3xl md:text-4xl">
               {offer.title}
             </h2>
-            <p className="mt-5 text-base text-white/70 md:text-lg">
+            <p className="mt-3 text-base text-white/70">
               {offer.shortDescription}
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-4">
               <Link href={`/offers/${offer.slug}`} className="btn-outline-light">
                 {dict.lepasUi.viewOffer}
               </Link>
@@ -97,11 +99,9 @@ export default function OffersSlider() {
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
 
-      {/* Circular loading indicators only — no arrows */}
-      <div className="container-lepas absolute inset-x-0 bottom-8 flex items-center justify-start">
-        <div className="flex items-center gap-4">
+        {/* Circular loading indicators only — no arrows */}
+        <div className="flex shrink-0 items-center gap-4">
           {offers.map((o, i) => (
             <button
               key={o.slug}

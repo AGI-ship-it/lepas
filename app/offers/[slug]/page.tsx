@@ -55,11 +55,11 @@ export default function OfferDetailPage({
             {t.allOffers}
           </Link>
           <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <div className="relative aspect-[1728/970] w-full overflow-hidden">
               {offer.image ? (
                 <Image src={offer.image} alt={offer.imageLabel} fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" />
               ) : (
-                <PlaceholderImage label={offer.imageLabel} aspect="aspect-[4/3]" />
+                <PlaceholderImage label={offer.imageLabel} aspect="aspect-[1728/970]" />
               )}
             </div>
             <div>
@@ -108,17 +108,17 @@ export default function OfferDetailPage({
             {others.map((o) => {
               const m = offerMeta[o.slug];
               return (
-                <Card key={o.slug}>
+                <Card key={o.slug} className="flex flex-col">
                   <Link href={`/offers/${o.slug}`} className="block">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <div className="relative aspect-[1728/970] w-full overflow-hidden">
                       {o.image ? (
                         <Image src={o.image} alt={o.imageLabel} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
                       ) : (
-                        <PlaceholderImage label={o.imageLabel} aspect="aspect-[4/3]" />
+                        <PlaceholderImage label={o.imageLabel} aspect="aspect-[1728/970]" />
                       )}
                     </div>
                   </Link>
-                  <div className="p-6">
+                  <div className="flex flex-1 flex-col items-start p-6">
                     {m && (
                       <p className="text-sm font-semibold text-lepas-ink">
                         {m.model[locale]}{" "}
@@ -128,8 +128,8 @@ export default function OfferDetailPage({
                       </p>
                     )}
                     <h3 className="heading-display mt-3 text-xl">{o.title}</h3>
-                    <p className="mt-2 text-sm text-lepas-steel">{o.shortDescription}</p>
-                    <Link href={`/offers/${o.slug}`} className="btn-outline mt-6">
+                    <p className="mb-6 mt-2 text-sm text-lepas-steel">{o.shortDescription}</p>
+                    <Link href={`/offers/${o.slug}`} className="btn-outline mt-auto">
                       {t.viewOffer}
                     </Link>
                   </div>

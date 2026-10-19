@@ -31,23 +31,23 @@ export default function OffersPage() {
           {offers.map((offer) => {
             const meta = offerMeta[offer.slug];
             return (
-              <Card key={offer.slug}>
+              <Card key={offer.slug} className="flex flex-col">
                 <Link href={`/offers/${offer.slug}`} className="block">
                   {offer.image ? (
-                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <div className="relative aspect-[1728/970] w-full overflow-hidden">
                       <Image
                         src={offer.image}
                         alt={offer.imageLabel}
                         fill
                         sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                        className="object-cover transition-transform duration-700 ease-premium group-hover:scale-105"
+                        className="object-cover"
                       />
                     </div>
                   ) : (
-                    <PlaceholderImage label={offer.imageLabel} aspect="aspect-[4/3]" tone="accent" />
+                    <PlaceholderImage label={offer.imageLabel} aspect="aspect-[1728/970]" tone="accent" />
                   )}
                 </Link>
-                <div className="p-6">
+                <div className="flex flex-1 flex-col items-start p-6">
                   {meta && (
                     <p className="text-sm font-semibold text-lepas-ink">
                       {meta.model[locale]}{" "}
@@ -59,8 +59,8 @@ export default function OffersPage() {
                   <h2 className="heading-display mt-3 text-xl">
                     <Link href={`/offers/${offer.slug}`}>{offer.title}</Link>
                   </h2>
-                  <p className="mt-2 text-sm text-lepas-steel">{offer.shortDescription}</p>
-                  <Link href={`/offers/${offer.slug}`} className="btn-outline mt-6">
+                  <p className="mb-6 mt-2 text-sm text-lepas-steel">{offer.shortDescription}</p>
+                  <Link href={`/offers/${offer.slug}`} className="btn-outline mt-auto">
                     {t.viewOffer}
                   </Link>
                 </div>
