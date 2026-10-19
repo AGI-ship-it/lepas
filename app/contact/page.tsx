@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import Section from "@/components/ui/Section";
 import ContactForm from "@/components/forms/ContactForm";
@@ -38,9 +39,9 @@ export default function ContactPage() {
             <br />
             {t.contactHeroIntro2}
           </p>
-          <a href="#contact-form" className="btn-primary mt-8">
+          <Link href="/models/test-drive" className="btn-primary mt-8">
             {dict.common.bookTestDrive}
-          </a>
+          </Link>
         </div>
       </section>
 
