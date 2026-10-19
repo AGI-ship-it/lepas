@@ -8,9 +8,9 @@ import { getModels } from "@/lib/i18n/data";
 const MODEL_ORDER = ["l8", "l6", "l4"];
 
 const modelImages: Record<string, string> = {
-  l8: "/design/assets/model-l8-side.webp",
-  l6: "/design/assets/model-l6-side.webp",
-  l4: "/design/assets/model-l4-side.webp",
+  l8: "/design/assets/model-l8-side-light.webp",
+  l6: "/design/assets/model-l6-side-light.webp",
+  l4: "/design/assets/model-l4-side-light.webp",
 };
 
 export default function ModelsMegaMenu({
