@@ -11,7 +11,7 @@ export default function Gallery({ images }: { images: string[] }) {
       <PlaceholderImage
         label={images[active]}
         aspect="aspect-[16/9]"
-        className="rounded-2xl"
+
       />
       <div className="mt-4 grid grid-cols-3 gap-4 sm:grid-cols-6">
         {images.map((img, i) => (
@@ -20,7 +20,7 @@ export default function Gallery({ images }: { images: string[] }) {
             onClick={() => setActive(i)}
             aria-label={`Show image: ${img}`}
             aria-current={i === active}
-            className={`overflow-hidden rounded-lg border transition-colors ${
+            className={`overflow-hidden border transition-colors ${
               i === active ? "border-lepas-black" : "border-lepas-fog hover:border-lepas-steel/50"
             }`}
           >

@@ -56,7 +56,7 @@ export default function NewsDetailPage({
             label={article.title}
             src={getNewsImage(article.slug)}
             aspect="aspect-[16/9]"
-            className="my-8 rounded-2xl"
+            className="my-8"
           />
           <div className="space-y-5 text-lg text-lepas-steel">
             {article.body.map((para, i) => (

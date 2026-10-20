@@ -104,7 +104,7 @@ export default function BestOfBothWorlds() {
       {/* Car image with highlighted spec callout */}
       <Link
         href={`/models/${car.slug}`}
-        className="group relative mt-6 block overflow-hidden rounded-2xl"
+        className="group relative mt-6 block overflow-hidden"
       >
         <div className="relative aspect-[24/9] w-full overflow-hidden bg-lepas-ink">
           <AnimatePresence mode="wait">

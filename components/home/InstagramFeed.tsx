@@ -80,7 +80,7 @@ function TileCard({ tile, reelLabel }: { tile: Tile; reelLabel: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={tile.alt}
-      className={`group relative block overflow-hidden rounded-2xl bg-lepas-ink ring-1 ring-white/10 transition-shadow duration-500 hover:ring-2 hover:ring-lepas-amber hover:shadow-[0_0_40px_rgba(235,146,1,0.25)] ${tile.aspect}`}
+      className={`group relative block overflow-hidden bg-lepas-ink ring-1 ring-white/10 transition-shadow duration-500 hover:ring-2 hover:ring-lepas-amber hover:shadow-[0_0_40px_rgba(235,146,1,0.25)] ${tile.aspect}`}
     >
       {tile.kind === "reel" ? (
         <video

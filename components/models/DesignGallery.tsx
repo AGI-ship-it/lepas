@@ -11,7 +11,7 @@ export default function DesignGallery({ slides }: { slides: DesignGallerySlide[]
 
   return (
     <div>
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl">
+      <div className="relative aspect-[16/9] w-full overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}

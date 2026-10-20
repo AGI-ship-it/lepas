@@ -48,7 +48,7 @@ export default function FeaturedNews() {
               >
                 <Link
                   href={`/discover/news/${article.slug}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white/[0.04] ring-1 ring-white/10 transition-shadow duration-500 hover:shadow-[0_0_40px_rgba(235,146,1,0.25)] hover:ring-2 hover:ring-lepas-amber"
+                  className="group flex h-full flex-col overflow-hidden bg-white/[0.04] ring-1 ring-white/10 transition-shadow duration-500 hover:shadow-[0_0_40px_rgba(235,146,1,0.25)] hover:ring-2 hover:ring-lepas-amber"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-lepas-ink">
                     {image ? (

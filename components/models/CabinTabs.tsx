@@ -30,7 +30,7 @@ export default function CabinTabs({ tabs }: { tabs: (CabinTab & { image?: string
       </div>
 
       {/* Image with overlaid caption */}
-      <div className="relative overflow-hidden rounded-2xl">
+      <div className="relative overflow-hidden">
         {tab.image ? (
           <div className="relative aspect-[16/9] w-full">
             <Image src={tab.image} alt={tab.imageLabel} fill sizes="(min-width: 768px) 70vw, 100vw" className="object-cover" />

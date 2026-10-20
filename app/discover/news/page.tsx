@@ -32,7 +32,7 @@ export default function NewsListPage() {
       {featured && (
         <Section>
           <article className="grid items-center gap-10 md:grid-cols-2">
-            <Link href={`/discover/news/${featured.slug}`} className="block overflow-hidden rounded-2xl">
+            <Link href={`/discover/news/${featured.slug}`} className="block overflow-hidden">
               <PlaceholderImage
                 label={featured.title}
                 src={getNewsImage(featured.slug)}

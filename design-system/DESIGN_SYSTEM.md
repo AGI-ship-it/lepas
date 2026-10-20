@@ -73,10 +73,10 @@ Alpha variants come from Tailwind opacity modifiers (`white/70`, `lepas-ink/25`â
 
 | Token | Value | Use |
 |---|---|---|
-| `radius/none` | 0 | All buttons, inputs, selects and checkboxes (square, as on EXEED) |
+| `radius/none` | 0 | All buttons, inputs, selects, checkboxes, images, media tiles and image cards (square, as on EXEED) |
 | `radius/pill` | 100px (`rounded-pill`) | Optional pill chips |
-| `radius/2xl` | 16px | Cards |
-| `radius/xl` | 12px | Media tiles |
+| `radius/2xl` | 16px | Text-only panels (specs, testimonials, form and summary panels) |
+| `radius/xl` | 12px | Small text-only tiles |
 | `radius/full` | 9999px | Dots, toggles, round icon buttons |
 
 ## 5. Elevation

@@ -46,7 +46,7 @@ export default function AfterSalesPage() {
               {t.bookYourService}
             </Link>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+          <div className="relative aspect-[4/3] overflow-hidden">
             <Image
               src="/design/assets/warranty-roadside.webp"
               alt={t.heroImageAlt}

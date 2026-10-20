@@ -85,7 +85,7 @@ export default function ModelsMegaMenu({
                 key={model.slug}
                 href={`/models/${model.slug}`}
                 onClick={onNavigate}
-                className="group/card overflow-hidden rounded-2xl border border-white/10 bg-lepas-ink transition-colors hover:border-lepas-amber/60"
+                className="group/card overflow-hidden border border-white/10 bg-lepas-ink transition-colors hover:border-lepas-amber/60"
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden">
                   <Image

@@ -45,7 +45,7 @@ export default function NumberedSlider({
       role="group"
       aria-roledescription="carousel"
       aria-label={eyebrow}
-      className="overflow-hidden rounded-2xl border border-white/10 bg-lepas-ink"
+      className="overflow-hidden border border-white/10 bg-lepas-ink"
     >
       <div className="grid gap-0 md:grid-cols-2">
         <div className="relative aspect-square w-full overflow-hidden bg-lepas-black">

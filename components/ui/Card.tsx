@@ -9,7 +9,7 @@ export default function Card({
 }) {
   return (
     <div
-      className={`group overflow-hidden rounded-2xl border border-lepas-fog bg-white text-lepas-black shadow-sm transition-all duration-500 ease-premium hover:border-lepas-steel/40 hover:shadow-md hover:-translate-y-1 ${className}`}
+      className={`group overflow-hidden border border-lepas-fog bg-white text-lepas-black shadow-sm transition-all duration-500 ease-premium hover:border-lepas-steel/40 hover:shadow-md hover:-translate-y-1 ${className}`}
     >
       {children}
     </div>

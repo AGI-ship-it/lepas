@@ -32,7 +32,7 @@ export default function ModelsSection() {
           <Link
             key={model.slug}
             href={`/models/${model.slug}`}
-            className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
+            className="group relative block aspect-[4/5] overflow-hidden"
           >
             <Image
               src={cardImages[model.slug] ?? model.heroImage ?? "/design/assets/journey-3cars.webp"}

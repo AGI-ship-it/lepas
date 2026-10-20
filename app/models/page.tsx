@@ -36,7 +36,7 @@ export default function ModelsOverviewPage() {
             <Link
               key={model.slug}
               href={`/models/${model.slug}`}
-              className="group relative block aspect-square overflow-hidden rounded-2xl border border-white/10"
+              className="group relative block aspect-square overflow-hidden border border-white/10"
             >
               {model.heroImage ? (
                 <Image

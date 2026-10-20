@@ -55,7 +55,7 @@ export default function BlogDetailPage({
           </p>
           <h1 className="heading-display text-3xl text-lepas-black md:text-5xl">{post.title}</h1>
           {post.youtubeId ? (
-            <div className="relative my-8 aspect-video w-full overflow-hidden rounded-2xl bg-lepas-black">
+            <div className="relative my-8 aspect-video w-full overflow-hidden bg-lepas-black">
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${post.youtubeId}`}
                 title={post.title}
@@ -65,7 +65,7 @@ export default function BlogDetailPage({
               />
             </div>
           ) : (
-            <PlaceholderImage label={post.imageLabel} aspect="aspect-video" className="my-8 rounded-2xl" />
+            <PlaceholderImage label={post.imageLabel} aspect="aspect-video" className="my-8" />
           )}
           <div className="space-y-5 text-lg text-lepas-steel">
             {post.body.map((para, i) => (
@@ -85,7 +85,7 @@ export default function BlogDetailPage({
               <Link
                 key={p.slug}
                 href={`/discover/blog/${p.slug}`}
-                className="group block overflow-hidden rounded-2xl border border-lepas-fog bg-white"
+                className="group block overflow-hidden border border-lepas-fog bg-white"
               >
                 {p.image && (
                   // eslint-disable-next-line @next/next/no-img-element

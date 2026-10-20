@@ -75,7 +75,7 @@ export default function FinanceCalculator() {
               <button
                 key={o.model.slug}
                 onClick={() => setSelectedKey(o.model.slug)}
-                className={`overflow-hidden rounded-2xl border text-start transition-colors ${
+                className={`overflow-hidden border text-start transition-colors ${
                   isActive ? "border-lepas-amber" : "border-lepas-fog hover:border-lepas-black/30"
                 }`}
               >
@@ -105,7 +105,7 @@ export default function FinanceCalculator() {
         </div>
 
         {/* Selected vehicle showcase */}
-        <div className="relative mt-6 overflow-hidden rounded-2xl bg-lepas-black">
+        <div className="relative mt-6 overflow-hidden bg-lepas-black">
           <div className="relative aspect-[16/9] w-full">
             <Image
               src={modelImages[selected.model.slug]}
