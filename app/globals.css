@@ -78,7 +78,7 @@
   }
 
   .btn-primary {
-    @apply btn border-lepas-amber bg-lepas-amber text-white hover:scale-[1.02] hover:border-lepas-amber-hover hover:bg-lepas-amber-hover active:scale-[0.98];
+    @apply btn border-lepas-amber bg-lepas-amber text-lepas-black hover:scale-[1.02] hover:border-lepas-amber-hover hover:bg-lepas-amber-hover active:scale-[0.98];
   }
 
   .btn-outline {

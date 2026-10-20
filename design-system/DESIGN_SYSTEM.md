@@ -35,12 +35,12 @@ Alpha variants come from Tailwind opacity modifiers (`white/70`, `lepas-ink/25`�
 | Background | `bg/default` · `bg/inverse` · `bg/inverse-raised` · `bg/muted` · `bg/warm` · `bg/brand-deep` · `bg/field-dark` | white · black · ink · sand · cream · navy · form-ink |
 | Text | `text/primary` · `text/secondary` · `text/muted` · `text/accent` | ink · steel · ash · amber |
 | Text on dark | `text/on-inverse` · `-secondary` · `-muted` | white · white-a70 · white-a60 |
-| Text on amber | `text/on-accent` | white |
+| Text on amber | `text/on-accent` | black |
 | Border | `border/default` · `border/strong` · `border/focus` · `border/on-inverse` | fog · black-a25 · amber · white-a10 |
 | Accent | `accent/primary` · `accent/primary-hover` | amber · amber-hover |
 | Status | `status/error` · `status/success` | error · success |
 
-**Contrast note:** the brand uses white text on amber. That pairing is 2.4:1, which is below WCAG AA for body text. Keep amber buttons at 15px or larger, and never put long copy on amber.
+**Contrast note:** text on amber is black, as on EXEED. Black on amber is 8.2:1 (6.7:1 on amber-hover), which passes WCAG AA and AAA. White on amber is only 2.4:1, so don't use it for text.
 
 ## 2. Typography
 
@@ -97,7 +97,7 @@ Square (radius 0), padding 10 × 28, 14px semibold, tracking 0.025em, gap 8. Pri
 
 | Variant | Fill | Text | Border | Hover |
 |---|---|---|---|---|
-| `primary` | amber | white | amber | amber-hover |
+| `primary` | amber | black | amber | amber-hover |
 | `outline` | — | ink | ink-a25 | border ink, fill ink-a5 |
 | `outline-light` | — | white | white-a60 | border white, fill white-a10 |
 | `dark` | ink | white | ink | black |
