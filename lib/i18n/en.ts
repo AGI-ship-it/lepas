@@ -122,6 +122,8 @@ const en = {
     instagramEyebrow: "@lepas.uae",
     instagramTitle: "Follow the Journey",
     instagramDescription: "Follow us on Instagram @lepas.uae for the latest updates.",
+    instagramFollow: "Follow on Instagram",
+    instagramReel: "Reel",
     newsEyebrow: "News",
     newsTitle: "Latest News",
     testimonialsEyebrow: "Owners",
@@ -516,7 +518,7 @@ const en = {
     preferredModelBody: "Drive the exact Lepas you are considering: L4, L6 or L8.",
     showroomTitle: "Showrooms in Dubai & Sharjah",
     showroomBody: "Test drives are arranged at our Deira (Port Saeed) and Sharjah (Al Ruqa Al Hamra) showrooms.",
-    requestPrivateDrive: "Request a Test Drive",
+    requestPrivateDrive: "Book a Test Drive",
     requestPrivateDriveDescription: "Complete the form and our team will contact you to confirm timing and location.",
     chooseYourMhero: "Choose Your Lepas",
     whenAndWhere: "When & Where",
@@ -527,7 +529,7 @@ const en = {
     termsAndConditions: "Terms and Conditions",
     marketingConsent: "I consent to receive promotional offers and updates from Lepas UAE.",
     submitNote: "By submitting, you agree to be contacted about this test drive request. No payment is required to book.",
-    confirmRequest: "Submit",
+    confirmRequest: "Book a Test Drive",
   },
   contact: {
     eyebrow: "Contact Us",
@@ -665,8 +667,8 @@ const en = {
       copyright: "Copyright © 2026 Lepas. All Rights Reserved",
     },
     home: {
-      bookAppointment: "Book an appointment",
-      bookTestDrive: "Book a test drive",
+      bookAppointment: "Book a Test Drive",
+      bookTestDrive: "Book a Test Drive",
       lifeTechTitle: "Bringing life and technology together with elegance.",
       lifeTechBody: "Designed around the people, with smart technology, and control that eases everyday life.",
       lifeTechVideos: [

@@ -68,7 +68,7 @@ function ChatWidget({ onClose }: { onClose: () => void }) {
   const [quickReplies, setQuickReplies] = useState<string[]>(
     locale === "ar"
       ? ["عروض Lepas L8", "العروض الحالية", "احجز تجربة قيادة", "قارن الموديلات"]
-      : ["Lepas L8 offers", "Current offers", "Book a test drive", "Compare models"]
+      : ["Lepas L8 offers", "Current offers", "Book a Test Drive", "Compare models"]
   );
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);

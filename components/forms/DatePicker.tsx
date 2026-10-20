@@ -129,7 +129,7 @@ export default function DatePicker({
         <div
           role="dialog"
           aria-label={new Intl.DateTimeFormat(intlLocale, { month: "long", year: "numeric" }).format(view)}
-          className="absolute start-0 top-full z-30 mt-2 w-[300px] rounded-xl border border-lepas-fog bg-white p-4 shadow-2xl"
+          className="absolute start-0 top-full z-30 mt-2 w-[300px] rounded-none border border-lepas-fog bg-white p-4 shadow-2xl"
         >
           <div className="flex items-center justify-between">
             <button

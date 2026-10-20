@@ -22,7 +22,7 @@ export interface BotReply {
 const DEFAULT_QUICK_REPLIES_EN = [
   "Lepas L8 specs",
   "Current offers",
-  "Book a test drive",
+  "Book a Test Drive",
   "Compare models",
 ];
 const DEFAULT_QUICK_REPLIES_AR = [
@@ -108,7 +108,7 @@ export function getBotReply(rawText: string, ctx: BotContext): BotReply {
         text: modelSummary(mentionedModel, locale),
         quickReplies: isAr
           ? ["احسب التمويل", "قارن الموديلات", "احجز تجربة قيادة"]
-          : ["Calculate finance", "Compare models", "Book a test drive"],
+          : ["Calculate finance", "Compare models", "Book a Test Drive"],
       };
     }
     const lines = models
@@ -155,7 +155,7 @@ export function getBotReply(rawText: string, ctx: BotContext): BotReply {
       text: isAr
         ? `الألوان المتاحة لـ ${model.name}: ${names}.`
         : `${model.name} is available in: ${names}.`,
-      quickReplies: isAr ? ["اطلع على المواصفات", "احجز تجربة قيادة"] : ["See full specs", "Book a test drive"],
+      quickReplies: isAr ? ["اطلع على المواصفات", "احجز تجربة قيادة"] : ["See full specs", "Book a Test Drive"],
     };
   }
 
@@ -190,7 +190,7 @@ export function getBotReply(rawText: string, ctx: BotContext): BotReply {
     const lines = offers.map((o) => `• ${o.title}`).join("\n");
     return {
       text: isAr ? `العروض الحالية:\n${lines}` : `Here are our current offers:\n${lines}`,
-      quickReplies: isAr ? ["احسب التمويل", "احجز تجربة قيادة"] : ["Calculate finance", "Book a test drive"],
+      quickReplies: isAr ? ["احسب التمويل", "احجز تجربة قيادة"] : ["Calculate finance", "Book a Test Drive"],
     };
   }
 

@@ -73,11 +73,10 @@ Alpha variants come from Tailwind opacity modifiers (`white/70`, `lepas-ink/25`�
 
 | Token | Value | Use |
 |---|---|---|
-| `radius/none` | 0 | All buttons (square, carried over from the MHERO system) |
+| `radius/none` | 0 | All buttons, inputs, selects and checkboxes (square, as on EXEED) |
 | `radius/pill` | 100px (`rounded-pill`) | Optional pill chips |
 | `radius/2xl` | 16px | Cards |
 | `radius/xl` | 12px | Media tiles |
-| `radius/lg` | 8px | Inputs, selects |
 | `radius/full` | 9999px | Dots, toggles, round icon buttons |
 
 ## 5. Elevation
@@ -104,7 +103,7 @@ Square (radius 0), padding 10 × 28, 14px semibold, tracking 0.025em, gap 8. Pri
 | `dark` | ink | white | ink | black |
 
 ### Inputs (`.input-field`, `.input-field-light`)
-Radius 8, padding 12 × 16, 14px. The focus border is amber on both variants. The dark variant fills with form-ink.
+Square corners (radius 0), padding 12 × 16, 14px. The focus border is amber on both variants. The dark variant fills with form-ink.
 
 ### Checkbox / Range (`.checkbox-field*`, `.range-field*`)
 Accent colour is amber.

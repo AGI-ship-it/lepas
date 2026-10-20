@@ -98,20 +98,20 @@
   }
 
   .input-field {
-    @apply w-full rounded-lg border border-white/15 bg-lepas-form-ink px-4 py-3 text-sm text-white outline-none transition-colors focus:border-lepas-amber;
+    @apply w-full rounded-none border border-white/15 bg-lepas-form-ink px-4 py-3 text-sm text-white outline-none transition-colors focus:border-lepas-amber;
   }
 
   .input-field-light {
-    @apply w-full rounded-lg border border-lepas-fog bg-white px-4 py-3 text-sm text-lepas-ink outline-none transition-colors placeholder:text-lepas-ash focus:border-lepas-amber;
+    @apply w-full rounded-none border border-lepas-fog bg-white px-4 py-3 text-sm text-lepas-ink outline-none transition-colors placeholder:text-lepas-ash focus:border-lepas-amber;
   }
 
   /* Phone number: country prefix and input share one bordered field. */
   .phone-field-light {
-    @apply flex w-full overflow-hidden rounded-lg border border-lepas-fog bg-white transition-colors focus-within:border-lepas-amber;
+    @apply flex w-full overflow-hidden rounded-none border border-lepas-fog bg-white transition-colors focus-within:border-lepas-amber;
   }
 
   .phone-field {
-    @apply flex w-full overflow-hidden rounded-lg border border-white/15 bg-lepas-form-ink transition-colors focus-within:border-lepas-amber;
+    @apply flex w-full overflow-hidden rounded-none border border-white/15 bg-lepas-form-ink transition-colors focus-within:border-lepas-amber;
   }
 
   .phone-prefix {
@@ -153,7 +153,7 @@
   }
 
   .checkbox-field-light {
-    @apply h-4 w-4 rounded border-lepas-fog bg-white text-lepas-amber accent-lepas-amber;
+    @apply h-4 w-4 rounded-none border-lepas-fog bg-white text-lepas-amber accent-lepas-amber;
   }
 
   .range-field {
@@ -165,7 +165,7 @@
   }
 
   .checkbox-field {
-    @apply h-4 w-4 rounded border-white/30 bg-lepas-form-ink text-lepas-amber accent-lepas-amber;
+    @apply h-4 w-4 rounded-none border-white/30 bg-lepas-form-ink text-lepas-amber accent-lepas-amber;
   }
 }
 
