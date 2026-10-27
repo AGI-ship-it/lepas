@@ -54,18 +54,29 @@ export default function OfferDetailPage({
         priority
         fullHeight
         before={
-          <Link
-            href="/offers"
-            className="mb-8 inline-flex items-center gap-3 text-sm text-white/80 hover:text-lepas-amber"
-          >
-            <span
-              aria-hidden="true"
-              className="flex h-6 w-6 items-center justify-center rounded-full border border-lepas-amber text-xs text-lepas-amber rtl:rotate-180"
-            >
-              ←
-            </span>
-            {t.allOffers}
-          </Link>
+          <nav aria-label="Breadcrumb" className="mb-8">
+            <ol className="flex flex-wrap items-center gap-2 text-sm text-white/70">
+              <li>
+                <Link href="/" className="transition-colors hover:text-lepas-amber">
+                  {dict.testDriveFlow.home}
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-lepas-amber">
+                /
+              </li>
+              <li>
+                <Link href="/offers" className="transition-colors hover:text-lepas-amber">
+                  {dict.offers.title}
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-lepas-amber">
+                /
+              </li>
+              <li aria-current="page" className="text-white">
+                {meta?.model[locale] ?? offer.title}
+              </li>
+            </ol>
+          </nav>
         }
         actions={
           <>
