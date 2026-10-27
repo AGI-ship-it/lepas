@@ -1,11 +1,12 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getModels } from "@/lib/i18n/data";
+import SelectField from "@/components/forms/SelectField";
 
 const LOCATIONS = [
   { value: "deira", en: "Lepas Deira Showroom — Port Saeed, Dubai", ar: "صالة عرض ليباس ديرة — بورسعيد، دبي" },
@@ -66,6 +67,7 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
@@ -99,13 +101,22 @@ export default function ContactForm() {
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="sm:col-span-2 sm:max-w-xs">
             <Field label={dict.forms.title} required error={errors.title?.message}>
-              <select className="input-field-light" {...register("title")}>
-                <option value="">—</option>
-                <option value="mr">{dict.forms.titleMr}</option>
-                <option value="mrs">{dict.forms.titleMrs}</option>
-                <option value="ms">{dict.forms.titleMs}</option>
-                <option value="dr">{dict.forms.titleDr}</option>
-              </select>
+              <Controller
+                control={control}
+                name="title"
+                render={({ field }) => (
+                  <SelectField
+                    {...field}
+                    placeholder={"—"}
+                    options={[
+                      { value: "mr", label: dict.forms.titleMr },
+                      { value: "mrs", label: dict.forms.titleMrs },
+                      { value: "ms", label: dict.forms.titleMs },
+                      { value: "dr", label: dict.forms.titleDr },
+                    ]}
+                  />
+                )}
+              />
             </Field>
           </div>
           <Field label={dict.forms.firstName} required error={errors.firstName?.message}>
@@ -133,24 +144,30 @@ export default function ContactForm() {
         <div className="space-y-5">
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label={dict.contact.selectModel} required error={errors.model?.message}>
-              <select className="input-field-light" {...register("model")}>
-                <option value="">{dict.contact.selectModel}</option>
-                {models.map((m) => (
-                  <option key={m.slug} value={m.slug}>
-                    {m.name}
-                  </option>
-                ))}
-              </select>
+              <Controller
+                control={control}
+                name="model"
+                render={({ field }) => (
+                  <SelectField
+                    {...field}
+                    placeholder={dict.contact.selectModel}
+                    options={models.map((m) => ({ value: m.slug, label: m.name }))}
+                  />
+                )}
+              />
             </Field>
             <Field label={dict.forms.location} required error={errors.location?.message}>
-              <select className="input-field-light" {...register("location")}>
-                <option value="">{dict.forms.selectLocation}</option>
-                {LOCATIONS.map((l) => (
-                  <option key={l.value} value={l.value}>
-                    {locale === "ar" ? l.ar : l.en}
-                  </option>
-                ))}
-              </select>
+              <Controller
+                control={control}
+                name="location"
+                render={({ field }) => (
+                  <SelectField
+                    {...field}
+                    placeholder={dict.forms.selectLocation}
+                    options={LOCATIONS.map((l) => ({ value: l.value, label: locale === "ar" ? l.ar : l.en }))}
+                  />
+                )}
+              />
             </Field>
           </div>
           <Field label={dict.forms.message} required error={errors.message?.message}>

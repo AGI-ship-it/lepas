@@ -6,6 +6,7 @@ import { z } from "zod";
 import { useMemo, useState } from "react";
 import PlateNumberField from "@/components/forms/PlateNumberField";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import SelectField from "@/components/forms/SelectField";
 
 const TIME_SLOTS = [
   "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
@@ -311,13 +312,22 @@ export default function ServiceBookingForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="sm:col-span-2 sm:max-w-xs">
           <Field label={dict.forms.title} required error={errors.title?.message}>
-            <select className="input-field-light" {...register("title")}>
-              <option value="">—</option>
-              <option value="mr">{dict.forms.titleMr}</option>
-              <option value="mrs">{dict.forms.titleMrs}</option>
-              <option value="ms">{dict.forms.titleMs}</option>
-              <option value="dr">{dict.forms.titleDr}</option>
-            </select>
+            <Controller
+              control={control}
+              name="title"
+              render={({ field }) => (
+                <SelectField
+                  {...field}
+                  placeholder={"—"}
+                  options={[
+                    { value: "mr", label: dict.forms.titleMr },
+                    { value: "mrs", label: dict.forms.titleMrs },
+                    { value: "ms", label: dict.forms.titleMs },
+                    { value: "dr", label: dict.forms.titleDr },
+                  ]}
+                />
+              )}
+            />
           </Field>
         </div>
         <Field label={dict.forms.firstName} required error={errors.firstName?.message}>
@@ -390,24 +400,36 @@ export default function ServiceBookingForm() {
         <SectionHeader index={3} title={dict.forms.appointmentDetails} />
         <div className="space-y-5">
           <Field label={dict.forms.purposeOfVisit} required error={errors.purpose?.message}>
-            <select className="input-field-light" {...register("purpose")}>
-              <option value="">{dict.forms.selectPurpose}</option>
-              <option value="maintenance">{dict.forms.purposeOptions.maintenance}</option>
-              <option value="repair">{dict.forms.purposeOptions.repair}</option>
-              <option value="warranty">{dict.forms.purposeOptions.warranty}</option>
-              <option value="other">{dict.forms.purposeOptions.other}</option>
-            </select>
+            <Controller
+              control={control}
+              name="purpose"
+              render={({ field }) => (
+                <SelectField
+                  {...field}
+                  placeholder={dict.forms.selectPurpose}
+                  options={[
+                    { value: "maintenance", label: dict.forms.purposeOptions.maintenance },
+                    { value: "repair", label: dict.forms.purposeOptions.repair },
+                    { value: "warranty", label: dict.forms.purposeOptions.warranty },
+                    { value: "other", label: dict.forms.purposeOptions.other },
+                  ]}
+                />
+              )}
+            />
           </Field>
 
           <Field label={dict.forms.location} required error={errors.location?.message}>
-            <select className="input-field-light" {...register("location")}>
-              <option value="">{dict.forms.selectLocation}</option>
-              {locationOptions.map((l) => (
-                <option key={l.value} value={l.value}>
-                  {l.label}
-                </option>
-              ))}
-            </select>
+            <Controller
+              control={control}
+              name="location"
+              render={({ field }) => (
+                <SelectField
+                  {...field}
+                  placeholder={dict.forms.selectLocation}
+                  options={locationOptions.map((l) => ({ value: l.value, label: l.label }))}
+                />
+              )}
+            />
           </Field>
 
           <div className="grid gap-5 sm:grid-cols-2">
@@ -416,14 +438,17 @@ export default function ServiceBookingForm() {
             </Field>
             <div>
               <Field label={dict.forms.preferredAppointmentTime} required error={errors.appointmentTime?.message}>
-                <select className="input-field-light" {...register("appointmentTime")}>
-                  <option value="">{dict.forms.selectTime}</option>
-                  {TIME_SLOTS.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
+                <Controller
+                  control={control}
+                  name="appointmentTime"
+                  render={({ field }) => (
+                    <SelectField
+                      {...field}
+                      placeholder={dict.forms.selectTime}
+                      options={TIME_SLOTS.map((t) => ({ value: t, label: t }))}
+                    />
+                  )}
+                />
               </Field>
               <p className="mt-1.5 text-xs text-lepas-ash">{dict.forms.appointmentTimeHint}</p>
             </div>
@@ -469,14 +494,17 @@ export default function ServiceBookingForm() {
                     <input className="input-field-light" type="date" {...register("pickUpDate")} />
                   </Field>
                   <Field label={dict.forms.preferredTime} required error={errors.pickUpTime?.message}>
-                    <select className="input-field-light" {...register("pickUpTime")}>
-                      <option value="">{dict.forms.selectTime}</option>
-                      {TIME_SLOTS.map((t) => (
-                        <option key={t} value={t}>
-                          {t}
-                        </option>
-                      ))}
-                    </select>
+                    <Controller
+                      control={control}
+                      name="pickUpTime"
+                      render={({ field }) => (
+                        <SelectField
+                          {...field}
+                          placeholder={dict.forms.selectTime}
+                          options={TIME_SLOTS.map((t) => ({ value: t, label: t }))}
+                        />
+                      )}
+                    />
                   </Field>
                   <div className="sm:col-span-2">
                     <Field label={dict.forms.instructions}>
@@ -514,14 +542,17 @@ export default function ServiceBookingForm() {
                     <input className="input-field-light" type="date" {...register("dropOffDate")} />
                   </Field>
                   <Field label={dict.forms.preferredTime} required error={errors.dropOffTime?.message}>
-                    <select className="input-field-light" {...register("dropOffTime")}>
-                      <option value="">{dict.forms.selectTime}</option>
-                      {TIME_SLOTS.map((t) => (
-                        <option key={t} value={t}>
-                          {t}
-                        </option>
-                      ))}
-                    </select>
+                    <Controller
+                      control={control}
+                      name="dropOffTime"
+                      render={({ field }) => (
+                        <SelectField
+                          {...field}
+                          placeholder={dict.forms.selectTime}
+                          options={TIME_SLOTS.map((t) => ({ value: t, label: t }))}
+                        />
+                      )}
+                    />
                   </Field>
                   <div className="sm:col-span-2">
                     <Field label={dict.forms.instructions}>

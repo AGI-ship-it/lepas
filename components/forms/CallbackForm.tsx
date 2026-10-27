@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getModels } from "@/lib/i18n/data";
+import SelectField from "@/components/forms/SelectField";
 
 const schema = z.object({
   firstName: z.string().min(1, "Required"),
@@ -48,6 +49,7 @@ export default function CallbackForm({ defaultModel = "" }: { defaultModel?: str
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
@@ -90,24 +92,32 @@ export default function CallbackForm({ defaultModel = "" }: { defaultModel?: str
         </div>
       </Field>
       <Field label={t.dealership} error={errors.dealership?.message}>
-        <select className="input-field" {...register("dealership")}>
-          <option value="">{t.chooseDealership}</option>
-          {t.dealerships.map((d) => (
-            <option key={d.value} value={d.value}>
-              {d.label}
-            </option>
-          ))}
-        </select>
+        <Controller
+          control={control}
+          name="dealership"
+          render={({ field }) => (
+            <SelectField
+              {...field}
+              placeholder={t.chooseDealership}
+              light={false}
+              options={t.dealerships.map((d) => ({ value: d.value, label: d.label }))}
+            />
+          )}
+        />
       </Field>
       <Field label={t.model} error={errors.model?.message}>
-        <select className="input-field" {...register("model")}>
-          <option value="">{t.chooseModel}</option>
-          {models.map((m) => (
-            <option key={m.slug} value={m.slug}>
-              {m.name}
-            </option>
-          ))}
-        </select>
+        <Controller
+          control={control}
+          name="model"
+          render={({ field }) => (
+            <SelectField
+              {...field}
+              placeholder={t.chooseModel}
+              light={false}
+              options={models.map((m) => ({ value: m.slug, label: m.name }))}
+            />
+          )}
+        />
       </Field>
 
       <div aria-hidden="true" className="hidden">

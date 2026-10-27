@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import SelectField from "@/components/forms/SelectField";
 
 const EMIRATES = [
   { value: "dubai", en: "Dubai", ar: "دبي" },
@@ -75,18 +76,13 @@ export default function PlateNumberField({
   return (
     <div className="grid gap-5 sm:grid-cols-[1fr_1fr_1fr_auto]">
       <Field label={dict.forms.emirate} error={emirateError} light={light}>
-        <select
-          className={inputClass}
+        <SelectField
           value={emirate}
-          onChange={(e) => onEmirateChange(e.target.value)}
-        >
-          <option value="">{dict.forms.selectEmirate}</option>
-          {EMIRATES.map((e) => (
-            <option key={e.value} value={e.value}>
-              {locale === "ar" ? e.ar : e.en}
-            </option>
-          ))}
-        </select>
+          onChange={onEmirateChange}
+          light={!!light}
+          placeholder={dict.forms.selectEmirate}
+          options={EMIRATES.map((e) => ({ value: e.value, label: locale === "ar" ? e.ar : e.en }))}
+        />
       </Field>
 
       <Field label={dict.forms.plateCode} error={codeError} light={light}>

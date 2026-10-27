@@ -11,6 +11,7 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getModels } from "@/lib/i18n/data";
 import { NO_PREFERENCE, locationOptions } from "@/components/forms/locations";
 import DatePicker from "@/components/forms/DatePicker";
+import SelectField from "@/components/forms/SelectField";
 
 // Hourly appointments 10:00–17:00, plus two broader windows as a fallback.
 const TIME_SLOTS = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
@@ -86,97 +87,6 @@ function SectionHeader({
         <span className="text-lepas-amber"> *</span>
       </h3>
       {hint && <span className="text-xs text-lepas-ash">{hint}</span>}
-    </div>
-  );
-}
-
-function SelectChevron({ open }: { open: boolean }) {
-  return (
-    <svg
-      width="12"
-      height="8"
-      viewBox="0 0 12 8"
-      fill="none"
-      aria-hidden="true"
-      className={`shrink-0 text-lepas-amber transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-    >
-      <path
-        d="M1 1.5L6 6.5L11 1.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function LightSelect({
-  value,
-  onChange,
-  options,
-  placeholder,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  options: { value: string; label: string; description?: string; badge?: string; disabled?: boolean }[];
-  placeholder: string;
-}) {
-  const [open, setOpen] = useState(false);
-  const selected = options.find((o) => o.value === value);
-
-  return (
-    <div className="relative">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="input-field-light flex w-full items-center justify-between bg-white text-start"
-      >
-        <span className={value ? "text-lepas-black" : "text-lepas-ash"}>
-          {selected?.label || placeholder}
-        </span>
-        <SelectChevron open={open} />
-      </button>
-
-      {open && (
-        <>
-          <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-          <div className="absolute inset-x-0 top-full z-20 mt-1 border border-lepas-fog bg-white shadow-lg">
-            {options.map((o) => (
-              <button
-                key={o.value}
-                type="button"
-                disabled={o.disabled}
-                onClick={() => {
-                  onChange(o.value);
-                  setOpen(false);
-                }}
-                className={`flex w-full items-start justify-between gap-3 px-4 py-3 text-start text-sm transition-colors ${
-                  o.disabled
-                    ? "cursor-not-allowed text-lepas-ash"
-                    : value === o.value
-                    ? "bg-lepas-amber text-white"
-                    : "text-lepas-black hover:bg-lepas-amber/15"
-                }`}
-              >
-                <span>
-                  <span className="block">{o.label}</span>
-                  {o.description && (
-                    <span className={`mt-0.5 block text-xs ${value === o.value && !o.disabled ? "text-white/80" : "text-lepas-ash"}`}>
-                      {o.description}
-                    </span>
-                  )}
-                </span>
-                {o.badge && (
-                  <span className="shrink-0 rounded-full bg-lepas-amber px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
-                    {o.badge}
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
     </div>
   );
 }
@@ -409,7 +319,7 @@ export default function TestDriveForm() {
         />
         <div className="space-y-5">
           <FormField label={dict.testDrive.preferredShowroom} required error={errors.showroom?.message}>
-            <LightSelect
+            <SelectField
               value={selectedShowroom}
               onChange={(v) => {
                 setValue("showroom", v, { shouldValidate: true });
@@ -509,7 +419,7 @@ export default function TestDriveForm() {
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="sm:col-span-2 sm:max-w-xs">
             <FormField label={dict.forms.title} required error={errors.title?.message}>
-              <LightSelect
+              <SelectField
                 value={watch("title")}
                 onChange={(v) => setValue("title", v, { shouldValidate: true })}
                 placeholder="—"
