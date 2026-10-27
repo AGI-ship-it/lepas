@@ -6,6 +6,25 @@
     "description": "The L4 from AED 1,135 a month. Designed without compromise, protected without exception.",
     "imageLabel": "Red Lepas L4 on a red stage. Starting from AED 1,135 per month.",
     "image": "/design/assets/offers/l4.webp",
+    "bannerImage": "/design/assets/offers/l4-clean.webp",
+    "highlights": [
+      {
+        "value": "Free",
+        "label": "Insurance for one year"
+      },
+      {
+        "value": "Free",
+        "label": "Roadside assistance for 7 years"
+      },
+      {
+        "value": "10-yr / 1M km",
+        "label": "Engine warranty"
+      },
+      {
+        "value": "7-yr / 200K km",
+        "label": "Vehicle warranty"
+      }
+    ],
     "validUntil": "2026-12-31",
     "terms": [
       "Free insurance for one year",
@@ -44,6 +63,25 @@
     "description": "The LEPAS L8 from AED 1,533 a month. Elegance at full scale.",
     "imageLabel": "Green Lepas L8 on a green stage. Starting from AED 1,533 per month.",
     "image": "/design/assets/offers/l8.webp",
+    "bannerImage": "/design/assets/offers/l8-clean.webp",
+    "highlights": [
+      {
+        "value": "Free",
+        "label": "Insurance for one year"
+      },
+      {
+        "value": "Free",
+        "label": "Roadside assistance for 7 years"
+      },
+      {
+        "value": "10-yr / 1M km",
+        "label": "Engine warranty"
+      },
+      {
+        "value": "7-yr / 200K km",
+        "label": "Vehicle warranty"
+      }
+    ],
     "validUntil": "2026-12-31",
     "terms": [
       "Free insurance for one year",
@@ -82,6 +120,29 @@
     "description": "The L8 Super Hybrid from AED 1,886 a month, protected from the engine to the battery.",
     "imageLabel": "Green Lepas L8 Super Hybrid with 1,300 km combined range. Starting from AED 1,886 per month.",
     "image": "/design/assets/offers/l8-super-hybrid.webp",
+    "bannerImage": "/design/assets/offers/l8-super-hybrid-clean.webp",
+    "highlights": [
+      {
+        "value": "Free",
+        "label": "Insurance for one year"
+      },
+      {
+        "value": "Free",
+        "label": "Roadside assistance for 7 years"
+      },
+      {
+        "value": "10-yr / 1M km",
+        "label": "Engine warranty"
+      },
+      {
+        "value": "8-yr / 160K km",
+        "label": "Battery warranty"
+      },
+      {
+        "value": "7-yr / 200K km",
+        "label": "Vehicle warranty"
+      }
+    ],
     "validUntil": "2026-12-31",
     "terms": [
       "Free insurance for one year",

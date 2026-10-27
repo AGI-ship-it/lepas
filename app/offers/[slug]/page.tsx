@@ -7,6 +7,7 @@ import { Offer } from "@/lib/types";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import OfferBanner from "@/components/offers/OfferBanner";
 import CallbackForm from "@/components/forms/CallbackForm";
 import { offerMeta } from "@/components/forms/offerMeta";
 import { getServerDictionary } from "@/lib/i18n/server";
@@ -45,53 +46,54 @@ export default function OfferDetailPage({
 
   return (
     <>
-      <section className="bg-lepas-black pb-16 pt-32 text-white md:pb-24 md:pt-40">
-        <div className="container-lepas">
+      <OfferBanner
+        offer={offer}
+        meta={meta}
+        modelName={meta?.model[locale]}
+        labels={dict.home.heroOffers}
+        priority
+        fullHeight
+        before={
           <Link
             href="/offers"
-            className="mb-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest2 text-white/70 hover:text-white"
+            className="mb-8 inline-flex items-center gap-3 text-sm text-white/80 hover:text-lepas-amber"
           >
-            <span aria-hidden="true" className="rtl:rotate-180">←</span>
+            <span
+              aria-hidden="true"
+              className="flex h-6 w-6 items-center justify-center rounded-full border border-lepas-amber text-xs text-lepas-amber rtl:rotate-180"
+            >
+              ←
+            </span>
             {t.allOffers}
           </Link>
-          <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-            <div className="relative aspect-[1728/970] w-full overflow-hidden">
-              {offer.image ? (
-                <Image src={offer.image} alt={offer.imageLabel} fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" />
-              ) : (
-                <PlaceholderImage label={offer.imageLabel} aspect="aspect-[1728/970]" />
-              )}
-            </div>
-            <div>
-              {meta && (
-                <p className="text-sm text-white/70">
-                  <span className="font-semibold text-white">{meta.model[locale]}</span> {t.from} AED{" "}
-                  <span className="font-bold text-lepas-amber">{meta.monthly}</span> {t.perMonth}
-                </p>
-              )}
-              <h1 className="heading-display mt-4 text-3xl md:text-5xl">{offer.title}</h1>
-              <p className="mt-5 text-white/70">{offer.description}</p>
-              <ul className="mt-8 space-y-3">
-                {offer.terms.map((term) => (
-                  <li key={term} className="flex gap-3 text-sm text-white/80">
-                    <span aria-hidden="true" className="text-lepas-amber">✓</span>
-                    {term}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-xs text-white/50">{t.termsApply}</p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a href="#callback" className="btn-primary">
-                  {t.requestCallback}
-                </a>
-                {meta && (
-                  <Link href={meta.modelHref} className="btn-outline-light">
-                    {t.explore.replace("{model}", meta.modelShort)}
-                  </Link>
-                )}
-              </div>
-            </div>
-          </div>
+        }
+        actions={
+          <>
+            <a href="#callback" className="btn-primary">
+              {t.requestCallback}
+            </a>
+            {meta && (
+              <Link href={meta.modelHref} className="btn-outline-light">
+                {t.explore.replace("{model}", meta.modelShort)}
+              </Link>
+            )}
+          </>
+        }
+      />
+
+      <section className="bg-white py-16 text-lepas-black md:py-24">
+        <div className="container-lepas">
+          <h1 className="heading-display text-3xl md:text-5xl">{offer.title}</h1>
+          <p className="mt-6 max-w-3xl text-lg">{offer.description}</p>
+          <ul className="mt-10 grid max-w-4xl gap-x-12 gap-y-4 sm:grid-cols-2">
+            {offer.terms.map((term) => (
+              <li key={term} className="flex gap-4 text-base">
+                <span aria-hidden="true" className="mt-3 h-0.5 w-4 shrink-0 bg-lepas-amber" />
+                {term}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-sm text-lepas-steel">{t.termsApply}</p>
         </div>
       </section>
 
@@ -104,7 +106,7 @@ export default function OfferDetailPage({
 
       {others.length > 0 && (
         <Section title={t.moreOffers}>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {others.map((o) => {
               const m = offerMeta[o.slug];
               return (
@@ -112,7 +114,7 @@ export default function OfferDetailPage({
                   <Link href={`/offers/${o.slug}`} className="block">
                     <div className="relative aspect-[1728/970] w-full overflow-hidden">
                       {o.image ? (
-                        <Image src={o.image} alt={o.imageLabel} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+                        <Image src={o.image} alt={o.imageLabel} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                       ) : (
                         <PlaceholderImage label={o.imageLabel} aspect="aspect-[1728/970]" />
                       )}

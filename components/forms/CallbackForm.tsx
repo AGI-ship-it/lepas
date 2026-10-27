@@ -73,20 +73,20 @@ export default function CallbackForm({ defaultModel = "" }: { defaultModel?: str
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5 sm:grid-cols-2" noValidate>
       <Field label={dict.forms.firstName} error={errors.firstName?.message}>
-        <input className="input-field" autoComplete="given-name" {...register("firstName")} />
+        <input className="input-field" autoComplete="given-name" placeholder={dict.forms.firstName} {...register("firstName")} />
       </Field>
       <Field label={dict.forms.lastName} error={errors.lastName?.message}>
-        <input className="input-field" autoComplete="family-name" {...register("lastName")} />
+        <input className="input-field" autoComplete="family-name" placeholder={dict.forms.lastName} {...register("lastName")} />
       </Field>
       <Field label={dict.forms.emailAddress} error={errors.email?.message}>
-        <input className="input-field" type="email" autoComplete="email" {...register("email")} />
+        <input className="input-field" type="email" autoComplete="email" placeholder={dict.forms.emailAddress} {...register("email")} />
       </Field>
       <Field label={dict.forms.phoneNumber} error={errors.phone?.message}>
         <div className="phone-field">
           <span className="phone-prefix">
             🇦🇪 +971
           </span>
-          <input className="phone-input" type="tel" autoComplete="tel-national" {...register("phone")} />
+          <input className="phone-input" type="tel" autoComplete="tel-national" placeholder="50 123 4567" {...register("phone")} />
         </div>
       </Field>
       <Field label={t.dealership} error={errors.dealership?.message}>

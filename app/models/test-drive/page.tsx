@@ -33,18 +33,7 @@ export default function TestDrivePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/10" />
         <div className="container-lepas relative pb-14">
-          <nav aria-label="Breadcrumb" className="text-xs">
-            <ol className="flex items-center gap-2">
-              <li>
-                <Link href="/" className="text-lepas-amber hover:underline">
-                  {t.home}
-                </Link>
-              </li>
-              <li aria-hidden="true" className="text-white/40">&gt;</li>
-              <li aria-current="page" className="text-white/90">{dict.common.bookTestDrive}</li>
-            </ol>
-          </nav>
-          <h1 className="mt-5 max-w-2xl text-4xl font-semibold leading-[1.1] md:text-6xl">{t.heroTitle}</h1>
+          <h1 className="max-w-2xl text-4xl font-semibold leading-[1.1] md:text-6xl">{t.heroTitle}</h1>
           <p className="mt-5 max-w-xl text-white/75">{t.heroDescription}</p>
           <ul className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/55">
             <li>{t.warrantyMeta}</li>

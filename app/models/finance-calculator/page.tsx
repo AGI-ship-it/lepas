@@ -16,7 +16,6 @@ export default function FinanceCalculatorPage() {
   return (
     <>
       <SimpleHero
-        homeLabel={dict.testDriveFlow.home}
         title={dict.finance.heroTitle}
         description={dict.finance.heroDescription}
       />

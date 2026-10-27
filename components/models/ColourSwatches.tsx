@@ -1,85 +1,70 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ModelColour } from "@/lib/types";
-import Spin360Viewer from "@/components/models/Spin360Viewer";
-import { useLocale } from "@/components/i18n/LocaleProvider";
 
+/** "Select your shade": centred title, the shade name, the car side-on and a pill of swatches, as on lepasuae.com. */
 export default function ColourSwatches({
-  exteriorColours,
-  interiorColours,
+  id,
+  title,
+  colours,
   modelName,
 }: {
-  exteriorColours: ModelColour[];
-  interiorColours: ModelColour[];
+  id?: string;
+  title: string;
+  colours: ModelColour[];
   modelName: string;
 }) {
-  const { dict } = useLocale();
-  const [tab, setTab] = useState<"exterior" | "interior">("exterior");
   const [active, setActive] = useState(0);
-
-  const colours = tab === "exterior" ? exteriorColours : interiorColours;
   const colour = colours[active];
 
-  const selectTab = (next: "exterior" | "interior") => {
-    setTab(next);
-    setActive(0);
-  };
-
   return (
-    <div>
-      <div className="mb-8 flex gap-8 border-b border-lepas-fog">
-        <button
-          type="button"
-          onClick={() => selectTab("exterior")}
-          aria-current={tab === "exterior"}
-          className={`-mb-px border-b-2 pb-3 text-sm font-medium transition-colors ${
-            tab === "exterior"
-              ? "border-lepas-amber text-lepas-black"
-              : "border-transparent text-lepas-steel hover:text-lepas-black"
-          }`}
-        >
-          {dict.models.exterior}
-        </button>
-        <button
-          type="button"
-          onClick={() => selectTab("interior")}
-          aria-current={tab === "interior"}
-          className={`-mb-px border-b-2 pb-3 text-sm font-medium transition-colors ${
-            tab === "interior"
-              ? "border-lepas-amber text-lepas-black"
-              : "border-transparent text-lepas-steel hover:text-lepas-black"
-          }`}
-        >
-          {dict.models.interior}
-        </button>
-      </div>
+    <section id={id} className="scroll-mt-36 bg-[#f6f6f6] py-12 text-center text-lepas-black md:py-16">
+      <div className="container-lepas">
+        <h2 className="heading-display text-3xl md:text-4xl">{title}</h2>
+        <p aria-live="polite" className="mt-3 text-base font-bold uppercase text-lepas-black/45">
+          {colour.name}
+        </p>
 
-      <Spin360Viewer
-        frames={colour.image ? [colour.image] : []}
-        alt={`${modelName} in ${colour.name}`}
-        overlay={
-          <div className="flex flex-wrap justify-center gap-4">
-            {colours.map((c, i) => (
-              <button
-                key={c.name}
-                onClick={() => setActive(i)}
-                className="flex flex-col items-center gap-2"
-                aria-label={`Select colour ${c.name}`}
-                aria-current={i === active}
-              >
-                <span
-                  className={`h-10 w-10 rounded-full border-2 transition-all ${
-                    i === active ? "border-lepas-amber scale-110" : "border-white/60"
-                  }`}
-                  style={{ backgroundColor: c.hex }}
-                />
-                <span className="text-xs font-medium text-lepas-black">{c.name}</span>
-              </button>
-            ))}
-          </div>
-        }
-      />
-    </div>
+        <div className="relative mx-auto mt-6 aspect-[16/7] w-full max-w-5xl">
+          <AnimatePresence initial={false}>
+            {colour.image && (
+              <motion.img
+                key={colour.image}
+                src={colour.image}
+                alt={`${modelName} in ${colour.name}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 h-full w-full object-contain"
+                draggable={false}
+              />
+            )}
+          </AnimatePresence>
+        </div>
+
+        <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-black/5 bg-white px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] md:gap-6 md:px-8">
+          {colours.map((c, i) => (
+            <button
+              key={c.name}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-label={c.name}
+              aria-pressed={i === active}
+              className={`flex h-12 w-12 items-center justify-center rounded-full border transition-colors md:h-14 md:w-14 ${
+                i === active ? "border-lepas-black/40" : "border-transparent hover:border-lepas-black/15"
+              }`}
+            >
+              <span
+                className="h-9 w-9 rounded-full border border-black/10 md:h-11 md:w-11"
+                style={{ background: `radial-gradient(circle at 50% 25%, rgba(255,255,255,0.45), transparent 60%), ${c.hex}` }}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

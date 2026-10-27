@@ -109,13 +109,13 @@ export default function ContactForm() {
             </Field>
           </div>
           <Field label={dict.forms.firstName} required error={errors.firstName?.message}>
-            <input className="input-field-light" {...register("firstName")} />
+            <input className="input-field-light" placeholder={dict.forms.firstName} {...register("firstName")} />
           </Field>
           <Field label={dict.forms.lastName} required error={errors.lastName?.message}>
-            <input className="input-field-light" {...register("lastName")} />
+            <input className="input-field-light" placeholder={dict.forms.lastName} {...register("lastName")} />
           </Field>
           <Field label={dict.forms.emailAddress} required error={errors.email?.message}>
-            <input className="input-field-light" type="email" {...register("email")} />
+            <input className="input-field-light" type="email" placeholder={dict.forms.emailAddress} {...register("email")} />
           </Field>
           <Field label={dict.forms.phoneNumber}>
             <div className="phone-field-light">

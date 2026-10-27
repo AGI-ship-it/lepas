@@ -30,44 +30,46 @@ export default function AfterSalesPage() {
       />
 
       <Section id="roadside-assistance" className="scroll-mt-20">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <p className="eyebrow">{t.eyebrow}</p>
-            <h2 className="heading-display mt-4 text-3xl md:text-5xl">{t.title}</h2>
-            <p className="mt-6 text-lg text-lepas-steel">{t.intro}</p>
-            <p className="mt-6 text-lg text-lepas-ink">
-              {t.roadsidePrefix}{" "}
-              <a href="tel:6005462005" className="font-semibold text-lepas-amber hover:underline" dir="ltr">
-                {t.roadsideNumber}
-              </a>
-              .
-            </p>
-            <Link href="/after-sales/book-service" className="btn-primary mt-8">
-              {t.bookYourService}
-            </Link>
-          </div>
-          <div className="relative aspect-[4/3] overflow-hidden">
-            <Image
-              src="/design/assets/warranty-roadside.webp"
-              alt={t.heroImageAlt}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="heading-display !text-center text-3xl md:text-5xl">{t.title}</h2>
+          <p className="mt-6 text-lg text-lepas-steel">{t.intro}</p>
+          <p className="mt-6 text-lepas-ink">
+            {t.roadsidePrefix}{" "}
+            <a href="tel:6005462005" className="font-semibold text-lepas-amber hover:underline" dir="ltr">
+              {t.roadsideNumber}
+            </a>
+            .
+          </p>
+          <Link href="/after-sales/book-service" className="btn-primary mt-8">
+            {t.bookYourService}
+          </Link>
         </div>
       </Section>
 
-      <Section id="warranty" light={false} title={t.warrantyTitle} className="scroll-mt-20">
-        <dl className="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-3">
-          {t.warranty.map((w) => (
-            <div key={w.years} className="bg-lepas-black p-8">
-              <dt className="heading-display text-4xl text-lepas-amber md:text-5xl">{w.years}</dt>
-              <dd className="mt-3 text-white/80">{w.text}</dd>
-            </div>
-          ))}
-        </dl>
-      </Section>
+      <section
+        id="warranty"
+        className="relative flex min-h-[640px] scroll-mt-20 flex-col overflow-hidden bg-lepas-black text-white md:min-h-[clamp(680px,56vw,960px)]"
+      >
+        <Image
+          src="/design/assets/warranty-roadside.webp"
+          alt={t.heroImageAlt}
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+        <div className="container-lepas relative flex flex-1 flex-col pb-14 pt-16 md:pb-24 md:pt-24">
+          <h2 className="heading-display text-2xl md:text-4xl">{t.warrantyTitle}</h2>
+          <dl className="mt-auto grid grid-cols-2 gap-x-6 gap-y-8 text-center md:flex md:flex-wrap md:items-end md:justify-center md:gap-x-16">
+            {t.warranty.map((w) => (
+              <div key={w.years} className="flex flex-col items-center gap-1 md:gap-4">
+                <dt className="heading-display text-3xl md:text-5xl">{w.years}</dt>
+                <dd className="text-sm text-white/80 md:text-2xl">{w.text}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
       <Section>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

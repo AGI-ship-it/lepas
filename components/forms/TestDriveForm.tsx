@@ -523,13 +523,13 @@ export default function TestDriveForm() {
             </FormField>
           </div>
           <FormField label={dict.forms.firstName} required error={errors.firstName?.message}>
-            <input className="input-field-light" {...register("firstName")} />
+            <input className="input-field-light" placeholder={dict.forms.firstName} {...register("firstName")} />
           </FormField>
           <FormField label={dict.forms.lastName} required error={errors.lastName?.message}>
-            <input className="input-field-light" {...register("lastName")} />
+            <input className="input-field-light" placeholder={dict.forms.lastName} {...register("lastName")} />
           </FormField>
           <FormField label={dict.forms.emailAddress} required error={errors.email?.message}>
-            <input className="input-field-light" type="email" {...register("email")} />
+            <input className="input-field-light" type="email" placeholder={dict.forms.emailAddress} {...register("email")} />
           </FormField>
           <FormField label={dict.forms.phoneNumber}>
             <div className="phone-field-light">

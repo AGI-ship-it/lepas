@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import type { Metadata } from "next";
 import modelsData from "@/data/models.json";
 import { VehicleModel } from "@/lib/types";
@@ -7,9 +6,10 @@ import Image from "next/image";
 import Section from "@/components/ui/Section";
 import CallbackForm from "@/components/forms/CallbackForm";
 import ModelHero from "@/components/models/ModelHero";
-import StatsBar from "@/components/models/StatsBar";
 import HotspotFeature from "@/components/models/HotspotFeature";
-import CabinTabs from "@/components/models/CabinTabs";
+import InteriorCarousel from "@/components/models/InteriorCarousel";
+import FeatureShowcase from "@/components/models/FeatureShowcase";
+import ModelSectionNav from "@/components/models/ModelSectionNav";
 import UtilitySpecs from "@/components/models/UtilitySpecs";
 import SpecsTable from "@/components/models/SpecsTable";
 import ColourSwatches from "@/components/models/ColourSwatches";
@@ -72,47 +72,66 @@ export default function ModelDetailPage({
   const d = model.detailPage;
   const assets = modelAssets[model.slug];
 
+  const nav = dict.models.sectionNav;
+  const hasExterior = !!d.terrainItems?.length;
+  const hasPerformance = !!d.exteriorItems?.length;
+  const navLinks = [
+    { id: "shade", label: nav.shade },
+    ...(hasExterior ? [{ id: "exterior", label: nav.exterior }] : []),
+    { id: "interior", label: nav.interior },
+    ...(hasPerformance ? [{ id: "performance", label: nav.performance }] : []),
+    { id: "safety", label: nav.safety },
+    ...(assets?.lifestyle ? [{ id: "drive", label: nav.drive }] : []),
+    { id: "callback", label: nav.callback },
+  ];
+
+  // Section order follows lepasuae.com/l8; specs, warranty and accessories sit after Drive.
   return (
     <>
-      {/* Hero */}
-      <ModelHero model={model} dict={dict} />
+      <ModelHero model={model} dict={dict} brochure={assets?.brochure} />
 
-      {/* Colours */}
-      <Section eyebrow={dict.models.customize} title={dict.models.availableColours}>
-        <ColourSwatches
-          exteriorColours={model.colours}
-          interiorColours={model.interiorColours}
-          modelName={model.name}
+      <ModelSectionNav label={nav.label} links={navLinks} />
+
+      <ColourSwatches
+        id="shade"
+        title={dict.models.availableColours}
+        colours={model.colours}
+        modelName={model.name}
+      />
+
+      {hasExterior && (
+        <FeatureShowcase
+          id="exterior"
+          title={d.terrainEyebrow ?? nav.exterior}
+          items={d.terrainItems!}
+          iconDir="/svg/exterior"
+          variant="headline"
         />
-      </Section>
+      )}
 
-      {/* Stats */}
-      <StatsBar eyebrow={d.statsEyebrow} stats={d.stats} />
+      <InteriorCarousel title={d.cabinTitle} tabs={d.cabinTabs} />
 
-      {/* Interactive exterior highlights */}
-      <div className="container-lepas flex flex-wrap items-end justify-between gap-6 pt-16">
-        <div>
-          <h2 className="heading-display text-3xl md:text-5xl">{d.highlightsTitle}</h2>
-        </div>
-        {assets?.brochure && (
-          <a href={assets.brochure} target="_blank" rel="noopener noreferrer" className="btn-outline shrink-0">
-            {dict.common.downloadBrochure}
-          </a>
-        )}
-      </div>
-      <div className="mt-8">
-        <HotspotFeature
-          image={assets?.safety}
-          imageLabel={d.exteriorImageLabel}
-          features={d.highlights}
+      {hasPerformance && (
+        <FeatureShowcase
+          id="performance"
+          title={d.exteriorEyebrow ?? nav.performance}
+          items={d.exteriorItems!}
+          iconDir="/svg/performance"
         />
-      </div>
+      )}
 
-      {/* Exterior features */}
-      {d.terrainItems && d.terrainItems.length > 0 && (
-        <Section>
-          <NumberedSlider eyebrow={d.terrainEyebrow ?? ""} items={d.terrainItems} />
-        </Section>
+      <HotspotFeature
+        id="safety"
+        title={d.highlightsTitle}
+        image={assets?.safety}
+        imageLabel={d.exteriorImageLabel}
+        features={d.highlights}
+      />
+
+      {assets?.lifestyle && (
+        <section id="drive" aria-label={nav.drive} className="relative aspect-[1728/811] w-full scroll-mt-36 bg-lepas-black">
+          <Image src={assets.lifestyle} alt={d.chargingImageLabel} fill sizes="100vw" className="object-cover" />
+        </section>
       )}
 
       {/* Additional safety highlights */}
@@ -131,32 +150,8 @@ export default function ModelDetailPage({
         </Section>
       )}
 
-      {/* Performance */}
-      {d.exteriorItems && d.exteriorItems.length > 0 && (
-        <Section>
-          <NumberedSlider eyebrow={d.exteriorEyebrow ?? ""} items={d.exteriorItems} />
-        </Section>
-      )}
-
-      {/* Interior highlights */}
-      {d.interiorItems && d.interiorItems.length > 0 && (
-        <Section>
-          <NumberedSlider eyebrow={d.interiorEyebrow ?? ""} items={d.interiorItems} />
-        </Section>
-      )}
-
-      {/* Cabin */}
-      <Section
-        light={false}
-        eyebrow={d.cabinEyebrow}
-        title={d.cabinTitle}
-        description={d.cabinIntro}
-      >
-        <CabinTabs tabs={d.cabinTabs} />
-      </Section>
-
       {/* Ownership & warranty */}
-      <Section light={false} eyebrow={dict.models.details} title={d.utilityTitle} description={d.utilityIntro} className="pt-0">
+      <Section light={false} eyebrow={dict.models.details} title={d.utilityTitle} description={d.utilityIntro}>
         <UtilitySpecs specs={d.utilitySpecs} />
       </Section>
 
@@ -175,37 +170,9 @@ export default function ModelDetailPage({
         />
       </Section>
 
-      <Section id="callback" light={false} title={dict.lepasUi.requestCallback}>
+      <Section id="callback" light={false} title={dict.lepasUi.requestCallback} className="scroll-mt-36">
         <CallbackForm defaultModel={model.slug} />
       </Section>
-
-      {/* Final CTA over the lifestyle image */}
-      <section className="relative overflow-hidden bg-lepas-black py-28 text-center text-white md:py-40">
-        {assets?.lifestyle && (
-          <Image src={assets.lifestyle} alt={d.chargingImageLabel} fill sizes="100vw" className="object-cover" />
-        )}
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="container-lepas relative">
-          <h2 className="heading-display !text-center text-3xl md:text-5xl">{d.chargingLabel}</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/75">
-            {locale === "ar" ? `جاهز لتجربة ${model.name}؟` : `Ready to experience the ${model.name}?`}
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href={`/models/test-drive?model=${model.slug}`} className="btn-primary">
-              {dict.common.bookTestDrive}
-            </Link>
-            <Link
-              href={`/models/finance-calculator?model=${model.slug}`}
-              className="btn-outline-light"
-            >
-              {dict.nav.calculateFinance}
-            </Link>
-            <Link href="/models/compare" className="btn-outline-light">
-              {dict.nav.compareModels}
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

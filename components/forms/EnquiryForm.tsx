@@ -82,16 +82,16 @@ export default function EnquiryForm({ subject }: { subject: string }) {
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4" noValidate>
                   <FormField label={dict.forms.fullName} error={errors.fullName?.message}>
-                    <input className="input-field" {...register("fullName")} />
+                    <input className="input-field" placeholder={dict.forms.fullName} {...register("fullName")} />
                   </FormField>
                   <FormField label={dict.forms.phoneNumber} error={errors.phone?.message}>
-                    <input className="input-field" type="tel" {...register("phone")} />
+                    <input className="input-field" type="tel" placeholder="50 123 4567" {...register("phone")} />
                   </FormField>
                   <FormField label={dict.forms.email} error={errors.email?.message}>
-                    <input className="input-field" type="email" {...register("email")} />
+                    <input className="input-field" type="email" placeholder={dict.forms.email} {...register("email")} />
                   </FormField>
                   <FormField label={`${dict.forms.message} (${locale === "ar" ? "اختياري" : "optional"})`}>
-                    <textarea className="input-field" rows={3} {...register("message")} />
+                    <textarea className="input-field" rows={3} placeholder={dict.forms.message} {...register("message")} />
                   </FormField>
                   <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
                     {isSubmitting ? dict.forms.sending : dict.common.enquireNow}

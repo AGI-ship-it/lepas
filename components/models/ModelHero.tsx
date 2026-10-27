@@ -4,22 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import { monthlyFromLabel } from "@/components/models/pricing";
 import { VehicleModel } from "@/lib/types";
 import { Dictionary } from "@/lib/i18n";
 
+// Stats are stored in a fixed order: engine, transmission, power/torque, wheelbase, combined range.
+const statIcons = ["engine", "transmission", "power-torque", "wheelbase", "combined-range"];
+
+/** Full-bleed model hero with the key specs and CTAs along the bottom, as on lepasuae.com. */
 export default function ModelHero({
   model,
   dict,
+  brochure,
 }: {
   model: VehicleModel;
   dict: Dictionary;
+  brochure?: string;
 }) {
   const d = model.detailPage;
-  const monthly = monthlyFromLabel(model.slug, model.currency, dict);
 
   return (
-    <section className="relative flex h-[88vh] min-h-[640px] items-end overflow-hidden bg-lepas-black">
+    <section className="relative flex h-[100svh] min-h-[640px] items-end overflow-hidden bg-lepas-black pt-20">
       <motion.div
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -27,83 +31,60 @@ export default function ModelHero({
         className="absolute inset-0 h-full w-full"
       >
         {model.heroImage ? (
-          <Image
-            src={model.heroImage}
-            alt={model.heroImageLabel}
-            fill
-            priority
-            className="object-cover"
-          />
+          <Image src={model.heroImage} alt={model.heroImageLabel} fill priority sizes="100vw" className="object-cover" />
         ) : (
-          <PlaceholderImage
-            label={model.heroImageLabel}
-            aspect="aspect-auto"
-            className="h-full w-full"
-          />
+          <PlaceholderImage label={model.heroImageLabel} aspect="aspect-auto" className="h-full w-full" />
         )}
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/5" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
 
-      <div className="container-lepas relative pb-20 text-white">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Link
-            href="/models"
-            className="mb-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest2 text-white/70 hover:text-white"
-          >
-            <span aria-hidden="true" className="rtl:rotate-180">←</span>
-            {dict.common.backToModels}
-          </Link>
-        </motion.div>
-        <motion.h1
+      <div className="container-lepas relative pb-10 text-white md:pb-14">
+        <h1 className="sr-only">{d.heroHeadline}</h1>
+
+        <motion.ul
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="heading-display max-w-2xl text-3xl text-white sm:text-4xl md:text-5xl"
+          className={`grid grid-cols-2 gap-x-6 gap-y-6 md:gap-x-8 ${d.stats.length > 4 ? "md:grid-cols-5" : "md:grid-cols-4"}`}
         >
-          {d.heroHeadline}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-          className="mt-4 max-w-xl text-white/70"
-        >
-          {d.heroSubcopy}
-        </motion.p>
+          {d.stats.map((stat, i) => (
+            <li key={stat.label} className="flex items-center gap-4 border-b border-white/60 pb-4">
+              {statIcons[i] && (
+                <Image
+                  src={`/svg/model-spec/${statIcons[i]}.svg`}
+                  alt=""
+                  width={36}
+                  height={36}
+                  className="h-8 w-8 shrink-0 md:h-9 md:w-9"
+                />
+              )}
+              <span className="flex flex-col border-s border-white/60 ps-4">
+                <span className="text-[11px] leading-tight text-white/90 md:text-xs">{stat.label}</span>
+                <span className="mt-1 text-sm font-bold uppercase md:text-base">{stat.value}</span>
+              </span>
+            </li>
+          ))}
+        </motion.ul>
+
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-          className="mt-8 flex flex-wrap gap-4"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
+          className="mt-8 flex flex-wrap justify-center gap-4"
         >
           <Link href={`/models/test-drive?model=${model.slug}`} className="btn-primary text-center">
             {dict.common.bookTestDrive}
           </Link>
-          <Link
-            href={`/models/finance-calculator?model=${model.slug}`}
-            className="btn-outline-light text-center"
-          >
-            {dict.nav.calculateFinance}
-          </Link>
-          <Link href="/models/compare" className="btn-outline-light text-center">
-            {dict.nav.compareModels}
-          </Link>
+          {brochure ? (
+            <a href={brochure} target="_blank" rel="noopener noreferrer" className="btn-outline-light text-center">
+              {dict.common.downloadBrochure}
+            </a>
+          ) : (
+            <Link href={`/models/finance-calculator?model=${model.slug}`} className="btn-outline-light text-center">
+              {dict.nav.calculateFinance}
+            </Link>
+          )}
         </motion.div>
-        {monthly && (
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.75 }}
-            className="mt-6 text-sm uppercase tracking-widest2 text-white/60"
-          >
-            {dict.common.startingFrom} <span className="font-semibold text-lepas-amber">{monthly}</span>
-          </motion.p>
-        )}
       </div>
     </section>
   );

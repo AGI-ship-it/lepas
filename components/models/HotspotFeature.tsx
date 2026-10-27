@@ -6,132 +6,76 @@ import { AnimatePresence, motion } from "framer-motion";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { HotspotFeature as HotspotFeatureType } from "@/lib/types";
 
+/** Full-bleed cutaway with hotspots; the selected one's name and copy sit bottom-left, as on lepasuae.com. */
 export default function HotspotFeature({
+  id,
+  title,
   image,
   imageLabel,
   features,
 }: {
+  id?: string;
+  title: string;
   image?: string;
   imageLabel: string;
   features: HotspotFeatureType[];
 }) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const isOpen = activeIndex !== null;
-  const active = activeIndex !== null ? features[activeIndex] : null;
-
-  const go = (delta: number) => {
-    setActiveIndex((i) => {
-      if (i === null) return 0;
-      return (i + delta + features.length) % features.length;
-    });
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = features[activeIndex];
 
   return (
-    <div className="relative aspect-[16/9] w-full overflow-hidden bg-lepas-ink md:aspect-[21/9]">
+    <section
+      id={id}
+      aria-label={title}
+      className="relative min-h-[520px] scroll-mt-36 overflow-hidden bg-lepas-ink text-white md:aspect-[1440/607] md:min-h-0"
+    >
       {image ? (
-        <Image src={image} alt={imageLabel} fill className="object-cover" priority />
+        <Image src={image} alt={imageLabel} fill sizes="100vw" className="object-cover" />
       ) : (
-        <PlaceholderImage label={imageLabel} aspect="aspect-auto h-full" className="h-full" />
+        <PlaceholderImage label={imageLabel} aspect="aspect-auto h-full" className="absolute inset-0 h-full" />
       )}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent rtl:bg-gradient-to-l" />
 
-      {features.map((f, i) => (
-        <button
-          key={f.title}
-          onClick={() => setActiveIndex(i)}
-          aria-label={f.title}
-          style={{ left: `${f.x}%`, top: `${f.y}%` }}
-          className="group absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
-        >
-          <span className="absolute h-14 w-14 animate-ping rounded-full bg-white/40" />
-          <span className="relative flex h-11 w-11 items-center justify-center rounded-full bg-white text-lepas-black shadow-lg transition-transform group-hover:scale-110">
-            <PlusIcon />
-          </span>
-        </button>
-      ))}
-
-      <AnimatePresence>
-        {isOpen && active && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[90] bg-black/70"
-              onClick={() => setActiveIndex(null)}
+      {features.map((f, i) => {
+        const on = i === activeIndex;
+        return (
+          <button
+            key={f.title}
+            type="button"
+            onClick={() => setActiveIndex(i)}
+            aria-label={f.title}
+            aria-pressed={on}
+            style={{ left: `${f.x}%`, top: `${f.y}%` }}
+            className="group absolute flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+          >
+            <span
+              className={`absolute h-8 w-8 rounded-full border border-white/80 transition-shadow ${
+                on ? "shadow-[0_0_18px_6px_rgba(235,146,1,0.45)]" : ""
+              }`}
             />
+            <span
+              className={`relative h-3 w-3 rounded-full transition-all group-hover:scale-125 ${on ? "bg-lepas-amber" : "bg-white"}`}
+            />
+          </button>
+        );
+      })}
+
+      <div className="container-lepas pointer-events-none absolute inset-x-0 bottom-0 pb-12 md:pb-24">
+        <h2 className="sr-only">{title}</h2>
+        <div aria-live="polite" className="max-w-xs">
+          <AnimatePresence mode="wait">
             <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-y-0 right-0 z-[95] flex w-full max-w-md flex-col bg-lepas-black text-white md:max-w-lg"
+              key={activeIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.35 }}
             >
-              <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-lepas-ink">
-                {image ? (
-                  <Image
-                    src={image}
-                    alt={active.imageLabel}
-                    fill
-                    className="scale-150 object-cover transition-all duration-500"
-                    style={{ objectPosition: `${active.x}% ${active.y}%` }}
-                  />
-                ) : (
-                  <PlaceholderImage
-                    label={active.imageLabel}
-                    aspect="aspect-auto h-full"
-                    className="h-full"
-                  />
-                )}
-                <button
-                  onClick={() => setActiveIndex(null)}
-                  aria-label="Close"
-                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-black/40 text-white backdrop-blur-sm hover:border-white"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <div className="flex flex-1 flex-col justify-between overflow-y-auto p-8">
-                <div className="text-start">
-                  <p className="text-xs font-semibold uppercase tracking-widest2 text-white">
-                    {String(activeIndex! + 1).padStart(2, "0")} / {String(features.length).padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-4 text-3xl font-bold">{active.title}</h3>
-                  <p className="mt-4 text-white/60">{active.body}</p>
-                </div>
-
-                <div className="mt-10 flex items-center justify-between border-t border-white/10 pt-6">
-                  <button
-                    onClick={() => go(-1)}
-                    aria-label="Previous feature"
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
-                  >
-                    ‹
-                  </button>
-                  <p className="text-xs font-medium uppercase tracking-widest2 text-white/60">
-                    {features[(activeIndex! + 1) % features.length].title}
-                  </p>
-                  <button
-                    onClick={() => go(1)}
-                    aria-label="Next feature"
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
-                  >
-                    ›
-                  </button>
-                </div>
-              </div>
+              <h3 className="text-lg font-bold uppercase leading-snug md:text-xl">{active.title}</h3>
             </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-function PlusIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-    </svg>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
   );
 }

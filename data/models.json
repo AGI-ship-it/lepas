@@ -257,25 +257,29 @@
           "title": "LED Dipped Headlights",
           "body": "Headlights inspired by the eyes of the leopard give the L8 an unmistakable look, day and night.",
           "imageLabel": "Lepas L8 LED dipped headlights",
-          "image": "/design/assets/exterior/l8/headlights-on.webp"
+          "image": "/design/assets/exterior/l8/headlights-on.webp",
+          "icon": "headlights"
         },
         {
           "title": "Unibody Frame",
           "body": "A rigid unibody frame delivers a composed ride and a strong safety structure.",
           "imageLabel": "Lepas L8 unibody frame",
-          "image": "/design/assets/exterior/l8/unibody-frame.webp"
+          "image": "/design/assets/exterior/l8/unibody-frame.webp",
+          "icon": "unibody"
         },
         {
           "title": "Roof Rack",
           "body": "An integrated roof rack adds practical carrying capacity for weekend adventures.",
           "imageLabel": "Lepas L8 roof rack",
-          "image": "/design/assets/exterior/l8/roof-rack-on.webp"
+          "image": "/design/assets/exterior/l8/roof-rack-on.webp",
+          "icon": "roof"
         },
         {
           "title": "GSO Side Mirrors",
           "body": "GSO-compliant side mirrors offer a clear view of the road around you.",
           "imageLabel": "Lepas L8 GSO side mirrors",
-          "image": "/design/assets/exterior/l8/side-mirrors-on.webp"
+          "image": "/design/assets/exterior/l8/side-mirrors-on.webp",
+          "icon": "mirror"
         }
       ],
       "exteriorEyebrow": "Performance",
@@ -284,19 +288,22 @@
           "title": "1.5TGDI Engine (3rd Generation)",
           "body": "Delivers advanced turbocharged performance with stronger output and smoother response.",
           "imageLabel": "Lepas L8 1.5TGDI engine",
-          "image": "/design/assets/performance/l8/engine.webp"
+          "image": "/design/assets/performance/l8/engine.webp",
+          "icon": "engine"
         },
         {
           "title": "7DCT Transmission (4th Generation)",
           "body": "Pre-selects the next gear to deliver near-instant shifts with minimal interruption.",
           "imageLabel": "Lepas L8 7DCT transmission",
-          "image": "/design/assets/performance/l8/transmission.webp"
+          "image": "/design/assets/performance/l8/transmission.webp",
+          "icon": "transmission"
         },
         {
           "title": "Regenerative Braking (PHEV)",
           "body": "On the Super Hybrid, adjustable energy recovery converts braking energy into electrical power to help recharge the battery.",
           "imageLabel": "Lepas L8 regenerative braking",
-          "image": "/design/assets/performance/l8/regen-braking.webp"
+          "image": "/design/assets/performance/l8/regen-braking.webp",
+          "icon": "regen"
         }
       ],
       "cabinEyebrow": "Interior",
@@ -308,14 +315,16 @@
           "heading": "Two-Tone Interior",
           "body": "A refined two-tone cabin with soft-touch materials and elegant detailing.",
           "imageLabel": "Lepas L8 two-tone interior",
-          "image": "/design/assets/interior/l8/twotone-a.webp"
+          "image": "/design/assets/interior/l8/twotone-a.webp",
+          "image2": "/design/assets/interior/l8/twotone-b.webp"
         },
         {
           "label": "13.2\" LCD Display",
           "heading": "13.2-inch Central LCD Display",
           "body": "A large central display puts navigation, media and vehicle settings within easy reach.",
           "imageLabel": "Lepas L8 13.2-inch central display",
-          "image": "/design/assets/interior/l8/display-a.webp"
+          "image": "/design/assets/interior/l8/display-a.webp",
+          "image2": "/design/assets/interior/l8/display-b.webp"
         },
         {
           "label": "Climate",
@@ -329,7 +338,8 @@
           "heading": "Sony Premium Sound System",
           "body": "A Sony premium sound system fills the cabin with rich, detailed audio.",
           "imageLabel": "Lepas L8 Sony premium sound system",
-          "image": "/design/assets/interior/l8/sound-a.webp"
+          "image": "/design/assets/interior/l8/sound-a.webp",
+          "image2": "/design/assets/interior/l8/sound-b.webp"
         }
       ],
       "utilityTitle": "Ownership & Warranty",
@@ -604,25 +614,29 @@
           "title": "18-inch Fully Painted Rims",
           "body": "Fully painted 18-inch rims complete the L6's confident stance.",
           "imageLabel": "Lepas L6 18-inch rims",
-          "image": "/design/assets/exterior/l6/rim18-on.webp"
+          "image": "/design/assets/exterior/l6/rim18-on.webp",
+          "icon": "l6/rims"
         },
         {
           "title": "Panoramic Sunroof with Sunshade",
           "body": "A panoramic sunroof fills the cabin with light, with a sunshade for the hottest days.",
           "imageLabel": "Lepas L6 panoramic sunroof",
-          "image": "/design/assets/exterior/l6/sunroof.webp"
+          "image": "/design/assets/exterior/l6/sunroof.webp",
+          "icon": "l6/sunroof"
         },
         {
           "title": "Unibody Frame",
           "body": "A rigid unibody frame delivers a composed ride and a strong safety structure.",
           "imageLabel": "Lepas L6 unibody frame",
-          "image": "/design/assets/exterior/l6/unibody.webp"
+          "image": "/design/assets/exterior/l6/unibody.webp",
+          "icon": "unibody"
         },
         {
           "title": "Automatic Headlights",
           "body": "Headlights switch on automatically as light fades, so you can focus on the road.",
           "imageLabel": "Lepas L6 automatic headlights",
-          "image": "/design/assets/exterior/l6/headlights.webp"
+          "image": "/design/assets/exterior/l6/headlights.webp",
+          "icon": "l6/headlights"
         }
       ],
       "exteriorEyebrow": "Performance",
@@ -631,13 +645,15 @@
           "title": "1.5TCI Engine (3rd Generation)",
           "body": "Offers refined turbo performance with quick response and efficient operation.",
           "imageLabel": "Lepas L6 1.5TCI engine",
-          "image": "/design/assets/performance/l6/engine.webp"
+          "image": "/design/assets/performance/l6/engine.webp",
+          "icon": "engine"
         },
         {
           "title": "6DCT Transmission (4th Generation)",
           "body": "Pre-selects the next gear to deliver near-instant shifts with minimal interruption.",
           "imageLabel": "Lepas L6 6DCT transmission",
-          "image": "/design/assets/performance/l6/transmission.webp"
+          "image": "/design/assets/performance/l6/transmission.webp",
+          "icon": "transmission"
         }
       ],
       "cabinEyebrow": "Interior",
@@ -649,21 +665,24 @@
           "heading": "13.2-inch Central LCD Display",
           "body": "A large central display puts navigation, media and vehicle settings within easy reach.",
           "imageLabel": "Lepas L6 13.2-inch central display",
-          "image": "/design/assets/interior/l6/display-a.webp"
+          "image": "/design/assets/interior/l6/display-a.webp",
+          "image2": "/design/assets/interior/l6/display-b.webp"
         },
         {
           "label": "Leather Seats",
           "heading": "Leather Seats",
           "body": "Supportive leather seats keep every journey comfortable.",
           "imageLabel": "Lepas L6 leather seats",
-          "image": "/design/assets/interior/l6/seats-a.webp"
+          "image": "/design/assets/interior/l6/seats-a.webp",
+          "image2": "/design/assets/interior/l6/seats-b.webp"
         },
         {
           "label": "Climate",
           "heading": "Dual-Zone Automatic Air Conditioning",
           "body": "Driver and front passenger each set their own temperature for comfort in every season.",
           "imageLabel": "Lepas L6 dual-zone climate control",
-          "image": "/design/assets/interior/l6/ac-a.webp"
+          "image": "/design/assets/interior/l6/ac-a.webp",
+          "image2": "/design/assets/interior/l6/ac-b.webp"
         }
       ],
       "utilityTitle": "Ownership & Warranty",
@@ -959,25 +978,29 @@
           "title": "Spoiler",
           "body": "A sculpted rear spoiler sharpens the L4's sporty profile.",
           "imageLabel": "Lepas L4 spoiler",
-          "image": "/design/assets/exterior/l4/spoiler-on.webp"
+          "image": "/design/assets/exterior/l4/spoiler-on.webp",
+          "icon": "l4/spoiler"
         },
         {
           "title": "Power-Operated Trunk Lock",
           "body": "Open and close the trunk at the touch of a button.",
           "imageLabel": "Lepas L4 power-operated trunk lock",
-          "image": "/design/assets/exterior/l4/trunk-on.webp"
+          "image": "/design/assets/exterior/l4/trunk-on.webp",
+          "icon": "l4/trunk"
         },
         {
           "title": "Electric Sunroof",
           "body": "An electric sunroof lets in light and fresh air whenever you want it.",
           "imageLabel": "Lepas L4 electric sunroof",
-          "image": "/design/assets/exterior/l4/electric-sunroof-on.webp"
+          "image": "/design/assets/exterior/l4/electric-sunroof-on.webp",
+          "icon": "l4/electric-sunroof"
         },
         {
           "title": "Automatic Headlights",
           "body": "Headlights switch on automatically as light fades, so you can focus on the road.",
           "imageLabel": "Lepas L4 automatic headlights",
-          "image": "/design/assets/exterior/l4/headlights-on.webp"
+          "image": "/design/assets/exterior/l4/headlights-on.webp",
+          "icon": "l4/headlights"
         }
       ],
       "exteriorEyebrow": "Performance",
@@ -986,13 +1009,15 @@
           "title": "1.5TCI Engine (3rd Generation)",
           "body": "Offers consistent turbocharged performance for daily use.",
           "imageLabel": "Lepas L4 1.5TCI engine",
-          "image": "/design/assets/performance/l4/engine.webp"
+          "image": "/design/assets/performance/l4/engine.webp",
+          "icon": "engine"
         },
         {
           "title": "6DCT Transmission (4th Generation)",
           "body": "Pre-selects the next gear to deliver near-instant shifts with minimal interruption.",
           "imageLabel": "Lepas L4 6DCT transmission",
-          "image": "/design/assets/performance/l4/transmission.webp"
+          "image": "/design/assets/performance/l4/transmission.webp",
+          "icon": "transmission"
         }
       ],
       "cabinEyebrow": "Interior",

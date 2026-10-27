@@ -180,9 +180,6 @@ export default function Navbar() {
         <div className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-4">
           <SearchBox />
           <LanguageToggle />
-          <a href="tel:600553727" className="hidden whitespace-nowrap text-[15px] text-white/90 hover:text-lepas-amber 2xl:inline">
-            6005LEPAS
-          </a>
           <Link href="/models/test-drive" className="btn-primary whitespace-nowrap lg:px-4 2xl:px-7">
             {dict.nav.bookTestDrive}
           </Link>
@@ -275,9 +272,6 @@ export default function Navbar() {
                 >
                   {dict.nav.bookTestDrive}
                 </Link>
-                <a href="tel:600553727" className="btn-outline-light text-center">
-                  6005LEPAS
-                </a>
                 <LanguageToggle />
               </div>
 

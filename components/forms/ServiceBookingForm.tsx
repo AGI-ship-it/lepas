@@ -321,10 +321,10 @@ export default function ServiceBookingForm() {
           </Field>
         </div>
         <Field label={dict.forms.firstName} required error={errors.firstName?.message}>
-          <input className="input-field-light" {...register("firstName")} />
+          <input className="input-field-light" placeholder={dict.forms.firstName} {...register("firstName")} />
         </Field>
         <Field label={dict.forms.lastName} required error={errors.lastName?.message}>
-          <input className="input-field-light" {...register("lastName")} />
+          <input className="input-field-light" placeholder={dict.forms.lastName} {...register("lastName")} />
         </Field>
         <Field label={dict.forms.phoneNumber}>
           <div className="phone-field-light">
@@ -346,7 +346,7 @@ export default function ServiceBookingForm() {
               <input type="hidden" {...register("email")} />
             </>
           ) : (
-            <input className="input-field-light" type="email" {...register("email")} />
+            <input className="input-field-light" type="email" placeholder={dict.forms.emailAddress} {...register("email")} />
           )}
         </Field>
       </div>
@@ -462,7 +462,7 @@ export default function ServiceBookingForm() {
                 <div className="grid gap-5 border border-lepas-fog p-5 sm:grid-cols-2">
                   <div className="sm:col-span-2">
                     <Field label={dict.forms.address} required error={errors.pickUpAddress?.message}>
-                      <input className="input-field-light" {...register("pickUpAddress")} />
+                      <input className="input-field-light" placeholder={dict.forms.address} {...register("pickUpAddress")} />
                     </Field>
                   </div>
                   <Field label={dict.forms.preferredDate} required error={errors.pickUpDate?.message}>
@@ -507,7 +507,7 @@ export default function ServiceBookingForm() {
                 <div className="grid gap-5 border border-lepas-fog p-5 sm:grid-cols-2">
                   <div className="sm:col-span-2">
                     <Field label={dict.forms.address} required error={errors.dropOffAddress?.message}>
-                      <input className="input-field-light" {...register("dropOffAddress")} />
+                      <input className="input-field-light" placeholder={dict.forms.address} {...register("dropOffAddress")} />
                     </Field>
                   </div>
                   <Field label={dict.forms.preferredDate} required error={errors.dropOffDate?.message}>

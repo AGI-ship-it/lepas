@@ -98,7 +98,7 @@
   }
 
   .input-field {
-    @apply w-full rounded-none border border-white/15 bg-lepas-form-ink px-4 py-3 text-sm text-white outline-none transition-colors focus:border-lepas-amber;
+    @apply w-full rounded-none border border-white/15 bg-lepas-form-ink px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-lepas-amber;
   }
 
   .input-field-light {

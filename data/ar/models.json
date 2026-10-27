@@ -257,25 +257,29 @@
           "title": "مصابيح LED أمامية منخفضة",
           "body": "مصابيح أمامية مستوحاة من عيني الفهد تمنح L8 مظهراً مميزاً ليلاً ونهاراً.",
           "imageLabel": "Lepas L8 — مصابيح LED أمامية منخفضة",
-          "image": "/design/assets/exterior/l8/headlights-on.webp"
+          "image": "/design/assets/exterior/l8/headlights-on.webp",
+          "icon": "headlights"
         },
         {
           "title": "هيكل أحادي",
           "body": "هيكل أحادي متين يوفّر قيادة متزنة وبنية أمان قوية.",
           "imageLabel": "Lepas L8 — هيكل أحادي",
-          "image": "/design/assets/exterior/l8/unibody-frame.webp"
+          "image": "/design/assets/exterior/l8/unibody-frame.webp",
+          "icon": "unibody"
         },
         {
           "title": "حامل السقف",
           "body": "حامل سقف مدمج يضيف سعة تحميل عملية لمغامرات نهاية الأسبوع.",
           "imageLabel": "Lepas L8 — حامل السقف",
-          "image": "/design/assets/exterior/l8/roof-rack-on.webp"
+          "image": "/design/assets/exterior/l8/roof-rack-on.webp",
+          "icon": "roof"
         },
         {
           "title": "مرايا جانبية مطابقة لمواصفات GSO",
           "body": "مرايا جانبية مطابقة لمواصفات GSO توفر رؤية واضحة للطريق من حولك.",
           "imageLabel": "Lepas L8 — مرايا جانبية مطابقة لمواصفات GSO",
-          "image": "/design/assets/exterior/l8/side-mirrors-on.webp"
+          "image": "/design/assets/exterior/l8/side-mirrors-on.webp",
+          "icon": "mirror"
         }
       ],
       "exteriorEyebrow": "الأداء",
@@ -284,19 +288,22 @@
           "title": "محرك 1.5TGDI (الجيل الثالث)",
           "body": "يقدّم أداءً توربينياً متقدماً بقوة أكبر واستجابة أكثر سلاسة.",
           "imageLabel": "Lepas L8 — محرك 1.5TGDI",
-          "image": "/design/assets/performance/l8/engine.webp"
+          "image": "/design/assets/performance/l8/engine.webp",
+          "icon": "engine"
         },
         {
           "title": "ناقل حركة 7DCT (الجيل الرابع)",
           "body": "يختار الترس التالي مسبقاً لتبديل شبه فوري بأقل انقطاع.",
           "imageLabel": "Lepas L8 — ناقل حركة 7DCT",
-          "image": "/design/assets/performance/l8/transmission.webp"
+          "image": "/design/assets/performance/l8/transmission.webp",
+          "icon": "transmission"
         },
         {
           "title": "الكبح المتجدد (الهجينة القابلة للشحن)",
           "body": "في نسخة سوبر هايبرد، يحوّل استرداد الطاقة القابل للتعديل طاقة الكبح إلى كهرباء تساعد على شحن البطارية.",
           "imageLabel": "Lepas L8 — الكبح المتجدد",
-          "image": "/design/assets/performance/l8/regen-braking.webp"
+          "image": "/design/assets/performance/l8/regen-braking.webp",
+          "icon": "regen"
         }
       ],
       "cabinEyebrow": "المقصورة الداخلية",
@@ -308,14 +315,16 @@
           "heading": "مقصورة بلونين",
           "body": "مقصورة أنيقة بلونين مع مواد ناعمة الملمس وتفاصيل راقية.",
           "imageLabel": "Lepas L8 — مقصورة بلونين",
-          "image": "/design/assets/interior/l8/twotone-a.webp"
+          "image": "/design/assets/interior/l8/twotone-a.webp",
+          "image2": "/design/assets/interior/l8/twotone-b.webp"
         },
         {
           "label": "شاشة LCD مقاس 13.2 بوصة",
           "heading": "شاشة LCD مركزية مقاس 13.2 بوصة",
           "body": "شاشة مركزية كبيرة تضع الملاحة والوسائط وإعدادات السيارة في متناول يدك.",
           "imageLabel": "Lepas L8 — الشاشة المركزية مقاس 13.2 بوصة",
-          "image": "/design/assets/interior/l8/display-a.webp"
+          "image": "/design/assets/interior/l8/display-a.webp",
+          "image2": "/design/assets/interior/l8/display-b.webp"
         },
         {
           "label": "التكييف",
@@ -329,7 +338,8 @@
           "heading": "نظام صوت فاخر من Sony",
           "body": "يملأ نظام الصوت الفاخر من Sony المقصورة بصوت غني ودقيق.",
           "imageLabel": "Lepas L8 — نظام صوت فاخر من Sony",
-          "image": "/design/assets/interior/l8/sound-a.webp"
+          "image": "/design/assets/interior/l8/sound-a.webp",
+          "image2": "/design/assets/interior/l8/sound-b.webp"
         }
       ],
       "utilityTitle": "الملكية والضمان",
@@ -604,25 +614,29 @@
           "title": "جنوط مقاس 18 بوصة مطلية بالكامل",
           "body": "تكمل الجنوط المطلية بالكامل مقاس 18 بوصة الوقفة الواثقة لسيارة L6.",
           "imageLabel": "Lepas L6 — جنوط مقاس 18 بوصة",
-          "image": "/design/assets/exterior/l6/rim18-on.webp"
+          "image": "/design/assets/exterior/l6/rim18-on.webp",
+          "icon": "l6/rims"
         },
         {
           "title": "فتحة سقف بانورامية مع ستارة شمسية",
           "body": "فتحة سقف بانورامية تملأ المقصورة بالضوء، مع ستارة شمسية لأشد الأيام حرارة.",
           "imageLabel": "Lepas L6 — فتحة السقف البانورامية",
-          "image": "/design/assets/exterior/l6/sunroof.webp"
+          "image": "/design/assets/exterior/l6/sunroof.webp",
+          "icon": "l6/sunroof"
         },
         {
           "title": "هيكل أحادي",
           "body": "هيكل أحادي متين يوفّر قيادة متزنة وبنية أمان قوية.",
           "imageLabel": "Lepas L6 — هيكل أحادي",
-          "image": "/design/assets/exterior/l6/unibody.webp"
+          "image": "/design/assets/exterior/l6/unibody.webp",
+          "icon": "unibody"
         },
         {
           "title": "مصابيح أمامية أوتوماتيكية",
           "body": "تعمل المصابيح تلقائياً مع خفوت الضوء، لتركّز على الطريق.",
           "imageLabel": "Lepas L6 — مصابيح أمامية أوتوماتيكية",
-          "image": "/design/assets/exterior/l6/headlights.webp"
+          "image": "/design/assets/exterior/l6/headlights.webp",
+          "icon": "l6/headlights"
         }
       ],
       "exteriorEyebrow": "الأداء",
@@ -631,13 +645,15 @@
           "title": "محرك 1.5TCI (الجيل الثالث)",
           "body": "يقدّم أداءً توربينياً راقياً باستجابة سريعة وتشغيل فعّال.",
           "imageLabel": "Lepas L6 — محرك 1.5TCI",
-          "image": "/design/assets/performance/l6/engine.webp"
+          "image": "/design/assets/performance/l6/engine.webp",
+          "icon": "engine"
         },
         {
           "title": "ناقل حركة 6DCT (الجيل الرابع)",
           "body": "يختار الترس التالي مسبقاً لتبديل شبه فوري بأقل انقطاع.",
           "imageLabel": "Lepas L6 — ناقل حركة 6DCT",
-          "image": "/design/assets/performance/l6/transmission.webp"
+          "image": "/design/assets/performance/l6/transmission.webp",
+          "icon": "transmission"
         }
       ],
       "cabinEyebrow": "المقصورة الداخلية",
@@ -649,21 +665,24 @@
           "heading": "شاشة LCD مركزية مقاس 13.2 بوصة",
           "body": "شاشة مركزية كبيرة تضع الملاحة والوسائط وإعدادات السيارة في متناول يدك.",
           "imageLabel": "Lepas L6 — الشاشة المركزية مقاس 13.2 بوصة",
-          "image": "/design/assets/interior/l6/display-a.webp"
+          "image": "/design/assets/interior/l6/display-a.webp",
+          "image2": "/design/assets/interior/l6/display-b.webp"
         },
         {
           "label": "مقاعد جلدية",
           "heading": "مقاعد جلدية",
           "body": "مقاعد جلدية داعمة تجعل كل رحلة مريحة.",
           "imageLabel": "Lepas L6 — مقاعد جلدية",
-          "image": "/design/assets/interior/l6/seats-a.webp"
+          "image": "/design/assets/interior/l6/seats-a.webp",
+          "image2": "/design/assets/interior/l6/seats-b.webp"
         },
         {
           "label": "التكييف",
           "heading": "تكييف هواء أوتوماتيكي ثنائي المناطق",
           "body": "يضبط السائق والراكب الأمامي درجة الحرارة المفضلة لكل منهما لراحة في جميع الفصول.",
           "imageLabel": "Lepas L6 — تكييف ثنائي المناطق",
-          "image": "/design/assets/interior/l6/ac-a.webp"
+          "image": "/design/assets/interior/l6/ac-a.webp",
+          "image2": "/design/assets/interior/l6/ac-b.webp"
         }
       ],
       "utilityTitle": "الملكية والضمان",
@@ -959,25 +978,29 @@
           "title": "الجناح الخلفي",
           "body": "جناح خلفي منحوت يعزّز الطابع الرياضي لسيارة L4.",
           "imageLabel": "Lepas L4 — الجناح الخلفي",
-          "image": "/design/assets/exterior/l4/spoiler-on.webp"
+          "image": "/design/assets/exterior/l4/spoiler-on.webp",
+          "icon": "l4/spoiler"
         },
         {
           "title": "قفل صندوق أمتعة كهربائي",
           "body": "افتح صندوق الأمتعة وأغلقه بلمسة زر.",
           "imageLabel": "Lepas L4 — قفل صندوق أمتعة كهربائي",
-          "image": "/design/assets/exterior/l4/trunk-on.webp"
+          "image": "/design/assets/exterior/l4/trunk-on.webp",
+          "icon": "l4/trunk"
         },
         {
           "title": "فتحة سقف كهربائية",
           "body": "فتحة سقف كهربائية تُدخل الضوء والهواء النقي متى شئت.",
           "imageLabel": "Lepas L4 — فتحة سقف كهربائية",
-          "image": "/design/assets/exterior/l4/electric-sunroof-on.webp"
+          "image": "/design/assets/exterior/l4/electric-sunroof-on.webp",
+          "icon": "l4/electric-sunroof"
         },
         {
           "title": "مصابيح أمامية أوتوماتيكية",
           "body": "تعمل المصابيح تلقائياً مع خفوت الضوء، لتركّز على الطريق.",
           "imageLabel": "Lepas L4 — مصابيح أمامية أوتوماتيكية",
-          "image": "/design/assets/exterior/l4/headlights-on.webp"
+          "image": "/design/assets/exterior/l4/headlights-on.webp",
+          "icon": "l4/headlights"
         }
       ],
       "exteriorEyebrow": "الأداء",
@@ -986,13 +1009,15 @@
           "title": "محرك 1.5TCI (الجيل الثالث)",
           "body": "يقدّم أداءً توربينياً ثابتاً للاستخدام اليومي.",
           "imageLabel": "Lepas L4 — محرك 1.5TCI",
-          "image": "/design/assets/performance/l4/engine.webp"
+          "image": "/design/assets/performance/l4/engine.webp",
+          "icon": "engine"
         },
         {
           "title": "ناقل حركة 6DCT (الجيل الرابع)",
           "body": "يختار الترس التالي مسبقاً لتبديل شبه فوري بأقل انقطاع.",
           "imageLabel": "Lepas L4 — ناقل حركة 6DCT",
-          "image": "/design/assets/performance/l4/transmission.webp"
+          "image": "/design/assets/performance/l4/transmission.webp",
+          "icon": "transmission"
         }
       ],
       "cabinEyebrow": "المقصورة الداخلية",

@@ -33,6 +33,9 @@ export interface CabinTab {
   heading: string;
   body: string;
   imageLabel: string;
+  image?: string;
+  /** Optional second view, shown beside `image` in the interior carousel. */
+  image2?: string;
 }
 
 export interface DimensionRow {
@@ -52,6 +55,9 @@ export interface SliderItem {
   title: string;
   body: string;
   imageLabel?: string;
+  image?: string;
+  /** Icon key under /svg/performance (e.g. "engine" → engine-active.svg). */
+  icon?: string;
 }
 
 export interface ModelDetailPage {
@@ -132,6 +138,9 @@ export interface Offer {
   description: string;
   imageLabel: string;
   image?: string;
+  /** Same photography as `image` with the baked-in copy painted out. */
+  bannerImage?: string;
+  highlights?: { value: string; label: string }[];
   validUntil: string;
   terms: string[];
   termsSections?: OfferTermsSection[];
