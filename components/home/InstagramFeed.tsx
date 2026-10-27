@@ -12,13 +12,14 @@ type Tile =
   | { kind: "image"; src: string; alt: string; aspect: string }
   | { kind: "reel"; src: string; poster: string; alt: string; aspect: string };
 
-// Four staggered columns; each drifts at its own speed for depth.
+// Four staggered columns; each drifts at its own speed for depth. Tall tiles use
+// interior and detail shots so no car gets cropped.
 const COLUMNS: { tiles: Tile[]; drift: [number, number]; className: string }[] = [
   {
     drift: [30, -30],
     className: "",
     tiles: [
-      { kind: "image", src: "/design/assets/L8-v2.webp", alt: "Lepas L8 on the beach at sunset", aspect: "aspect-[4/5]" },
+      { kind: "image", src: "/design/assets/inspired/space-cabin.webp", alt: "Lepas cabin with panoramic sunroof", aspect: "aspect-[4/5]" },
       { kind: "image", src: "/design/assets/inspired/full/A1.webp", alt: "Lepas leopard-eye headlight", aspect: "aspect-square" },
     ],
   },
@@ -41,15 +42,15 @@ const COLUMNS: { tiles: Tile[]; drift: [number, number]; className: string }[] =
     className: "hidden md:flex",
     tiles: [
       { kind: "image", src: "/design/assets/inspired/full/A3.webp", alt: "Lepas front design", aspect: "aspect-square" },
-      { kind: "image", src: "/design/assets/hero-l4.webp", alt: "Lepas L4 on the road", aspect: "aspect-[4/5]" },
+      { kind: "image", src: "/design/assets/inspired/full/C2.webp", alt: "Lepas rear seats", aspect: "aspect-[4/5]" },
     ],
   },
   {
     drift: [90, -30],
     className: "hidden md:flex md:pt-24",
     tiles: [
-      { kind: "image", src: "/design/assets/L6-v2.webp", alt: "Lepas L6 in the city", aspect: "aspect-[4/5]" },
-      { kind: "image", src: "/design/assets/inspired/technology-cockpit.webp", alt: "Lepas cockpit technology", aspect: "aspect-square" },
+      { kind: "image", src: "/design/assets/inspired/full/B2.webp", alt: "Lepas cockpit in beige", aspect: "aspect-[4/5]" },
+      { kind: "image", src: "/design/assets/life-tech-cockpit.webp", alt: "Lepas cockpit in teal", aspect: "aspect-square" },
     ],
   },
 ];
