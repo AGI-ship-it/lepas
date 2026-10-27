@@ -52,7 +52,6 @@ export default function Navbar() {
     { label: dict.site.nav.services, href: "/after-sales" },
     { label: dict.site.nav.offers, href: "/offers" },
     { label: dict.site.nav.about, href: "/discover/about" },
-    { label: dict.site.nav.locations, href: "/contact#locations" },
     { label: dict.site.nav.contactUs, href: "/contact" },
   ];
 
