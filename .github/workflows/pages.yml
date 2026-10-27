@@ -29,10 +29,21 @@ jobs:
       - run: npm ci
       - run: npx next build
       - run: node scripts/prefix-static-assets.mjs .next-static "$PAGES_BASE_PATH"
-      - run: touch .next-static/.nojekyll
+      - run: mv .next-static site
+      # Arabic copy under /ar; it shares the English copy's public assets.
+      - run: npx next build
+        env:
+          STATIC_LOCALE: ar
+      - run: node scripts/prefix-static-assets.mjs .next-static "$PAGES_BASE_PATH"
+      - run: |
+          cd .next-static
+          rm -rf brochures design images svg video videos favicon.ico lepas-logo.svg
+          cd ..
+          mv .next-static site/ar
+      - run: touch site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .next-static
+          path: site
 
   deploy:
     needs: build
