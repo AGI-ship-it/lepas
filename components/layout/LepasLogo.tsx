@@ -23,7 +23,8 @@ export default function LepasLogo({
   const distributor = size === "lg" ? "h-12 w-auto" : "hidden h-8 w-auto sm:block sm:h-9 lg:hidden xl:block";
 
   return (
-    <span className="flex items-center gap-3 sm:gap-4">
+    // The lockup keeps its left-to-right order in Arabic too: Lepas, then the distributor mark.
+    <span dir="ltr" className="flex w-fit items-center gap-3 sm:gap-4">
       <Logo className={wordmark} />
       {showDistributor && (
         <>
