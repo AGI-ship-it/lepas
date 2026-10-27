@@ -81,7 +81,7 @@ function SectionHeader({
       >
         {index}
       </span>
-      <h3 className={`text-lg ${active ? "text-lepas-ink" : "text-lepas-ash"}`}>
+      <h3 className={`text-lg font-bold uppercase ${active ? "text-lepas-ink" : "text-lepas-ash"}`}>
         {title}
         <span className="text-lepas-amber"> *</span>
       </h3>

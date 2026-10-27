@@ -85,7 +85,7 @@ export default function NumberedSlider({
           aria-roledescription="slide"
           aria-label={`${index + 1} of ${total}`}
         >
-          <h2 className="heading-display text-2xl text-white md:text-4xl">{eyebrow}</h2>
+          <h2 className="heading-display text-3xl text-white md:text-5xl">{eyebrow}</h2>
           <p className="mt-4 text-sm font-semibold tabular-nums text-white" aria-hidden="true">
             {index + 1}/{total}
           </p>

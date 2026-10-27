@@ -33,7 +33,7 @@ export default function ContactPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
         <div className="container-lepas relative pb-16 pt-40 text-white md:pb-20">
-          <h1 className="heading-display max-w-2xl text-4xl md:text-6xl">{dict.contact.heroTitle}</h1>
+          <h1 className="heading-display max-w-2xl text-3xl md:text-5xl">{dict.contact.heroTitle}</h1>
           <p className="mt-5 max-w-xl text-white/80">
             {t.contactHeroIntro1}
             <br />

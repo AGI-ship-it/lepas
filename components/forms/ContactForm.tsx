@@ -32,7 +32,7 @@ function SectionHeader({ index, title }: { index: number; title: string }) {
       <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lepas-black text-xs font-bold text-white">
         {index}
       </span>
-      <h3 className="text-sm font-semibold uppercase tracking-widest2 text-lepas-black">{title}</h3>
+      <h3 className="text-sm font-bold uppercase tracking-widest2 text-lepas-black">{title}</h3>
     </div>
   );
 }

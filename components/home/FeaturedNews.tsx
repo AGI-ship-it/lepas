@@ -39,7 +39,7 @@ export default function FeaturedNews() {
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
           <div className="flex flex-col">
-            <h2 className="heading-display text-3xl md:text-4xl">{t.title}</h2>
+            <h2 className="heading-display text-3xl md:text-5xl">{t.title}</h2>
             <p className="mt-4 max-w-md text-base">{t.sectionIntro}</p>
 
             <ul

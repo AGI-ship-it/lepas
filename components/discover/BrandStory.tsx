@@ -30,7 +30,7 @@ export default function BrandStory({
       <div className="container-lepas relative pt-16 lg:pt-12">
         <p className="heading-display text-lg md:text-2xl">{eyebrow}</p>
         <div className="mt-8 grid gap-6 lg:mt-14 lg:grid-cols-2 lg:gap-16">
-          <h2 className="heading-display text-3xl md:text-4xl">{title}</h2>
+          <h2 className="heading-display text-3xl md:text-5xl">{title}</h2>
           <div className="space-y-4 text-sm leading-relaxed text-lepas-black/90 md:text-base">
             {body.map((p) => (
               <p key={p}>{p}</p>

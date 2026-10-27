@@ -75,14 +75,14 @@ export default function SitemapPage() {
     <>
       <section className="bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
         <div className="container-lepas">
-          <h1 className="heading-display text-4xl md:text-6xl">{t.sitemapTitle}</h1>
+          <h1 className="heading-display text-3xl md:text-5xl">{t.sitemapTitle}</h1>
         </div>
       </section>
       <Section>
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
           {groups.map((group) => (
             <div key={group.title}>
-              <h2 className="border-b border-lepas-fog pb-3 text-sm font-semibold uppercase tracking-widest2 text-lepas-amber">
+              <h2 className="heading-display border-b border-lepas-fog pb-3 text-2xl">
                 {group.title}
               </h2>
               <ul className="mt-4 space-y-3">

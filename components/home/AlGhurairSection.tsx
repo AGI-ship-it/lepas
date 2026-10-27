@@ -37,7 +37,7 @@ export default function AlGhurairSection() {
           className="max-w-xl"
         >
           <span aria-hidden="true" className="block h-px w-14 bg-lepas-amber" />
-          <h2 className="mt-6 text-4xl font-normal leading-[1.1] md:text-6xl">{dict.discover.alGhurairTitle}</h2>
+          <h2 className="heading-display mt-6 text-3xl md:text-5xl">{dict.discover.alGhurairTitle}</h2>
           <div className="mt-6 space-y-5 text-base text-white/70 md:text-lg">
             <p>{dict.discover.alGhurairBody1}</p>
             <p>{dict.discover.alGhurairBody2}</p>

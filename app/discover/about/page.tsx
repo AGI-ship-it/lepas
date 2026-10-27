@@ -31,7 +31,7 @@ function TextMedia({
     <Section id={id} className="scroll-mt-20">
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className={reverse ? "lg:order-2" : ""}>
-          <h2 className="heading-display text-3xl md:text-4xl">{title}</h2>
+          <h2 className="heading-display text-3xl md:text-5xl">{title}</h2>
           <div className="mt-6 space-y-5 text-lg text-lepas-steel">
             {paragraphs.map((p) => (
               <p key={p}>{p}</p>

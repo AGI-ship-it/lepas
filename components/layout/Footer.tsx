@@ -65,7 +65,6 @@ export default function Footer() {
     { label: f.contactUs, href: "/contact" },
     { label: "6005LEPAS", href: "tel:600553727", external: true },
     { label: f.whatsappUs, href: "https://wa.me/971600553727", external: true },
-    { label: f.locations, href: "/contact#locations" },
   ];
 
   const legal: FooterLink[] = [

@@ -134,7 +134,7 @@ export default function TabbedPolicy({
       </aside>
 
       <div className="min-w-0">
-        <h2 className="text-2xl font-bold tracking-tight text-lepas-black md:text-3xl">
+        <h2 className="heading-display text-2xl text-lepas-black md:text-3xl">
           {isIntro ? introTitle : activeSection?.title}
         </h2>
         <div className="mt-6">

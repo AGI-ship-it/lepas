@@ -15,7 +15,7 @@ export default function FaqsPage() {
       <section className="bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
         <div className="container-lepas">
           <p className="eyebrow">{dict.faqs.eyebrow}</p>
-          <h1 className="heading-display mt-4 text-4xl md:text-6xl">{t.faqHeading}</h1>
+          <h1 className="heading-display mt-4 text-3xl md:text-5xl">{t.faqHeading}</h1>
           <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">{t.faqIntro}</p>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function FaqsPage() {
                   aria-expanded={open === i}
                   className="flex w-full items-center justify-between gap-6 py-6 text-start"
                 >
-                  <span className="font-semibold text-lepas-ink">{faq.q}</span>
+                  <span className="font-bold text-lepas-ink">{faq.q}</span>
                   <span
                     aria-hidden="true"
                     className={`text-xl text-lepas-amber transition-transform duration-300 ${open === i ? "rotate-45" : ""}`}

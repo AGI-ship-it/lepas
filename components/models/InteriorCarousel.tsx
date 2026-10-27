@@ -130,7 +130,7 @@ export default function InteriorCarousel({ title, tabs }: { title: string; tabs:
                     <PlaceholderImage label={tab.imageLabel} aspect="aspect-[595/567]" showLabel={false} />
                   )}
                 </div>
-                <h3 className="mt-6 text-lg uppercase md:text-2xl">{tab.heading}</h3>
+                <h3 className="mt-6 text-lg font-bold uppercase md:text-2xl">{tab.heading}</h3>
               </div>
             );
           })}

@@ -89,7 +89,7 @@ export default function ModelsSection() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             className="mt-auto max-w-3xl"
           >
-            <h2 className="heading-display text-4xl sm:text-5xl md:text-6xl">{copy.title}</h2>
+            <h2 className="heading-display text-3xl md:text-5xl">{copy.title}</h2>
             <Link href={`/models/test-drive?model=${model.slug}`} className="btn-primary group mt-10">
               {dict.common.bookTestDrive}
               <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:-scale-x-100" aria-hidden="true" />

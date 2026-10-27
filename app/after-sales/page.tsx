@@ -59,7 +59,7 @@ export default function AfterSalesPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
         <div className="container-lepas relative flex flex-1 flex-col pb-14 pt-16 md:pb-24 md:pt-24">
-          <h2 className="heading-display text-2xl md:text-4xl">{t.warrantyTitle}</h2>
+          <h2 className="heading-display text-3xl md:text-5xl">{t.warrantyTitle}</h2>
           <dl className="mt-auto grid grid-cols-2 gap-x-6 gap-y-8 text-center md:flex md:flex-wrap md:items-end md:justify-center md:gap-x-16">
             {t.warranty.map((w) => (
               <div key={w.years} className="flex flex-col items-center gap-1 md:gap-4">

@@ -22,7 +22,7 @@ export default function ColourSwatches({
   return (
     <section id={id} className="scroll-mt-36 bg-[#f6f6f6] py-12 text-center text-lepas-black md:py-16">
       <div className="container-lepas">
-        <h2 className="heading-display text-3xl md:text-4xl">{title}</h2>
+        <h2 className="heading-display text-3xl md:text-5xl">{title}</h2>
         <p aria-live="polite" className="mt-3 text-base font-bold uppercase text-lepas-black/45">
           {colour.name}
         </p>

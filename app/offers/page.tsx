@@ -22,7 +22,7 @@ export default function OffersPage() {
     <>
       <section className="bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
         <div className="container-lepas">
-          <h1 className="heading-display text-4xl md:text-6xl">{dict.offers.title}</h1>
+          <h1 className="heading-display text-3xl md:text-5xl">{dict.offers.title}</h1>
           <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">{dict.offers.description}</p>
         </div>
       </section>
