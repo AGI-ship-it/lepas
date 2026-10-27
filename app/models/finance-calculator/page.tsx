@@ -18,6 +18,11 @@ export default function FinanceCalculatorPage() {
       <SimpleHero
         title={dict.finance.heroTitle}
         description={dict.finance.heroDescription}
+        breadcrumb={[
+          { label: dict.testDriveFlow.home, href: "/" },
+          { label: dict.site.nav.ourModels, href: "/models" },
+          { label: dict.nav.financeCalculator },
+        ]}
       />
       <Section>
         <Suspense>

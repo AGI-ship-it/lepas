@@ -8,6 +8,7 @@ import Section from "@/components/ui/Section";
 import ShareButtons from "@/components/discover/ShareButtons";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getBlog } from "@/lib/i18n/data";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 const postsEn = blogData as BlogPost[];
 
@@ -46,10 +47,16 @@ export default function BlogDetailPage({
   return (
     <div className="pt-32">
       <Section>
-        <Link href="/discover/blog" className="text-sm text-lepas-steel hover:text-lepas-black">
-          {isAr ? "→" : "←"} {dict.discover.backToBlog}
-        </Link>
-        <div className="mx-auto mt-8 max-w-4xl">
+        <div className="mx-auto max-w-4xl">
+          <Breadcrumb
+            className="mb-8"
+            light
+            items={[
+              { label: dict.testDriveFlow.home, href: "/" },
+              { label: dict.site.footer.latestVideos, href: "/discover/blog" },
+              { label: post.title },
+            ]}
+          />
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest2 text-lepas-steel md:text-sm">
             {formatVideoDate(post.date)}
           </p>

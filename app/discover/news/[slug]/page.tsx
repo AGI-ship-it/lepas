@@ -10,6 +10,7 @@ import Section from "@/components/ui/Section";
 import ShareButtons from "@/components/discover/ShareButtons";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getNews } from "@/lib/i18n/data";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 const newsEn = newsData as NewsArticle[];
 
@@ -41,10 +42,16 @@ export default function NewsDetailPage({
   return (
     <div className="pt-32">
       <Section>
-        <Link href="/discover/news" className="text-sm text-lepas-steel hover:text-lepas-black">
-          {locale === "ar" ? "→" : "←"} {dict.discover.backToNews}
-        </Link>
-        <div className="mx-auto mt-8 max-w-3xl">
+        <div className="mx-auto max-w-3xl">
+          <Breadcrumb
+            className="mb-8"
+            light
+            items={[
+              { label: dict.testDriveFlow.home, href: "/" },
+              { label: dict.site.footer.latestNews, href: "/discover/news" },
+              { label: article.title },
+            ]}
+          />
           <p className="mb-4 flex items-center gap-3 text-xs font-medium uppercase tracking-widest2 md:text-sm">
             <span className="text-lepas-ash">{formatNewsDate(article.date)}</span>
             <span className="text-lepas-amber">{t.categories[getNewsCategory(article.slug)]}</span>

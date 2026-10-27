@@ -20,8 +20,11 @@ export default function ComparePage() {
         description={dict.models.compareDescription}
         imageLabel="The Lepas smart SUV range lined up side by side in a studio"
         image="/design/assets/journey-3cars.webp"
-        backHref="/models"
-        backLabel={dict.common.backToModels}
+        breadcrumb={[
+          { label: dict.testDriveFlow.home, href: "/" },
+          { label: dict.site.nav.ourModels, href: "/models" },
+          { label: dict.models.compareTitle },
+        ]}
       />
       <Section>
         <CompareDragDrop />

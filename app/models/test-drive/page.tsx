@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TestDriveForm from "@/components/forms/TestDriveForm";
 import { getServerDictionary } from "@/lib/i18n/server";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Book a Test Drive",
@@ -33,6 +34,14 @@ export default function TestDrivePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/10" />
         <div className="container-lepas relative pb-14">
+          <Breadcrumb
+            className="mb-6"
+            items={[
+              { label: dict.testDriveFlow.home, href: "/" },
+              { label: dict.site.nav.ourModels, href: "/models" },
+              { label: dict.nav.bookTestDrive },
+            ]}
+          />
           <h1 className="heading-display max-w-2xl text-3xl md:text-5xl">{t.heroTitle}</h1>
           <p className="mt-5 max-w-xl text-white/75">{t.heroDescription}</p>
           <ul className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/55">

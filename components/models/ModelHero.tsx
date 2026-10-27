@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { VehicleModel } from "@/lib/types";
 import { Dictionary } from "@/lib/i18n";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 // Stats are stored in a fixed order: engine, transmission, power/torque, wheelbase, combined range.
 const statIcons = ["engine", "transmission", "power-torque", "wheelbase", "combined-range"];
@@ -37,6 +38,17 @@ export default function ModelHero({
         )}
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-black/80 via-black/40 to-transparent" />
+
+      <div className="container-lepas absolute inset-x-0 top-28 md:top-32">
+        <Breadcrumb
+          items={[
+            { label: dict.testDriveFlow.home, href: "/" },
+            { label: dict.site.nav.ourModels, href: "/models" },
+            { label: model.name },
+          ]}
+        />
+      </div>
 
       <div className="container-lepas relative pb-10 text-white md:pb-14">
         <h1 className="sr-only">{d.heroHeadline}</h1>

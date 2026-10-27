@@ -8,6 +8,7 @@ import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import OfferBanner from "@/components/offers/OfferBanner";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 import CallbackForm from "@/components/forms/CallbackForm";
 import { offerMeta } from "@/components/forms/offerMeta";
 import { getServerDictionary } from "@/lib/i18n/server";
@@ -54,29 +55,14 @@ export default function OfferDetailPage({
         priority
         fullHeight
         before={
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex flex-wrap items-center gap-2 text-sm text-white/70">
-              <li>
-                <Link href="/" className="transition-colors hover:text-lepas-amber">
-                  {dict.testDriveFlow.home}
-                </Link>
-              </li>
-              <li aria-hidden="true" className="text-lepas-amber">
-                /
-              </li>
-              <li>
-                <Link href="/offers" className="transition-colors hover:text-lepas-amber">
-                  {dict.offers.title}
-                </Link>
-              </li>
-              <li aria-hidden="true" className="text-lepas-amber">
-                /
-              </li>
-              <li aria-current="page" className="text-white">
-                {meta?.model[locale] ?? offer.title}
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumb
+            className="mb-8"
+            items={[
+              { label: dict.testDriveFlow.home, href: "/" },
+              { label: dict.offers.title, href: "/offers" },
+              { label: meta?.model[locale] ?? offer.title },
+            ]}
+          />
         }
         actions={
           <>

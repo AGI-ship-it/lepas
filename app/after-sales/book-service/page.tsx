@@ -25,8 +25,11 @@ export default function BookServicePage() {
         title={dict.afterSales.bookServiceTitle}
         description={dict.afterSales.bookServiceHeroDescription}
         imageLabel="Lepas service appointment"
-        backHref="/after-sales"
-        backLabel={dict.afterSales.backToAfterSales}
+        breadcrumb={[
+          { label: dict.testDriveFlow.home, href: "/" },
+          { label: dict.site.nav.services, href: "/after-sales" },
+          { label: dict.afterSales.bookServiceTitle },
+        ]}
       />
 
       <div className="border-b border-lepas-fog bg-white">

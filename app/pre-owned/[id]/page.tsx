@@ -9,6 +9,7 @@ import EnquiryForm from "@/components/forms/EnquiryForm";
 import PreOwnedGallery from "@/components/preowned/PreOwnedGallery";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getPreOwned } from "@/lib/i18n/data";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 const vehiclesEn = preownedData as PreOwnedVehicle[];
 
@@ -50,9 +51,14 @@ export default function PreOwnedDetailPage({
   return (
     <div className="pt-32">
       <Section>
-        <Link href="/pre-owned" className="text-sm text-lepas-steel hover:text-lepas-black">
-          {locale === "ar" ? "→" : "←"} {dict.preOwned.backToPreOwned}
-        </Link>
+        <Breadcrumb
+          light
+          items={[
+            { label: dict.testDriveFlow.home, href: "/" },
+            { label: dict.nav.preOwned, href: "/pre-owned" },
+            { label: `${vehicle.model} (${vehicle.year})` },
+          ]}
+        />
 
         <div className="mt-8 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
