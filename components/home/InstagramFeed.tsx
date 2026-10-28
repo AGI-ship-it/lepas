@@ -127,7 +127,6 @@ export default function InstagramFeed() {
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
   const still = useTransform(progress, () => 0);
   const columnProgress = reduceMotion ? still : progress;
-  const handleX = useTransform(columnProgress, [0, 1], ["5%", "-45%"]);
 
   return (
     <section ref={ref} className="relative overflow-hidden bg-lepas-black py-16 text-white md:py-20">
@@ -167,24 +166,6 @@ export default function InstagramFeed() {
           ))}
         </div>
       </div>
-
-      {/* Oversized outline handle sliding sideways as the section scrolls */}
-      <a
-        href={INSTAGRAM_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t.instagramFollow}
-        className="relative mt-6 block overflow-hidden md:mt-8"
-        dir="ltr"
-      >
-        <motion.span
-          aria-hidden="true"
-          style={{ x: handleX, WebkitTextStroke: "1.5px rgba(235,146,1,0.6)" }}
-          className="block whitespace-nowrap text-[12vw] font-bold leading-[0.9] text-transparent transition-colors duration-500 hover:text-lepas-amber/15"
-        >
-          @lepas.uae · @lepas.uae
-        </motion.span>
-      </a>
     </section>
   );
 }
