@@ -71,7 +71,6 @@ export default function Footer() {
     { label: f.cookiePolicy, href: "/cookies-policy" },
     { label: f.privacyPolicy, href: "/privacy-policy" },
     { label: dict.footer.terms, href: "/terms" },
-    { label: f.sitemap, href: "/sitemap" },
   ];
 
   return (
