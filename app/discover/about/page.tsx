@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
 import BrandStory from "@/components/discover/BrandStory";
-import StackingHeroCards from "@/components/discover/StackingHeroCards";
 import FeaturedNews from "@/components/home/FeaturedNews";
 import { getServerDictionary } from "@/lib/i18n/server";
 
@@ -63,15 +62,12 @@ export default function AboutPage() {
         title={a.alGhurairMobility}
         paragraphs={[d.alGhurairBody1, d.alGhurairBody2, d.alGhurairBody3]}
         media={
-          <video
-            className="absolute inset-0 h-full w-full object-cover"
-            src="/video/about-l8-model.mp4"
-            poster="/design/assets/about/lepas-video-poster.webp"
-            autoPlay
-            muted
-            loop
-            playsInline
-            aria-label={a.videoAlt}
+          <Image
+            src="/design/assets/about/lepas-video-poster.webp"
+            alt={a.videoAlt}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
           />
         }
       />
@@ -100,7 +96,19 @@ export default function AboutPage() {
         imageAlt={a.brandStoryImageAlt}
       />
 
-      <StackingHeroCards />
+      {/* Full-bleed L8 demo film, as on lepasuae.com/about. */}
+      <section className="relative h-[clamp(420px,56.31vw,973px)] w-full overflow-hidden bg-lepas-black">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/video/about-l8-model.mp4"
+          poster="/design/assets/about/lepas-video-poster.webp"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-label={a.videoAlt}
+        />
+      </section>
 
       <FeaturedNews />
     </>
