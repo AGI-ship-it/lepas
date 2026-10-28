@@ -36,8 +36,7 @@ export default function AlGhurairSection() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-xl"
         >
-          <span aria-hidden="true" className="block h-px w-14 bg-lepas-amber" />
-          <h2 className="heading-display mt-6 text-3xl md:text-5xl">{dict.discover.alGhurairTitle}</h2>
+          <h2 className="heading-display text-3xl md:text-5xl">{dict.discover.alGhurairTitle}</h2>
           <div className="mt-6 space-y-5 text-base text-white/70 md:text-lg">
             <p>{dict.discover.alGhurairBody1}</p>
             <p>{dict.discover.alGhurairBody2}</p>
