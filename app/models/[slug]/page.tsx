@@ -6,14 +6,19 @@ import Image from "next/image";
 import Section from "@/components/ui/Section";
 import CallbackForm from "@/components/forms/CallbackForm";
 import ModelHero from "@/components/models/ModelHero";
-import HotspotFeature from "@/components/models/HotspotFeature";
 import InteriorCarousel from "@/components/models/InteriorCarousel";
 import FeatureShowcase from "@/components/models/FeatureShowcase";
+import {
+  PowertrainFeatureShowcase,
+  PowertrainHotspotFeature,
+  PowertrainProvider,
+} from "@/components/models/Powertrain";
 import ModelSectionNav from "@/components/models/ModelSectionNav";
-import UtilitySpecs from "@/components/models/UtilitySpecs";
+import ModelOwnership from "@/components/models/ModelOwnership";
+import OtherModels from "@/components/models/OtherModels";
+import CtaBand from "@/components/ui/CtaBand";
 import SpecsTable from "@/components/models/SpecsTable";
 import ColourSwatches from "@/components/models/ColourSwatches";
-import AccessoriesGrid from "@/components/models/AccessoriesGrid";
 import NumberedSlider from "@/components/models/NumberedSlider";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getModels } from "@/lib/i18n/data";
@@ -85,9 +90,9 @@ export default function ModelDetailPage({
     { id: "callback", label: nav.callback },
   ];
 
-  // Section order follows lepasuae.com/l8; specs, warranty and accessories sit after Drive.
+  // Section order follows exeed-uae.com/en/models/rx: hero, trim bar, features, specs, warranty, CTA, other models.
   return (
-    <>
+    <PowertrainProvider powertrains={d.powertrains}>
       <ModelHero model={model} dict={dict} brochure={assets?.brochure} />
 
       <ModelSectionNav label={nav.label} links={navLinks} />
@@ -112,7 +117,7 @@ export default function ModelDetailPage({
       <InteriorCarousel title={d.cabinTitle} tabs={d.cabinTabs} />
 
       {hasPerformance && (
-        <FeatureShowcase
+        <PowertrainFeatureShowcase
           id="performance"
           title={d.exteriorEyebrow ?? nav.performance}
           items={d.exteriorItems!}
@@ -120,7 +125,7 @@ export default function ModelDetailPage({
         />
       )}
 
-      <HotspotFeature
+      <PowertrainHotspotFeature
         id="safety"
         title={d.highlightsTitle}
         image={assets?.safety}
@@ -150,29 +155,25 @@ export default function ModelDetailPage({
         </Section>
       )}
 
-      {/* Ownership & warranty */}
-      <Section light={false} eyebrow={dict.models.details} title={d.utilityTitle} description={d.utilityIntro}>
-        <UtilitySpecs specs={d.utilitySpecs} />
-      </Section>
-
       {/* Full specifications (The Numbers) */}
       <Section id="specifications" eyebrow={dict.models.specifications} title={dict.models.theNumbers}>
         <SpecsTable groups={model.specs} />
       </Section>
 
-      {/* Accessories */}
-      <Section eyebrow={dict.models.details} title={d.accessoriesTitle}>
-        <AccessoriesGrid
-          accessories={d.accessories}
-          accessoriesTabLabel={dict.models.features}
-          factoryOptionalEquipment={d.factoryOptionalEquipment}
-          factoryOptionalEquipmentTabLabel={d.factoryOptionalEquipmentTitle}
-        />
-      </Section>
+      <ModelOwnership model={model} dict={dict} />
+
+      <CtaBand
+        title={dict.models.readyToExperience.replace("{model}", model.name)}
+        description={dict.models.readyToExperienceBody}
+        primary={{ label: dict.common.bookTestDrive, href: `/models/test-drive?model=${model.slug}` }}
+        secondary={{ label: dict.nav.calculateFinance, href: `/models/finance-calculator?model=${model.slug}` }}
+      />
+
+      <OtherModels models={getModels(locale).filter((m) => m.slug !== model.slug)} dict={dict} />
 
       <Section id="callback" light={false} title={dict.lepasUi.requestCallback} className="scroll-mt-36">
         <CallbackForm defaultModel={model.slug} />
       </Section>
-    </>
+    </PowertrainProvider>
   );
 }

@@ -3,8 +3,6 @@ import Link from "next/link";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { formatNewsDate, getNewsCategory, getNewsImage } from "@/components/discover/newsImages";
 import PageHero from "@/components/ui/PageHero";
-import Section from "@/components/ui/Section";
-import Card from "@/components/ui/Card";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getNews } from "@/lib/i18n/data";
 
@@ -18,7 +16,7 @@ export default function NewsListPage() {
   const news = getNews(locale);
 
   const t = dict.site.news;
-  const [featured, ...rest] = [...news].sort((a, b) => b.date.localeCompare(a.date));
+  const sorted = [...news].sort((a, b) => b.date.localeCompare(a.date));
 
   return (
     <>
@@ -27,70 +25,44 @@ export default function NewsListPage() {
         title={t.title}
         description={t.listIntro}
         imageLabel="Lepas newsroom"
-        image={getNewsImage(featured?.slug ?? "")}
+        image={getNewsImage(sorted[0]?.slug ?? "")}
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.footer.latestNews }]}
       />
-      {featured && (
-        <Section>
-          <article className="grid items-center gap-10 md:grid-cols-2">
-            <Link href={`/discover/news/${featured.slug}`} className="block overflow-hidden">
-              <PlaceholderImage
-                label={featured.title}
-                src={getNewsImage(featured.slug)}
-                aspect="aspect-[4/3]"
-                className="transition-transform duration-700 ease-premium hover:scale-105"
-              />
-            </Link>
-            <div>
-              <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-widest2">
-                <span className="text-lepas-ash">{formatNewsDate(featured.date)}</span>
-                <span className="text-lepas-amber">{t.categories[getNewsCategory(featured.slug)]}</span>
-              </p>
-              <h2 className="heading-display mt-4 text-2xl md:text-4xl">
-                <Link href={`/discover/news/${featured.slug}`} className="hover:text-lepas-amber">
-                  {featured.title}
-                </Link>
-              </h2>
-              <p className="mt-4 text-lepas-steel">{featured.excerpt}</p>
-              <Link href={`/discover/news/${featured.slug}`} className="btn-primary mt-8">
-                {t.readMore}
+      <section className="bg-lepas-cream py-16 md:py-24">
+        <div className="container-lepas">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
+            {sorted.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/discover/news/${article.slug}`}
+                className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
+              >
+                <div className="relative overflow-hidden">
+                  <PlaceholderImage
+                    label={article.title}
+                    src={getNewsImage(article.slug)}
+                    aspect="aspect-[16/10]"
+                    className="transition-transform duration-500 ease-premium group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider">
+                    <time dateTime={article.date} className="text-lepas-amber">
+                      {formatNewsDate(article.date)}
+                    </time>
+                    <span className="text-lepas-ash">{t.categories[getNewsCategory(article.slug)]}</span>
+                  </p>
+                  <h2 className="mt-2 text-base font-bold leading-snug text-lepas-ink sm:text-lg">{article.title}</h2>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-lepas-steel">{article.excerpt}</p>
+                  <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-ink">
+                    {t.readMore} <span aria-hidden="true" className="rtl:rotate-180">&gt;</span>
+                  </span>
+                </div>
               </Link>
-            </div>
-          </article>
-        </Section>
-      )}
-      <Section className="pt-0 md:pt-0">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {[featured, ...rest].filter(Boolean).map((article) => (
-            <Card key={article.slug}>
-              <Link href={`/discover/news/${article.slug}`} className="block">
-                <PlaceholderImage
-                  label={article.title}
-                  src={getNewsImage(article.slug)}
-                  aspect="aspect-[4/3]"
-                />
-              </Link>
-              <div className="p-6">
-                <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-widest2">
-                  <span className="text-lepas-ash">{formatNewsDate(article.date)}</span>
-                  <span className="text-lepas-amber">{t.categories[getNewsCategory(article.slug)]}</span>
-                </p>
-                <h3 className="mt-3 text-lg font-bold text-lepas-ink">
-                  <Link href={`/discover/news/${article.slug}`} className="hover:text-lepas-amber">
-                    {article.title}
-                  </Link>
-                </h3>
-                <p className="mt-2 text-sm text-lepas-steel">{article.excerpt}</p>
-                <Link
-                  href={`/discover/news/${article.slug}`}
-                  className="link-underline mt-5 inline-block text-sm font-semibold text-lepas-ink"
-                >
-                  {t.readMore} <span className="inline-block rtl:rotate-180">→</span>
-                </Link>
-              </div>
-            </Card>
-          ))}
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

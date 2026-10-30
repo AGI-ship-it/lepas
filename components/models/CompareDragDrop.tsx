@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
-import { VehicleModel } from "@/lib/types";
+import { ModelSpecGroup, VehicleModel } from "@/lib/types";
 import { formatCurrency } from "@/lib/financeMath";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getModels } from "@/lib/i18n/data";
@@ -14,11 +14,38 @@ const modelImages: Record<string, string> = {
   l4: "/design/assets/model-l4-side.webp",
 };
 
-function comparePrice(model: VehicleModel): number {
-  return model.startingPrice;
+/** One comparable car: a model, or one of its powertrains (L8 ICE / L8 PHEV). */
+interface CompareEntry {
+  id: string;
+  name: string;
+  model: VehicleModel;
+  specs: ModelSpecGroup[];
 }
 
-type Slot = VehicleModel | null;
+/**
+ * Models with powertrains list one spec group per powertrain first, in powertrain order;
+ * each becomes its own entry with that group as its "Powertrain" specs.
+ */
+function compareEntries(models: VehicleModel[], powertrainLabel: string): CompareEntry[] {
+  return models.flatMap((model) => {
+    const powertrains = model.detailPage.powertrains ?? [];
+    if (powertrains.length < 2) return [{ id: model.slug, name: model.name, model, specs: model.specs }];
+    const shared = model.specs.slice(powertrains.length);
+    return powertrains.map((p, i) => ({
+      id: `${model.slug}-${p.id}`,
+      name: `${model.name} ${p.label}`,
+      model,
+      specs: [{ label: powertrainLabel, items: model.specs[i].items }, ...shared],
+    }));
+  });
+}
+
+function comparePrice(entry: CompareEntry): number {
+  const variant = entry.model.variants.find((v) => entry.id === `${entry.model.slug}-${v.id}`);
+  return entry.model.startingPrice + (variant?.priceDelta ?? 0);
+}
+
+type Slot = CompareEntry | null;
 
 interface SpecRow {
   label: string;
@@ -32,8 +59,13 @@ interface SpecGroup {
 
 export default function CompareDragDrop() {
   const { locale, dict } = useLocale();
-  const models = getModels(locale);
+  const models = compareEntries(getModels(locale), dict.models.powertrain);
   const slotCount = Math.min(models.length, 3);
+  // Tray categories: one per model, with its powertrain variants listed underneath.
+  const categories = Array.from(new Set(models.map((m) => m.model.slug))).map((slug) => {
+    const entries = models.filter((m) => m.model.slug === slug);
+    return { slug, name: entries[0].model.name, entries };
+  });
 
   const [slots, setSlots] = useState<Slot[]>(
     Array.from({ length: slotCount }, () => null)
@@ -41,7 +73,7 @@ export default function CompareDragDrop() {
   const [dragOverSlot, setDragOverSlot] = useState<number | null>(null);
   const [showDifferencesOnly, setShowDifferencesOnly] = useState(false);
 
-  const placeInSlot = (model: VehicleModel, index: number) => {
+  const placeInSlot = (model: CompareEntry, index: number) => {
     setSlots((prev) => {
       const next = [...prev];
       next[index] = model;
@@ -57,8 +89,8 @@ export default function CompareDragDrop() {
     });
   };
 
-  const handleCardClick = (model: VehicleModel) => {
-    const filledIndex = slots.findIndex((s) => s?.slug === model.slug);
+  const handleCardClick = (model: CompareEntry) => {
+    const filledIndex = slots.findIndex((s) => s?.id === model.id);
     if (filledIndex !== -1) {
       clearSlot(filledIndex);
       return;
@@ -71,7 +103,7 @@ export default function CompareDragDrop() {
     }
   };
 
-  const activeSlots = slots.filter((s) => s !== null) as VehicleModel[];
+  const activeSlots = slots.filter((s) => s !== null) as CompareEntry[];
 
   const prices = activeSlots.map((m) => comparePrice(m));
   const lowestPrice = prices.length > 1 ? Math.min(...prices) : null;
@@ -84,11 +116,11 @@ export default function CompareDragDrop() {
     rows: [
       {
         label: dict.common.startingFrom,
-        values: slots.map((s) => (s ? formatCurrency(comparePrice(s), s.currency) : null)),
+        values: slots.map((s) => (s ? formatCurrency(comparePrice(s), s.model.currency) : null)),
       },
       {
         label: dict.models.overview,
-        values: slots.map((s) => s?.tagline ?? null),
+        values: slots.map((s) => s?.model.tagline ?? null),
       },
     ],
   });
@@ -96,34 +128,27 @@ export default function CompareDragDrop() {
   const groupCount = Math.max(...slots.map((s) => s?.specs.length ?? 0));
   for (let g = 0; g < groupCount; g++) {
     const groupLabel = slots.find((s) => s?.specs[g])?.specs[g]?.label ?? "";
-    const itemCount = Math.max(...slots.map((s) => s?.specs[g]?.items.length ?? 0));
-    const rows: SpecRow[] = [];
-    for (let i = 0; i < itemCount; i++) {
-      const itemLabel = slots.find((s) => s?.specs[g]?.items[i])?.specs[g]?.items[i]?.label ?? "";
-      rows.push({
-        label: itemLabel,
-        values: slots.map((s) => (!s ? null : s?.specs[g]?.items[i]?.value ?? null)),
-      });
-    }
+    // Rows match by label, so a spec only some cars have (e.g. PHEV combined range) gets its own row.
+    const itemLabels = Array.from(new Set(slots.flatMap((s) => s?.specs[g]?.items.map((it) => it.label) ?? [])));
+    const rows: SpecRow[] = itemLabels.map((itemLabel) => ({
+      label: itemLabel,
+      values: slots.map((s) => (!s ? null : s.specs[g]?.items.find((it) => it.label === itemLabel)?.value ?? null)),
+    }));
     groups.push({ label: groupLabel, rows });
   }
 
+  // Warranty rows come from each model's own data; the PHEV battery warranty only applies to PHEV entries.
+  const warrantySpecs = (s: CompareEntry) =>
+    s.model.detailPage.utilitySpecs.filter(
+      (spec) => !/seat|مقاعد/i.test(spec.label) && (!/phev|هجينة/i.test(spec.label) || s.id.endsWith("-phev"))
+    );
+  const warrantyLabels = Array.from(new Set(slots.flatMap((s) => (s ? warrantySpecs(s).map((w) => w.label) : []))));
   groups.push({
-    label: locale === "ar" ? "الملكية" : "Ownership",
-    rows: [
-      {
-        label: locale === "ar" ? "الضمان" : "Warranty",
-        values: slots.map((s) => (s ? (locale === "ar" ? "10 سنوات / بدون حد للكيلومترات" : "10 years / Unlimited km") : null)),
-      },
-      {
-        label: locale === "ar" ? "المساعدة على الطريق" : "Roadside Assistance",
-        values: slots.map((s) => (s ? (locale === "ar" ? "5 سنوات" : "5 years") : null)),
-      },
-      {
-        label: locale === "ar" ? "عقد الصيانة" : "Service Maintenance Contract",
-        values: slots.map((s) => (s ? (locale === "ar" ? "سنة واحدة" : "1 year") : null)),
-      },
-    ],
+    label: locale === "ar" ? "الضمان والملكية" : "Warranty & Ownership",
+    rows: warrantyLabels.map((label) => ({
+      label,
+      values: slots.map((s) => (s ? warrantySpecs(s).find((w) => w.label === label)?.value ?? "—" : null)),
+    })),
   });
 
   function rowHasDifferences(row: SpecRow): boolean {
@@ -149,15 +174,18 @@ export default function CompareDragDrop() {
         <div>
           <p className="eyebrow mb-1">{dict.models.allModels}</p>
           <p className="mb-4 text-xs text-lepas-steel">{dict.models.allModelsHint}</p>
-          <div className="flex flex-col gap-3 lg:max-h-[420px] lg:overflow-y-auto lg:pe-1">
-            {models.map((model) => {
-              const isPlaced = slots.some((s) => s?.slug === model.slug);
+          <div className="flex flex-col gap-5 lg:max-h-[520px] lg:overflow-y-auto lg:pe-1">
+            {categories.map((cat) => (
+              <div key={cat.slug} className="flex flex-col gap-2">
+                <p className="text-xs font-semibold uppercase tracking-widest2 text-lepas-black">{cat.name}</p>
+                {cat.entries.map((model) => {
+              const isPlaced = slots.some((s) => s?.id === model.id);
               return (
                 <div
-                  key={model.slug}
+                  key={model.id}
                   draggable
                   onDragStart={(e) => {
-                    e.dataTransfer.setData("text/plain", model.slug);
+                    e.dataTransfer.setData("text/plain", model.id);
                     e.dataTransfer.effectAllowed = "move";
                   }}
                   onClick={() => handleCardClick(model)}
@@ -168,20 +196,31 @@ export default function CompareDragDrop() {
                   }`}
                 >
                   <div className="relative h-14 w-20 shrink-0 overflow-hidden">
-                    <Image src={modelImages[model.slug]} alt={model.name} fill className="object-cover" />
+                    <Image src={modelImages[model.model.slug]} alt={model.name} fill className="object-cover" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold">{model.name}</p>
                     <p className="text-xs text-lepas-steel">
-                      {dict.common.startingFrom} {formatCurrency(comparePrice(model), model.currency)}
+                      {dict.common.startingFrom} {formatCurrency(comparePrice(model), model.model.currency)}
                     </p>
                     <p className="mt-0.5 text-[11px] uppercase tracking-widest2 text-lepas-steel">
                       {isPlaced ? dict.models.inComparison : dict.models.dragOrTap}
                     </p>
                   </div>
+                  {/* Tapping the card adds it; once placed, the plus turns into a remove cross. */}
+                  <span
+                    aria-hidden="true"
+                    className={`ms-auto flex h-8 w-8 shrink-0 items-center justify-center text-3xl font-extralight leading-none ${
+                      isPlaced ? "text-lepas-steel" : "text-lepas-amber"
+                    }`}
+                  >
+                    <span className={`transition-transform ${isPlaced ? "rotate-45" : ""}`}>+</span>
+                  </span>
                 </div>
               );
-            })}
+                })}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -192,7 +231,7 @@ export default function CompareDragDrop() {
           <div className={`grid gap-4 ${slotCount === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
             {slots.map((model, index) => (
               <DropSlot
-                key={index}
+                key={`${index}-${model?.id ?? "empty"}`}
                 index={index}
                 model={model}
                 isDragOver={dragOverSlot === index}
@@ -204,7 +243,7 @@ export default function CompareDragDrop() {
                 onDragOver={() => setDragOverSlot(index)}
                 onDragLeave={() => setDragOverSlot(null)}
                 onDrop={(slug) => {
-                  const found = models.find((m) => m.slug === slug);
+                  const found = models.find((m) => m.id === slug);
                   if (found) placeInSlot(found, index);
                   setDragOverSlot(null);
                 }}
@@ -240,14 +279,20 @@ export default function CompareDragDrop() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[560px] border-collapse text-start text-sm text-lepas-black">
+            <table className="w-full min-w-[640px] table-fixed border-collapse text-sm text-lepas-black">
+              <colgroup>
+                <col className="w-[22%]" />
+                {slots.map((_, i) => (
+                  <col key={i} />
+                ))}
+              </colgroup>
               <thead>
                 <tr className="border-b border-lepas-fog">
-                  <th className="w-40 py-4 text-xs font-medium uppercase tracking-widest2 text-lepas-steel">
+                  <th className="px-4 py-4 text-start align-bottom text-xs font-medium uppercase tracking-widest2 text-lepas-steel">
                     {dict.models.specification}
                   </th>
                   {slots.map((s, i) => (
-                    <th key={i} className="py-4 align-bottom">
+                    <th key={i} className="px-4 py-4 text-start align-bottom">
                       {s ? (
                         <span className="font-semibold">{s.name}</span>
                       ) : (
@@ -263,21 +308,21 @@ export default function CompareDragDrop() {
                     <tr>
                       <td
                         colSpan={slots.length + 1}
-                        className="bg-lepas-fog/50 py-2 text-xs font-semibold uppercase tracking-widest2 text-lepas-steel"
+                        className="bg-lepas-fog/50 px-4 py-2 text-start text-xs font-semibold uppercase tracking-widest2 text-lepas-steel"
                       >
                         {group.label}
                       </td>
                     </tr>
                     {group.rows.map((row) => (
                       <tr key={`${group.label}-${row.label}`} className="border-b border-lepas-fog">
-                        <td className="py-4 text-lepas-steel">{row.label}</td>
+                        <td className="px-4 py-4 align-top text-lepas-steel">{row.label}</td>
                         {row.values.map((v, i) => (
                           <td
                             key={i}
-                            className={`py-4 font-semibold text-lepas-black ${
+                            className={`px-4 py-4 align-top font-semibold text-lepas-black ${
                               lowestPrice !== null &&
                               row.label === dict.common.startingFrom &&
-                              (slots[i] ? comparePrice(slots[i] as VehicleModel) : null) === lowestPrice
+                              (slots[i] ? comparePrice(slots[i] as CompareEntry) : null) === lowestPrice
                                 ? "underline decoration-2 underline-offset-4"
                                 : ""
                             }`}
@@ -296,18 +341,19 @@ export default function CompareDragDrop() {
           <p className="mt-6 max-w-3xl text-xs text-lepas-steel">
             {locale === "ar"
               ? "المواصفات إرشادية وتم تجميعها لأغراض المقارنة فقط. قد تختلف الأرقام حسب الفئة؛ يرجى تأكيد المواصفات النهائية مع ممثل المبيعات."
-              : "Specifications are indicative and compiled for comparison only. Figures may vary by trim; please confirm final specifications with a sales representative."}
+              : "Specifications are indicative and compiled for comparison only. Figures may vary by trim; please confirm final specifications with a sales representative."}{" "}
+            *{dict.lepasUi.termsApply}.
           </p>
 
           <div className={`mt-8 grid gap-4 ${slotCount === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
             {slots.map((m, i) =>
               m ? (
-                <div key={m.slug} className="flex flex-col gap-2">
-                  <Link href={`/models/${m.slug}`} className="btn-outline w-full">
+                <div key={m.id} className="flex flex-col gap-2">
+                  <Link href={`/models/${m.model.slug}`} className="btn-outline w-full">
                     {dict.common.exploreModel} — {m.name}
                   </Link>
                   <Link
-                    href={`/models/finance-calculator?model=${m.slug}`}
+                    href={`/models/finance-calculator?model=${m.model.slug}`}
                     className="link-underline text-center text-sm font-semibold text-lepas-black"
                   >
                     {dict.nav.calculateFinance} <span className="inline-block rtl:rotate-180">→</span>
@@ -351,7 +397,10 @@ function DropSlot({
   onDrop: (slug: string) => void;
   onClear: () => void;
 }) {
-  const { locale, dict } = useLocale();
+  const { dict } = useLocale();
+  const [colourIndex, setColourIndex] = useState<number | null>(null);
+  const colour = model && colourIndex !== null ? model.model.colours[colourIndex] : undefined;
+  const image = colour?.image ?? (model ? modelImages[model.model.slug] : "");
 
   return (
     <div
@@ -386,21 +435,41 @@ function DropSlot({
       {model ? (
         <div className="flex flex-1 flex-col text-lepas-black">
           <div className="relative aspect-[16/10] w-full overflow-hidden">
-            <Image src={modelImages[model.slug]} alt={model.name} fill className="object-cover" />
+            <Image
+              key={image}
+              src={image}
+              alt={colour ? `${model.name} — ${colour.name}` : model.name}
+              fill
+              sizes="(min-width: 1024px) 25vw, 100vw"
+              className={colour ? "object-contain" : "object-cover"}
+            />
           </div>
           <h3 className="mt-4 text-lg font-bold">{model.name}</h3>
-          <p className="text-sm text-lepas-steel">{model.tagline}</p>
+          <p className="text-sm text-lepas-steel">{model.model.tagline}</p>
 
-          {model.colours.length > 0 && (
-            <div className="mt-3 flex items-center gap-2">
-              {model.colours.map((c) => (
-                <span
-                  key={c.name}
-                  title={c.name}
-                  className="h-4 w-4 rounded-full border border-lepas-fog"
-                  style={{ backgroundColor: c.hex }}
-                />
-              ))}
+          {model.model.colours.length > 0 && (
+            <div className="mt-3">
+              <div role="radiogroup" aria-label={dict.models.availableColours} className="flex flex-wrap items-center gap-2">
+                {model.model.colours.map((c, i) => {
+                  const on = colourIndex === i;
+                  return (
+                    <button
+                      key={c.name}
+                      type="button"
+                      role="radio"
+                      aria-checked={on}
+                      aria-label={c.name}
+                      title={c.name}
+                      onClick={() => setColourIndex(i)}
+                      className={`h-6 w-6 rounded-full border border-black/15 ring-offset-2 transition-shadow ${
+                        on ? "ring-2 ring-lepas-amber" : "hover:ring-2 hover:ring-lepas-fog"
+                      }`}
+                      style={{ backgroundColor: c.hex }}
+                    />
+                  );
+                })}
+              </div>
+              {colour && <p className="mt-1.5 text-xs text-lepas-steel">{colour.name}</p>}
             </div>
           )}
 
@@ -411,7 +480,7 @@ function DropSlot({
               </span>
             )}
             <p className="text-sm font-semibold">
-              {dict.common.startingFrom} {formatCurrency(comparePrice(model), model.currency)}
+              {dict.common.startingFrom} {formatCurrency(comparePrice(model), model.model.currency)}
             </p>
           </div>
         </div>

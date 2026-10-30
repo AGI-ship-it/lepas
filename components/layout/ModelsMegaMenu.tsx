@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import VariantPills from "@/components/models/VariantPills";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getModels } from "@/lib/i18n/data";
@@ -99,6 +100,7 @@ export default function ModelsMegaMenu({
                 <div className="p-4">
                   <h4 className="text-base font-bold uppercase">{model.name}</h4>
                   <p className="mt-1 text-xs text-white/50">{model.shortDescription}</p>
+                  <VariantPills powertrains={model.detailPage.powertrains} className="mt-3" />
                 </div>
               </Link>
             ))}

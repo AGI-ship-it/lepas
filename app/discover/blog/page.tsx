@@ -33,6 +33,7 @@ export default function BlogListPage() {
             : "Explore recent updates, events, and stories from across the brand."
         }
         imageLabel="Lepas stories"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.footer.latestVideos }]}
       />
       <Section>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

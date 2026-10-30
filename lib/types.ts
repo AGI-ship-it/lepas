@@ -20,6 +20,8 @@ export interface ModelVariant {
 export interface StatItem {
   label: string;
   value: string;
+  /** Icon key under /svg/model-spec; defaults to the fixed engine → combined-range order. */
+  icon?: string;
 }
 
 export interface DesignGallerySlide {
@@ -60,6 +62,17 @@ export interface SliderItem {
   icon?: string;
 }
 
+/** One powertrain option (e.g. ICE / PHEV); unset fields fall back to the detail page's own. */
+export interface ModelPowertrain {
+  id: string;
+  label: string;
+  brochure?: string;
+  heroImage?: string;
+  stats?: StatItem[];
+  performanceItems?: SliderItem[];
+  highlights?: HotspotFeature[];
+}
+
 export interface ModelDetailPage {
   heroHeadline: string;
   heroSubcopy: string;
@@ -95,6 +108,8 @@ export interface ModelDetailPage {
   dimensionsTitle: string;
   dimensions: DimensionRow[];
   dimensionsImageLabel: string;
+  /** With 2+ powertrains, the model's first spec groups are one per powertrain, in this order. */
+  powertrains?: ModelPowertrain[];
 }
 
 export interface VehicleModel {

@@ -3,6 +3,8 @@ import Link from "next/link";
 import Section from "@/components/ui/Section";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getNews, getOffers } from "@/lib/i18n/data";
+import HeroGlow from "@/components/ui/HeroGlow";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Sitemap",
@@ -73,8 +75,10 @@ export default function SitemapPage() {
 
   return (
     <>
-      <section className="bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
-        <div className="container-lepas">
+      <section className="relative overflow-hidden bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
+        <HeroGlow />
+        <div className="container-lepas relative">
+          <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: t.sitemapTitle }]} />
           <h1 className="heading-display text-3xl md:text-5xl">{t.sitemapTitle}</h1>
         </div>
       </section>

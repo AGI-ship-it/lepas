@@ -11,6 +11,7 @@ export default function PageHero({
   imageLabel,
   image,
   breadcrumb,
+  aside,
 }: {
   eyebrow?: string;
   title: string;
@@ -18,6 +19,8 @@ export default function PageHero({
   imageLabel: string;
   image?: string;
   breadcrumb?: BreadcrumbItem[];
+  /** Extra content pinned to the bottom-end corner of the hero, e.g. a hotline. */
+  aside?: React.ReactNode;
 }) {
   return (
     <section className="relative flex h-[88vh] min-h-[500px] items-end overflow-hidden bg-lepas-black">
@@ -38,7 +41,8 @@ export default function PageHero({
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/5" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
 
-      <div className="container-lepas relative pb-20 text-white">
+      <div className="container-lepas relative flex flex-col gap-8 pb-20 text-white md:flex-row md:items-end md:justify-between">
+        <div>
         {breadcrumb && (
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -65,6 +69,17 @@ export default function PageHero({
           >
             {description}
           </motion.p>
+        )}
+        </div>
+        {aside && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+            className="shrink-0"
+          >
+            {aside}
+          </motion.div>
         )}
       </div>
     </section>

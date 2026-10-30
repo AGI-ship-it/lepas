@@ -16,8 +16,31 @@ const modelImages: Record<string, string> = {
 };
 
 interface Selection {
+  key: string;
+  name: string;
   model: VehicleModel;
   variant: VehicleModel["variants"][number];
+}
+
+/** One option per variant, so the L8 shows as L8 ICE and L8 PHEV. */
+function financeOptions(models: VehicleModel[]): Selection[] {
+  return models.flatMap((model) => {
+    const powertrains = model.detailPage.powertrains ?? [];
+    if (model.variants.length < 2) {
+      return [{ key: model.slug, name: model.name, model, variant: model.variants[0] }];
+    }
+    return model.variants.map((variant) => ({
+      key: `${model.slug}-${variant.id}`,
+      name: `${model.name} ${powertrains.find((p) => p.id === variant.id)?.label ?? variant.name}`,
+      model,
+      variant,
+    }));
+  });
+}
+
+/** Paints the slider track amber up to the thumb. */
+function fill(value: number, min: number, max: number) {
+  return { "--fill": `${((value - min) / (max - min)) * 100}%` } as React.CSSProperties;
 }
 
 export default function FinanceCalculator() {
@@ -26,19 +49,19 @@ export default function FinanceCalculator() {
   const models = getModels(locale);
 
   const options: Selection[] = useMemo(
-    () => models.map((model) => ({ model, variant: model.variants[0] })),
+    () => financeOptions(models),
     [models]
   );
 
   const initialOption =
     options.find((o) => o.model.slug === initialSlug) ?? options[0];
 
-  const [selectedKey, setSelectedKey] = useState(initialOption.model.slug);
+  const [selectedKey, setSelectedKey] = useState(initialOption.key);
   const [downPaymentPct, setDownPaymentPct] = useState(20);
   const [durationMonths, setDurationMonths] = useState(60);
 
   const selected =
-    options.find((o) => o.model.slug === selectedKey) ?? initialOption;
+    options.find((o) => o.key === selectedKey) ?? initialOption;
 
   const vehiclePrice = selected.model.startingPrice + selected.variant.priceDelta;
   const downPayment = Math.round(vehiclePrice * (downPaymentPct / 100));
@@ -67,14 +90,15 @@ export default function FinanceCalculator() {
           </p>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
+        <div className="mt-6 grid grid-cols-2 gap-4">
           {options.map((o) => {
             const price = o.model.startingPrice + o.variant.priceDelta;
-            const isActive = o.model.slug === selectedKey;
+            const isActive = o.key === selectedKey;
             return (
               <button
-                key={o.model.slug}
-                onClick={() => setSelectedKey(o.model.slug)}
+                key={o.key}
+                onClick={() => setSelectedKey(o.key)}
+                aria-pressed={isActive}
                 className={`overflow-hidden border text-start transition-colors ${
                   isActive ? "border-lepas-amber" : "border-lepas-fog hover:border-lepas-black/30"
                 }`}
@@ -82,7 +106,7 @@ export default function FinanceCalculator() {
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-lepas-fog">
                   <Image
                     src={modelImages[o.model.slug]}
-                    alt={o.model.name}
+                    alt={o.name}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className="object-contain p-3"
@@ -94,7 +118,7 @@ export default function FinanceCalculator() {
                   )}
                 </div>
                 <div className="p-4">
-                  <p className="text-sm font-bold text-lepas-black">{o.model.name}</p>
+                  <p className="text-sm font-bold text-lepas-black">{o.name}</p>
                   <p className="mt-1 text-xs text-lepas-steel">
                     {dict.common.startingFrom} {formatCurrency(price, o.model.currency)}
                   </p>
@@ -109,15 +133,15 @@ export default function FinanceCalculator() {
           <div className="relative aspect-[16/9] w-full">
             <Image
               src={modelImages[selected.model.slug]}
-              alt={selected.model.name}
+              alt={selected.name}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-contain p-8"
             />
           </div>
           <div className="relative bg-lepas-black p-6 text-white">
-            <p className="text-lg font-bold">{selected.model.name}</p>
-            <p className="mt-1 text-sm text-white/50">
+            <p className="text-lg font-bold">{selected.name}</p>
+            <p className="mt-1 text-sm text-white/80">
               {dict.common.startingFrom} {formatCurrency(vehiclePrice, selected.model.currency)}
             </p>
           </div>
@@ -132,22 +156,25 @@ export default function FinanceCalculator() {
 
           <div className="mt-8">
             <div className="flex items-baseline justify-between">
-              <label className="text-sm font-medium text-lepas-black">{dict.finance.downPayment}</label>
-              <div className="text-right">
+              <label htmlFor="finance-down-payment" className="text-sm font-medium text-lepas-black">{dict.finance.downPayment}</label>
+              <div className="text-end">
                 <p className="text-lg font-bold text-lepas-black">{downPaymentPct}%</p>
                 <p className="text-xs text-lepas-steel">{formatCurrency(downPayment, selected.model.currency)}</p>
               </div>
             </div>
             <input
+              id="finance-down-payment"
               type="range"
               min={20}
               max={80}
               step={5}
               value={downPaymentPct}
               onChange={(e) => setDownPaymentPct(Number(e.target.value))}
-              className="range-field-light mt-3"
+              style={fill(downPaymentPct, 20, 80)}
+              aria-valuetext={`${downPaymentPct}%`}
+              className="range-field-light mt-4"
             />
-            <div className="mt-1 flex justify-between text-xs text-lepas-steel">
+            <div className="mt-2 flex justify-between text-xs text-lepas-steel">
               <span>20%</span>
               <span>80%</span>
             </div>
@@ -155,22 +182,25 @@ export default function FinanceCalculator() {
 
           <div className="mt-8">
             <div className="flex items-baseline justify-between">
-              <label className="text-sm font-medium text-lepas-black">{dict.finance.financeTerm}</label>
-              <div className="text-right">
+              <label htmlFor="finance-term" className="text-sm font-medium text-lepas-black">{dict.finance.financeTerm}</label>
+              <div className="text-end">
                 <p className="text-lg font-bold text-lepas-black">{durationMonths}</p>
                 <p className="text-xs text-lepas-steel">{dict.finance.months}</p>
               </div>
             </div>
             <input
+              id="finance-term"
               type="range"
               min={12}
               max={60}
               step={6}
               value={durationMonths}
               onChange={(e) => setDurationMonths(Number(e.target.value))}
-              className="range-field-light mt-3"
+              style={fill(durationMonths, 12, 60)}
+              aria-valuetext={`${durationMonths} ${dict.finance.months}`}
+              className="range-field-light mt-4"
             />
-            <div className="mt-1 flex justify-between text-xs text-lepas-steel">
+            <div className="mt-2 flex justify-between text-xs text-lepas-steel">
               <span>12 {dict.finance.monthsAbbrev}</span>
               <span>60 {dict.finance.monthsAbbrev}</span>
             </div>
@@ -182,21 +212,21 @@ export default function FinanceCalculator() {
           <p className="text-4xl font-extrabold text-white">
             {formatCurrency(result.monthlyPayment, selected.model.currency)}
           </p>
-          <p className="mt-1 text-sm text-white/60">
+          <p className="mt-1 text-sm text-white/75">
             {dict.finance.perMonthDuration.replace("{n}", String(durationMonths))}
           </p>
 
           <div className="mt-6 grid grid-cols-3 gap-4 border-t border-white/10 pt-6 text-sm">
             <div>
-              <p className="text-xs uppercase tracking-widest2 text-white/60">{dict.finance.vehiclePrice}</p>
+              <p className="text-xs uppercase tracking-widest2 text-white/75">{dict.finance.vehiclePrice}</p>
               <p className="mt-1 font-semibold">{formatCurrency(vehiclePrice, selected.model.currency)}</p>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-widest2 text-white/60">{dict.finance.downPayment}</p>
+              <p className="text-xs uppercase tracking-widest2 text-white/75">{dict.finance.downPayment}</p>
               <p className="mt-1 font-semibold">{formatCurrency(downPayment, selected.model.currency)}</p>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-widest2 text-white/60">{dict.finance.amountFinanced}</p>
+              <p className="text-xs uppercase tracking-widest2 text-white/75">{dict.finance.amountFinanced}</p>
               <p className="mt-1 font-semibold">{formatCurrency(result.loanAmount, selected.model.currency)}</p>
             </div>
           </div>
@@ -205,10 +235,10 @@ export default function FinanceCalculator() {
             <p className="text-xs font-semibold uppercase tracking-widest2 text-white">
               {dict.finance.includedOffer}
             </p>
-            <p className="mt-2 text-sm text-white/60">{dict.finance.includedOfferBody}</p>
+            <p className="mt-2 text-sm text-white/75">{dict.finance.includedOfferBody}</p>
           </div>
 
-          <p className="mt-6 text-xs leading-relaxed text-white/60">{dict.finance.disclaimer}</p>
+          <p className="mt-6 text-xs leading-relaxed text-white/75">{dict.finance.disclaimer}</p>
 
           <Link href={`/models/${selected.model.slug}`} className="btn-outline-light mt-6 w-full">
             {dict.common.exploreModel} {selected.model.name}

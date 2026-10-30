@@ -6,7 +6,6 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 
 const VIDEO_SRC = "/video/L8.mp4";
 const POSTER = "/design/assets/hero-car-from-figma.webp";
-const AMBER = "#eb9201";
 const SHEET = "#111111";
 
 // Path from public/svg/lepas-wordmark-mask.svg, inlined so the overlay can cut it out as a hole.
@@ -20,7 +19,7 @@ const MAX_ZOOM = 90;
 
 const EASE_DRAW = [0.65, 0, 0.35, 1] as const;
 
-// The amber outline draws the wordmark, the letters fill with the L8 film, then
+// The white outline draws the wordmark, the letters fill with the L8 film, then
 // scrolling flies through the "a" into a full-bleed parallax shot.
 export default function WordmarkVideoReveal() {
   const { dict } = useLocale();
@@ -123,7 +122,7 @@ export default function WordmarkVideoReveal() {
             <motion.path
               d={WORDMARK_PATH}
               fill="none"
-              stroke={AMBER}
+              stroke="#ffffff"
               strokeLinejoin="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: inView ? 1 : 0 }}
@@ -131,7 +130,7 @@ export default function WordmarkVideoReveal() {
               style={{
                 strokeWidth: outlineWidth,
                 opacity: outlineOpacity,
-                filter: "drop-shadow(0 0 4px rgba(235,146,1,0.65))",
+                filter: "drop-shadow(0 0 4px rgba(255,255,255,0.5))",
               }}
             />
           </motion.svg>

@@ -55,6 +55,7 @@ export default function AboutPage() {
         title={a.heroTitle}
         imageLabel={a.heroImageAlt}
         image="/design/assets/about/hero-landscape.webp"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.footer.aboutUs }]}
       />
 
       <TextMedia

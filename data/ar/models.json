@@ -3,7 +3,7 @@
     "slug": "l8",
     "name": "Lepas L8",
     "tagline": "أداء فاخر. مساحة للجميع.",
-    "shortDescription": "سيارة Lepas الذكية الرائدة، بمحرك 1.5TGDI وناقل حركة 7DCT وخيار سوبر هايبرد بمدى مشترك يصل إلى 1,300 كم.",
+    "shortDescription": "سيارة Lepas الذكية الرائدة، متوفرة بمحرك احتراق 1.6TGDI وناقل حركة 7DCT، أو بنسخة سوبر هايبرد القابلة للشحن بمدى مشترك يصل إلى 1,300 كم.",
     "startingPrice": 99900,
     "currency": "AED",
     "heroImageLabel": "Lepas L8 — سيارة SUV الذكية، منظر خارجي",
@@ -16,14 +16,14 @@
       "/design/assets/interior/l8/display-a.webp",
       "/design/assets/exterior/l8/headlights-on.webp"
     ],
-    "overview": "Lepas L8 هي الطراز الأعلى في مجموعة سيارات Lepas الذكية. مستوحاة من جماليات الفهد، تجمع بين تصميم واثق ومعبّر ومحرك 1.5TGDI من الجيل الثالث ومقصورة بلونين ونظام صوت فاخر من Sony. اختر محرك الاحتراق، أو L8 سوبر هايبرد بمدى مشترك يصل إلى 1,300 كم.",
+    "overview": "Lepas L8 هي الطراز الأعلى في مجموعة سيارات Lepas الذكية. مستوحاة من جماليات الفهد، تجمع بين تصميم واثق ومعبّر ومقصورة بلونين ونظام صوت فاخر من Sony. اختر محرك الاحتراق 1.6TGDI من الجيل الثالث، أو L8 سوبر هايبرد القابلة للشحن بمدى مشترك يصل إلى 1,300 كم.",
     "specs": [
       {
-        "label": "مجموعة الحركة",
+        "label": "محرك الاحتراق (ICE)",
         "items": [
           {
             "label": "المحرك",
-            "value": "1.5TGDI (الجيل الثالث)"
+            "value": "1.6TGDI (الجيل الثالث)"
           },
           {
             "label": "ناقل الحركة",
@@ -31,7 +31,7 @@
           },
           {
             "label": "القوة / عزم الدوران الأقصى",
-            "value": "184 حصاناً / 290 نيوتن متر"
+            "value": "192 حصاناً / 225 نيوتن متر"
           }
         ]
       },
@@ -43,12 +43,16 @@
             "value": "1,300 كم"
           },
           {
-            "label": "ناقل حركة الهجينة",
-            "value": "1DHT"
+            "label": "المحرك",
+            "value": "1.5TGDI"
           },
           {
-            "label": "القوة / العزم الأقصى للهجينة",
-            "value": "342 حصاناً / 525 نيوتن متر"
+            "label": "ناقل الحركة",
+            "value": "1DHT (الجيل الرابع)"
+          },
+          {
+            "label": "القوة / عزم الدوران الأقصى",
+            "value": "275 حصاناً / 365 نيوتن متر"
           }
         ]
       },
@@ -159,14 +163,14 @@
         "id": "ice",
         "name": "L8 بمحرك احتراق",
         "priceDelta": 0,
-        "powerHp": "184 حصاناً",
+        "powerHp": "192 حصاناً",
         "rangeKm": "2,800 مم"
       },
       {
         "id": "phev",
         "name": "L8 سوبر هايبرد (الهجينة القابلة للشحن)",
         "priceDelta": 0,
-        "powerHp": "342 حصاناً",
+        "powerHp": "275 حصاناً",
         "rangeKm": "2,800 مم"
       }
     ],
@@ -177,7 +181,7 @@
       "stats": [
         {
           "label": "المحرك",
-          "value": "1.5TGDI"
+          "value": "1.6TGDI"
         },
         {
           "label": "ناقل الحركة",
@@ -185,15 +189,11 @@
         },
         {
           "label": "القوة / عزم الدوران الأقصى",
-          "value": "184HP/290NM"
+          "value": "192HP/225NM"
         },
         {
           "label": "قاعدة العجلات",
           "value": "2800MM"
-        },
-        {
-          "label": "المدى المشترك (الهجينة)",
-          "value": "1300KM"
         }
       ],
       "exteriorImageLabel": "Lepas L8 — مزايا السلامة، منظر مقطعي",
@@ -285,9 +285,9 @@
       "exteriorEyebrow": "الأداء",
       "exteriorItems": [
         {
-          "title": "محرك 1.5TGDI (الجيل الثالث)",
+          "title": "محرك 1.6TGDI (الجيل الثالث)",
           "body": "يقدّم أداءً توربينياً متقدماً بقوة أكبر واستجابة أكثر سلاسة.",
-          "imageLabel": "Lepas L8 — محرك 1.5TGDI",
+          "imageLabel": "Lepas L8 — محرك 1.6TGDI",
           "image": "/design/assets/performance/l8/engine.webp",
           "icon": "engine"
         },
@@ -297,13 +297,6 @@
           "imageLabel": "Lepas L8 — ناقل حركة 7DCT",
           "image": "/design/assets/performance/l8/transmission.webp",
           "icon": "transmission"
-        },
-        {
-          "title": "الكبح المتجدد (الهجينة القابلة للشحن)",
-          "body": "في نسخة سوبر هايبرد، يحوّل استرداد الطاقة القابل للتعديل طاقة الكبح إلى كهرباء تساعد على شحن البطارية.",
-          "imageLabel": "Lepas L8 — الكبح المتجدد",
-          "image": "/design/assets/performance/l8/regen-braking.webp",
-          "icon": "regen"
         }
       ],
       "cabinEyebrow": "المقصورة الداخلية",
@@ -342,7 +335,7 @@
           "image2": "/design/assets/interior/l8/sound-b.webp"
         }
       ],
-      "utilityTitle": "الملكية والضمان",
+      "utilityTitle": "الضمان والملكية",
       "utilityIntro": "تأتي كل L8 بحماية طويلة الأمد من Lepas والغرير للتنقل.",
       "utilitySpecs": [
         {
@@ -398,7 +391,107 @@
           "value": "5"
         }
       ],
-      "dimensionsImageLabel": "Lepas L8 — منظر جانبي"
+      "dimensionsImageLabel": "Lepas L8 — منظر جانبي",
+      "powertrains": [
+        {
+          "id": "ice",
+          "label": "ICE",
+          "brochure": "/brochures/lepas-l8-ice.pdf"
+        },
+        {
+          "id": "phev",
+          "label": "PHEV",
+          "brochure": "/brochures/lepas-l8-phev.pdf",
+          "heroImage": "/design/assets/hero-l8-phev.webp",
+          "stats": [
+            {
+              "label": "المدى المشترك",
+              "value": "1300KM",
+              "icon": "combined-range"
+            },
+            {
+              "label": "المحرك",
+              "value": "1.5TGDI",
+              "icon": "engine"
+            },
+            {
+              "label": "ناقل الحركة",
+              "value": "1DHT",
+              "icon": "transmission"
+            },
+            {
+              "label": "القوة / عزم الدوران الأقصى",
+              "value": "275HP/365NM",
+              "icon": "power-torque"
+            },
+            {
+              "label": "قاعدة العجلات",
+              "value": "2800MM",
+              "icon": "wheelbase"
+            }
+          ],
+          "performanceItems": [
+            {
+              "title": "الكبح المتجدد مع استرداد طاقة قابل للتعديل",
+              "body": "يحوّل طاقة الكبح إلى كهرباء تساعد على شحن البطارية.",
+              "imageLabel": "Lepas L8 — الكبح المتجدد",
+              "image": "/design/assets/performance/l8/regen-braking.webp",
+              "icon": "regen"
+            },
+            {
+              "title": "ناقل حركة 1DHT (الجيل الرابع)",
+              "body": "يختار الترس التالي مسبقاً لتبديل شبه فوري بأقل انقطاع.",
+              "imageLabel": "Lepas L8 — ناقل حركة 1DHT",
+              "image": "/design/assets/performance/l8/transmission.webp",
+              "icon": "transmission"
+            }
+          ],
+          "highlights": [
+            {
+              "x": 54.9,
+              "y": 34.1,
+              "imageLabel": "نظام الركن الآلي (APA)",
+              "title": "نظام الركن الآلي (APA)",
+              "body": "يساعد على توجيه L8 إلى موقف السيارات تلقائياً."
+            },
+            {
+              "x": 57.1,
+              "y": 35.7,
+              "imageLabel": "المساعدة على الركن عن بُعد (RPA)",
+              "title": "المساعدة على الركن عن بُعد (RPA)",
+              "body": "يتيح لك تحريك L8 داخل المواقف الضيقة أو خارجها من خارج السيارة."
+            },
+            {
+              "x": 27.2,
+              "y": 56.2,
+              "imageLabel": "تنبيه حركة المرور الخلفية المتقاطعة (RCTA)",
+              "title": "تنبيه حركة المرور الخلفية المتقاطعة (RCTA)",
+              "body": "ينبهك إلى المركبات القادمة من الجانب أثناء الرجوع من موقف السيارات."
+            },
+            {
+              "x": 70.7,
+              "y": 34.1,
+              "imageLabel": "كاميرا رؤية بانورامية عالية الدقة 540°",
+              "title": "كاميرا رؤية بانورامية عالية الدقة 540°",
+              "body": "رؤية عالية الدقة حول السيارة وأسفلها للمناورة بثقة في الأماكن الضيقة."
+            },
+            {
+              "x": 40.7,
+              "y": 50.8,
+              "imageLabel": "نقاط تثبيت مقاعد الأطفال ISOFIX",
+              "title": "نقاط تثبيت مقاعد الأطفال ISOFIX",
+              "body": "نقاط تثبيت قياسية تجعل تركيب مقعد الطفل سريعاً وآمناً."
+            },
+            {
+              "x": 59.3,
+              "y": 42.8,
+              "imageLabel": "6 وسائد هوائية",
+              "title": "6 وسائد هوائية",
+              "body": "ست وسائد هوائية تحيط بالمقصورة لحماية السائق والركاب."
+            }
+          ]
+        }
+      ]
     }
   },
   {
@@ -685,7 +778,7 @@
           "image2": "/design/assets/interior/l6/ac-b.webp"
         }
       ],
-      "utilityTitle": "الملكية والضمان",
+      "utilityTitle": "الضمان والملكية",
       "utilityIntro": "تأتي كل L6 بحماية طويلة الأمد من Lepas والغرير للتنقل.",
       "utilitySpecs": [
         {
@@ -1046,7 +1139,7 @@
           "image": "/design/assets/interior/l4/moonlight-grey.webp"
         }
       ],
-      "utilityTitle": "الملكية والضمان",
+      "utilityTitle": "الضمان والملكية",
       "utilityIntro": "تأتي كل L4 بحماية طويلة الأمد من Lepas والغرير للتنقل.",
       "utilitySpecs": [
         {

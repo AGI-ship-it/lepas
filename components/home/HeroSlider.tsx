@@ -8,8 +8,8 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 
 // Offer photography has the banner text painted out so the slide can set its own copy.
 const offerLinks = [
-  { model: "l8", price: "1,533", image: "/design/assets/home/offer-l8-clean.webp" },
-  { model: "l4", price: "1,088", image: "/design/assets/home/offer-l4-clean.webp" },
+  { model: "l8", price: "1,533", image: "/design/assets/home/offer-l8-clean.webp", warranty: true },
+  { model: "l4", price: "1,088", image: "/design/assets/home/offer-l4-clean.webp", warranty: false },
 ];
 
 const slideLinks = [
@@ -28,6 +28,7 @@ type OfferSlide = {
   imageLabel: string;
   image: string;
   price: string;
+  perks: { value: string; label: string }[];
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
 };
@@ -58,6 +59,7 @@ export default function HeroSlider() {
       eyebrow: offers.slides[i].eyebrow,
       imageLabel: offers.slides[i].imageLabel,
       image: o.image,
+      perks: o.warranty ? [...offers.perks, ...offers.warrantyPerks] : offers.perks,
       price: o.price,
       primaryCta: { label: dict.site.home.bookAppointment, href: `/models/test-drive?model=${o.model}` },
       secondaryCta: { label: dict.common.viewOffer, href: `/offers/${o.model}` },
@@ -166,7 +168,7 @@ export default function HeroSlider() {
                 </h1>
                 <p className="mt-4 text-base text-white/80 md:text-lg">{offers.firstCustomers}</p>
                 <ul className="mt-6 grid max-w-lg grid-cols-2 gap-px border border-white/15 bg-white/15">
-                  {offers.perks.map((perk) => (
+                  {slide.perks.map((perk) => (
                     <li key={perk.label} className="flex items-center gap-3 bg-black/55 px-4 py-3 backdrop-blur-md">
                       <span className="text-2xl font-bold leading-none text-lepas-amber">{perk.value}</span>
                       <span className="text-xs leading-snug text-white/80">{perk.label}</span>

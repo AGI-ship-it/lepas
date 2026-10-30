@@ -40,7 +40,12 @@ export default function TermsPage() {
 
   return (
     <>
-      <PageHero eyebrow={dict.legal.eyebrow} title={dict.legal.terms} imageLabel="Lepas legal" />
+      <PageHero
+        eyebrow={dict.legal.eyebrow}
+        title={dict.legal.terms}
+        imageLabel="Lepas legal"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.legal.terms }]}
+      />
       <Section>
         <TabbedPolicy
           introTitle={locale === "ar" ? "مقدمة" : "Introduction"}

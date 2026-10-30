@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SearchBox from "@/components/layout/SearchBox";
 import LanguageToggle from "@/components/layout/LanguageToggle";
+import CallPopover from "@/components/layout/CallPopover";
 import ModelsMegaMenu from "@/components/layout/ModelsMegaMenu";
 import LepasLogo from "@/components/layout/LepasLogo";
 import SocialIcons from "@/components/layout/SocialIcons";
@@ -179,6 +180,8 @@ export default function Navbar() {
         <div className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-4">
           <SearchBox />
           <LanguageToggle />
+          <span className="h-6 w-px bg-white/20" aria-hidden="true" />
+          <CallPopover />
           <Link href="/models/test-drive" className="btn-primary whitespace-nowrap lg:px-4 2xl:px-7">
             {dict.nav.bookTestDrive}
           </Link>

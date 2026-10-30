@@ -16,7 +16,12 @@ export default function CookiesPolicyPage() {
 
   return (
     <>
-      <PageHero eyebrow={dict.legal.eyebrow} title={dict.legal.cookies} imageLabel="Lepas legal" />
+      <PageHero
+        eyebrow={dict.legal.eyebrow}
+        title={dict.legal.cookies}
+        imageLabel="Lepas legal"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.legal.cookies }]}
+      />
       <Section>
         <TabbedPolicy
           introTitle={policy.introTitle}

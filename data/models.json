@@ -3,7 +3,7 @@
     "slug": "l8",
     "name": "Lepas L8",
     "tagline": "Premium performance. Space for all.",
-    "shortDescription": "The flagship Lepas smart SUV, with a 1.5TGDI engine, 7DCT transmission and a Super Hybrid option with up to 1,300 km combined range.",
+    "shortDescription": "The flagship Lepas smart SUV, available as ICE with a 1.6TGDI engine and 7DCT transmission, or as a PHEV Super Hybrid with up to 1,300 km combined range.",
     "startingPrice": 99900,
     "currency": "AED",
     "heroImageLabel": "Lepas L8 smart SUV, exterior view",
@@ -16,14 +16,14 @@
       "/design/assets/interior/l8/display-a.webp",
       "/design/assets/exterior/l8/headlights-on.webp"
     ],
-    "overview": "The Lepas L8 is the flagship of the Lepas smart SUV range. Guided by Leopard Aesthetics, it pairs a confident, expressive design with a 3rd-generation 1.5TGDI engine, a two-tone cabin and a Sony premium sound system. Choose ICE, or the L8 Super Hybrid with up to 1,300 km combined range.",
+    "overview": "The Lepas L8 is the flagship of the Lepas smart SUV range. Guided by Leopard Aesthetics, it pairs a confident, expressive design with a two-tone cabin and a Sony premium sound system. Choose the ICE with a 3rd-generation 1.6TGDI engine, or the L8 Super Hybrid (PHEV) with up to 1,300 km combined range.",
     "specs": [
       {
-        "label": "Powertrain",
+        "label": "ICE",
         "items": [
           {
             "label": "Engine",
-            "value": "1.5TGDI (3rd generation)"
+            "value": "1.6TGDI (3rd generation)"
           },
           {
             "label": "Transmission",
@@ -31,7 +31,7 @@
           },
           {
             "label": "Max. Power/Torque",
-            "value": "184 HP / 290 Nm"
+            "value": "192 HP / 225 Nm"
           }
         ]
       },
@@ -43,12 +43,16 @@
             "value": "1,300 km"
           },
           {
-            "label": "PHEV Transmission",
-            "value": "1DHT"
+            "label": "Engine",
+            "value": "1.5TGDI"
           },
           {
-            "label": "PHEV Max. Power/Torque",
-            "value": "342 HP / 525 Nm"
+            "label": "Transmission",
+            "value": "1DHT (4th generation)"
+          },
+          {
+            "label": "Max. Power/Torque",
+            "value": "275 HP / 365 Nm"
           }
         ]
       },
@@ -96,14 +100,14 @@
     ],
     "technology": [
       "13.2-inch central LCD display",
-      "540° HD panoramic view camera",
+      "540\u00b0 HD panoramic view camera",
       "APA automated parking assist (PHEV)",
       "RPA remote parking assist (PHEV)",
       "eCall emergency call system"
     ],
     "safety": [
       "RCTA (Rear Cross Traffic Alert)",
-      "540° HD panoramic view camera",
+      "540\u00b0 HD panoramic view camera",
       "ISOFIX child seat anchors",
       "6 airbags",
       "Auto locking system"
@@ -159,14 +163,14 @@
         "id": "ice",
         "name": "L8 ICE",
         "priceDelta": 0,
-        "powerHp": "184 HP",
+        "powerHp": "192 HP",
         "rangeKm": "2,800 mm"
       },
       {
         "id": "phev",
         "name": "L8 Super Hybrid (PHEV)",
         "priceDelta": 0,
-        "powerHp": "342 HP",
+        "powerHp": "275 HP",
         "rangeKm": "2,800 mm"
       }
     ],
@@ -177,7 +181,7 @@
       "stats": [
         {
           "label": "Engine",
-          "value": "1.5TGDI"
+          "value": "1.6TGDI"
         },
         {
           "label": "Transmission",
@@ -185,15 +189,11 @@
         },
         {
           "label": "Max. Power/Torque",
-          "value": "184HP/290NM"
+          "value": "192HP/225NM"
         },
         {
           "label": "Wheelbase",
           "value": "2800MM"
-        },
-        {
-          "label": "Combined Range (PHEV)",
-          "value": "1300KM"
         }
       ],
       "exteriorImageLabel": "Lepas L8 safety features, cutaway view",
@@ -232,8 +232,8 @@
         {
           "x": 56.8,
           "y": 36.4,
-          "imageLabel": "540° HD panoramic view camera",
-          "title": "540° HD Panoramic View Camera",
+          "imageLabel": "540\u00b0 HD panoramic view camera",
+          "title": "540\u00b0 HD Panoramic View Camera",
           "body": "A high-definition view around and beneath the vehicle for confident manoeuvring in tight spaces."
         },
         {
@@ -285,9 +285,9 @@
       "exteriorEyebrow": "Performance",
       "exteriorItems": [
         {
-          "title": "1.5TGDI Engine (3rd Generation)",
+          "title": "1.6TGDI Engine (3rd Generation)",
           "body": "Delivers advanced turbocharged performance with stronger output and smoother response.",
-          "imageLabel": "Lepas L8 1.5TGDI engine",
+          "imageLabel": "Lepas L8 1.6TGDI engine",
           "image": "/design/assets/performance/l8/engine.webp",
           "icon": "engine"
         },
@@ -297,13 +297,6 @@
           "imageLabel": "Lepas L8 7DCT transmission",
           "image": "/design/assets/performance/l8/transmission.webp",
           "icon": "transmission"
-        },
-        {
-          "title": "Regenerative Braking (PHEV)",
-          "body": "On the Super Hybrid, adjustable energy recovery converts braking energy into electrical power to help recharge the battery.",
-          "imageLabel": "Lepas L8 regenerative braking",
-          "image": "/design/assets/performance/l8/regen-braking.webp",
-          "icon": "regen"
         }
       ],
       "cabinEyebrow": "Interior",
@@ -342,7 +335,7 @@
           "image2": "/design/assets/interior/l8/sound-b.webp"
         }
       ],
-      "utilityTitle": "Ownership & Warranty",
+      "utilityTitle": "Warranty & Ownership",
       "utilityIntro": "Every L8 comes with long-term protection from Lepas and Al Ghurair Mobility.",
       "utilitySpecs": [
         {
@@ -376,7 +369,7 @@
       "factoryOptionalEquipmentTitle": "Safety & Assistance",
       "factoryOptionalEquipment": [
         "RCTA (Rear Cross Traffic Alert)",
-        "540° HD panoramic view camera",
+        "540\u00b0 HD panoramic view camera",
         "ISOFIX child seat anchors",
         "6 airbags",
         "Auto locking system",
@@ -398,7 +391,107 @@
           "value": "5"
         }
       ],
-      "dimensionsImageLabel": "Lepas L8 side profile"
+      "dimensionsImageLabel": "Lepas L8 side profile",
+      "powertrains": [
+        {
+          "id": "ice",
+          "label": "ICE",
+          "brochure": "/brochures/lepas-l8-ice.pdf"
+        },
+        {
+          "id": "phev",
+          "label": "PHEV",
+          "brochure": "/brochures/lepas-l8-phev.pdf",
+          "heroImage": "/design/assets/hero-l8-phev.webp",
+          "stats": [
+            {
+              "label": "Combined range",
+              "value": "1300KM",
+              "icon": "combined-range"
+            },
+            {
+              "label": "Engine",
+              "value": "1.5TGDI",
+              "icon": "engine"
+            },
+            {
+              "label": "Transmission",
+              "value": "1DHT",
+              "icon": "transmission"
+            },
+            {
+              "label": "Max. Power/Torque",
+              "value": "275HP/365NM",
+              "icon": "power-torque"
+            },
+            {
+              "label": "Wheelbase",
+              "value": "2800MM",
+              "icon": "wheelbase"
+            }
+          ],
+          "performanceItems": [
+            {
+              "title": "Regenerative Braking with Adjustable Energy Recovery",
+              "body": "Converts braking energy into electrical power to help recharge the battery.",
+              "imageLabel": "Lepas L8 regenerative braking",
+              "image": "/design/assets/performance/l8/regen-braking.webp",
+              "icon": "regen"
+            },
+            {
+              "title": "1DHT Transmission (4th Generation)",
+              "body": "Pre-selects the next gear to deliver near-instant shifts with minimal interruption.",
+              "imageLabel": "Lepas L8 1DHT transmission",
+              "image": "/design/assets/performance/l8/transmission.webp",
+              "icon": "transmission"
+            }
+          ],
+          "highlights": [
+            {
+              "x": 54.9,
+              "y": 34.1,
+              "imageLabel": "APA (Automated Parking Assist) System",
+              "title": "APA (Automated Parking Assist) System",
+              "body": "Helps steer the L8 into a parking space automatically."
+            },
+            {
+              "x": 57.1,
+              "y": 35.7,
+              "imageLabel": "RPA (Remote Parking Assist)",
+              "title": "RPA (Remote Parking Assist)",
+              "body": "Lets you move the L8 in or out of a tight space from outside the vehicle."
+            },
+            {
+              "x": 27.2,
+              "y": 56.2,
+              "imageLabel": "RCTA rear cross traffic alert",
+              "title": "RCTA (Rear Cross Traffic Alert)",
+              "body": "Warns you of vehicles approaching from the side as you reverse out of a parking space."
+            },
+            {
+              "x": 70.7,
+              "y": 34.1,
+              "imageLabel": "540\u00b0 HD panoramic view camera",
+              "title": "540\u00b0 HD Panoramic View Camera",
+              "body": "A high-definition view around and beneath the vehicle for confident manoeuvring in tight spaces."
+            },
+            {
+              "x": 40.7,
+              "y": 50.8,
+              "imageLabel": "ISOFIX child seat anchors",
+              "title": "ISOFIX Child Seat Anchors",
+              "body": "Standardised anchor points make fitting a child seat quick and secure."
+            },
+            {
+              "x": 59.3,
+              "y": 42.8,
+              "imageLabel": "6 airbags",
+              "title": "6 Airbags",
+              "body": "Six airbags surround the cabin to protect driver and passengers."
+            }
+          ]
+        }
+      ]
     }
   },
   {
@@ -481,12 +574,12 @@
     ],
     "technology": [
       "13.2-inch central LCD display",
-      "540° HD panoramic view camera",
+      "540\u00b0 HD panoramic view camera",
       "Remote key and keyless entry",
       "Electronic parking brake"
     ],
     "safety": [
-      "540° HD panoramic view camera",
+      "540\u00b0 HD panoramic view camera",
       "ISOFIX interface",
       "Advanced braking and stability systems",
       "Electronic parking brake"
@@ -596,8 +689,8 @@
         {
           "x": 39.6,
           "y": 49.9,
-          "imageLabel": "540° HD panoramic view camera",
-          "title": "540° HD Panoramic View Camera",
+          "imageLabel": "540\u00b0 HD panoramic view camera",
+          "title": "540\u00b0 HD Panoramic View Camera",
           "body": "A high-definition view around and beneath the vehicle for confident manoeuvring in tight spaces."
         },
         {
@@ -685,7 +778,7 @@
           "image2": "/design/assets/interior/l6/ac-b.webp"
         }
       ],
-      "utilityTitle": "Ownership & Warranty",
+      "utilityTitle": "Warranty & Ownership",
       "utilityIntro": "Every L6 comes with long-term protection from Lepas and Al Ghurair Mobility.",
       "utilitySpecs": [
         {
@@ -717,7 +810,7 @@
       ],
       "factoryOptionalEquipmentTitle": "Safety & Assistance",
       "factoryOptionalEquipment": [
-        "540° HD panoramic view camera",
+        "540\u00b0 HD panoramic view camera",
         "ISOFIX interface",
         "Remote key and keyless entry",
         "Advanced braking and stability systems",
@@ -757,7 +850,7 @@
       "/design/assets/interior/l4/moonlight-grey.webp",
       "/design/assets/exterior/l4/spoiler-on.webp"
     ],
-    "overview": "The Lepas L4 strikes the right balance for your everyday. A lightweight body, 3rd-generation 1.5TCI engine and 6DCT transmission give it light-speed control, while ADAS, a 540° camera system and a Moonlight Grey interior make every drive easy.",
+    "overview": "The Lepas L4 strikes the right balance for your everyday. A lightweight body, 3rd-generation 1.5TCI engine and 6DCT transmission give it light-speed control, while ADAS, a 540\u00b0 camera system and a Moonlight Grey interior make every drive easy.",
     "specs": [
       {
         "label": "Powertrain",
@@ -821,13 +914,13 @@
     "technology": [
       "13.2-inch central LCD display",
       "ADAS (Advanced Driver Assistance Systems)",
-      "540° HD panoramic camera system",
+      "540\u00b0 HD panoramic camera system",
       "Tyre pressure monitoring"
     ],
     "safety": [
       "ADAS (Advanced Driver Assistance Systems)",
       "Parking and visibility support",
-      "540° HD panoramic camera system",
+      "540\u00b0 HD panoramic camera system",
       "Tyre pressure monitoring"
     ],
     "exterior": [
@@ -928,9 +1021,9 @@
           "body": "Keeps an eye on every tyre and alerts you when pressure drops."
         },
         {
-          "imageLabel": "Lepas L4 540° HD panoramic camera system",
+          "imageLabel": "Lepas L4 540\u00b0 HD panoramic camera system",
           "image": "/design/assets/safety/l4/panoramic-camera.webp",
-          "heading": "540° HD Panoramic Camera System",
+          "heading": "540\u00b0 HD Panoramic Camera System",
           "body": "A high-definition view around and beneath the vehicle for confident manoeuvring."
         },
         {
@@ -960,15 +1053,15 @@
         {
           "x": 59.7,
           "y": 32.6,
-          "imageLabel": "540° HD panoramic camera system",
-          "title": "540° HD Panoramic Camera System",
+          "imageLabel": "540\u00b0 HD panoramic camera system",
+          "title": "540\u00b0 HD Panoramic Camera System",
           "body": "Multiple HD cameras combine into one seamless view around the vehicle."
         },
         {
           "x": 26.6,
           "y": 59,
-          "imageLabel": "540° HD panoramic view camera",
-          "title": "540° HD Panoramic View Camera",
+          "imageLabel": "540\u00b0 HD panoramic view camera",
+          "title": "540\u00b0 HD Panoramic View Camera",
           "body": "See around and beneath the L4 for confident manoeuvring."
         }
       ],
@@ -1046,7 +1139,7 @@
           "image": "/design/assets/interior/l4/moonlight-grey.webp"
         }
       ],
-      "utilityTitle": "Ownership & Warranty",
+      "utilityTitle": "Warranty & Ownership",
       "utilityIntro": "Every L4 comes with long-term protection from Lepas and Al Ghurair Mobility.",
       "utilitySpecs": [
         {
@@ -1080,7 +1173,7 @@
       "factoryOptionalEquipment": [
         "ADAS (Advanced Driver Assistance Systems)",
         "Parking and visibility support",
-        "540° HD panoramic camera system",
+        "540\u00b0 HD panoramic camera system",
         "Tyre pressure monitoring"
       ],
       "chargingLabel": "The right balance for your everyday.",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import VariantPills from "@/components/models/VariantPills";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getModels } from "@/lib/i18n/data";
 import { monthlyFromLabel } from "@/components/models/pricing";
@@ -24,6 +25,7 @@ export default function ModelsOverviewPage() {
         title={dict.models.listingTitle}
         imageLabel="The Lepas L6, L8 and L4 smart SUVs lined up at sunset"
         image="/design/assets/home/hero-lineup.webp"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.nav.ourModels }]}
       />
       <Section
         light={false}
@@ -56,6 +58,7 @@ export default function ModelsOverviewPage() {
               <div className="absolute inset-x-0 bottom-0 p-6">
                 <h3 className="heading-display text-xl text-white">{model.name}</h3>
                 <p className="mt-1 text-sm text-white/70">{model.tagline}</p>
+                <VariantPills powertrains={model.detailPage.powertrains} className="mt-3" />
                 {monthlyFromLabel(model.slug, model.currency, dict) && (
                   <p className="mt-2 text-sm text-white/70">
                     {dict.common.startingFrom}{" "}

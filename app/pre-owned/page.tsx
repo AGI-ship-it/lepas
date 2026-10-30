@@ -72,6 +72,7 @@ export default function PreOwnedPage() {
         title={dict.preOwned.title}
         description={dict.preOwned.description}
         imageLabel="Lepas pre-owned"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.nav.preOwned }]}
       />
       <Section>
         <div className="grid gap-8 lg:grid-cols-[280px_1fr]">

@@ -7,6 +7,7 @@ import ChooseExperience from "@/components/home/ChooseExperience";
 import OffersSlider from "@/components/home/OffersSlider";
 import AlGhurairSection from "@/components/home/AlGhurairSection";
 import FeaturedNews from "@/components/home/FeaturedNews";
+import LatestVideos from "@/components/home/LatestVideos";
 import InstagramFeed from "@/components/home/InstagramFeed";
 
 // Section order follows lepasuae.com; Testimonials and BestOfBothWorlds stay
@@ -23,6 +24,7 @@ export default function HomePage() {
       <OffersSlider />
       <AlGhurairSection />
       <FeaturedNews />
+      <LatestVideos />
       <InstagramFeed />
     </>
   );

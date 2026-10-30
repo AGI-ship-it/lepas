@@ -7,7 +7,6 @@ import { Offer } from "@/lib/types";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import OfferBanner from "@/components/offers/OfferBanner";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import CallbackForm from "@/components/forms/CallbackForm";
 import { offerMeta } from "@/components/forms/offerMeta";
@@ -47,56 +46,93 @@ export default function OfferDetailPage({
 
   return (
     <>
-      <OfferBanner
-        offer={offer}
-        meta={meta}
-        modelName={meta?.model[locale]}
-        labels={dict.home.heroOffers}
-        priority
-        fullHeight
-        before={
-          <Breadcrumb
-            className="mb-8"
-            items={[
-              { label: dict.testDriveFlow.home, href: "/" },
-              { label: dict.offers.title, href: "/offers" },
-              { label: meta?.model[locale] ?? offer.title },
-            ]}
-          />
-        }
-        actions={
-          <>
-            <a href="#callback" className="btn-primary">
-              {t.requestCallback}
-            </a>
-            {meta && (
-              <Link href={meta.modelHref} className="btn-outline-light">
-                {t.explore.replace("{model}", meta.modelShort)}
-              </Link>
-            )}
-          </>
-        }
-      />
+      <header className="container-lepas pt-28 md:pt-32">
+        <Breadcrumb
+          light
+          className="mb-6"
+          items={[
+            { label: dict.testDriveFlow.home, href: "/" },
+            { label: dict.offers.title, href: "/offers" },
+            { label: meta?.model[locale] ?? offer.title },
+          ]}
+        />
+        <Link
+          href="/offers"
+          className="inline-flex items-center gap-2.5 text-[15px] text-lepas-black transition-colors hover:text-lepas-amber"
+        >
+          <img src="/svg/back-cta-arrow.svg" alt="" aria-hidden="true" width={24} height={24} className="size-6 rtl:rotate-180" />
+          {t.allOffers}
+        </Link>
+        <div className="mt-8 overflow-hidden rounded-[17px] bg-lepas-black">
+          {offer.image ? (
+            <Image
+              src={offer.image}
+              alt={offer.imageLabel}
+              width={1728}
+              height={970}
+              priority
+              sizes="(min-width: 1536px) 1488px, 100vw"
+              className="aspect-[1728/970] w-full object-cover"
+            />
+          ) : (
+            <PlaceholderImage label={offer.imageLabel} aspect="aspect-[1728/970]" tone="accent" />
+          )}
+        </div>
+      </header>
 
-      <section className="bg-white py-16 text-lepas-black md:py-24">
-        <div className="container-lepas">
-          <h1 className="heading-display text-3xl md:text-5xl">{offer.title}</h1>
-          <p className="mt-6 max-w-3xl text-lg">{offer.description}</p>
-          <ul className="mt-10 grid max-w-4xl gap-x-12 gap-y-4 sm:grid-cols-2">
-            {offer.terms.map((term) => (
-              <li key={term} className="flex gap-4 text-base">
-                <span aria-hidden="true" className="mt-3 h-0.5 w-4 shrink-0 bg-lepas-amber" />
-                {term}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-sm text-lepas-steel">{t.termsApply}</p>
+      <section className="container-lepas pb-14 text-lepas-black md:pb-24">
+        {meta && (
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <span className="border border-lepas-amber px-2.5 py-1.5 text-xs leading-none">{meta.model[locale]}</span>
+            <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+              <span className="text-sm font-medium uppercase leading-none">{t.from}</span>
+              <span className="sr-only">AED</span>
+              <span
+                aria-hidden="true"
+                className="inline-block size-[17px] shrink-0 bg-lepas-black"
+                style={{
+                  maskImage: "url('/svg/package-aed-symbol.svg')",
+                  WebkitMaskImage: "url('/svg/package-aed-symbol.svg')",
+                  maskSize: "100% 100%",
+                  WebkitMaskSize: "100% 100%",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskRepeat: "no-repeat",
+                }}
+              />
+              <span className="text-[22px] font-bold leading-none">{meta.monthly}</span>
+              <span className="text-sm leading-none">{t.perMonth}</span>
+            </span>
+          </div>
+        )}
+        <h1 className="mt-6 max-w-[980px] text-[clamp(34px,2.9vw,48px)] font-bold uppercase leading-[1.15]">{offer.title}</h1>
+        <p className="mt-6 max-w-[760px] text-[clamp(18px,1.3vw,22px)] leading-[1.45]">{offer.description}</p>
+        <ul className="mt-10 grid max-w-[980px] gap-x-10 gap-y-4 sm:grid-cols-2">
+          {offer.terms.map((term) => (
+            <li key={term} className="flex items-start gap-3.5 text-base leading-[1.51]">
+              <span aria-hidden="true" className="mt-[11px] h-0.5 w-3.5 shrink-0 bg-lepas-amber" />
+              {term}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-8 text-sm text-lepas-black/60">{t.termsApply}</p>
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <a href="#callback" className="btn-primary">
+            {t.requestCallback}
+          </a>
+          {meta && (
+            <Link
+              href={meta.modelHref}
+              className="btn border-2 border-lepas-amber text-lepas-black hover:bg-lepas-amber hover:text-white"
+            >
+              {t.explore.replace("{model}", meta.modelShort)}
+            </Link>
+          )}
         </div>
       </section>
 
       <section id="callback" className="scroll-mt-24 bg-lepas-form-ink py-20 text-white md:py-28">
         <div className="container-lepas max-w-4xl">
-          <h2 className="heading-display mb-10 text-3xl md:text-5xl">{t.requestCallback}</h2>
+          <h2 className="heading-display mb-10 text-3xl md:text-5xl">{t.callbackHeading}</h2>
           <CallbackForm defaultModel={meta ? meta.modelHref.split("/").pop() : ""} />
         </div>
       </section>

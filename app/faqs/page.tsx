@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Section from "@/components/ui/Section";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import HeroGlow from "@/components/ui/HeroGlow";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export default function FaqsPage() {
   const { dict } = useLocale();
@@ -12,8 +14,10 @@ export default function FaqsPage() {
 
   return (
     <>
-      <section className="bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
-        <div className="container-lepas">
+      <section className="relative overflow-hidden bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
+        <HeroGlow />
+        <div className="container-lepas relative">
+          <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.footer.faqs }]} />
           <p className="eyebrow">{dict.faqs.eyebrow}</p>
           <h1 className="heading-display mt-4 text-3xl md:text-5xl">{t.faqHeading}</h1>
           <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">{t.faqIntro}</p>

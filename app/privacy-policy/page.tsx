@@ -16,7 +16,12 @@ export default function PrivacyPolicyPage() {
 
   return (
     <>
-      <PageHero eyebrow={dict.legal.eyebrow} title={dict.legal.privacy} imageLabel="Lepas legal" />
+      <PageHero
+        eyebrow={dict.legal.eyebrow}
+        title={dict.legal.privacy}
+        imageLabel="Lepas legal"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.legal.privacy }]}
+      />
       <Section>
         <TabbedPolicy
           introTitle={policy.introTitle}

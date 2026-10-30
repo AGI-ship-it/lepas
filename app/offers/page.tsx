@@ -7,6 +7,8 @@ import Card from "@/components/ui/Card";
 import { offerMeta } from "@/components/forms/offerMeta";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getOffers } from "@/lib/i18n/data";
+import HeroGlow from "@/components/ui/HeroGlow";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Offers",
@@ -20,8 +22,10 @@ export default function OffersPage() {
 
   return (
     <>
-      <section className="bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
-        <div className="container-lepas">
+      <section className="relative overflow-hidden bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
+        <HeroGlow />
+        <div className="container-lepas relative">
+          <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.offers.title }]} />
           <h1 className="heading-display text-3xl md:text-5xl">{dict.offers.title}</h1>
           <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">{dict.offers.description}</p>
         </div>

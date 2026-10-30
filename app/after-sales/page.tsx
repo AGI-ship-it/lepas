@@ -5,7 +5,6 @@ import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
-import FeaturedNews from "@/components/home/FeaturedNews";
 import CtaBand from "@/components/ui/CtaBand";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getServices } from "@/lib/i18n/data";
@@ -26,8 +25,34 @@ export default function AfterSalesPage() {
         eyebrow={t.eyebrow}
         title={t.title}
         imageLabel={t.heroImageAlt}
-        image="/design/assets/services/hero.webp"
+        image="/design/assets/services/hero-clean.webp"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.nav.services }]}
+        aside={
+          <a
+            href="tel:6005462005"
+            className="group block border-s-2 border-lepas-amber bg-black/50 px-5 py-4 backdrop-blur-sm transition-colors hover:bg-black/70"
+          >
+            <span className="block text-sm text-white/85 md:text-base">{t.roadsidePrefix}</span>
+            <span className="mt-1 block text-2xl font-bold text-lepas-amber md:text-3xl" dir="ltr">
+              {t.roadsideNumber}
+            </span>
+          </a>
+        }
       />
+
+      <Section>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service) => (
+            <Card key={service.id}>
+              <PlaceholderImage label={service.imageLabel} aspect="aspect-[4/3]" />
+              <div className="p-6">
+                <h3 className="text-base font-bold text-lepas-ink">{service.title}</h3>
+                <p className="mt-2 text-sm text-lepas-steel">{service.description}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </Section>
 
       <Section id="roadside-assistance" className="scroll-mt-20">
         <div className="mx-auto max-w-3xl text-center">
@@ -48,7 +73,7 @@ export default function AfterSalesPage() {
 
       <section
         id="warranty"
-        className="relative flex min-h-[640px] scroll-mt-20 flex-col overflow-hidden bg-lepas-black text-white md:min-h-[clamp(680px,56vw,960px)]"
+        className="relative flex min-h-[520px] scroll-mt-20 flex-col overflow-hidden bg-lepas-black text-white md:min-h-[clamp(560px,40vw,720px)]"
       >
         <Image
           src="/design/assets/warranty-roadside.webp"
@@ -71,27 +96,12 @@ export default function AfterSalesPage() {
         </div>
       </section>
 
-      <Section>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <Card key={service.id}>
-              <PlaceholderImage label={service.imageLabel} aspect="aspect-[4/3]" />
-              <div className="p-6">
-                <h3 className="text-base font-bold text-lepas-ink">{service.title}</h3>
-                <p className="mt-2 text-sm text-lepas-steel">{service.description}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
       <CtaBand
         title={dict.afterSales.nextServiceTitle}
         description={dict.afterSales.nextServiceDescription}
         primary={{ label: dict.afterSales.bookService, href: "/after-sales/book-service" }}
       />
 
-      <FeaturedNews />
     </>
   );
 }
