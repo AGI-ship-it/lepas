@@ -34,9 +34,17 @@ const carImages: Record<string, string> = {
   l4: "/design/assets/model-l4-side.webp",
 };
 
+// Models offered in more than one variant (e.g. L8 ICE / Super Hybrid) need a variant picked too.
+const multiVariantModels = new Set(
+  getModels("en")
+    .filter((m) => m.variants.length > 1)
+    .map((m) => m.slug)
+);
+
 const schema = z
   .object({
     model: z.string().min(1),
+    variant: z.string(),
     showroom: z.string().min(1),
     date: z.string(),
     time: z.string(),
@@ -50,6 +58,9 @@ const schema = z
     marketingConsent: z.boolean(),
   })
   .superRefine((data, ctx) => {
+    if (multiVariantModels.has(data.model) && !data.variant) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["variant"], message: "Required" });
+    }
     if (!data.acceptTerms) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["acceptTerms"], message: "Required" });
     }
@@ -152,6 +163,11 @@ export default function TestDriveForm() {
   const initialModel = models.some((m) => m.slug === searchParams.get("model"))
     ? (searchParams.get("model") as string)
     : "";
+  const initialVariant =
+    models.find((m) => m.slug === initialModel)?.variants.find((v) => v.id === searchParams.get("variant"))?.id ??
+    (models.find((m) => m.slug === initialModel)?.variants.length === 1
+      ? models.find((m) => m.slug === initialModel)!.variants[0].id
+      : "");
   const [submitted, setSubmitted] = useState(false);
 
   // Live clock so today's already-passed slots disable while the form is open.
@@ -172,6 +188,7 @@ export default function TestDriveForm() {
     resolver: zodResolver(schema),
     defaultValues: {
       model: initialModel,
+      variant: initialVariant,
       showroom: "",
       date: "",
       time: "",
@@ -190,8 +207,12 @@ export default function TestDriveForm() {
   const selectedTime = watch("time");
   const selectedShowroom = watch("showroom");
   const selectedDate = watch("date");
+  const selectedVariantId = watch("variant");
   const selectedModel = models.find((m) => m.slug === selectedModelSlug);
-  const unlocked = Boolean(selectedModel);
+  const variantOptions = selectedModel && selectedModel.variants.length > 1 ? selectedModel.variants : [];
+  const needsVariant = variantOptions.length > 0 && !selectedVariantId;
+  const unlocked = Boolean(selectedModel) && !needsVariant;
+  const lockHint = !selectedModel ? t.selectModelToContinue : needsVariant ? t.selectVariantToContinue : undefined;
   const lockedClass = unlocked ? "" : "pointer-events-none select-none opacity-40";
   const notes = watch("notes") ?? "";
   const today = new Date(now);
@@ -214,6 +235,7 @@ export default function TestDriveForm() {
     setSubmitted(true);
     reset({
       model: "",
+      variant: "",
       showroom: "",
       date: "",
       time: "",
@@ -286,7 +308,13 @@ export default function TestDriveForm() {
                 type="button"
                 key={m.slug}
                 aria-pressed={isActive}
-                onClick={() => setValue("model", m.slug, { shouldValidate: true })}
+                onClick={() => {
+                  setValue("model", m.slug, { shouldValidate: true });
+                  // Single-variant models pick their only variant; others wait for the visitor's choice.
+                  if (m.slug !== selectedModelSlug) {
+                    setValue("variant", m.variants.length === 1 ? m.variants[0].id : "");
+                  }
+                }}
                 className={`group flex flex-col border text-start transition-colors ${
                   isActive ? "border-lepas-amber bg-lepas-amber/5" : "border-lepas-fog bg-lepas-sand/40 hover:border-lepas-ink/40"
                 }`}
@@ -310,12 +338,44 @@ export default function TestDriveForm() {
       </div>
       {errors.model && <p className="mt-2 text-xs text-lepas-error">{t.selectModelToContinue}</p>}
 
+      {variantOptions.length > 0 && (
+        <div className="mt-6">
+          <p className="mb-3 text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+            {t.chooseVariant}
+            <span className="text-lepas-amber"> *</span>
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label={t.chooseVariant}>
+            {variantOptions.map((v) => {
+              const isActive = v.id === selectedVariantId;
+              return (
+                <button
+                  type="button"
+                  key={v.id}
+                  role="radio"
+                  aria-checked={isActive}
+                  onClick={() => setValue("variant", v.id, { shouldValidate: true })}
+                  className={`flex items-center justify-between gap-4 border px-5 py-4 text-start transition-colors ${
+                    isActive ? "border-lepas-amber bg-lepas-amber/5" : "border-lepas-fog bg-lepas-sand/40 hover:border-lepas-ink/40"
+                  }`}
+                >
+                  <span className={`text-sm font-semibold uppercase tracking-[0.12em] ${isActive ? "text-lepas-amber" : "text-lepas-ink"}`}>
+                    {v.name}
+                  </span>
+                  <span className="shrink-0 text-xs text-lepas-steel">{v.powerHp}</span>
+                </button>
+              );
+            })}
+          </div>
+          {errors.variant && <p className="mt-2 text-xs text-lepas-error">{t.selectVariantToContinue}</p>}
+        </div>
+      )}
+
       <div className={`mt-10 transition-opacity ${lockedClass}`} aria-disabled={!unlocked}>
         <SectionHeader
           index={2}
           title={dict.testDrive.whenAndWhere}
           active={unlocked}
-          hint={unlocked ? undefined : t.selectModelToContinue}
+          hint={lockHint}
         />
         <div className="space-y-5">
           <FormField label={dict.testDrive.preferredShowroom} required error={errors.showroom?.message}>
@@ -414,7 +474,7 @@ export default function TestDriveForm() {
           index={3}
           title={t.yourDetails}
           active={unlocked}
-          hint={unlocked ? undefined : t.selectModelToContinue}
+          hint={lockHint}
         />
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="sm:col-span-2 sm:max-w-xs">

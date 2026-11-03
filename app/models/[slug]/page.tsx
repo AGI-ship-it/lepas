@@ -25,11 +25,10 @@ import { getModels } from "@/lib/i18n/data";
 
 const modelsEn = modelsData as VehicleModel[];
 
-const modelAssets: Record<string, { safety: string; lifestyle: string; brochure?: string }> = {
+const modelAssets: Record<string, { safety: string; lifestyle: string }> = {
   l8: {
     safety: "/design/assets/safety/l8/cutaway.webp",
     lifestyle: "/design/assets/lifestyle/l8-drive.webp",
-    brochure: "https://www.lepasuae.com/brochures/lepas-l8-ice.pdf",
   },
   l6: {
     safety: "/design/assets/safety/l6/topdown.webp",
@@ -38,7 +37,6 @@ const modelAssets: Record<string, { safety: string; lifestyle: string; brochure?
   l4: {
     safety: "/design/assets/safety/l4/cutaway.webp",
     lifestyle: "/design/assets/lifestyle/l4-drive.webp",
-    brochure: "/brochures/lepas-l4.pdf",
   },
 };
 
@@ -93,7 +91,7 @@ export default function ModelDetailPage({
   // Section order follows exeed-uae.com/en/models/rx: hero, trim bar, features, specs, warranty, CTA, other models.
   return (
     <PowertrainProvider powertrains={d.powertrains}>
-      <ModelHero model={model} dict={dict} brochure={assets?.brochure} />
+      <ModelHero model={model} dict={dict} />
 
       <ModelSectionNav label={nav.label} links={navLinks} />
 

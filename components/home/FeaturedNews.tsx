@@ -1,130 +1,76 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { FiArrowRight } from "react-icons/fi";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { formatNewsDate, getNewsCategory, getNewsImage } from "@/components/discover/newsImages";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getNews } from "@/lib/i18n/data";
 
-const CYCLE_MS = 5000;
-
-/** Latest news as on lepasuae.com: headline list on the left, the highlighted story's image on the right. */
+/** Latest news as a card grid (heading + "View all news" above three story cards), like exeed-uae.com. */
 export default function FeaturedNews() {
   const { locale, dict } = useLocale();
   const news = getNews(locale).slice(0, 3);
   const t = dict.site.news;
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused || news.length < 2) return;
-    const timer = setInterval(() => setActive((i) => (i + 1) % news.length), CYCLE_MS);
-    return () => clearInterval(timer);
-  }, [paused, news.length]);
-
-  const current = news[active];
-  const currentImage = current ? getNewsImage(current.slug) : undefined;
 
   return (
-    <section className="bg-white py-20 text-lepas-black md:py-28">
+    <section className="bg-lepas-sand py-20 text-lepas-black md:py-28">
       <div className="container-lepas">
-        <div className="flex justify-end">
-          <Link href="/discover/news" className="btn-primary">
-            {t.exploreMore}
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="heading-display text-3xl md:text-5xl">{t.title}</h2>
+            <p className="mt-4 max-w-md text-base text-lepas-steel">{t.sectionIntro}</p>
+          </div>
+          <Link href="/discover/news" className="btn-outline w-full uppercase sm:w-auto">
+            {t.viewAllNews}
           </Link>
         </div>
 
-        <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
-          <div className="flex flex-col">
-            <h2 className="heading-display text-3xl md:text-5xl">{t.title}</h2>
-            <p className="mt-4 max-w-md text-base">{t.sectionIntro}</p>
-
-            <ul
-              className="mt-12 space-y-10 lg:mt-auto lg:pt-12"
-              onMouseLeave={() => setPaused(false)}
-            >
-              {news.map((article, i) => {
-                const on = i === active;
-                return (
-                  <li key={article.slug}>
-                    <Link
-                      href={`/discover/news/${article.slug}`}
-                      onMouseEnter={() => {
-                        setActive(i);
-                        setPaused(true);
-                      }}
-                      onFocus={() => {
-                        setActive(i);
-                        setPaused(true);
-                      }}
-                      onBlur={() => setPaused(false)}
-                      className={`group block transition-opacity duration-500 ${on ? "opacity-100" : "opacity-30 hover:opacity-60"}`}
-                    >
-                      <p className="flex items-center gap-4 text-sm">
-                        <span>{formatNewsDate(article.date)}</span>
-                        <span className="border border-lepas-amber px-2.5 py-0.5 text-xs">
-                          {t.categories[getNewsCategory(article.slug)]}
-                        </span>
-                      </p>
-                      <div className="mt-4 flex items-center justify-between gap-6 border-s-2 border-lepas-amber ps-4">
-                        <h3 className="text-lg font-bold uppercase leading-snug md:text-2xl">{article.title}</h3>
-                        <ExternalIcon />
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="relative aspect-[16/9] w-full overflow-hidden bg-lepas-black lg:self-end">
-            <AnimatePresence initial={false}>
-              <motion.div
-                key={current?.slug}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
-                className="absolute inset-0"
-              >
-                {currentImage ? (
-                  <Image
-                    src={currentImage}
-                    alt={current.title}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                ) : (
-                  current && <PlaceholderImage label={current.imageLabel} aspect="h-full" tone="dark" />
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
+        <ul className="mt-10 grid grid-cols-1 gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
+          {news.map((article) => {
+            const image = getNewsImage(article.slug);
+            return (
+              <li key={article.slug} className="h-full">
+                <Link
+                  href={`/discover/news/${article.slug}`}
+                  className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
+                >
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-lepas-black">
+                    {image ? (
+                      <Image
+                        src={image}
+                        alt={article.title}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-500 ease-premium group-hover:scale-105"
+                      />
+                    ) : (
+                      <PlaceholderImage label={article.imageLabel} aspect="h-full" tone="dark" />
+                    )}
+                  </div>
+                  <div className="flex flex-1 flex-col p-5 sm:p-6">
+                    <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider">
+                      <time dateTime={article.date} className="text-lepas-amber">
+                        {formatNewsDate(article.date)}
+                      </time>
+                      <span className="border border-lepas-amber/60 px-2 py-0.5 text-[10px] text-lepas-steel">
+                        {t.categories[getNewsCategory(article.slug)]}
+                      </span>
+                    </p>
+                    <h3 className="mt-3 text-base font-bold uppercase leading-snug sm:text-lg">{article.title}</h3>
+                    <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-lepas-steel">{article.excerpt}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-black">
+                      {t.readMore}
+                      <FiArrowRight aria-hidden="true" className="transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
-  );
-}
-
-function ExternalIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-      className="h-7 w-7 shrink-0 text-lepas-amber transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 rtl:-scale-x-100"
-    >
-      <path
-        d="M13 4h7v7M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

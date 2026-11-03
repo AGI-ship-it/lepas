@@ -23,6 +23,8 @@ const ar: Dictionary = {
     },
     discoverLinks: {
       about: "من نحن",
+      alGhurairMobility: "الغرير للتنقل",
+      faqs: "الأسئلة الشائعة",
       news: "آخر الأخبار",
       blog: "أحدث الفيديوهات",
     },
@@ -58,7 +60,6 @@ const ar: Dictionary = {
     startingFrom: "ابتداءً من",
     readMore: "اقرأ المزيد",
     enquireNow: "احجز موعدك",
-    downloadBrochure: "تحميل الكتيّب",
     backToModels: "العودة إلى الموديلات",
   },
   home: {
@@ -529,7 +530,6 @@ const ar: Dictionary = {
     perMonth: "شهرياً",
     viewOffer: "عرض التفاصيل",
     termsApply: "تطبق الشروط والأحكام",
-    allOffers: "جميع العروض",
     moreOffers: "عروض أخرى",
     requestCallback: "احجز موعدك",
     callbackHeading: "اطلب معاودة الاتصال",
@@ -762,6 +762,7 @@ const ar: Dictionary = {
       listIntro:
         "ادخل إلى عالم ليباس. من العروض الدولية إلى قصص الإطلاق، اكتشف أحدث المستجدات من عالم العلامة.",
       exploreMore: "اكتشف المزيد",
+      viewAllNews: "عرض جميع الأخبار",
       readMore: "اقرأ المزيد",
       relatedNews: "أخبار ذات صلة",
       categories: {
@@ -778,6 +779,13 @@ const ar: Dictionary = {
       brandStoryTitle: "مستوحاة من الفهد.",
       brandStoryImageAlt: "فهد الثلوج يحدّق إلى الأعلى عبر الضباب مع شعار ليباس المجنّح",
       videoAlt: "شعار ليباس فوق شبكة التهوية الأمامية لسيارة ليباس L8 بلون أزرق مخضر.",
+      discoverWorldTitle: "اكتشف عالم ليباس",
+      discoverWorldImageAlt: "سيارة ليباس L8 الذكية تسير على طريق مفتوح.",
+      designedTitle: "مصممة من أجلك",
+      designedImageAlt: "مقاعد جلدية بلونين داخل مقصورة ليباس L8.",
+      ctaTitle: "جرّب ليباس بنفسك",
+      ctaBody:
+        "زر أحد صالات عرض ليباس أو احجز تجربة قيادة، واعثر على سيارة SUV الذكية التي تناسب أسلوب حياتك وقيادتك.",
     },
     services: {
       eyebrow: "خدماتنا",
@@ -813,6 +821,8 @@ const ar: Dictionary = {
     findShowroom: "ابحث عن صالة عرض",
     licenseNote: "يُرجى ملاحظة أن رخصة قيادة إماراتية سارية مطلوبة لتجربة القيادة.",
     selectModelToContinue: "اختر موديلًا للمتابعة",
+    chooseVariant: "اختر الفئة",
+    selectVariantToContinue: "اختر الفئة للمتابعة",
     selectShowroom: "اختر الموقع",
     selectShowroomForTimes: "اختر صالة عرض لعرض الأوقات المتاحة.",
     bookableAhead: "يمكن الحجز حتى 3 أشهر مقدمًا.",

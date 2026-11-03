@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { FiExternalLink } from "react-icons/fi";
+import { AL_GHURAIR_MOBILITY_URL } from "@/lib/links";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -19,11 +21,12 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileModelsOpen, setMobileModelsOpen] = useState(false);
-  const [mobileExploreOpen, setMobileExploreOpen] = useState(false);
   const [mobileDiscoverOpen, setMobileDiscoverOpen] = useState(false);
   const [mobileSupportOpen, setMobileSupportOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [modelsMenuOpen, setModelsMenuOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<"models" | "discover" | null>(null);
+  const modelsMenuOpen = openMenu === "models";
+  const discoverMenuOpen = openMenu === "discover";
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearCloseTimeout = () => {
@@ -33,15 +36,23 @@ export default function Navbar() {
     }
   };
 
-  const openModelsMenu = () => {
+  const showMenu = (menu: "models" | "discover") => {
     clearCloseTimeout();
-    setModelsMenuOpen(true);
+    setOpenMenu(menu);
   };
 
-  const scheduleCloseModelsMenu = () => {
+  const scheduleCloseMenu = () => {
     clearCloseTimeout();
-    closeTimeoutRef.current = setTimeout(() => setModelsMenuOpen(false), 200);
+    closeTimeoutRef.current = setTimeout(() => setOpenMenu(null), 200);
   };
+
+  const closeMenu = () => {
+    clearCloseTimeout();
+    setOpenMenu(null);
+  };
+
+  const openModelsMenu = () => showMenu("models");
+  const scheduleCloseModelsMenu = scheduleCloseMenu;
 
   const modelsLinks = [
     { label: dict.nav.modelsLinks.model1, href: "/models/l8" },
@@ -52,24 +63,30 @@ export default function Navbar() {
   const topLevelLinks = [
     { label: dict.site.nav.services, href: "/after-sales" },
     { label: dict.site.nav.offers, href: "/offers" },
-    { label: dict.site.nav.about, href: "/discover/about" },
-    { label: dict.site.nav.contactUs, href: "/contact" },
   ];
 
-  const aboutLinks = [
-    { label: dict.site.footer.alGhurairMobility, href: "/discover/about#al-ghurair-mobility" },
-    { label: dict.site.footer.lepas, href: "/discover/about#lepas" },
+  /** Grouped like exeed-uae.com's Discover menu. */
+  const discoverLinks = [
+    { label: dict.nav.discoverLinks.about, href: "/discover/about" },
+    { label: dict.nav.discoverLinks.news, href: "/discover/news" },
+    { label: dict.nav.discoverLinks.blog, href: "/discover/blog" },
+    { label: dict.nav.compareModels, href: "/models/compare" },
+    { label: dict.nav.financeCalculator, href: "/models/finance-calculator" },
+    { label: dict.nav.discoverLinks.faqs, href: "/faqs" },
+    { label: dict.nav.discoverLinks.alGhurairMobility, href: AL_GHURAIR_MOBILITY_URL, external: true },
   ];
+  const discoverActive = isActive("/discover") || isActive("/faqs");
 
   const servicesLinks = [
     { label: dict.site.footer.roadsideAssistance, href: "/after-sales#roadside-assistance" },
     { label: dict.site.footer.lepasWarranty, href: "/after-sales#warranty" },
   ];
 
-  const newsOffersLinks = [
-    { label: dict.site.footer.latestNews, href: "/discover/news" },
-    { label: dict.site.footer.latestVideos, href: "/discover/blog" },
+  // Offers goes before the external Al Ghurair Mobility link so that one stays last.
+  const mobileDiscoverLinks = [
+    ...discoverLinks.filter((l) => !l.external),
     { label: dict.site.footer.offers, href: "/offers" },
+    ...discoverLinks.filter((l) => l.external),
   ];
 
   const supportLinks = [
@@ -101,16 +118,23 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   useEffect(() => {
-    if (!modelsMenuOpen) return;
+    if (!openMenu) return;
     const onClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target.closest("[data-nav-dropdown]")) {
-        setModelsMenuOpen(false);
+        setOpenMenu(null);
       }
     };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenMenu(null);
+    };
     document.addEventListener("mousedown", onClickOutside);
-    return () => document.removeEventListener("mousedown", onClickOutside);
-  }, [modelsMenuOpen]);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClickOutside);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [openMenu]);
 
   return (
     <>
@@ -134,7 +158,7 @@ export default function Navbar() {
             onMouseLeave={scheduleCloseModelsMenu}
           >
             <button
-              onClick={() => setModelsMenuOpen((v) => !v)}
+              onClick={() => setOpenMenu((m) => (m === "models" ? null : "models"))}
               aria-expanded={modelsMenuOpen}
               aria-current={isActive("/models") ? "page" : undefined}
               className={`flex items-center gap-1.5 whitespace-nowrap text-[13px] uppercase transition-colors hover:text-white xl:text-sm 2xl:text-[15px] ${
@@ -151,7 +175,7 @@ export default function Navbar() {
             />
             <ModelsMegaMenu
               open={modelsMenuOpen}
-              onNavigate={() => setModelsMenuOpen(false)}
+              onNavigate={closeMenu}
               onMouseEnter={openModelsMenu}
               onMouseLeave={scheduleCloseModelsMenu}
             />
@@ -174,6 +198,70 @@ export default function Navbar() {
               />
             </Link>
           ))}
+
+          <div
+            className="group relative flex h-20 items-center"
+            data-nav-dropdown
+            onMouseEnter={() => showMenu("discover")}
+            onMouseLeave={scheduleCloseMenu}
+          >
+            <button
+              onClick={() => setOpenMenu((m) => (m === "discover" ? null : "discover"))}
+              aria-expanded={discoverMenuOpen}
+              aria-haspopup="true"
+              aria-current={discoverActive ? "page" : undefined}
+              className={`flex items-center gap-1.5 whitespace-nowrap text-[13px] uppercase transition-colors hover:text-white xl:text-sm 2xl:text-[15px] ${
+                discoverActive ? "text-white" : "text-white/90"
+              }`}
+            >
+              {dict.nav.discover}
+              <ChevronDown open={discoverMenuOpen} />
+            </button>
+            <span
+              className={`absolute inset-x-0 bottom-0 h-0.5 origin-center scale-x-0 bg-lepas-amber transition-transform duration-300 group-hover:scale-x-100 ${
+                discoverActive ? "scale-x-100" : ""
+              }`}
+            />
+            <div className="absolute start-1/2 top-full z-40 w-64 -translate-x-1/2 rtl:translate-x-1/2">
+            <AnimatePresence>
+              {discoverMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ul className="border border-white/10 bg-lepas-ink py-2 shadow-2xl">
+                    {discoverLinks.map((link) => (
+                      <li key={link.href} className={link.external ? "mt-2 border-t border-white/10 pt-2" : ""}>
+                        <NavLink
+                          link={link}
+                          onClick={closeMenu}
+                          className="flex items-center gap-2 px-5 py-2.5 text-sm text-white/75 transition-colors hover:bg-white/5 hover:text-white"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            </div>
+          </div>
+
+          <Link
+            href="/contact"
+            aria-current={isActive("/contact") ? "page" : undefined}
+            className={`group relative flex h-20 items-center whitespace-nowrap text-[13px] uppercase hover:text-white xl:text-sm 2xl:text-[15px] ${
+              isActive("/contact") ? "text-white" : "text-white/90"
+            }`}
+          >
+            {dict.site.nav.contactUs}
+            <span
+              className={`absolute inset-x-0 bottom-0 h-0.5 origin-center scale-x-0 bg-lepas-amber transition-transform duration-300 group-hover:scale-x-100 ${
+                isActive("/contact") ? "scale-x-100" : ""
+              }`}
+            />
+          </Link>
         </nav>
 
         {/* Right cluster: search, language, book a test drive */}
@@ -238,13 +326,6 @@ export default function Navbar() {
                 onNavigate={() => setMobileOpen(false)}
               />
               <MobileAccordion
-                label={dict.site.footer.aboutUs}
-                open={mobileExploreOpen}
-                setOpen={setMobileExploreOpen}
-                links={aboutLinks}
-                onNavigate={() => setMobileOpen(false)}
-              />
-              <MobileAccordion
                 label={dict.site.footer.services}
                 open={mobileServicesOpen}
                 setOpen={setMobileServicesOpen}
@@ -252,10 +333,10 @@ export default function Navbar() {
                 onNavigate={() => setMobileOpen(false)}
               />
               <MobileAccordion
-                label={dict.site.footer.newsAndOffers}
+                label={dict.nav.discover}
                 open={mobileDiscoverOpen}
                 setOpen={setMobileDiscoverOpen}
-                links={newsOffersLinks}
+                links={mobileDiscoverLinks}
                 onNavigate={() => setMobileOpen(false)}
               />
               <MobileAccordion
@@ -314,7 +395,7 @@ function MobileAccordion({
   label: string;
   open: boolean;
   setOpen: (v: boolean) => void;
-  links: { label: string; href: string }[];
+  links: NavItem[];
   onNavigate: () => void;
 }) {
   return (
@@ -341,20 +422,37 @@ function MobileAccordion({
           >
             <div className="flex flex-col gap-1 pb-4 ps-4">
               {links.map((link) => (
-                <Link
+                <NavLink
                   key={link.href}
-                  href={link.href}
+                  link={link}
                   onClick={onNavigate}
-                  className="py-2 text-base text-white/70 hover:text-white"
-                >
-                  {link.label}
-                </Link>
+                  className="flex items-center gap-2 py-2 text-base text-white/70 hover:text-white"
+                />
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+type NavItem = { label: string; href: string; external?: boolean };
+
+/** Internal links use next/link; external ones open in a new tab with an external-link icon. */
+function NavLink({ link, onClick, className }: { link: NavItem; onClick: () => void; className: string }) {
+  if (link.external) {
+    return (
+      <a href={link.href} target="_blank" rel="noopener noreferrer" onClick={onClick} className={className}>
+        {link.label}
+        <FiExternalLink aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+      </a>
+    );
+  }
+  return (
+    <Link href={link.href} onClick={onClick} className={className}>
+      {link.label}
+    </Link>
   );
 }
 

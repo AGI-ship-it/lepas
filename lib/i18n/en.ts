@@ -21,6 +21,8 @@ const en = {
     },
     discoverLinks: {
       about: "About Us",
+      alGhurairMobility: "Al Ghurair Mobility",
+      faqs: "FAQs",
       news: "Latest News",
       blog: "Latest Videos",
     },
@@ -56,7 +58,6 @@ const en = {
     startingFrom: "From",
     readMore: "Read More",
     enquireNow: "Reserve your appointment",
-    downloadBrochure: "Download Brochure",
     backToModels: "Back to Models",
   },
   home: {
@@ -527,7 +528,6 @@ const en = {
     perMonth: "per month",
     viewOffer: "View offer",
     termsApply: "Terms & Conditions Apply",
-    allOffers: "All offers",
     moreOffers: "More offers",
     requestCallback: "Reserve your appointment",
     callbackHeading: "Request a callback",
@@ -760,6 +760,7 @@ const en = {
       listIntro:
         "Step inside the world of Lepas. From international showcases to launch stories, discover the latest updates from across the brand.",
       exploreMore: "Explore more",
+      viewAllNews: "View all news",
       readMore: "Read more",
       relatedNews: "Related News",
       categories: {
@@ -776,6 +777,13 @@ const en = {
       brandStoryTitle: "Modelled after the leopard.",
       brandStoryImageAlt: "Snow leopard gazing upward through mist, with the Lepas wing emblem",
       videoAlt: "The Lepas badge above the grille of a teal Lepas L8.",
+      discoverWorldTitle: "Discover the world of Lepas",
+      discoverWorldImageAlt: "A Lepas L8 smart SUV driving along an open road.",
+      designedTitle: "Designed around you",
+      designedImageAlt: "Two-tone leather seats inside the Lepas L8 cabin.",
+      ctaTitle: "Experience Lepas for yourself",
+      ctaBody:
+        "Visit a Lepas showroom or book a test drive, and find the smart SUV that fits the way you live and drive.",
     },
     services: {
       eyebrow: "OUR SERVICES",
@@ -811,6 +819,8 @@ const en = {
     findShowroom: "Find a showroom",
     licenseNote: "Note that a valid UAE license is required for test drive.",
     selectModelToContinue: "Select a model to continue",
+    chooseVariant: "Choose your variant",
+    selectVariantToContinue: "Select a variant to continue",
     selectShowroom: "Select a location",
     selectShowroomForTimes: "Select a showroom to see the available times.",
     bookableAhead: "Bookable up to 3 months ahead.",

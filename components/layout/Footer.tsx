@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { FiExternalLink } from "react-icons/fi";
+import { AL_GHURAIR_MOBILITY_URL } from "@/lib/links";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import LepasLogo from "@/components/layout/LepasLogo";
 import SocialIcons from "@/components/layout/SocialIcons";
 
-type FooterLink = { label: string; href: string; external?: boolean };
+type FooterLink = { label: string; href: string; external?: boolean; icon?: boolean };
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -21,8 +23,9 @@ function FooterLinks({ links }: { links: FooterLink[] }) {
       {links.map((link) => (
         <li key={link.href}>
           {link.external ? (
-            <a href={link.href} className="text-base text-white/75 transition-colors hover:text-white" {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+            <a href={link.href} className="inline-flex items-center gap-2 text-base text-white/75 transition-colors hover:text-white" {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
               {link.label}
+              {link.icon && <FiExternalLink aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />}
             </a>
           ) : (
             <Link href={link.href} className="text-base text-white/75 transition-colors hover:text-white">
@@ -58,7 +61,7 @@ export default function Footer() {
     { label: f.latestNews, href: "/discover/news" },
     { label: f.latestVideos, href: "/discover/blog" },
     { label: f.faqs, href: "/faqs" },
-    { label: f.alGhurairMobility, href: "/discover/about#al-ghurair-mobility" },
+    { label: f.alGhurairMobility, href: AL_GHURAIR_MOBILITY_URL, external: true, icon: true },
   ];
 
   const getInTouch: FooterLink[] = [

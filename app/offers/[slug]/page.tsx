@@ -56,13 +56,6 @@ export default function OfferDetailPage({
             { label: meta?.model[locale] ?? offer.title },
           ]}
         />
-        <Link
-          href="/offers"
-          className="inline-flex items-center gap-2.5 text-[15px] text-lepas-black transition-colors hover:text-lepas-amber"
-        >
-          <img src="/svg/back-cta-arrow.svg" alt="" aria-hidden="true" width={24} height={24} className="size-6 rtl:rotate-180" />
-          {t.allOffers}
-        </Link>
         <div className="mt-8 overflow-hidden rounded-[17px] bg-lepas-black">
           {offer.image ? (
             <Image

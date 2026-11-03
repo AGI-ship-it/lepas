@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiArrowRight, FiDownload } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { VehicleModel } from "@/lib/types";
 import { Dictionary } from "@/lib/i18n";
@@ -20,11 +20,9 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export default function ModelHero({
   model,
   dict,
-  brochure,
 }: {
   model: VehicleModel;
   dict: Dictionary;
-  brochure?: string;
 }) {
   const d = model.detailPage;
   const t = dict.models;
@@ -32,7 +30,6 @@ export default function ModelHero({
   const heroImage = active?.heroImage ?? model.heroImage;
   // Every powertrain's photo stays mounted so switching crossfades instead of flashing while loading.
   const heroImages = Array.from(new Set([model.heroImage, ...powertrains.map((p) => p.heroImage)].filter(Boolean))) as string[];
-  const brochureHref = active?.brochure ?? brochure;
 
   const phev = powertrains.find((p) => p.id === "phev");
   const isPhev = active?.id === "phev";
@@ -86,7 +83,7 @@ export default function ModelHero({
           </h1>
           <p className="mt-5 max-w-xl text-base text-white/85 md:text-xl">{model.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link href={`/models/test-drive?model=${model.slug}`} className="btn-primary text-center">
+            <Link href={`/models/test-drive?model=${model.slug}${active ? `&variant=${active.id}` : ""}`} className="btn-primary text-center">
               {dict.common.bookTestDrive}
             </Link>
             <Link href={`/models/finance-calculator?model=${model.slug}`} className="btn-outline-light text-center">
@@ -117,17 +114,6 @@ export default function ModelHero({
             </button>
           )}
 
-          {brochureHref && (
-            <a
-              href={brochureHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 flex w-fit items-center gap-2 text-sm font-semibold text-white/80 underline-offset-4 hover:text-white hover:underline"
-            >
-              <FiDownload aria-hidden="true" />
-              {dict.common.downloadBrochure}
-            </a>
-          )}
         </motion.div>
       </div>
 

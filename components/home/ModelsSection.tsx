@@ -98,21 +98,37 @@ export default function ModelsSection() {
         </AnimatePresence>
       </div>
 
-      <div className="absolute inset-x-0 bottom-8 flex justify-center gap-6">
+      {/* Circular indicators, same as the hero slider: the active ring fills over the slide's duration. */}
+      <div className="absolute inset-x-0 bottom-8 flex justify-center gap-4">
         {models.map((m, i) => (
           <button
             key={m.slug}
             onClick={() => goTo(i)}
             aria-label={m.name}
-            className="relative h-1 w-20 overflow-hidden bg-white md:w-32"
+            aria-current={i === index}
+            className="relative flex h-6 w-6 items-center justify-center"
           >
+            <span className="absolute h-2 w-2 rounded-full bg-white/30" />
             {i === index && (
-              <span
-                key={cycle}
-                className="absolute inset-y-0 start-0 bg-lepas-amber animate-[model-progress_var(--d)_linear_forwards]"
-                style={{ ["--d" as string]: `${SLIDE_DURATION}ms` }}
-              />
+              <svg viewBox="0 0 24 24" className="absolute h-6 w-6 -rotate-90" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2" />
+                <circle
+                  key={cycle}
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  fill="none"
+                  stroke="#eb9201"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeDasharray={62.8}
+                  strokeDashoffset={62.8}
+                  className="animate-[hero-ring_var(--d)_linear_forwards]"
+                  style={{ ["--d" as string]: `${SLIDE_DURATION}ms` }}
+                />
+              </svg>
             )}
+            {i === index && <span className="absolute h-2 w-2 rounded-full bg-white" />}
           </button>
         ))}
       </div>

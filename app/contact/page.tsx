@@ -98,8 +98,8 @@ export default function ContactPage() {
                     </div>
                   )}
                   <span
-                    className={`pointer-events-none absolute end-3 top-3 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white ${
-                      open ? "bg-lepas-success" : "bg-lepas-amber"
+                    className={`pointer-events-none absolute end-3 top-3 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide ${
+                      open ? "bg-lepas-success text-white" : "bg-lepas-amber text-lepas-black"
                     }`}
                   >
                     {open ? t.nowOpen : t.comingSoon}
