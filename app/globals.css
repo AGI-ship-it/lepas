@@ -75,15 +75,15 @@
 
   /* Type hierarchy: h1 only in page heroes, h2 for section titles, h3 for card/slide titles. */
   .heading-1 {
-    @apply heading-display text-4xl sm:text-5xl md:text-6xl;
+    @apply heading-display text-[3rem] leading-tight; /* hero titles: 3rem */
   }
 
   .heading-2 {
-    @apply heading-display text-3xl md:text-5xl;
+    @apply heading-display text-[2.25rem] leading-tight; /* page/section titles: 2.25rem */
   }
 
   .heading-3 {
-    @apply heading-display text-xl leading-snug md:text-2xl;
+    @apply heading-display text-lg leading-snug md:text-xl;
   }
 
   .btn {
