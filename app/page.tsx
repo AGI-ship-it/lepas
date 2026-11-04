@@ -1,4 +1,5 @@
 import HeroSlider from "@/components/home/HeroSlider";
+import ScrollCue from "@/components/home/ScrollCue";
 import WordmarkVideoReveal from "@/components/home/WordmarkVideoReveal";
 import ModelsSection from "@/components/home/ModelsSection";
 import LifeTechSection from "@/components/home/LifeTechSection";
@@ -16,8 +17,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSlider />
-      {/* Target for the hero's Scroll prompt */}
-      <div id="home-next" />
+      <ScrollCue />
       <WordmarkVideoReveal />
       <ModelsSection />
       <LifeTechSection />
