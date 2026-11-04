@@ -75,7 +75,7 @@
 
   /* Type hierarchy: h1 only in page heroes, h2 for section titles, h3 for card/slide titles. */
   .heading-1 {
-    @apply heading-display text-[3rem] leading-tight; /* hero titles: 3rem */
+    @apply heading-display text-[2.5rem] leading-tight; /* hero titles: 40px */
   }
 
   .heading-2 {
