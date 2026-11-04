@@ -88,7 +88,7 @@ export default function AfterSalesPage() {
           <dl className="mt-auto grid grid-cols-2 gap-x-6 gap-y-8 text-center md:flex md:flex-wrap md:items-end md:justify-center md:gap-x-16">
             {t.warranty.map((w) => (
               <div key={w.years} className="flex flex-col items-center gap-1 md:gap-4">
-                <dt className="heading-display text-3xl md:text-5xl">{w.years}</dt>
+                <dt className="heading-display text-[2rem] leading-tight">{w.years}</dt>
                 <dd className="text-sm text-white/80 md:text-2xl">{w.text}</dd>
               </div>
             ))}

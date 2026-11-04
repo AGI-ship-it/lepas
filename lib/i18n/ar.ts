@@ -63,6 +63,7 @@ const ar: Dictionary = {
     backToModels: "العودة إلى الموديلات",
   },
   home: {
+    scroll: "مرّر",
     heroSlides: [
       {
         eyebrow: "ليباس L8",

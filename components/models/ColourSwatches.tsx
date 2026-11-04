@@ -42,7 +42,8 @@ export default function ColourSwatches({
           </AnimatePresence>
         </div>
 
-        <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-black/5 bg-white px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] md:gap-6 md:px-8">
+        {/* Metallic paint chips, no container; the active one gets a ring with a small gap (Exeed style). */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-6">
           {colours.map((c, i) => (
             <button
               key={c.name}
@@ -50,13 +51,15 @@ export default function ColourSwatches({
               onClick={() => setActive(i)}
               aria-label={c.name}
               aria-pressed={i === active}
-              className={`flex h-12 w-12 items-center justify-center rounded-full border transition-colors md:h-14 md:w-14 ${
-                i === active ? "border-lepas-black/40" : "border-transparent hover:border-lepas-black/15"
+              className={`flex h-14 w-14 items-center justify-center rounded-full border-2 transition-colors md:h-16 md:w-16 ${
+                i === active ? "border-lepas-black" : "border-transparent hover:border-lepas-black/25"
               }`}
             >
               <span
-                className="h-9 w-9 rounded-full border border-black/10 md:h-11 md:w-11"
-                style={{ background: `radial-gradient(circle at 50% 25%, rgba(255,255,255,0.45), transparent 60%), ${c.hex}` }}
+                className="h-10 w-10 rounded-full shadow-[inset_0_0_0_1px_rgba(0,0,0,0.12)] md:h-12 md:w-12"
+                style={{
+                  background: `linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 38%, rgba(255,255,255,0.28) 50%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.3) 100%), ${c.hex}`,
+                }}
               />
             </button>
           ))}

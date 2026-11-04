@@ -215,6 +215,31 @@
   scrollbar-width: none;
 }
 
+/* Home hero "Scroll" prompt: a thin line that draws down and fades, on loop. */
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-line {
+    animation: none !important;
+  }
+}
+
 @keyframes hero-ring {
   from {
     stroke-dashoffset: 62.8;

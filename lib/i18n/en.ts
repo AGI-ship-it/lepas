@@ -61,6 +61,7 @@ const en = {
     backToModels: "Back to Models",
   },
   home: {
+    scroll: "Scroll",
     heroSlides: [
       {
         eyebrow: "Lepas L8",

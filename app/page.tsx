@@ -16,6 +16,8 @@ export default function HomePage() {
   return (
     <>
       <HeroSlider />
+      {/* Target for the hero's Scroll prompt */}
+      <div id="home-next" />
       <WordmarkVideoReveal />
       <ModelsSection />
       <LifeTechSection />

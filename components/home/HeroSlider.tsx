@@ -207,6 +207,18 @@ export default function HeroSlider() {
         </AnimatePresence>
       </div>
 
+      {/* Scroll prompt, bottom-centre */}
+      <a
+        href="#home-next"
+        aria-label={dict.home.scroll}
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-4 text-lepas-amber/90 transition-colors hover:text-lepas-amber md:flex"
+      >
+        <span className="ps-[0.4em] text-xs font-medium uppercase tracking-[0.4em]">{dict.home.scroll}</span>
+        <span className="relative block h-10 w-px overflow-hidden bg-lepas-amber/20">
+          <span className="scroll-cue-line absolute inset-0 block bg-lepas-amber animate-[scroll-cue_2s_ease-in-out_infinite]" />
+        </span>
+      </a>
+
       {/* Circular loading indicators only — no arrows */}
       <div className="container-lepas absolute inset-x-0 bottom-8 flex items-center justify-start">
         <div className="flex items-center gap-4">
