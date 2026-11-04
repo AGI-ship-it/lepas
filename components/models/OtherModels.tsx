@@ -18,7 +18,7 @@ export default function OtherModels({ models, dict }: { models: VehicleModel[]; 
   return (
     <section className="bg-white py-16 text-lepas-ink md:py-24">
       <div className="container-lepas">
-        <h2 className="heading-display text-3xl md:text-5xl">{dict.models.exploreOtherModels}</h2>
+        <h2 className="heading-2">{dict.models.exploreOtherModels}</h2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {models.map((m) => (
             <Link

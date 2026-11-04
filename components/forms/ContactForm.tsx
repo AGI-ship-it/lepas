@@ -93,7 +93,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="border border-lepas-fog bg-white p-8 md:p-10" noValidate>
-      <h3 className="text-xl font-bold text-lepas-black">{dict.contact.sendMessage}</h3>
+      <h3 className="heading-3 text-lepas-black">{dict.contact.sendMessage}</h3>
       <p className="mt-2 text-sm text-lepas-steel">{dict.contact.sendMessageDescription}</p>
 
       <div className="mt-8">

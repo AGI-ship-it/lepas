@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ReactNode } from "react";
 import PageHero from "@/components/ui/PageHero";
-import BrandStory from "@/components/discover/BrandStory";
 import FeaturedNews from "@/components/home/FeaturedNews";
 import { getServerDictionary } from "@/lib/i18n/server";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 function Paragraphs({ items }: { items: string[] }) {
   return (
-    <div className="space-y-5 text-base leading-relaxed text-lepas-steel md:text-lg">
+    <div className="mt-6 space-y-5 text-base leading-relaxed text-lepas-steel md:text-lg">
       {items.map((p) => (
         <p key={p}>{p}</p>
       ))}
@@ -22,41 +22,29 @@ function Paragraphs({ items }: { items: string[] }) {
 }
 
 /**
- * Single-column editorial flow: image, heading, copy, stacked down the page.
- * `imageFirst` puts the image above the copy; otherwise it follows it.
+ * Two-column row of image and text. Rows alternate image–text / text–image on large screens;
+ * on small screens the image always comes first.
  */
-function StorySection({
+function SplitSection({
   id,
-  title,
-  paragraphs,
   image,
   imageAlt,
-  imageFirst = false,
+  textFirst = false,
+  children,
 }: {
   id: string;
-  title: string;
-  paragraphs: string[];
   image: string;
   imageAlt: string;
-  imageFirst?: boolean;
+  textFirst?: boolean;
+  children: ReactNode;
 }) {
-  const media = (
-    <div className="relative aspect-[16/9] w-full overflow-hidden bg-lepas-fog">
-      <Image src={image} alt={imageAlt} fill sizes="(min-width: 1280px) 1200px, 100vw" className="object-cover" />
-    </div>
-  );
-
   return (
-    <section id={id} className="scroll-mt-24 bg-white py-16 text-lepas-black md:py-24">
-      <div className="container-lepas flex flex-col gap-10 md:gap-14">
-        {imageFirst && media}
-        <div className="grid gap-6 lg:grid-cols-12 lg:gap-16">
-          <h2 className="heading-display text-3xl md:text-5xl lg:col-span-5">{title}</h2>
-          <div className="lg:col-span-7">
-            <Paragraphs items={paragraphs} />
-          </div>
+    <section id={id} className="scroll-mt-24 bg-white py-14 text-lepas-black md:py-20">
+      <div className="container-lepas grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-lepas-fog">
+          <Image src={image} alt={imageAlt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
         </div>
-        {!imageFirst && media}
+        <div className={textFirst ? "lg:order-first" : ""}>{children}</div>
       </div>
     </section>
   );
@@ -76,70 +64,64 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow={d.aboutEyebrow}
         title={a.heroTitle}
         imageLabel={a.heroImageAlt}
         image="/design/assets/about/hero-landscape.webp"
         breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.footer.aboutUs }]}
       />
 
-      <StorySection
-        id="lepas"
-        imageFirst
-        title={a.discoverWorldTitle}
-        paragraphs={[d.aboutMheroBody, d.aboutBody1]}
-        image="/design/assets/lifestyle/l8-drive.webp"
-        imageAlt={a.discoverWorldImageAlt}
-      />
+      {/* Image–text */}
+      <SplitSection id="lepas" image="/design/assets/lifestyle/l8-drive.webp" imageAlt={a.discoverWorldImageAlt}>
+        <h2 className="heading-2">{a.discoverWorldTitle}</h2>
+        <Paragraphs items={[d.aboutMheroBody, d.aboutBody1]} />
+      </SplitSection>
 
-      <BrandStory
+      {/* Text–image */}
+      <SplitSection
         id="brand-story"
-        title={a.brandStoryTitle}
-        body={[d.legacyBody, d.aboutBody2]}
+        textFirst
+        image="/design/assets/about/brand-story-bg.webp"
         imageAlt={a.brandStoryImageAlt}
-      />
+      >
+        <h2 className="heading-2">{a.brandStoryTitle}</h2>
+        <Paragraphs items={[d.legacyBody, d.aboutBody2]} />
+      </SplitSection>
 
-      <StorySection
+      {/* Image–text */}
+      <SplitSection
         id="al-ghurair-mobility"
-        title={a.alGhurairMobility}
-        paragraphs={[d.alGhurairBody1, d.alGhurairBody2, d.alGhurairBody3]}
         image="/design/assets/about/lepas-video-poster.webp"
         imageAlt={a.videoAlt}
-      />
+      >
+        <h2 className="heading-2">{a.alGhurairMobility}</h2>
+        <Paragraphs items={[d.alGhurairBody1, d.alGhurairBody2, d.alGhurairBody3]} />
+      </SplitSection>
 
-      {/* Expandable brand pillars beside a cabin image. */}
-      <section id="designed-around-you" className="scroll-mt-24 bg-lepas-fog py-16 text-lepas-black md:py-24">
-        <div className="container-lepas grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <h2 className="heading-display text-3xl md:text-5xl">{a.designedTitle}</h2>
-            <div className="mt-8 border-t border-lepas-black/15">
-              {pillars.map((p, i) => (
-                <details key={p.title} open={i === 0} className="group border-b border-lepas-black/15">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold uppercase md:text-xl [&::-webkit-details-marker]:hidden">
-                    {p.title}
-                    <span
-                      aria-hidden="true"
-                      className="text-2xl font-light leading-none transition-transform duration-300 group-open:rotate-45"
-                    >
-                      +
-                    </span>
-                  </summary>
-                  <p className="pb-6 text-base leading-relaxed text-lepas-steel">{p.body}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
-            <Image
-              src="/design/assets/interior/l8/twotone-a.webp"
-              alt={a.designedImageAlt}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
+      {/* Text–image: expandable brand pillars */}
+      <SplitSection
+        id="designed-around-you"
+        textFirst
+        image="/design/assets/interior/l8/twotone-a.webp"
+        imageAlt={a.designedImageAlt}
+      >
+        <h2 className="heading-2">{a.designedTitle}</h2>
+        <div className="mt-8 border-t border-lepas-black/15">
+          {pillars.map((p, i) => (
+            <details key={p.title} open={i === 0} className="group border-b border-lepas-black/15">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+                <h3 className="heading-3">{p.title}</h3>
+                <span
+                  aria-hidden="true"
+                  className="text-2xl font-light leading-none transition-transform duration-300 group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="pb-6 text-base leading-relaxed text-lepas-steel">{p.body}</p>
+            </details>
+          ))}
         </div>
-      </section>
+      </SplitSection>
 
       {/* Full-bleed L8 demo film, as on lepasuae.com/about. */}
       <section className="relative h-[clamp(420px,56.31vw,973px)] w-full overflow-hidden bg-lepas-black">
@@ -160,7 +142,7 @@ export default function AboutPage() {
       <section className="bg-lepas-black py-16 text-white md:py-24">
         <div className="container-lepas flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <h2 className="heading-display text-3xl md:text-5xl">{a.ctaTitle}</h2>
+            <h2 className="heading-2">{a.ctaTitle}</h2>
             <p className="mt-5 text-base text-white/70 md:text-lg">{a.ctaBody}</p>
           </div>
           <div className="flex flex-wrap gap-4">

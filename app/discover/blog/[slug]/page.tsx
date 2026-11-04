@@ -60,7 +60,7 @@ export default function BlogDetailPage({
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest2 text-lepas-steel md:text-sm">
             {formatVideoDate(post.date)}
           </p>
-          <h1 className="heading-display text-3xl text-lepas-black md:text-5xl">{post.title}</h1>
+          <h1 className="heading-1 text-lepas-black">{post.title}</h1>
           {post.youtubeId ? (
             <div className="relative my-8 aspect-video w-full overflow-hidden bg-lepas-black">
               <iframe

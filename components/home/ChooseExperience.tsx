@@ -34,7 +34,7 @@ export default function ChooseExperience() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-black/70" />
 
         <div className="container-lepas absolute inset-x-0 top-0 flex flex-col items-center pt-12 text-center md:pt-16">
-          <h2 className="heading-display max-w-3xl !text-center text-3xl md:text-5xl">{t.chooseTitle}</h2>
+          <h2 className="heading-2 max-w-3xl !text-center">{t.chooseTitle}</h2>
           <Link href="/models/test-drive" className="btn-primary mt-8">
             {t.bookTestDrive}
           </Link>

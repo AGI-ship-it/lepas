@@ -63,7 +63,7 @@ export default function PreOwnedDetailPage({
         <div className="mt-8 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <PreOwnedGallery label={vehicle.imageLabel} />
-            <h1 className="mt-8 text-3xl font-bold tracking-tight text-lepas-black md:text-5xl">
+            <h1 className="heading-1 mt-8 text-lepas-black">
               {vehicle.model} ({vehicle.year})
             </h1>
             <p className="mt-4 text-lepas-steel">{vehicle.description}</p>

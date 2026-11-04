@@ -56,7 +56,7 @@ export default function NewsDetailPage({
             <span className="text-lepas-ash">{formatNewsDate(article.date)}</span>
             <span className="text-lepas-amber">{t.categories[getNewsCategory(article.slug)]}</span>
           </p>
-          <h1 className="heading-display text-3xl text-lepas-ink md:text-5xl">
+          <h1 className="heading-1 text-lepas-ink">
             {article.title}
           </h1>
           <PlaceholderImage

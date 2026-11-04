@@ -77,7 +77,7 @@ export default function InteriorCarousel({ title, tabs }: { title: string; tabs:
     <section id="interior" className="scroll-mt-36 bg-white py-20 text-lepas-black md:py-28">
       <div className="container-lepas">
         <div className="mb-10 flex items-center justify-between gap-6 md:mb-14">
-          <h2 className="heading-display text-3xl md:text-5xl">{title}</h2>
+          <h2 className="heading-2">{title}</h2>
           <div className="flex shrink-0 gap-4">
             <ArrowButton direction="prev" label="Previous" disabled={active === 0} onClick={() => goTo(active - 1)} />
             <ArrowButton

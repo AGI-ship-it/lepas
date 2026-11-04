@@ -138,11 +138,7 @@ export default function InstagramFeed() {
       <div className="container-lepas relative">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="flex items-center gap-2 text-sm font-semibold tracking-widest2 text-lepas-amber">
-              <FaInstagram className="h-4 w-4" aria-hidden="true" />
-              {t.instagramEyebrow}
-            </p>
-            <h2 className="heading-display mt-4 text-3xl md:text-5xl">{t.instagramTitle}</h2>
+            <h2 className="heading-2">{t.instagramTitle}</h2>
             <p className="mt-4 max-w-xl text-base text-white/60">{t.instagramDescription}</p>
           </div>
           <a

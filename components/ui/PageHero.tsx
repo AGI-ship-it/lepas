@@ -56,7 +56,7 @@ export default function PageHero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="heading-display max-w-2xl text-start text-3xl sm:text-4xl md:text-5xl"
+          className="heading-1 max-w-3xl text-start"
         >
           {title}
         </motion.h1>

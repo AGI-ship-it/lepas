@@ -56,7 +56,7 @@ export default function ModelsOverviewPage() {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6">
-                <h3 className="heading-display text-xl text-white">{model.name}</h3>
+                <h3 className="heading-3 text-white">{model.name}</h3>
                 <p className="mt-1 text-sm text-white/70">{model.tagline}</p>
                 <VariantPills powertrains={model.detailPage.powertrains} className="mt-3" />
                 {monthlyFromLabel(model.slug, model.currency, dict) && (

@@ -97,7 +97,7 @@ export default function OfferDetailPage({
             </span>
           </div>
         )}
-        <h1 className="mt-6 max-w-[980px] text-[clamp(34px,2.9vw,48px)] font-bold uppercase leading-[1.15]">{offer.title}</h1>
+        <h1 className="heading-1 mt-6 max-w-[980px]">{offer.title}</h1>
         <p className="mt-6 max-w-[760px] text-[clamp(18px,1.3vw,22px)] leading-[1.45]">{offer.description}</p>
         <ul className="mt-10 grid max-w-[980px] gap-x-10 gap-y-4 sm:grid-cols-2">
           {offer.terms.map((term) => (
@@ -125,7 +125,7 @@ export default function OfferDetailPage({
 
       <section id="callback" className="scroll-mt-24 bg-lepas-form-ink py-20 text-white md:py-28">
         <div className="container-lepas max-w-4xl">
-          <h2 className="heading-display mb-10 text-3xl md:text-5xl">{t.callbackHeading}</h2>
+          <h2 className="heading-2 mb-10">{t.callbackHeading}</h2>
           <CallbackForm defaultModel={meta ? meta.modelHref.split("/").pop() : ""} />
         </div>
       </section>
@@ -155,7 +155,7 @@ export default function OfferDetailPage({
                         </span>
                       </p>
                     )}
-                    <h3 className="heading-display mt-3 text-xl">{o.title}</h3>
+                    <h3 className="heading-3 mt-3">{o.title}</h3>
                     <p className="mb-6 mt-2 text-sm text-lepas-steel">{o.shortDescription}</p>
                     <Link href={`/offers/${o.slug}`} className="btn-outline mt-auto">
                       {t.viewOffer}

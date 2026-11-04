@@ -101,7 +101,7 @@ export default function InspiredSection() {
               </button>
             ))}
           </div>
-          <h3 className="heading-display mt-6 max-w-xl text-3xl md:text-5xl">{text.headline}</h3>
+          <h2 className="heading-2 mt-6 max-w-xl">{text.headline}</h2>
         </div>
 
         <div className="container-lepas absolute inset-x-0 bottom-0 pb-8 md:pb-12">

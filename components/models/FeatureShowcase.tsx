@@ -51,7 +51,7 @@ export default function FeatureShowcase({
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/30" />
 
       <div className="container-lepas relative flex flex-1 flex-col pb-12 pt-6 md:pb-16">
-        <h2 className="heading-display border-s-2 border-lepas-amber ps-3 text-3xl md:text-5xl">
+        <h2 className="heading-2">
           {title}
         </h2>
 
@@ -66,10 +66,10 @@ export default function FeatureShowcase({
                 transition={{ duration: 0.4 }}
               >
                 {variant === "headline" ? (
-                  <h3 className="heading-display max-w-xs text-4xl md:text-5xl">{item.title}</h3>
+                  <h3 className="heading-3 max-w-xs">{item.title}</h3>
                 ) : (
                   <>
-                    <h3 className="text-lg font-bold uppercase md:text-xl">{item.title}</h3>
+                    <h3 className="heading-3">{item.title}</h3>
                     <p className="mt-3 text-sm font-semibold text-white/90">{item.body}</p>
                   </>
                 )}

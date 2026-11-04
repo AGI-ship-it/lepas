@@ -91,7 +91,7 @@ export default function PreOwnedPage() {
 
           <div>
             <div className="mb-6 flex items-baseline justify-between">
-              <h2 className="heading-display text-3xl text-lepas-black md:text-5xl">
+              <h2 className="heading-2 text-lepas-black">
                 {dict.preOwned.availableNow}
               </h2>
               <p className="text-sm text-lepas-steel">

@@ -79,14 +79,14 @@ export default function SitemapPage() {
         <HeroGlow />
         <div className="container-lepas relative">
           <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: t.sitemapTitle }]} />
-          <h1 className="heading-display text-3xl md:text-5xl">{t.sitemapTitle}</h1>
+          <h1 className="heading-1">{t.sitemapTitle}</h1>
         </div>
       </section>
       <Section>
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
           {groups.map((group) => (
             <div key={group.title}>
-              <h2 className="heading-display border-b border-lepas-fog pb-3 text-2xl">
+              <h2 className="heading-3 border-b border-lepas-fog pb-3">
                 {group.title}
               </h2>
               <ul className="mt-4 space-y-3">

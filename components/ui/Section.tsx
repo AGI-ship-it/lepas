@@ -27,7 +27,7 @@ export default function Section({
         {(title || description) && (
           <div className="mb-12 max-w-2xl text-start md:mb-16">
             {title && (
-              <h2 className="heading-display text-start text-3xl md:text-5xl">
+              <h2 className="heading-2 text-start">
                 {title}
               </h2>
             )}

@@ -65,29 +65,21 @@ export default function Navbar() {
     { label: dict.site.nav.offers, href: "/offers" },
   ];
 
-  /** Grouped like exeed-uae.com's Discover menu. */
+  /** Discover menu: About Us, news, videos, and Al Ghurair Mobility (external) last. */
   const discoverLinks = [
     { label: dict.nav.discoverLinks.about, href: "/discover/about" },
     { label: dict.nav.discoverLinks.news, href: "/discover/news" },
     { label: dict.nav.discoverLinks.blog, href: "/discover/blog" },
-    { label: dict.nav.compareModels, href: "/models/compare" },
-    { label: dict.nav.financeCalculator, href: "/models/finance-calculator" },
-    { label: dict.nav.discoverLinks.faqs, href: "/faqs" },
     { label: dict.nav.discoverLinks.alGhurairMobility, href: AL_GHURAIR_MOBILITY_URL, external: true },
   ];
-  const discoverActive = isActive("/discover") || isActive("/faqs");
+  const discoverActive = isActive("/discover");
 
   const servicesLinks = [
     { label: dict.site.footer.roadsideAssistance, href: "/after-sales#roadside-assistance" },
     { label: dict.site.footer.lepasWarranty, href: "/after-sales#warranty" },
   ];
 
-  // Offers goes before the external Al Ghurair Mobility link so that one stays last.
-  const mobileDiscoverLinks = [
-    ...discoverLinks.filter((l) => !l.external),
-    { label: dict.site.footer.offers, href: "/offers" },
-    ...discoverLinks.filter((l) => l.external),
-  ];
+
 
   const supportLinks = [
     { label: dict.site.footer.contactUs, href: "/contact" },
@@ -332,11 +324,18 @@ export default function Navbar() {
                 links={servicesLinks}
                 onNavigate={() => setMobileOpen(false)}
               />
+              <Link
+                href="/offers"
+                onClick={() => setMobileOpen(false)}
+                className="border-b border-white/10 py-4 text-lg font-medium text-white"
+              >
+                {dict.site.nav.offers}
+              </Link>
               <MobileAccordion
                 label={dict.nav.discover}
                 open={mobileDiscoverOpen}
                 setOpen={setMobileDiscoverOpen}
-                links={mobileDiscoverLinks}
+                links={discoverLinks}
                 onNavigate={() => setMobileOpen(false)}
               />
               <MobileAccordion

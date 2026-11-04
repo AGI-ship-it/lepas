@@ -19,7 +19,7 @@ export default function FeaturedNews() {
       <div className="container-lepas">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="heading-display text-3xl md:text-5xl">{t.title}</h2>
+            <h2 className="heading-2">{t.title}</h2>
             <p className="mt-4 max-w-md text-base text-lepas-steel">{t.sectionIntro}</p>
           </div>
           <Link href="/discover/news" className="btn-outline w-full uppercase sm:w-auto">
@@ -58,7 +58,7 @@ export default function FeaturedNews() {
                         {t.categories[getNewsCategory(article.slug)]}
                       </span>
                     </p>
-                    <h3 className="mt-3 text-base font-bold uppercase leading-snug sm:text-lg">{article.title}</h3>
+                    <h3 className="heading-3 mt-3">{article.title}</h3>
                     <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-lepas-steel">{article.excerpt}</p>
                     <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-black">
                       {t.readMore}

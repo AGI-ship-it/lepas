@@ -76,7 +76,7 @@ export default function ModelHero({
               { label: model.name },
             ]}
           />
-          <h1 className="mt-5 text-5xl font-light uppercase leading-none tracking-wide md:text-7xl">
+          <h1 className="heading-1 mt-5">
             {model.name}
             {isPhev && <span className="text-lepas-amber"> {phev?.label}</span>}
             <span className="sr-only"> — {d.heroHeadline}</span>

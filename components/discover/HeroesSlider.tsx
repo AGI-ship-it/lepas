@@ -12,7 +12,7 @@ export default function HeroesSlider() {
   return (
     <Section light={false} title={dict.discover.heroesTitle}>
       <div className="rounded-2xl border border-white/10 bg-lepas-ink p-8 md:p-12">
-        <h3 className="text-2xl font-bold uppercase tracking-tight md:text-3xl">
+        <h3 className="heading-3">
           {items[index].title}
         </h3>
         <p className="mt-4 max-w-2xl text-white/60">{items[index].body}</p>

@@ -19,7 +19,7 @@ export default function LatestVideos() {
       <div className="container-lepas">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <h2 className="heading-display text-3xl md:text-5xl">{dict.discover.blogTitle}</h2>
+            <h2 className="heading-2">{dict.discover.blogTitle}</h2>
             <p className="mt-4 max-w-md text-base text-white/70">{dict.discover.videosIntro}</p>
           </div>
           <Link href="/discover/blog" className="btn-primary">
@@ -62,7 +62,7 @@ export default function LatestVideos() {
                   </button>
                 )}
               </div>
-              <h3 className="mt-5 border-s-2 border-lepas-amber ps-4 text-lg font-bold leading-snug">
+              <h3 className="heading-3 mt-5">
                 {video.title}
               </h3>
             </li>

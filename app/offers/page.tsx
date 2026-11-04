@@ -26,7 +26,7 @@ export default function OffersPage() {
         <HeroGlow />
         <div className="container-lepas relative">
           <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.offers.title }]} />
-          <h1 className="heading-display text-3xl md:text-5xl">{dict.offers.title}</h1>
+          <h1 className="heading-1">{dict.offers.title}</h1>
           <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">{dict.offers.description}</p>
         </div>
       </section>
@@ -60,7 +60,7 @@ export default function OffersPage() {
                       </span>
                     </p>
                   )}
-                  <h2 className="heading-display mt-3 text-xl">
+                  <h2 className="heading-3 mt-3">
                     <Link href={`/offers/${offer.slug}`}>{offer.title}</Link>
                   </h2>
                   <p className="mb-6 mt-2 text-sm text-lepas-steel">{offer.shortDescription}</p>

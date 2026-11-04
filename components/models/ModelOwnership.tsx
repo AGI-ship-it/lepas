@@ -63,8 +63,7 @@ export default function ModelOwnership({ model, dict }: { model: VehicleModel; d
             />
           </div>
           <div>
-            <p className="eyebrow">{t.warranty}</p>
-            <h2 className="mt-3 text-2xl font-bold leading-tight md:text-4xl">{d.utilityTitle}</h2>
+            <h2 className="heading-2">{d.utilityTitle}</h2>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-lepas-steel md:text-base">{d.utilityIntro}</p>
 
             <dl className="mt-6 grid max-w-lg grid-cols-1 gap-4 sm:grid-cols-2">

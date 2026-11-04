@@ -187,8 +187,7 @@ export default function HeroSlider() {
               </>
             ) : (
               <>
-                <p className="eyebrow">{slide.eyebrow}</p>
-                <h1 className="heading-display mt-3 text-4xl text-white sm:text-5xl md:text-6xl">
+                <h1 className="heading-1 text-white">
                   {slide.title}
                 </h1>
                 <p className="mt-5 text-base text-white/70 md:text-lg">

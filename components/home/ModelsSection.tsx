@@ -11,9 +11,9 @@ const SLIDE_DURATION = 6000;
 
 // Same order as the first three hero slides, which hold each model's headline.
 const models = [
-  { slug: "l8", name: "L8", image: "/design/assets/L8-v2.webp" },
-  { slug: "l6", name: "L6", image: "/design/assets/L6-v2.webp" },
-  { slug: "l4", name: "L4", image: "/design/assets/L4-v2.webp" },
+  { slug: "l8", name: "Lepas L8", image: "/design/assets/L8-v2.webp", wordmark: "/design/assets/model-l8-wordmark.svg" },
+  { slug: "l6", name: "Lepas L6", image: "/design/assets/L6-v2.webp", wordmark: "/design/assets/model-l6-wordmark.svg" },
+  { slug: "l4", name: "Lepas L4", image: "/design/assets/L4-v2.webp", wordmark: "/design/assets/model-l4-wordmark.svg" },
 ];
 
 /** Full-screen model switcher as on lepasuae.com: name tabs top-left, headline and CTA bottom-left. */
@@ -56,7 +56,8 @@ export default function ModelsSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
 
       <div className="container-lepas relative flex h-full flex-col pb-24 pt-28 md:pt-32">
-        <div role="tablist" className="flex items-center">
+        {/* Script "Lepas L8 / L6 / L4" wordmarks as tabs, split by thin vertical rules. */}
+        <div role="tablist" className="flex items-stretch">
           {models.map((m, i) => {
             const on = i === index;
             return (
@@ -64,15 +65,17 @@ export default function ModelsSection() {
                 key={m.slug}
                 role="tab"
                 aria-selected={on}
+                aria-label={m.name}
                 onClick={() => goTo(i)}
-                className={`relative px-6 py-1 text-lg font-bold transition-colors first:ps-0 md:text-2xl ${
-                  i > 0 ? "border-s border-white/40" : ""
-                } ${on ? "text-white" : "text-white/50 hover:text-white/80"}`}
+                className={`relative flex items-center px-4 py-3 transition-opacity first:ps-0 sm:px-6 md:px-8 ${
+                  i > 0 ? "border-s border-white/25" : ""
+                } ${on ? "opacity-100" : "opacity-45 hover:opacity-80"}`}
               >
-                {m.name}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={m.wordmark} alt="" aria-hidden="true" className="h-4 w-auto sm:h-5 md:h-7" />
                 <span
-                  className={`absolute -bottom-2 h-0.5 bg-lepas-amber transition-opacity ${
-                    i === 0 ? "start-0 end-6" : "inset-x-6"
+                  className={`absolute bottom-0 h-0.5 bg-lepas-amber transition-opacity ${
+                    i === 0 ? "start-0 end-4 sm:end-6 md:end-8" : "inset-x-4 sm:inset-x-6 md:inset-x-8"
                   } ${on ? "opacity-100" : "opacity-0"}`}
                 />
               </button>
@@ -89,7 +92,7 @@ export default function ModelsSection() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             className="mt-auto max-w-3xl"
           >
-            <h2 className="heading-display text-3xl md:text-5xl">{copy.title}</h2>
+            <h2 className="heading-2">{copy.title}</h2>
             <Link href={`/models/test-drive?model=${model.slug}`} className="btn-primary group mt-10">
               {dict.common.bookTestDrive}
               <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:-scale-x-100" aria-hidden="true" />

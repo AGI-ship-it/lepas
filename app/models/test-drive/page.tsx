@@ -42,7 +42,7 @@ export default function TestDrivePage() {
               { label: dict.nav.bookTestDrive },
             ]}
           />
-          <h1 className="heading-display max-w-2xl text-3xl md:text-5xl">{t.heroTitle}</h1>
+          <h1 className="heading-1 max-w-2xl">{t.heroTitle}</h1>
           <p className="mt-5 max-w-xl text-white/75">{t.heroDescription}</p>
           <ul className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/55">
             <li>{t.warrantyMeta}</li>
@@ -76,7 +76,7 @@ export default function TestDrivePage() {
 
       <section className="bg-lepas-sand py-16 md:py-24">
         <div className="container-lepas">
-          <h2 className="heading-display text-3xl text-lepas-ink md:text-5xl">{dict.testDrive.requestPrivateDrive}</h2>
+          <h2 className="heading-2 text-lepas-ink">{dict.testDrive.requestPrivateDrive}</h2>
           <p className="mt-3 text-sm text-lepas-steel md:text-base">{dict.testDrive.requestPrivateDriveDescription}</p>
           <div className="mx-auto mt-10 max-w-5xl">
             <Suspense>

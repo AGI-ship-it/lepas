@@ -73,6 +73,19 @@
     @apply font-display font-bold uppercase leading-[1.08];
   }
 
+  /* Type hierarchy: h1 only in page heroes, h2 for section titles, h3 for card/slide titles. */
+  .heading-1 {
+    @apply heading-display text-4xl sm:text-5xl md:text-6xl;
+  }
+
+  .heading-2 {
+    @apply heading-display text-3xl md:text-5xl;
+  }
+
+  .heading-3 {
+    @apply heading-display text-xl leading-snug md:text-2xl;
+  }
+
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-none border px-7 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 ease-premium disabled:pointer-events-none disabled:opacity-50;
   }
