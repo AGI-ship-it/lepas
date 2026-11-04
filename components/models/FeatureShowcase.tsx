@@ -109,7 +109,7 @@ export default function FeatureShowcase({
                     {on && (
                       <motion.span
                         key={active}
-                        className="absolute inset-y-0 start-0 block h-0.5 -translate-y-[0.5px] bg-white"
+                        className="absolute inset-y-0 start-0 block h-0.5 -translate-y-[0.5px] bg-lepas-amber"
                         initial={{ width: reduceMotion ? "100%" : "0%" }}
                         animate={{ width: "100%" }}
                         transition={{ duration: reduceMotion ? 0 : SLIDE_MS / 1000, ease: "linear" }}

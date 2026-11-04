@@ -77,11 +77,16 @@ export default function ModelsSection() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={m.wordmark} alt="" aria-hidden="true" className="h-3 w-auto md:h-4" />
-                <span
-                  className={`absolute bottom-0 h-0.5 bg-lepas-amber transition-opacity ${
-                    i === 0 ? "start-0 end-3 md:end-4" : "inset-x-3 md:inset-x-4"
-                  } ${on ? "opacity-100" : "opacity-0"}`}
-                />
+                {/* One shared underline that glides to the active tab whenever the slide changes */}
+                {on && (
+                  <motion.span
+                    layoutId="models-tab-underline"
+                    transition={{ type: "tween", duration: 0.6, ease: [0.65, 0, 0.35, 1] }}
+                    className={`absolute bottom-0 h-0.5 bg-lepas-amber ${
+                      i === 0 ? "start-0 end-3 md:end-4" : "inset-x-3 md:inset-x-4"
+                    }`}
+                  />
+                )}
               </button>
             );
           })}

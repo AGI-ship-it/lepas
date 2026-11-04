@@ -51,6 +51,8 @@ const ar: Dictionary = {
     rights: "ليباس. جميع الحقوق محفوظة.",
   },
   common: {
+    previous: "السابق",
+    next: "التالي",
     learnMore: "اكتشف",
     exploreModel: "اكتشف",
     bookTestDrive: "احجز تجربة قيادة",
@@ -782,6 +784,7 @@ const ar: Dictionary = {
       alGhurairMobility: "الغرير للتنقل",
       brandStory: "قصة العلامة",
       brandStoryTitle: "مستوحاة من الفهد.",
+      brandStoryCombinedTitle: "قصة العلامة: مستوحاة من الفهد.",
       brandStoryImageAlt: "فهد الثلوج يحدّق إلى الأعلى عبر الضباب مع شعار ليباس المجنّح",
       videoAlt: "شعار ليباس فوق شبكة التهوية الأمامية لسيارة ليباس L8 بلون أزرق مخضر.",
       discoverWorldTitle: "اكتشف عالم ليباس",

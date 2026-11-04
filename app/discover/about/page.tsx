@@ -76,16 +76,28 @@ export default function AboutPage() {
         <Paragraphs items={[d.aboutMheroBody, d.aboutBody1]} />
       </SplitSection>
 
-      {/* Text–image */}
-      <SplitSection
+      {/* Brand story: full-bleed leopard image, combined title on the start side, copy on the end side. */}
+      <section
         id="brand-story"
-        textFirst
-        image="/design/assets/about/brand-story-bg.webp"
-        imageAlt={a.brandStoryImageAlt}
+        className="relative flex min-h-[clamp(560px,50vw,1000px)] scroll-mt-24 overflow-hidden bg-white text-lepas-black"
       >
-        <h2 className="heading-2">{a.brandStoryTitle}</h2>
-        <Paragraphs items={[d.legacyBody, d.aboutBody2]} />
-      </SplitSection>
+        <Image
+          src="/design/assets/about/brand-story-bg.webp"
+          alt={a.brandStoryImageAlt}
+          fill
+          sizes="100vw"
+          className="object-cover object-bottom"
+        />
+        {/* Soft white wash at the top so the text stays readable over the mist */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-transparent" />
+        <div className="container-lepas relative grid w-full content-start gap-8 pt-16 md:pt-24 lg:grid-cols-2 lg:gap-16">
+          <h2 className="heading-2 max-w-xl">{a.brandStoryCombinedTitle}</h2>
+          <div className="max-w-xl space-y-5 text-base leading-relaxed text-lepas-ink md:text-lg">
+            <p>{d.legacyBody}</p>
+            <p>{d.aboutBody2}</p>
+          </div>
+        </div>
+      </section>
 
       {/* Image–text */}
       <SplitSection

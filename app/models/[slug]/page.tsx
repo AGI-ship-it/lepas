@@ -19,7 +19,6 @@ import OtherModels from "@/components/models/OtherModels";
 import CtaBand from "@/components/ui/CtaBand";
 import SpecsTable from "@/components/models/SpecsTable";
 import ColourSwatches from "@/components/models/ColourSwatches";
-import NumberedSlider from "@/components/models/NumberedSlider";
 import { getServerDictionary } from "@/lib/i18n/server";
 import { getModels } from "@/lib/i18n/data";
 
@@ -129,28 +128,18 @@ export default function ModelDetailPage({
         image={assets?.safety}
         imageLabel={d.exteriorImageLabel}
         features={d.highlights}
+        extras={d.designGallery.map((slide) => ({
+          title: slide.heading,
+          body: slide.body,
+          imageLabel: slide.imageLabel,
+          image: (slide as typeof slide & { image?: string }).image,
+        }))}
       />
 
       {assets?.lifestyle && (
         <section id="drive" aria-label={nav.drive} className="relative aspect-[1728/811] w-full scroll-mt-36 bg-lepas-black">
           <Image src={assets.lifestyle} alt={d.chargingImageLabel} fill sizes="100vw" className="object-cover" />
         </section>
-      )}
-
-      {/* Additional safety highlights */}
-      {d.designGallery.length > 0 && (
-        <Section>
-          <NumberedSlider
-            badge={d.designEyebrow}
-            eyebrow={d.designTitle}
-            items={d.designGallery.map((slide) => ({
-              title: slide.heading,
-              body: slide.body,
-              imageLabel: slide.imageLabel,
-              image: (slide as typeof slide & { image?: string }).image,
-            }))}
-          />
-        </Section>
       )}
 
       {/* Full specifications (The Numbers) */}

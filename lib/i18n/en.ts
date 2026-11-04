@@ -49,6 +49,8 @@ const en = {
     rights: "Lepas. All Rights Reserved.",
   },
   common: {
+    previous: "Previous",
+    next: "Next",
     learnMore: "Discover",
     exploreModel: "Discover",
     bookTestDrive: "Book a Test Drive",
@@ -780,6 +782,7 @@ const en = {
       alGhurairMobility: "AL GHURAIR MOBILITY",
       brandStory: "BRAND STORY",
       brandStoryTitle: "Modelled after the leopard.",
+      brandStoryCombinedTitle: "Brand Story: Modelled after the leopard.",
       brandStoryImageAlt: "Snow leopard gazing upward through mist, with the Lepas wing emblem",
       videoAlt: "The Lepas badge above the grille of a teal Lepas L8.",
       discoverWorldTitle: "Discover the world of Lepas",
