@@ -25,17 +25,21 @@ export default function DesignGallery({ slides }: { slides: DesignGallerySlide[]
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute bottom-4 flex w-full justify-center gap-2 end-0">
+        <div className="absolute bottom-4 flex w-full justify-center gap-1 end-0">
           {slides.map((s, i) => (
             <button
               key={s.imageLabel}
               onClick={() => setIndex(i)}
               aria-label={`Show slide ${i + 1}: ${s.heading}`}
               aria-current={i === index}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === index ? "w-8 bg-white" : "w-4 bg-white/40"
-              }`}
-            />
+              className="flex h-6 w-6 items-center justify-center"
+            >
+              <span
+                className={`h-2.5 w-2.5 rounded-full transition-colors duration-300 ${
+                  i === index ? "bg-lepas-amber" : "bg-white/50 hover:bg-white/80"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

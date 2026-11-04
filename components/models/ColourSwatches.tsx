@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ModelColour } from "@/lib/types";
 
-/** "Select your shade": centred title, the shade name, the car side-on and a pill of swatches, as on lepasuae.com. */
+/** "Select your shade": centred title, the car side-on, a pill of swatches and the shade name below it, as on lepasuae.com. */
 export default function ColourSwatches({
   id,
   title,
@@ -23,9 +23,6 @@ export default function ColourSwatches({
     <section id={id} className="scroll-mt-36 bg-[#f6f6f6] py-12 text-center text-lepas-black md:py-16">
       <div className="container-lepas">
         <h2 className="heading-2">{title}</h2>
-        <p aria-live="polite" className="mt-3 text-base font-bold uppercase text-lepas-black/45">
-          {colour.name}
-        </p>
 
         <div className="relative mx-auto mt-6 aspect-[16/7] w-full max-w-5xl">
           <AnimatePresence initial={false}>
@@ -64,6 +61,9 @@ export default function ColourSwatches({
             </button>
           ))}
         </div>
+        <p aria-live="polite" className="mt-4 text-base font-bold uppercase text-lepas-black/45">
+          {colour.name}
+        </p>
       </div>
     </section>
   );

@@ -17,17 +17,21 @@ export default function HeroesSlider() {
         </h3>
         <p className="mt-4 max-w-2xl text-white/60">{items[index].body}</p>
 
-        <div className="mt-8 flex items-center gap-3">
+        <div className="mt-8 flex items-center gap-2">
           {items.map((item, i) => (
             <button
               key={item.title}
               onClick={() => setIndex(i)}
               aria-label={`Show ${item.title}`}
               aria-current={i === index}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === index ? "w-8 bg-white" : "w-4 bg-white/30 hover:bg-white/50"
-              }`}
-            />
+              className="flex h-6 w-6 items-center justify-center"
+            >
+              <span
+                className={`h-2.5 w-2.5 rounded-full transition-colors duration-300 ${
+                  i === index ? "bg-lepas-amber" : "bg-white/35 hover:bg-white/60"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

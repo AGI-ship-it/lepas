@@ -136,7 +136,7 @@ export default function InteriorCarousel({ title, tabs }: { title: string; tabs:
           })}
         </div>
 
-        <div className="mt-10 flex justify-center gap-4">
+        <div className="mt-10 flex justify-center gap-2">
           {tabs.map((tab, i) => (
             <button
               key={tab.heading}
@@ -144,8 +144,14 @@ export default function InteriorCarousel({ title, tabs }: { title: string; tabs:
               onClick={() => goTo(i)}
               aria-label={tab.heading}
               aria-current={i === active}
-              className={`h-1 w-12 transition-colors ${i === active ? "bg-lepas-amber" : "bg-lepas-fog"}`}
-            />
+              className="flex h-6 w-6 items-center justify-center"
+            >
+              <span
+                className={`h-2.5 w-2.5 rounded-full transition-colors duration-300 ${
+                  i === active ? "bg-lepas-amber" : "bg-lepas-black/20 hover:bg-lepas-black/40"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

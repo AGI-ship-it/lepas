@@ -21,12 +21,12 @@ export default function NewsListPage() {
   return (
     <>
       <PageHero
-        eyebrow={dict.discover.newsEyebrow}
+        compact
         title={t.title}
         description={t.listIntro}
-        imageLabel="Lepas newsroom"
-        image={getNewsImage(sorted[0]?.slug ?? "")}
-        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.footer.latestNews }]}
+        imageLabel="Lepas L8 on the road at night"
+        image="/design/assets/lifestyle/l8-drive.webp"
+        breadcrumb={[{ label: dict.testDriveFlow.home, href: "/" }, { label: t.title }]}
       />
       <section className="bg-lepas-cream py-16 md:py-24">
         <div className="container-lepas">

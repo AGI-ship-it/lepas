@@ -12,6 +12,7 @@ export default function PageHero({
   image,
   breadcrumb,
   aside,
+  compact = false,
 }: {
   eyebrow?: string;
   title: string;
@@ -21,9 +22,15 @@ export default function PageHero({
   breadcrumb?: BreadcrumbItem[];
   /** Extra content pinned to the bottom-end corner of the hero, e.g. a hotline. */
   aside?: React.ReactNode;
+  /** Shorter, darker hero with a larger intro line (news-listing style, as on exeed-uae.com/en/news). */
+  compact?: boolean;
 }) {
   return (
-    <section className="relative flex h-[88vh] min-h-[500px] items-end overflow-hidden bg-lepas-black">
+    <section
+      className={`relative flex items-end overflow-hidden bg-lepas-black ${
+        compact ? "min-h-[60svh] md:min-h-[66vh]" : "h-[88vh] min-h-[500px]"
+      }`}
+    >
       <motion.div
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -32,16 +39,25 @@ export default function PageHero({
       >
         {image ? (
           <div className="relative h-full w-full bg-lepas-black">
-            <Image src={image} alt={imageLabel} fill className="object-cover" priority />
+            <Image src={image} alt={imageLabel} fill sizes="100vw" className="object-cover" priority />
           </div>
         ) : (
           <PlaceholderImage label={imageLabel} aspect="aspect-auto" className="h-full w-full" />
         )}
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/5" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
+      {compact ? (
+        <>
+          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-gradient-to-t from-lepas-black via-black/60 to-transparent" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/5" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
+        </>
+      )}
 
-      <div className="container-lepas relative flex flex-col gap-8 pb-20 text-white md:flex-row md:items-end md:justify-between">
+      <div className="container-lepas relative flex flex-col gap-8 pb-16 pt-32 text-white md:pb-20 md:flex-row md:items-end md:justify-between">
         <div>
         {breadcrumb && (
           <motion.div
@@ -65,7 +81,7 @@ export default function PageHero({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-            className="mt-4 max-w-xl text-white/70"
+            className={compact ? "mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-xl" : "mt-4 max-w-xl text-white/70"}
           >
             {description}
           </motion.p>

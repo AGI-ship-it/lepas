@@ -6,6 +6,8 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import VariantPills from "@/components/models/VariantPills";
+import { getModels } from "@/lib/i18n/data";
 
 const SLIDE_DURATION = 6000;
 
@@ -18,7 +20,7 @@ const models = [
 
 /** Full-screen model switcher as on lepasuae.com: name tabs top-left, headline and CTA bottom-left. */
 export default function ModelsSection() {
-  const { dict } = useLocale();
+  const { locale, dict } = useLocale();
   const [index, setIndex] = useState(0);
   const [cycle, setCycle] = useState(0);
 
@@ -34,6 +36,8 @@ export default function ModelsSection() {
 
   const model = models[index];
   const copy = dict.home.heroSlides[index];
+  // L8 comes in two powertrains; show them as pills under the headline.
+  const powertrains = getModels(locale).find((m) => m.slug === model.slug)?.detailPage.powertrains;
 
   return (
     <section
@@ -55,9 +59,9 @@ export default function ModelsSection() {
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
 
-      <div className="container-lepas relative flex h-full flex-col pb-24 pt-28 md:pt-32">
-        {/* Script "Lepas L8 / L6 / L4" wordmarks as tabs, split by thin vertical rules. */}
-        <div role="tablist" className="flex items-stretch">
+      <div className="container-lepas relative flex h-full flex-col pb-24 pt-24 md:pt-24">
+        {/* Compact script "Lepas L8 / L6 / L4" wordmark tabs in the top-start corner, split by thin vertical rules. */}
+        <div role="tablist" className="flex items-stretch self-start">
           {models.map((m, i) => {
             const on = i === index;
             return (
@@ -67,15 +71,15 @@ export default function ModelsSection() {
                 aria-selected={on}
                 aria-label={m.name}
                 onClick={() => goTo(i)}
-                className={`relative flex items-center px-4 py-3 transition-opacity first:ps-0 sm:px-6 md:px-8 ${
+                className={`relative flex items-center px-3 py-2 transition-opacity first:ps-0 md:px-4 ${
                   i > 0 ? "border-s border-white/25" : ""
                 } ${on ? "opacity-100" : "opacity-45 hover:opacity-80"}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={m.wordmark} alt="" aria-hidden="true" className="h-4 w-auto sm:h-5 md:h-7" />
+                <img src={m.wordmark} alt="" aria-hidden="true" className="h-3 w-auto md:h-4" />
                 <span
                   className={`absolute bottom-0 h-0.5 bg-lepas-amber transition-opacity ${
-                    i === 0 ? "start-0 end-4 sm:end-6 md:end-8" : "inset-x-4 sm:inset-x-6 md:inset-x-8"
+                    i === 0 ? "start-0 end-3 md:end-4" : "inset-x-3 md:inset-x-4"
                   } ${on ? "opacity-100" : "opacity-0"}`}
                 />
               </button>
@@ -93,6 +97,7 @@ export default function ModelsSection() {
             className="mt-auto max-w-3xl"
           >
             <h2 className="heading-2">{copy.title}</h2>
+            <VariantPills powertrains={powertrains} className="mt-5" />
             <Link href={`/models/test-drive?model=${model.slug}`} className="btn-primary group mt-10">
               {dict.common.bookTestDrive}
               <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:-scale-x-100" aria-hidden="true" />
