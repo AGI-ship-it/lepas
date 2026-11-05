@@ -53,7 +53,7 @@ export default function AccessoriesGrid({
         {items.map((name) => (
           <div
             key={name}
-            className="flex items-start gap-3 rounded-2xl border border-lepas-fog bg-white p-5 shadow-sm transition-all duration-500 ease-premium hover:-translate-y-1 hover:shadow-md"
+            className="flex items-start gap-3 rounded-2xl border border-lepas-fog bg-white p-5 shadow-sm card-hover"
           >
             <CheckIcon />
             <p className="text-sm font-medium text-lepas-black">{name}</p>

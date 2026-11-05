@@ -34,7 +34,7 @@ export default function FeaturedNews() {
               <li key={article.slug} className="h-full">
                 <Link
                   href={`/discover/news/${article.slug}`}
-                  className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
+                  className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white card-hover"
                 >
                   <div className="relative aspect-[55/31] w-full overflow-hidden bg-lepas-black">
                     {image ? (
@@ -74,7 +74,7 @@ export default function FeaturedNews() {
             <li key={`placeholder-${i}`} className="h-full">
               <Link
                 href="/discover/news"
-                className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
+                className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white card-hover"
               >
                 <div className="relative aspect-[55/31] w-full overflow-hidden bg-lepas-black">
                   <PlaceholderImage label={`Lepas news placeholder ${i + 1}`} aspect="h-full" tone="dark" />

@@ -36,7 +36,7 @@ export default function NewsListPage() {
               <Link
                 key={article.slug}
                 href={`/discover/news/${article.slug}`}
-                className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
+                className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white card-hover"
               >
                 <div className="relative overflow-hidden">
                   <PlaceholderImage

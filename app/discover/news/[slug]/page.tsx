@@ -90,7 +90,7 @@ export default function NewsDetailPage({
                     <span className="text-lepas-ash">{t.categories[getNewsCategory(n.slug)]}</span>
                   </p>
                   <h3 className="mt-3 text-lg font-bold text-lepas-ink">
-                    <Link href={`/discover/news/${n.slug}`} className="hover:text-lepas-amber">
+                    <Link href={`/discover/news/${n.slug}`} className="hover:underline">
                       {n.title}
                     </Link>
                   </h3>

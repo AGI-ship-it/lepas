@@ -86,6 +86,11 @@
     @apply heading-display text-lg leading-snug md:text-xl;
   }
 
+  /* One hover for every card: lift, shadow and a soft orange border. */
+  .card-hover {
+    @apply transition-all duration-300 ease-premium hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl;
+  }
+
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-none border px-7 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all duration-300 ease-premium disabled:pointer-events-none disabled:opacity-50;
   }

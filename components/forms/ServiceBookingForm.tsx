@@ -7,11 +7,16 @@ import { useMemo, useState } from "react";
 import PlateNumberField from "@/components/forms/PlateNumberField";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import SelectField from "@/components/forms/SelectField";
+import DatePicker from "@/components/forms/DatePicker";
 
 const TIME_SLOTS = [
   "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
   "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30",
 ];
+
+function toLocalIso(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
 
 function maskEmail(email: string): string {
   const [local, domain] = email.split("@");
@@ -193,6 +198,33 @@ export default function ServiceBookingForm() {
 
   const requestPickupDropoff = watch("requestPickupDropoff");
   const pickUp = watch("pickUp");
+  // Same Lepas date picker as the test drive form: from today up to three months ahead.
+  const { minDate, maxDate } = useMemo(() => {
+    const today = new Date();
+    return {
+      minDate: toLocalIso(today),
+      maxDate: toLocalIso(new Date(today.getFullYear(), today.getMonth() + 3, today.getDate())),
+    };
+  }, []);
+  const datePicker = (name: "appointmentDate" | "pickUpDate" | "dropOffDate", invalid: boolean) => (
+    <Controller
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <DatePicker
+          value={field.value ?? ""}
+          onChange={field.onChange}
+          min={minDate}
+          max={maxDate}
+          locale={locale}
+          placeholder={dict.testDriveFlow.selectDate}
+          todayLabel={dict.testDriveFlow.today}
+          closeLabel={dict.testDriveFlow.close}
+          invalid={invalid}
+        />
+      )}
+    />
+  );
   const dropOff = watch("dropOff");
 
   const locationOptions = useMemo(
@@ -434,7 +466,7 @@ export default function ServiceBookingForm() {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label={dict.forms.preferredAppointmentDate} required error={errors.appointmentDate?.message}>
-              <input className="input-field-light" type="date" {...register("appointmentDate")} />
+              {datePicker("appointmentDate", Boolean(errors.appointmentDate))}
             </Field>
             <div>
               <Field label={dict.forms.preferredAppointmentTime} required error={errors.appointmentTime?.message}>
@@ -491,7 +523,7 @@ export default function ServiceBookingForm() {
                     </Field>
                   </div>
                   <Field label={dict.forms.preferredDate} required error={errors.pickUpDate?.message}>
-                    <input className="input-field-light" type="date" {...register("pickUpDate")} />
+                    {datePicker("pickUpDate", Boolean(errors.pickUpDate))}
                   </Field>
                   <Field label={dict.forms.preferredTime} required error={errors.pickUpTime?.message}>
                     <Controller
@@ -539,7 +571,7 @@ export default function ServiceBookingForm() {
                     </Field>
                   </div>
                   <Field label={dict.forms.preferredDate} required error={errors.dropOffDate?.message}>
-                    <input className="input-field-light" type="date" {...register("dropOffDate")} />
+                    {datePicker("dropOffDate", Boolean(errors.dropOffDate))}
                   </Field>
                   <Field label={dict.forms.preferredTime} required error={errors.dropOffTime?.message}>
                     <Controller

@@ -24,7 +24,7 @@ export default function OtherModels({ models, dict }: { models: VehicleModel[]; 
             <Link
               key={m.slug}
               href={`/models/${m.slug}`}
-              className="group flex flex-col overflow-hidden border border-lepas-ink/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
+              className="group flex flex-col overflow-hidden border border-lepas-ink/10 bg-white card-hover"
             >
               <div className="relative aspect-[16/9] bg-lepas-cream">
                 <Image

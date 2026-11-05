@@ -21,7 +21,7 @@ export default function VehicleCard({ vehicle }: { vehicle: PreOwnedVehicle }) {
   return (
     <Link
       href={`/pre-owned/${vehicle.id}`}
-      className="block border border-lepas-fog bg-white transition-colors hover:border-lepas-black/30"
+      className="block border border-lepas-fog bg-white card-hover"
     >
       <PlaceholderImage label={vehicle.imageLabel} aspect="aspect-[4/3]" showLabel={false} />
       <div className="p-6">

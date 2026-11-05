@@ -69,7 +69,7 @@ export default function ModelsMegaMenu({
                   className={
                     cta.primary
                       ? "btn-primary w-full justify-between"
-                      : "flex w-full items-center justify-between rounded-none border border-white/15 px-6 py-3.5 text-sm font-semibold text-white/90 transition-colors hover:border-white hover:text-white"
+                      : "flex w-full items-center justify-between rounded-none border border-white/15 px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white/90 transition-colors hover:border-white hover:text-white"
                   }
                 >
                   {cta.label}
@@ -86,7 +86,7 @@ export default function ModelsMegaMenu({
                 key={model.slug}
                 href={`/models/${model.slug}`}
                 onClick={onNavigate}
-                className="group/card overflow-hidden border border-white/10 bg-lepas-ink transition-colors hover:border-lepas-amber/60"
+                className="group/card overflow-hidden border border-white/10 bg-lepas-ink card-hover"
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden">
                   <Image
