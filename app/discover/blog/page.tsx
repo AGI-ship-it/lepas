@@ -1,3 +1,4 @@
+import { formatNewsDate } from "@/components/discover/newsImages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
@@ -11,11 +12,6 @@ export const metadata: Metadata = {
   title: "Latest Videos",
   description: "Explore recent updates, events, and stories from across the brand.",
 };
-
-function formatVideoDate(date: string) {
-  const [y, m, d] = date.split("-");
-  return `${d}.${m}.${y}`;
-}
 
 export default function BlogListPage() {
   const { locale, dict } = getServerDictionary();
@@ -60,8 +56,8 @@ export default function BlogListPage() {
                 </span>
               </Link>
               <div className="p-6">
-                <p className="text-xs font-medium uppercase tracking-widest2 text-lepas-steel">
-                  {formatVideoDate(post.date)}
+                <p className="text-xs font-medium uppercase tracking-widest2 text-lepas-amber">
+                  <time dateTime={post.date}>{formatNewsDate(post.date)}</time>
                 </p>
                 <h3 className="mt-3 text-lg font-bold text-lepas-black">{post.title}</h3>
                 <Link href={`/discover/blog/${post.slug}`} className="btn-primary mt-5">

@@ -40,20 +40,21 @@ export default function ChooseExperience() {
           </Link>
         </div>
 
-        <div className="container-lepas absolute inset-x-0 bottom-0 pb-8 md:pb-12">
-          <ul className="grid grid-cols-3 gap-2 text-center">
-            {MODELS.map((m) => (
-              <li key={m.href}>
-                <Link
-                  href={m.href}
-                  className="inline-flex items-center text-sm font-semibold uppercase tracking-widest2 text-white transition-colors hover:text-lepas-amber md:text-base"
-                >
+        {/* Each car and its label is one link: the photo is split into thirds, left to right L4, L8, L6. */}
+        <ul className="absolute inset-x-0 bottom-0 top-[45%] grid grid-cols-3 text-center">
+          {MODELS.map((m) => (
+            <li key={m.href} className="h-full">
+              <Link
+                href={m.href}
+                className="group flex h-full flex-col items-center justify-end pb-8 md:pb-12"
+              >
+                <span className="btn whitespace-nowrap border-white/60 bg-black/20 px-3 text-xs uppercase tracking-[0.12em] text-white backdrop-blur-sm group-hover:border-white group-hover:bg-white/10 sm:px-5 md:px-7 md:text-sm md:tracking-[0.18em]">
                   {`${m.name} | ${t.discover}`}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -53,7 +53,7 @@ export default function LatestVideos() {
                       <PlaceholderImage label={video.imageLabel} aspect="h-full" tone="dark" />
                     )}
                     <span className="absolute inset-0 flex items-center justify-center bg-black/25 transition-colors group-hover:bg-black/45">
-                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-lepas-amber text-white transition-transform duration-300 group-hover:scale-110">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-lepas-amber text-lepas-black transition-transform duration-300 group-hover:scale-110">
                         <svg viewBox="0 0 24 24" className="ms-1 h-6 w-6" fill="currentColor" aria-hidden="true">
                           <path d="M8 5v14l11-7z" />
                         </svg>

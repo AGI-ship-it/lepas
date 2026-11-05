@@ -41,7 +41,7 @@ export default function NewsListPage() {
                   <PlaceholderImage
                     label={article.title}
                     src={getNewsImage(article.slug)}
-                    aspect="aspect-[16/10]"
+                    aspect="aspect-[55/31]"
                     className="transition-transform duration-500 ease-premium group-hover:scale-105"
                   />
                 </div>
@@ -59,6 +59,22 @@ export default function NewsListPage() {
                   </span>
                 </div>
               </Link>
+            ))}
+            {/* Placeholder cards keep the row at three until more stories are published. */}
+            {Array.from({ length: Math.max(0, 3 - sorted.length) }, (_, i) => (
+              <div
+                key={`placeholder-${i}`}
+                className="flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white"
+              >
+                <PlaceholderImage label={`Lepas news placeholder ${i + 1}`} aspect="aspect-[55/31]" />
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <p className="text-xs font-medium uppercase tracking-wider text-lepas-ash">
+                    {dict.testDriveFlow.comingSoon}
+                  </p>
+                  <h2 className="heading-3 mt-2 text-lepas-ink">{t.placeholderTitle}</h2>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-lepas-steel">{t.placeholderBody}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>

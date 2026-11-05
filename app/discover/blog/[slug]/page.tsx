@@ -1,3 +1,4 @@
+import { formatNewsDate } from "@/components/discover/newsImages";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -11,11 +12,6 @@ import { getBlog } from "@/lib/i18n/data";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
 const postsEn = blogData as BlogPost[];
-
-function formatVideoDate(date: string) {
-  const [y, m, d] = date.split("-");
-  return `${d}.${m}.${y}`;
-}
 
 export function generateStaticParams() {
   return postsEn.map((p) => ({ slug: p.slug }));
@@ -57,8 +53,8 @@ export default function BlogDetailPage({
               { label: post.title },
             ]}
           />
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest2 text-lepas-steel md:text-sm">
-            {formatVideoDate(post.date)}
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest2 text-lepas-amber md:text-sm">
+            <time dateTime={post.date}>{formatNewsDate(post.date)}</time>
           </p>
           <h1 className="heading-1 text-lepas-black">{post.title}</h1>
           {post.youtubeId ? (
@@ -104,8 +100,8 @@ export default function BlogDetailPage({
                   />
                 )}
                 <div className="p-5">
-                  <p className="text-xs uppercase tracking-widest2 text-lepas-steel">
-                    {formatVideoDate(p.date)}
+                  <p className="text-xs uppercase tracking-widest2 text-lepas-amber">
+                    <time dateTime={p.date}>{formatNewsDate(p.date)}</time>
                   </p>
                   <h3 className="mt-2 font-bold text-lepas-black">{p.title}</h3>
                 </div>

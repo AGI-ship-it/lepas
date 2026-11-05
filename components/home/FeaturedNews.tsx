@@ -36,7 +36,7 @@ export default function FeaturedNews() {
                   href={`/discover/news/${article.slug}`}
                   className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-lepas-black">
+                  <div className="relative aspect-[55/31] w-full overflow-hidden bg-lepas-black">
                     {image ? (
                       <Image
                         src={image}
@@ -76,7 +76,7 @@ export default function FeaturedNews() {
                 href="/discover/news"
                 className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-lepas-black">
+                <div className="relative aspect-[55/31] w-full overflow-hidden bg-lepas-black">
                   <PlaceholderImage label={`Lepas news placeholder ${i + 1}`} aspect="h-full" tone="dark" />
                 </div>
                 <div className="flex flex-1 flex-col p-5 sm:p-6">

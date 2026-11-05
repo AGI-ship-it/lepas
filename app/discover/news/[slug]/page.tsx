@@ -53,8 +53,8 @@ export default function NewsDetailPage({
             ]}
           />
           <p className="mb-4 flex items-center gap-3 text-xs font-medium uppercase tracking-widest2 md:text-sm">
-            <span className="text-lepas-ash">{formatNewsDate(article.date)}</span>
-            <span className="text-lepas-amber">{t.categories[getNewsCategory(article.slug)]}</span>
+            <time dateTime={article.date} className="text-lepas-amber">{formatNewsDate(article.date)}</time>
+            <span className="text-lepas-ash">{t.categories[getNewsCategory(article.slug)]}</span>
           </p>
           <h1 className="heading-1 text-lepas-ink">
             {article.title}
@@ -62,7 +62,7 @@ export default function NewsDetailPage({
           <PlaceholderImage
             label={article.title}
             src={getNewsImage(article.slug)}
-            aspect="aspect-[16/9]"
+            aspect="aspect-[55/31]"
             className="my-8"
           />
           <div className="space-y-5 text-lg text-lepas-steel">
@@ -82,12 +82,12 @@ export default function NewsDetailPage({
             {related.map((n) => (
               <Card key={n.slug}>
                 <Link href={`/discover/news/${n.slug}`} className="block">
-                  <PlaceholderImage label={n.title} src={getNewsImage(n.slug)} aspect="aspect-[4/3]" />
+                  <PlaceholderImage label={n.title} src={getNewsImage(n.slug)} aspect="aspect-[55/31]" />
                 </Link>
                 <div className="p-6">
                   <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-widest2">
-                    <span className="text-lepas-ash">{formatNewsDate(n.date)}</span>
-                    <span className="text-lepas-amber">{t.categories[getNewsCategory(n.slug)]}</span>
+                    <time dateTime={n.date} className="text-lepas-amber">{formatNewsDate(n.date)}</time>
+                    <span className="text-lepas-ash">{t.categories[getNewsCategory(n.slug)]}</span>
                   </p>
                   <h3 className="mt-3 text-lg font-bold text-lepas-ink">
                     <Link href={`/discover/news/${n.slug}`} className="hover:text-lepas-amber">
