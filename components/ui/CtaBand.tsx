@@ -7,14 +7,16 @@ export default function CtaBand({
   description,
   primary,
   secondary,
+  pad = "py-24 md:py-32",
 }: {
   title: string;
   description?: string;
   primary: CtaAction;
   secondary?: CtaAction;
+  pad?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-lepas-black py-24 text-white md:py-32">
+    <section className={`relative overflow-hidden bg-lepas-black text-white ${pad}`}>
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_40%,rgba(235,146,1,0.12),transparent_55%)]"

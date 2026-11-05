@@ -143,7 +143,7 @@ export default function ModelDetailPage({
       )}
 
       {/* Full specifications (The Numbers) */}
-      <Section id="specifications" eyebrow={dict.models.specifications} title={dict.models.theNumbers}>
+      <Section id="specifications" pad="py-16 md:py-24" eyebrow={dict.models.specifications} title={dict.models.theNumbers}>
         <SpecsTable groups={model.specs} />
       </Section>
 
@@ -153,12 +153,13 @@ export default function ModelDetailPage({
         title={dict.models.readyToExperience.replace("{model}", model.name)}
         description={dict.models.readyToExperienceBody}
         primary={{ label: dict.common.bookTestDrive, href: `/models/test-drive?model=${model.slug}` }}
+        pad="py-16 md:py-24"
         secondary={{ label: dict.nav.calculateFinance, href: `/models/finance-calculator?model=${model.slug}` }}
       />
 
       <OtherModels models={getModels(locale).filter((m) => m.slug !== model.slug)} dict={dict} />
 
-      <Section id="callback" light={false} title={dict.lepasUi.requestCallback} className="scroll-mt-36">
+      <Section id="callback" pad="py-16 md:py-24" light={false} title={dict.lepasUi.requestCallback} className="scroll-mt-36">
         <CallbackForm defaultModel={model.slug} />
       </Section>
     </PowertrainProvider>

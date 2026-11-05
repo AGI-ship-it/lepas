@@ -8,6 +8,8 @@ interface SectionProps {
   title?: string;
   description?: string;
   light?: boolean;
+  /** Vertical padding; defaults to the site-wide py-20 md:py-28. */
+  pad?: string;
 }
 
 export default function Section({
@@ -17,11 +19,12 @@ export default function Section({
   title,
   description,
   light = true,
+  pad = "py-20 md:py-28",
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={`py-20 md:py-28 ${light ? "bg-white text-lepas-black" : "bg-lepas-black text-white"} ${className}`}
+      className={`${pad} ${light ? "bg-white text-lepas-black" : "bg-lepas-black text-white"} ${className}`}
     >
       <div className="container-lepas">
         {(title || description) && (

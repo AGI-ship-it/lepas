@@ -20,7 +20,7 @@ export default function ColourSwatches({
   const colour = colours[active];
 
   return (
-    <section id={id} className="scroll-mt-36 bg-[#f6f6f6] py-12 text-center text-lepas-black md:py-16">
+    <section id={id} className="scroll-mt-36 bg-[#f6f6f6] py-16 text-center text-lepas-black md:py-24">
       <div className="container-lepas">
         <h2 className="heading-2">{title}</h2>
 

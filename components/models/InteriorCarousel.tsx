@@ -74,7 +74,7 @@ export default function InteriorCarousel({ title, tabs }: { title: string; tabs:
   };
 
   return (
-    <section id="interior" className="scroll-mt-36 bg-white py-20 text-lepas-black md:py-28">
+    <section id="interior" className="scroll-mt-36 bg-white py-16 text-lepas-black md:py-24">
       <div className="container-lepas">
         <div className="mb-10 flex items-center justify-between gap-6 md:mb-14">
           <h2 className="heading-2">{title}</h2>

@@ -50,7 +50,7 @@ export default function FeatureShowcase({
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/30" />
 
-      <div className="container-lepas relative flex flex-1 flex-col pb-12 pt-6 md:pb-16">
+      <div className="container-lepas relative flex flex-1 flex-col pb-16 pt-16 md:pb-24 md:pt-24">
         <h2 className="heading-2">
           {title}
         </h2>
