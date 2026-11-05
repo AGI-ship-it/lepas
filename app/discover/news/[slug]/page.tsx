@@ -53,7 +53,7 @@ export default function NewsDetailPage({
             ]}
           />
           <p className="mb-4 flex items-center gap-3 text-xs font-medium uppercase tracking-widest2 md:text-sm">
-            <time dateTime={article.date} className="text-lepas-amber">{formatNewsDate(article.date)}</time>
+            <time dateTime={article.date} className="font-semibold tracking-wider text-lepas-steel">{formatNewsDate(article.date)}</time>
             <span className="text-lepas-ash">{t.categories[getNewsCategory(article.slug)]}</span>
           </p>
           <h1 className="heading-1 text-lepas-ink">
@@ -86,7 +86,7 @@ export default function NewsDetailPage({
                 </Link>
                 <div className="p-6">
                   <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-widest2">
-                    <time dateTime={n.date} className="text-lepas-amber">{formatNewsDate(n.date)}</time>
+                    <time dateTime={n.date} className="font-semibold tracking-wider text-lepas-steel">{formatNewsDate(n.date)}</time>
                     <span className="text-lepas-ash">{t.categories[getNewsCategory(n.slug)]}</span>
                   </p>
                   <h3 className="mt-3 text-lg font-bold text-lepas-ink">

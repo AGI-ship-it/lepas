@@ -53,7 +53,7 @@ export default function BlogDetailPage({
               { label: post.title },
             ]}
           />
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest2 text-lepas-amber md:text-sm">
+          <p className="mb-3 text-xs uppercase font-semibold tracking-wider text-lepas-steel md:text-sm">
             <time dateTime={post.date}>{formatNewsDate(post.date)}</time>
           </p>
           <h1 className="heading-1 text-lepas-black">{post.title}</h1>
@@ -100,7 +100,7 @@ export default function BlogDetailPage({
                   />
                 )}
                 <div className="p-5">
-                  <p className="text-xs uppercase tracking-widest2 text-lepas-amber">
+                  <p className="text-xs uppercase font-semibold tracking-wider text-lepas-steel">
                     <time dateTime={p.date}>{formatNewsDate(p.date)}</time>
                   </p>
                   <h3 className="mt-2 font-bold text-lepas-black">{p.title}</h3>

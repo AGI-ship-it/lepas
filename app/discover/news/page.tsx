@@ -7,7 +7,7 @@ import { getServerDictionary } from "@/lib/i18n/server";
 import { getNews } from "@/lib/i18n/data";
 
 export const metadata: Metadata = {
-  title: "Latest News",
+  title: "Latest News & Events",
   description: "The latest news, events and stories from Lepas UAE.",
 };
 
@@ -47,7 +47,7 @@ export default function NewsListPage() {
                 </div>
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider">
-                    <time dateTime={article.date} className="text-lepas-amber">
+                    <time dateTime={article.date} className="font-semibold tracking-wider text-lepas-steel">
                       {formatNewsDate(article.date)}
                     </time>
                     <span className="text-lepas-ash">{t.categories[getNewsCategory(article.slug)]}</span>

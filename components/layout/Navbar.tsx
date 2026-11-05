@@ -214,7 +214,7 @@ export default function Navbar() {
                 discoverActive ? "scale-x-100" : ""
               }`}
             />
-            <div className="absolute start-1/2 top-full z-40 w-64 -translate-x-1/2 rtl:translate-x-1/2">
+            <div className="absolute start-0 top-full z-40 w-64">
             <AnimatePresence>
               {discoverMenuOpen && (
                 <motion.div
@@ -223,13 +223,13 @@ export default function Navbar() {
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <ul className="border border-white/10 bg-lepas-ink py-2 shadow-2xl">
+                  <ul className="border border-white/10 bg-lepas-graphite py-3 shadow-2xl">
                     {discoverLinks.map((link) => (
-                      <li key={link.href} className={link.external ? "mt-2 border-t border-white/10 pt-2" : ""}>
+                      <li key={link.href}>
                         <NavLink
                           link={link}
                           onClick={closeMenu}
-                          className="flex items-center gap-2 px-5 py-2.5 text-sm text-white/75 transition-colors hover:bg-white/5 hover:text-white"
+                          className="flex items-center gap-2 px-6 py-3.5 text-base text-white/80 transition-colors hover:bg-white/5 hover:text-white"
                         />
                       </li>
                     ))}

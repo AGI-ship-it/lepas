@@ -48,7 +48,7 @@ export default function BlogListPage() {
                   <PlaceholderImage label={post.imageLabel} aspect="aspect-video" />
                 )}
                 <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/40">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-lepas-amber text-white">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-lepas-amber text-lepas-black">
                     <svg viewBox="0 0 24 24" className="ms-1 h-6 w-6" fill="currentColor" aria-hidden="true">
                       <path d="M8 5v14l11-7z" />
                     </svg>
@@ -56,7 +56,7 @@ export default function BlogListPage() {
                 </span>
               </Link>
               <div className="p-6">
-                <p className="text-xs font-medium uppercase tracking-widest2 text-lepas-amber">
+                <p className="text-xs uppercase font-semibold tracking-wider text-lepas-steel">
                   <time dateTime={post.date}>{formatNewsDate(post.date)}</time>
                 </p>
                 <h3 className="mt-3 text-lg font-bold text-lepas-black">{post.title}</h3>

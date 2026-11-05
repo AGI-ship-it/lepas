@@ -51,7 +51,7 @@ export default function FeaturedNews() {
                   </div>
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
                     <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider">
-                      <time dateTime={article.date} className="text-lepas-amber">
+                      <time dateTime={article.date} className="font-semibold tracking-wider text-lepas-steel">
                         {formatNewsDate(article.date)}
                       </time>
                       <span className="border border-lepas-amber/60 px-2 py-0.5 text-[10px] text-lepas-steel">
