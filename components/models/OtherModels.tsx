@@ -39,9 +39,9 @@ export default function OtherModels({ models, dict }: { models: VehicleModel[]; 
                 <h3 className="text-lg font-bold uppercase">{m.name}</h3>
                 <p className="mt-1 flex-1 text-sm text-lepas-steel">{m.tagline}</p>
                 <VariantPills powertrains={m.detailPage.powertrains} className="mt-4" />
-                <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-ink">
+                <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-ink transition-colors group-hover:text-lepas-black">
                   {dict.models.viewModel}
-                  <FiArrowRight aria-hidden="true" className="rtl:-scale-x-100" />
+                  <FiArrowRight aria-hidden="true" className="text-lepas-amber rtl:-scale-x-100" />
                 </span>
               </div>
             </Link>

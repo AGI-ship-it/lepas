@@ -56,7 +56,7 @@ export default function OffersPage() {
                     <p className="text-sm font-semibold text-lepas-ink">
                       {meta.model[locale]}{" "}
                       <span className="font-normal text-lepas-steel">
-                        {t.from} AED <span className="font-bold text-lepas-amber">{meta.monthly}</span> {t.perMonth}
+                        {t.from} AED <span className="font-bold text-lepas-black">{meta.monthly}</span> {t.perMonth}
                       </span>
                     </p>
                   )}

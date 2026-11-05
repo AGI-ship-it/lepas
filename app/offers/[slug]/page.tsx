@@ -151,7 +151,7 @@ export default function OfferDetailPage({
                       <p className="text-sm font-semibold text-lepas-ink">
                         {m.model[locale]}{" "}
                         <span className="font-normal text-lepas-steel">
-                          {t.from} AED <span className="font-bold text-lepas-amber">{m.monthly}</span> {t.perMonth}
+                          {t.from} AED <span className="font-bold text-lepas-black">{m.monthly}</span> {t.perMonth}
                         </span>
                       </p>
                     )}

@@ -195,7 +195,7 @@ export default function DatePicker({
                 setView(new Date(minDate.getFullYear(), minDate.getMonth(), 1));
                 pick(minDate);
               }}
-              className="text-lepas-amber hover:underline"
+              className="font-semibold text-lepas-ink underline decoration-lepas-amber decoration-2 underline-offset-4"
             >
               {todayLabel}
             </button>

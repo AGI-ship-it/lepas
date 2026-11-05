@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FiArrowRight } from "react-icons/fi";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { formatNewsDate, getNewsCategory, getNewsImage } from "@/components/discover/newsImages";
 import PageHero from "@/components/ui/PageHero";
@@ -54,8 +55,9 @@ export default function NewsListPage() {
                   </p>
                   <h2 className="heading-3 mt-2 text-lepas-ink">{article.title}</h2>
                   <p className="mt-3 flex-1 text-base leading-relaxed text-lepas-steel">{article.excerpt}</p>
-                  <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-ink">
-                    {t.readMore} <span aria-hidden="true" className="rtl:rotate-180">&gt;</span>
+                  <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-ink transition-colors group-hover:text-lepas-black">
+                    {t.readMore}
+                    <FiArrowRight aria-hidden="true" className="text-lepas-amber transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
                   </span>
                 </div>
               </Link>

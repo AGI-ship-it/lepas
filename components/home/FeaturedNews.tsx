@@ -60,9 +60,9 @@ export default function FeaturedNews() {
                     </p>
                     <h3 className="heading-3 mt-3">{article.title}</h3>
                     <p className="mt-3 line-clamp-3 flex-1 text-base leading-relaxed text-lepas-steel">{article.excerpt}</p>
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-black">
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-ink transition-colors group-hover:text-lepas-black">
                       {t.readMore}
-                      <FiArrowRight aria-hidden="true" className="transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+                      <FiArrowRight aria-hidden="true" className="text-lepas-amber transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
                     </span>
                   </div>
                 </Link>
@@ -87,9 +87,9 @@ export default function FeaturedNews() {
                   </p>
                   <h3 className="heading-3 mt-3">{t.placeholderTitle}</h3>
                   <p className="mt-3 line-clamp-3 flex-1 text-base leading-relaxed text-lepas-steel">{t.placeholderBody}</p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-black">
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-ink transition-colors group-hover:text-lepas-black">
                     {t.viewAllNews}
-                    <FiArrowRight aria-hidden="true" className="transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+                    <FiArrowRight aria-hidden="true" className="text-lepas-amber transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
                   </span>
                 </div>
               </Link>

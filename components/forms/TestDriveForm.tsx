@@ -328,7 +328,7 @@ export default function TestDriveForm() {
                   </span>
                   <Image src={carImages[m.slug]} alt="" fill sizes="200px" className="object-contain p-3 pt-6" />
                 </div>
-                <span className={`px-3 pb-3 text-xs font-semibold uppercase tracking-[0.15em] ${isActive ? "text-lepas-amber" : "text-lepas-ink"}`}>
+                <span className={`px-3 pb-3 text-xs font-semibold uppercase tracking-[0.15em] ${isActive ? "text-lepas-black" : "text-lepas-ink"}`}>
                   {m.name}
                 </span>
               </button>
@@ -358,7 +358,7 @@ export default function TestDriveForm() {
                     isActive ? "border-lepas-amber bg-lepas-amber/5" : "border-lepas-fog bg-lepas-sand/40 hover:border-lepas-ink/40"
                   }`}
                 >
-                  <span className={`text-sm font-semibold uppercase tracking-[0.12em] ${isActive ? "text-lepas-amber" : "text-lepas-ink"}`}>
+                  <span className={`text-sm font-semibold uppercase tracking-[0.12em] ${isActive ? "text-lepas-black" : "text-lepas-ink"}`}>
                     {v.name}
                   </span>
                   <span className="shrink-0 text-xs text-lepas-steel">{v.powerHp}</span>

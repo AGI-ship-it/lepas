@@ -60,7 +60,7 @@ export default function AfterSalesPage() {
           <p className="mt-6 text-lg text-lepas-steel">{t.intro}</p>
           <p className="mt-6 text-lepas-ink">
             {t.roadsidePrefix}{" "}
-            <a href="tel:6005462005" className="font-semibold text-lepas-amber hover:underline" dir="ltr">
+            <a href="tel:6005462005" className="font-semibold text-lepas-ink underline decoration-lepas-amber decoration-2 underline-offset-4 hover:text-lepas-black" dir="ltr">
               {t.roadsideNumber}
             </a>
             .
