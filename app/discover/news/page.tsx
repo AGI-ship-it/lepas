@@ -53,7 +53,7 @@ export default function NewsListPage() {
                     <span className="text-lepas-ash">{t.categories[getNewsCategory(article.slug)]}</span>
                   </p>
                   <h2 className="heading-3 mt-2 text-lepas-ink">{article.title}</h2>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-lepas-steel">{article.excerpt}</p>
+                  <p className="mt-3 flex-1 text-base leading-relaxed text-lepas-steel">{article.excerpt}</p>
                   <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-ink">
                     {t.readMore} <span aria-hidden="true" className="rtl:rotate-180">&gt;</span>
                   </span>
@@ -72,7 +72,7 @@ export default function NewsListPage() {
                     {dict.testDriveFlow.comingSoon}
                   </p>
                   <h2 className="heading-3 mt-2 text-lepas-ink">{t.placeholderTitle}</h2>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-lepas-steel">{t.placeholderBody}</p>
+                  <p className="mt-3 flex-1 text-base leading-relaxed text-lepas-steel">{t.placeholderBody}</p>
                 </div>
               </div>
             ))}
