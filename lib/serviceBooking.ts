@@ -275,10 +275,10 @@ const COPY = {
     ],
     cancel: "Cancel",
     acknowledge: "Acknowledge",
-    successTitle: "Booking confirmed",
-    successBody: "Your service appointment has been booked.",
-    successSent: "We've sent the booking details by email, SMS and WhatsApp.",
-    reference: "Appointment number",
+    successTitle: "Booking Confirmed!",
+    successBody: "Your appointment has been submitted successfully.",
+    successSent: "Booking details sent via: Email, SMS and WhatsApp",
+    reference: "Appointment No",
     summaryName: "Name",
     summaryPhone: "Phone",
     summaryEmail: "Email",
@@ -432,9 +432,9 @@ const COPY = {
     ],
     cancel: "إلغاء",
     acknowledge: "موافق",
-    successTitle: "تم تأكيد الحجز",
-    successBody: "تم حجز موعد الصيانة الخاص بك.",
-    successSent: "أرسلنا تفاصيل الحجز عبر البريد الإلكتروني والرسائل النصية وواتساب.",
+    successTitle: "تم تأكيد الحجز!",
+    successBody: "تم إرسال موعدك بنجاح.",
+    successSent: "تم إرسال تفاصيل الحجز عبر: البريد الإلكتروني والرسائل النصية وواتساب",
     reference: "رقم الموعد",
     summaryName: "الاسم",
     summaryPhone: "الهاتف",
@@ -505,7 +505,7 @@ export function maskEmail(email: string): string {
   const dot = domain.lastIndexOf(".");
   const name = dot > 0 ? domain.slice(0, dot) : domain;
   const tld = dot > 0 ? domain.slice(dot) : "";
-  return `${local[0]}${"*".repeat(Math.max(local.length - 1, 1))}@${"*".repeat(name.length)}${tld}`;
+  return `${local[0]}${"x".repeat(Math.max(local.length - 1, 3))}@${"x".repeat(name.length)}${tld}`;
 }
 
 export const CAPTCHA_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";

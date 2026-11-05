@@ -2,8 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { FiAlertTriangle, FiCheck, FiCheckCircle, FiChevronDown, FiInfo, FiMail, FiMessageSquare } from "react-icons/fi";
-import { FaWhatsapp } from "react-icons/fa";
+import { FiAlertTriangle, FiCheck, FiCheckCircle, FiChevronDown, FiInfo } from "react-icons/fi";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import SelectField from "@/components/forms/SelectField";
 import DatePicker from "@/components/forms/DatePicker";
@@ -444,7 +443,22 @@ function Dialog({
  * Production fixes over the prototype: visibly required fields are enforced on submit, the English drop-off
  * charge is dynamic, the summary is fully localised, and acknowledging Terms also ticks the checkbox.
  */
+/** Closing the confirmation starts a fresh booking: the form remounts and scrolls back to the Yes / No question. */
 export default function ServiceBookingForm() {
+  const [run, setRun] = useState(0);
+  const top = useRef<HTMLDivElement>(null);
+  const restart = () => {
+    setRun((n) => n + 1);
+    requestAnimationFrame(() => top.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
+  return (
+    <div ref={top} className="scroll-mt-28">
+      <BookingForm key={run} onDone={restart} />
+    </div>
+  );
+}
+
+function BookingForm({ onDone }: { onDone: () => void }) {
   const { locale } = useLocale();
   const t = SERVICE_BOOKING_COPY[locale];
   const L = (o: { en: string; ar: string }) => (locale === "ar" ? o.ar : o.en);
@@ -734,6 +748,11 @@ export default function ServiceBookingForm() {
   const locationName = location ? location.label[locale] : "—";
   const centre = BOOKING_CONFIG.serviceCentreAddress[locale];
 
+  const closeSuccess = () => {
+    setSuccessOpen(false);
+    onDone();
+  };
+
   const termsLabelId = useId();
   const successLabelId = useId();
 
@@ -752,7 +771,6 @@ export default function ServiceBookingForm() {
   const labelCls = "mb-2 block text-sm font-semibold uppercase text-lepas-steel";
   const readOnlyCls = "input-field-light cursor-not-allowed truncate !bg-lepas-fog/50 text-lepas-steel";
   const isOther = purpose === "Collision Damage" || purpose === "Report a Fault";
-  const channelIcons = [FiMail, FiMessageSquare, FaWhatsapp];
 
   return (
     <form onSubmit={onSubmit} noValidate>
@@ -1388,30 +1406,19 @@ export default function ServiceBookingForm() {
       </Dialog>
 
       {/* Success */}
-      <Dialog open={successOpen} labelId={successLabelId} onEscape={() => setSuccessOpen(false)}>
+      <Dialog open={successOpen} labelId={successLabelId} onEscape={closeSuccess}>
         <div className="p-6 md:p-8">
-          <div className="flex items-start gap-4">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lepas-success text-white">
-              <FiCheck aria-hidden="true" className="h-5 w-5" />
+          <div className="flex items-start gap-5">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-lepas-success text-white">
+              <FiCheck aria-hidden="true" className="h-6 w-6" />
             </span>
             <div className="min-w-0 flex-1">
-              <h2 id={successLabelId} className="text-lg font-semibold text-lepas-black">
+              <h2 id={successLabelId} className="text-2xl font-bold text-lepas-black">
                 {t.successTitle}
               </h2>
-              <p className="text-sm text-lepas-steel">{t.successBody}</p>
-              <p className="mt-3 text-xs text-lepas-steel">{t.successSentVia}</p>
-              <ul className="mt-2 flex flex-wrap gap-2">
-                {t.channels.map((ch, i) => {
-                  const Icon = channelIcons[i];
-                  return (
-                    <li key={ch} className="inline-flex items-center gap-1.5 border border-lepas-amber bg-lepas-amber/10 px-2.5 py-1.5 text-xs font-medium text-lepas-black">
-                      <Icon aria-hidden="true" className="h-3.5 w-3.5" />
-                      {ch}
-                    </li>
-                  );
-                })}
-              </ul>
-              <p className="mt-2 inline-flex border border-lepas-amber bg-lepas-amber/10 px-2.5 py-1.5 text-xs font-semibold text-lepas-black">
+              <p className="mt-1 text-base text-lepas-steel">{t.successBody}</p>
+              <p className="mt-3 text-sm text-lepas-steel">{t.successSent}</p>
+              <p className="mt-3 inline-flex border border-lepas-amber bg-lepas-amber/10 px-4 py-2.5 text-sm font-semibold text-lepas-black">
                 {t.reference}:&nbsp;
                 <span dir="ltr" className="tracking-wider">
                   {reference}
@@ -1420,17 +1427,17 @@ export default function ServiceBookingForm() {
             </div>
           </div>
 
-          <p className="mt-6 text-xs font-bold uppercase tracking-widest2 text-lepas-black">{t.summaryTitle}</p>
+          <p className="mt-8 text-sm font-bold uppercase tracking-widest2 text-lepas-black">{t.summaryTitle}</p>
           {(() => {
             const Item = ({ k, v, full }: { k: string; v: React.ReactNode; full?: boolean }) => (
-              <div className={`flex gap-3 py-2 text-sm ${full ? "sm:col-span-2" : ""}`}>
-                <dt className="w-24 shrink-0 text-lepas-ash">{k}</dt>
+              <div className={`flex gap-4 py-2.5 text-base ${full ? "sm:col-span-2" : ""}`}>
+                <dt className="w-28 shrink-0 text-lepas-steel">{k}</dt>
                 <dd className="min-w-0 break-words text-lepas-ink">{v}</dd>
               </div>
             );
-            const group = "grid border-b border-lepas-fog py-2 sm:grid-cols-2 sm:gap-x-6";
+            const group = "grid border-b border-lepas-fog py-3 last:border-b-0 sm:grid-cols-2 sm:gap-x-6";
             return (
-              <div className="mt-2">
+              <div className="mt-3">
                 <dl className={group}>
                   <Item
                     full
@@ -1441,7 +1448,7 @@ export default function ServiceBookingForm() {
                   <Item k={t.summaryEmail} v={<span dir="ltr">{shownEmail || "—"}</span>} />
                 </dl>
                 <dl className={group}>
-                  <Item k={t.summaryRegistration} v={`${isoFlag(vehicle.country)} ${vehicle.country} · ${cityName(vehicle.country, vehicle.city)}`} />
+                  <Item k={t.summaryRegistration} v={`${vehicle.country} · ${cityName(vehicle.country, vehicle.city)}`} />
                   <Item k={t.summaryPlate} v={<span dir="ltr">{`${vehicle.prefix} ${shownPlate}`.trim() || "—"}</span>} />
                 </dl>
                 <dl className={group}>
@@ -1473,7 +1480,7 @@ export default function ServiceBookingForm() {
             );
           })()}
 
-          <button type="button" onClick={() => setSuccessOpen(false)} className="btn-primary mt-6 w-full">
+          <button type="button" onClick={closeSuccess} className="btn-primary mt-6 w-full">
             {t.close}
           </button>
         </div>
