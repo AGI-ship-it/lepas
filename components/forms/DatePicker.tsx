@@ -176,7 +176,7 @@ export default function DatePicker({
                   aria-pressed={selected}
                   className={`mx-auto flex h-9 w-9 items-center justify-center text-sm transition-colors ${
                     selected
-                      ? "bg-lepas-amber text-white ring-2 ring-lepas-amber/40 ring-offset-2"
+                      ? "bg-lepas-amber text-lepas-black ring-2 ring-lepas-amber/40 ring-offset-2"
                       : disabled
                       ? "cursor-not-allowed text-lepas-mist"
                       : "text-lepas-ink hover:bg-lepas-amber/15"

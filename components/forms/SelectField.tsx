@@ -150,7 +150,7 @@ const SelectField = forwardRef<
                   o.disabled
                     ? `cursor-not-allowed ${tone.muted}`
                     : isSelected
-                    ? "bg-lepas-amber text-white"
+                    ? "bg-lepas-amber text-lepas-black"
                     : `${tone.option} ${i === active ? tone.hover : ""}`
                 }`}
               >

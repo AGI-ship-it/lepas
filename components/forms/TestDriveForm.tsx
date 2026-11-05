@@ -123,7 +123,7 @@ function SlotButton({
         disabled
           ? "cursor-not-allowed border-lepas-fog bg-white text-lepas-mist line-through"
           : selected
-          ? "border-lepas-amber bg-lepas-amber text-white"
+          ? "border-lepas-amber bg-lepas-amber text-lepas-black"
           : "border-lepas-fog bg-lepas-sand/60 text-lepas-ink hover:border-lepas-amber"
       }`}
     >
