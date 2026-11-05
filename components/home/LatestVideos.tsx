@@ -15,12 +15,12 @@ export default function LatestVideos() {
   if (videos.length === 0) return null;
 
   return (
-    <section className="bg-lepas-black py-20 text-white md:py-28">
+    <section className="bg-white py-20 text-lepas-black md:py-28">
       <div className="container-lepas">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <h2 className="heading-2">{dict.discover.blogTitle}</h2>
-            <p className="mt-4 max-w-md text-base text-white/70">{dict.discover.videosIntro}</p>
+            <p className="mt-4 max-w-md text-base text-lepas-steel">{dict.discover.videosIntro}</p>
           </div>
           <Link href="/discover/blog" className="btn-primary">
             {dict.site.news.exploreMore}
@@ -30,7 +30,7 @@ export default function LatestVideos() {
         <ul className="-mx-5 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
           {videos.map((video) => (
             <li key={video.slug} className="w-[80%] shrink-0 snap-start sm:w-[45%] lg:w-[31%]">
-              <div className="relative aspect-video overflow-hidden bg-white/5">
+              <div className="relative aspect-video overflow-hidden bg-lepas-black">
                 {playing === video.youtubeId ? (
                   <iframe
                     src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`}

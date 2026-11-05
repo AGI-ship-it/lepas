@@ -7,18 +7,14 @@ import { getBotReply } from "@/lib/chatbot";
 
 const WHATSAPP_NUMBER = "971600553727";
 
+/** Filled WhatsApp mark: green bubble with a white handset. */
 function WhatsAppIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden="true">
+      <path d="M12 2.5a9.5 9.5 0 00-8.2 14.3L2.5 21.5l4.85-1.27A9.5 9.5 0 1012 2.5z" fill="#25D366" />
       <path
-        d="M12 3a9 9 0 00-7.75 13.5L3 21l4.65-1.22A9 9 0 1012 3z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M8.7 8.4c.15-.35.35-.35.55-.36h.4c.15 0 .33-.02.5.4.2.5.7 1.7.75 1.8.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.3-.36.4-.12.12-.24.24-.1.48.14.24.6 1 1.3 1.6.9.78 1.6 1.02 1.86 1.14.25.12.4.1.55-.06.15-.16.63-.72.8-.98.16-.24.32-.2.53-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.6-.14 1.18-.2.58-1.15 1.12-1.6 1.18-.42.06-.94.08-1.5-.1-.35-.1-.8-.26-1.4-.5-2.4-1.05-3.97-3.4-4.1-3.56-.12-.16-.98-1.3-.98-2.48 0-1.18.62-1.75.84-2z"
-        fill="currentColor"
+        d="M8.7 7.9c.15-.35.35-.35.55-.36h.4c.15 0 .33-.02.5.4.2.5.7 1.7.75 1.8.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.3-.36.4-.12.12-.24.24-.1.48.14.24.6 1 1.3 1.6.9.78 1.6 1.02 1.86 1.14.25.12.4.1.55-.06.15-.16.63-.72.8-.98.16-.24.32-.2.53-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.6-.14 1.18-.2.58-1.15 1.12-1.6 1.18-.42.06-.94.08-1.5-.1-.35-.1-.8-.26-1.4-.5-2.4-1.05-3.97-3.4-4.1-3.56-.12-.16-.98-1.3-.98-2.48 0-1.18.62-1.75.84-2z"
+        fill="#fff"
       />
     </svg>
   );
@@ -204,7 +200,7 @@ export default function FloatingActions() {
         onClick={() => setChatOpen((v) => !v)}
         aria-label={chatOpen ? dict.chatbot.close : dict.chatbot.open}
         aria-expanded={chatOpen}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-lepas-amber text-white shadow-lg transition-transform hover:scale-105"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-lepas-amber text-lepas-black shadow-lg transition-transform hover:scale-105"
       >
         {!chatOpen && (
           <>
@@ -220,7 +216,7 @@ export default function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={dict.chatbot.whatsapp}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f4f3f1] shadow-[0_6px_24px_rgba(0,0,0,0.14)] transition-transform hover:scale-105"
       >
         <WhatsAppIcon />
       </a>
