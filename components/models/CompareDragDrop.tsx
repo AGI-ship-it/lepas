@@ -444,7 +444,7 @@ function DropSlot({
               className={colour ? "object-contain" : "object-cover"}
             />
           </div>
-          <h3 className="mt-2 text-lg font-bold">{model.name}</h3>
+          <h3 className="mt-4 text-lg font-bold">{model.name}</h3>
           <p className="text-sm text-lepas-steel">{model.model.tagline}</p>
 
           {model.model.colours.length > 0 && (
