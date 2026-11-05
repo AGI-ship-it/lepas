@@ -87,7 +87,7 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-none border px-7 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 ease-premium disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-none border px-7 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all duration-300 ease-premium disabled:pointer-events-none disabled:opacity-50;
   }
 
   .btn-primary {

@@ -262,7 +262,7 @@ export default function Navbar() {
           <LanguageToggle />
           <span className="h-6 w-px bg-white/20" aria-hidden="true" />
           <CallPopover />
-          <Link href="/models/test-drive" className="btn-primary whitespace-nowrap lg:px-4 2xl:px-7">
+          <Link href="/models/test-drive" className="btn-primary whitespace-nowrap tracking-normal lg:px-4 2xl:px-7 2xl:tracking-wider">
             {dict.nav.bookTestDrive}
           </Link>
         </div>
