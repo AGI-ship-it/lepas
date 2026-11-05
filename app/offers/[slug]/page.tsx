@@ -73,7 +73,7 @@ export default function OfferDetailPage({
         </div>
       </header>
 
-      <section className="container-lepas pb-14 text-lepas-black md:pb-24">
+      <section className="container-lepas pb-16 text-lepas-black md:pb-24">
         {meta && (
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
             <span className="border border-lepas-amber px-2.5 py-1.5 text-xs leading-none">{meta.model[locale]}</span>
@@ -123,7 +123,7 @@ export default function OfferDetailPage({
         </div>
       </section>
 
-      <section id="callback" className="scroll-mt-24 bg-lepas-form-ink py-20 text-white md:py-28">
+      <section id="callback" className="scroll-mt-24 bg-lepas-form-ink py-16 text-white md:py-24">
         <div className="container-lepas max-w-4xl">
           <h2 className="heading-2 mb-10">{t.callbackHeading}</h2>
           <CallbackForm defaultModel={meta ? meta.modelHref.split("/").pop() : ""} />

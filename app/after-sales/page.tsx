@@ -65,7 +65,7 @@ export default function AfterSalesPage() {
             </a>
             .
           </p>
-          <Link href="/after-sales/book-service" className="btn-primary mt-8">
+          <Link href="/after-sales/book-service" className="btn-primary mt-10">
             {t.bookYourService}
           </Link>
         </div>
@@ -83,7 +83,7 @@ export default function AfterSalesPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-        <div className="container-lepas relative flex flex-1 flex-col pb-14 pt-16 md:pb-24 md:pt-24">
+        <div className="container-lepas relative flex flex-1 flex-col pb-16 pt-16 md:pb-24 md:pt-24">
           <h2 className="heading-2">{t.warrantyTitle}</h2>
           <dl className="mt-auto grid grid-cols-2 gap-x-6 gap-y-8 text-center md:flex md:flex-wrap md:items-end md:justify-center md:gap-x-16">
             {t.warranty.map((w) => (

@@ -7,7 +7,7 @@ export default function CtaBand({
   description,
   primary,
   secondary,
-  pad = "py-24 md:py-32",
+  pad = "py-16 md:py-24",
 }: {
   title: string;
   description?: string;

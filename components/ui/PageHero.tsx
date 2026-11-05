@@ -57,7 +57,7 @@ export default function PageHero({
         </>
       )}
 
-      <div className="container-lepas relative flex flex-col gap-8 pb-16 pt-32 text-white md:pb-20 md:flex-row md:items-end md:justify-between">
+      <div className="container-lepas relative flex flex-col gap-8 pb-16 pt-32 text-white md:pb-24 md:flex-row md:items-end md:justify-between">
         <div>
         {breadcrumb && (
           <motion.div

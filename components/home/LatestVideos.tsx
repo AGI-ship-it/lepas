@@ -36,7 +36,7 @@ export default function LatestVideos() {
   if (videos.length === 0) return null;
 
   return (
-    <section className="bg-white py-20 text-lepas-black md:py-28">
+    <section className="bg-white py-16 text-lepas-black md:py-24">
       <div className="container-lepas">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
@@ -52,7 +52,7 @@ export default function LatestVideos() {
           ref={rowRef}
           onScroll={updateFade}
           style={{ maskImage: mask, WebkitMaskImage: mask }}
-          className="no-scrollbar -mx-5 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 md:mx-0 md:px-0"
+          className="no-scrollbar -mx-5 mt-12 md:mt-16 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 md:mx-0 md:px-0"
         >
           {videos.map((video) => (
             <li key={video.slug} className="w-[80%] shrink-0 snap-start sm:w-[45%] lg:w-[31%]">

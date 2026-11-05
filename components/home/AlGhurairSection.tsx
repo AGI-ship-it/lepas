@@ -14,7 +14,7 @@ export default function AlGhurairSection() {
   const imageY = useTransform(scrollYProgress, [0, 1], reduceMotion ? ["0%", "0%"] : ["-8%", "8%"]);
 
   return (
-    <section ref={ref} className="relative flex min-h-[85svh] items-center overflow-hidden bg-lepas-black py-24 text-white">
+    <section ref={ref} className="relative flex min-h-[85svh] items-center overflow-hidden bg-lepas-black py-16 md:py-24 text-white">
       <motion.div className="absolute inset-x-0 -inset-y-[10%]" style={{ y: imageY }}>
         <Image
           src="/design/assets/about/hero-landscape.webp"

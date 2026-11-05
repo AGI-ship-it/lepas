@@ -8,7 +8,7 @@ interface SectionProps {
   title?: string;
   description?: string;
   light?: boolean;
-  /** Vertical padding; defaults to the site-wide py-20 md:py-28. */
+  /** Vertical padding; defaults to the site-wide py-16 md:py-24 (64px / 96px). */
   pad?: string;
 }
 
@@ -19,7 +19,7 @@ export default function Section({
   title,
   description,
   light = true,
-  pad = "py-20 md:py-28",
+  pad = "py-16 md:py-24",
 }: SectionProps) {
   return (
     <section

@@ -15,7 +15,7 @@ export default function FeaturedNews() {
   const t = dict.site.news;
 
   return (
-    <section className="bg-lepas-sand py-20 text-lepas-black md:py-28">
+    <section className="bg-lepas-sand py-16 text-lepas-black md:py-24">
       <div className="container-lepas">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -27,7 +27,7 @@ export default function FeaturedNews() {
           </Link>
         </div>
 
-        <ul className="mt-10 grid grid-cols-1 gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
+        <ul className="mt-12 grid grid-cols-1 gap-6 md:mt-16 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
           {news.map((article) => {
             const image = getNewsImage(article.slug);
             return (

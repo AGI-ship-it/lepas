@@ -84,7 +84,7 @@ export default function InspiredSection() {
           </button>
         ))}
 
-        <div className="container-lepas absolute inset-x-0 top-0 pt-10 md:pt-14">
+        <div className="container-lepas absolute inset-x-0 top-0 pt-16 md:pt-24">
           <div role="tablist" className="flex flex-wrap gap-6 md:gap-10">
             {copy.map((t, i) => (
               <button
@@ -104,7 +104,7 @@ export default function InspiredSection() {
           <h2 className="heading-2 mt-6 max-w-xl">{text.headline}</h2>
         </div>
 
-        <div className="container-lepas absolute inset-x-0 bottom-0 pb-8 md:pb-12">
+        <div className="container-lepas absolute inset-x-0 bottom-0 pb-16 md:pb-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={`${tab}-${card}`}

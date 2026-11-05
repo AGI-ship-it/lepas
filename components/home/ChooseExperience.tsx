@@ -33,9 +33,9 @@ export default function ChooseExperience() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-black/70" />
 
-        <div className="container-lepas absolute inset-x-0 top-0 flex flex-col items-center pt-12 text-center md:pt-16">
+        <div className="container-lepas absolute inset-x-0 top-0 flex flex-col items-center pt-16 text-center md:pt-24">
           <h2 className="heading-2 max-w-3xl !text-center">{t.chooseTitle}</h2>
-          <Link href="/models/test-drive" className="btn-primary mt-8">
+          <Link href="/models/test-drive" className="btn-primary mt-10">
             {t.bookTestDrive}
           </Link>
         </div>
@@ -46,7 +46,7 @@ export default function ChooseExperience() {
             <li key={m.href} className="h-full">
               <Link
                 href={m.href}
-                className="group flex h-full flex-col items-center justify-end pb-8 md:pb-12"
+                className="group flex h-full flex-col items-center justify-end pb-16 md:pb-24"
               >
                 <span className="btn whitespace-nowrap border-white/60 bg-black/20 px-3 text-xs uppercase tracking-[0.12em] text-white backdrop-blur-sm group-hover:border-white group-hover:bg-white/10 sm:px-5 md:px-7 md:text-sm md:tracking-[0.18em]">
                   {`${m.name} | ${t.discover}`}

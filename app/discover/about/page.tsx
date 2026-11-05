@@ -39,7 +39,7 @@ function SplitSection({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 bg-white py-14 text-lepas-black md:py-20">
+    <section id={id} className="scroll-mt-24 bg-white py-16 text-lepas-black md:py-24">
       <div className="container-lepas grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-lepas-fog">
           <Image src={image} alt={imageAlt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
@@ -117,7 +117,7 @@ export default function AboutPage() {
         imageAlt={a.designedImageAlt}
       >
         <h2 className="heading-2">{a.designedTitle}</h2>
-        <div className="mt-8 border-t border-lepas-black/15">
+        <div className="mt-12 md:mt-16 border-t border-lepas-black/15">
           {pillars.map((p, i) => (
             <details key={p.title} open={i === 0} className="group border-b border-lepas-black/15">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">

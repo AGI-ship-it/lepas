@@ -129,7 +129,7 @@ export default function InstagramFeed() {
   const columnProgress = reduceMotion ? still : progress;
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-lepas-black py-16 text-white md:py-20">
+    <section ref={ref} className="relative overflow-hidden bg-lepas-black py-16 text-white md:py-24">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_20%,rgba(235,146,1,0.12),transparent_50%)]"

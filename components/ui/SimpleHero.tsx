@@ -11,7 +11,7 @@ export default function SimpleHero({
   breadcrumb?: BreadcrumbItem[];
 }) {
   return (
-    <section className="relative overflow-hidden bg-lepas-black pb-20 pt-40 text-white md:pb-24 md:pt-48">
+    <section className="relative overflow-hidden bg-lepas-black pb-16 pt-36 text-white md:pb-24 md:pt-44">
       <HeroGlow />
       <div className="container-lepas relative">
         {breadcrumb && <Breadcrumb items={breadcrumb} className="mb-6" />}

@@ -14,7 +14,7 @@ export default function FaqsPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-lepas-black pb-16 pt-36 text-white md:pb-20 md:pt-44">
+      <section className="relative overflow-hidden bg-lepas-black pb-16 pt-36 text-white md:pb-24 md:pt-44">
         <HeroGlow />
         <div className="container-lepas relative">
           <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.footer.faqs }]} />
@@ -51,7 +51,7 @@ export default function FaqsPage() {
       <Section light={false} className="text-center">
         <h2 className="heading-2 !text-center">{t.stillHaveQuestions}</h2>
         <p className="mx-auto mt-4 max-w-xl text-white/70">{t.stillHaveQuestionsBody}</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a href="tel:600553727" className="btn-primary">
             {t.callLepas}
           </a>

@@ -33,7 +33,7 @@ export default function StatementSection({
   }, [next, cycle]);
 
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-white py-16 md:py-24">
       <div className="container-lepas">
         <h2 className="heading-2 max-w-3xl text-lepas-black">
           {headline}
@@ -41,7 +41,7 @@ export default function StatementSection({
         <p className="mt-6 max-w-2xl text-base text-lepas-steel md:text-lg">{body}</p>
       </div>
 
-      <div className="relative mt-12 h-[70vh] min-h-[420px] w-full overflow-hidden">
+      <div className="relative mt-12 md:mt-16 h-[70vh] min-h-[420px] w-full overflow-hidden">
         {images.map((label, i) => (
           <div
             key={label}

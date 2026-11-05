@@ -35,7 +35,7 @@ export default function ContactPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
-        <div className="container-lepas relative pb-14 pt-32 text-white md:pb-16">
+        <div className="container-lepas relative pb-16 pt-32 text-white md:pb-24">
           <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.nav.contactUs }]} />
           <h1 className="heading-1 max-w-2xl">{dict.contact.heroTitle}</h1>
         </div>
@@ -47,7 +47,7 @@ export default function ContactPage() {
           <div>
             <h2 className="heading-2">{t.enquiriesTitle}</h2>
             <p className="mt-4 max-w-md text-base text-lepas-steel">{t.getInTouchIntro}</p>
-            <ul className="mt-10 divide-y divide-lepas-black/10 border-y border-lepas-black/10">
+            <ul className="mt-12 md:mt-16 divide-y divide-lepas-black/10 border-y border-lepas-black/10">
               {channels.map((c) => (
                 <li key={c.label} className="py-5">
                   <p className="text-xs uppercase tracking-widest2 text-lepas-steel">{c.label}</p>
@@ -90,7 +90,7 @@ export default function ContactPage() {
         <div className="container-lepas">
           <h2 className="heading-2 max-w-2xl">{t.locationsTitle}</h2>
           <p className="mt-4 max-w-2xl text-base text-white/60">{t.locationsIntro}</p>
-          <div className="mt-10">
+          <div className="mt-12 md:mt-16">
             <LocationsGrid />
           </div>
         </div>
