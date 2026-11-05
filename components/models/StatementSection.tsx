@@ -38,10 +38,10 @@ export default function StatementSection({
         <h2 className="heading-2 max-w-3xl text-lepas-black">
           {headline}
         </h2>
-        <p className="mt-6 max-w-2xl text-base text-lepas-steel md:text-lg">{body}</p>
+        <p className="mt-2 max-w-4xl text-lg text-lepas-steel">{body}</p>
       </div>
 
-      <div className="relative mt-12 md:mt-16 h-[70vh] min-h-[420px] w-full overflow-hidden">
+      <div className="relative mt-8 md:mt-10 h-[70vh] min-h-[420px] w-full overflow-hidden">
         {images.map((label, i) => (
           <div
             key={label}

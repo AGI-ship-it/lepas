@@ -57,7 +57,7 @@ export default function AfterSalesPage() {
       <Section id="roadside-assistance" className="scroll-mt-20">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="heading-2 !text-center">{t.title}</h2>
-          <p className="mt-6 text-lg text-lepas-steel">{t.intro}</p>
+          <p className="mt-2 text-lg text-lepas-steel">{t.intro}</p>
           <p className="mt-6 text-lepas-ink">
             {t.roadsidePrefix}{" "}
             <a href="tel:6005462005" className="font-semibold text-lepas-ink underline decoration-lepas-amber decoration-2 underline-offset-4 hover:text-lepas-black" dir="ltr">

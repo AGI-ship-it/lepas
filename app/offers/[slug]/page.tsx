@@ -98,8 +98,8 @@ export default function OfferDetailPage({
           </div>
         )}
         <h1 className="heading-1 mt-6 max-w-[980px]">{offer.title}</h1>
-        <p className="mt-6 max-w-[760px] text-[clamp(18px,1.3vw,22px)] leading-[1.45]">{offer.description}</p>
-        <ul className="mt-10 grid max-w-[980px] gap-x-10 gap-y-4 sm:grid-cols-2">
+        <p className="mt-2 max-w-4xl text-lg leading-[1.45]">{offer.description}</p>
+        <ul className="mt-8 grid max-w-[980px] gap-x-10 gap-y-4 sm:grid-cols-2">
           {offer.terms.map((term) => (
             <li key={term} className="flex items-start gap-3.5 text-base leading-[1.51]">
               <span aria-hidden="true" className="mt-[11px] h-0.5 w-3.5 shrink-0 bg-lepas-amber" />
@@ -107,7 +107,6 @@ export default function OfferDetailPage({
             </li>
           ))}
         </ul>
-        <p className="mt-8 text-sm text-lepas-black/60">{t.termsApply}</p>
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <a href="#callback" className="btn-primary">
             {t.requestCallback}
@@ -125,7 +124,7 @@ export default function OfferDetailPage({
 
       <section id="callback" className="scroll-mt-24 bg-lepas-form-ink py-16 text-white md:py-24">
         <div className="container-lepas max-w-4xl">
-          <h2 className="heading-2 mb-10">{t.callbackHeading}</h2>
+          <h2 className="heading-2 mb-8 md:mb-10">{t.callbackHeading}</h2>
           <CallbackForm defaultModel={meta ? meta.modelHref.split("/").pop() : ""} />
         </div>
       </section>

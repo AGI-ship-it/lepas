@@ -66,7 +66,7 @@ export default function PreOwnedDetailPage({
             <h1 className="heading-1 mt-8 text-lepas-black">
               {vehicle.model} ({vehicle.year})
             </h1>
-            <p className="mt-4 text-lepas-steel">{vehicle.description}</p>
+            <p className="mt-2 text-lg text-lepas-steel">{vehicle.description}</p>
 
             <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
               {details.map((d) => (

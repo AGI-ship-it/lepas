@@ -19,7 +19,7 @@ export default function FaqsPage() {
         <div className="container-lepas relative">
           <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.site.footer.faqs }]} />
           <h1 className="heading-1">{t.faqHeading}</h1>
-          <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">{t.faqIntro}</p>
+          <p className="mt-2 max-w-4xl text-lg text-white/70">{t.faqIntro}</p>
         </div>
       </section>
       <Section>
@@ -50,7 +50,7 @@ export default function FaqsPage() {
       </Section>
       <Section light={false} className="text-center">
         <h2 className="heading-2 !text-center">{t.stillHaveQuestions}</h2>
-        <p className="mx-auto mt-4 max-w-xl text-white/70">{t.stillHaveQuestionsBody}</p>
+        <p className="mx-auto mt-2 max-w-4xl text-lg text-white/70">{t.stillHaveQuestionsBody}</p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a href="tel:600553727" className="btn-primary">
             {t.callLepas}

@@ -34,7 +34,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-2 block text-xs font-medium uppercase tracking-widest2 text-white/60">
+      <label className="mb-2 block text-sm font-semibold uppercase text-white/80">
         {label} *
       </label>
       {children}

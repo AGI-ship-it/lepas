@@ -117,7 +117,7 @@ export default function AboutPage() {
         imageAlt={a.designedImageAlt}
       >
         <h2 className="heading-2">{a.designedTitle}</h2>
-        <div className="mt-12 md:mt-16 border-t border-lepas-black/15">
+        <div className="mt-8 md:mt-10 border-t border-lepas-black/15">
           {pillars.map((p, i) => (
             <details key={p.title} open={i === 0} className="group border-b border-lepas-black/15">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
@@ -155,7 +155,7 @@ export default function AboutPage() {
         <div className="container-lepas flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <h2 className="heading-2">{a.ctaTitle}</h2>
-            <p className="mt-5 text-base text-white/70 md:text-lg">{a.ctaBody}</p>
+            <p className="mt-2 text-lg text-white/70">{a.ctaBody}</p>
           </div>
           <div className="flex flex-wrap gap-4">
             <Link href="/models/test-drive" className="btn-primary">

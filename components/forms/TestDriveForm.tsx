@@ -146,7 +146,7 @@ export function FormField({
 }) {
   return (
     <div>
-      <label className="mb-2 block text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+      <label className="mb-2 block text-sm font-semibold uppercase text-lepas-steel">
         {label}
         {required && " *"}
       </label>
@@ -341,7 +341,7 @@ export default function TestDriveForm() {
 
       {variantOptions.length > 0 && (
         <div className="mt-6">
-          <p className="mb-3 text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+          <p className="mb-3 text-sm font-semibold uppercase text-lepas-steel">
             {t.chooseVariant}
             <span className="text-lepas-amber"> *</span>
           </p>
@@ -423,7 +423,7 @@ export default function TestDriveForm() {
               <p className="mt-1.5 text-xs text-lepas-ash">{t.bookableAhead}</p>
             </FormField>
             <div>
-              <label className="mb-2 block text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+              <label className="mb-2 block text-sm font-semibold uppercase text-lepas-steel">
                 {dict.forms.preferredTime} *
               </label>
               {!selectedShowroom ? (
@@ -483,7 +483,7 @@ export default function TestDriveForm() {
               <SelectField
                 value={watch("title")}
                 onChange={(v) => setValue("title", v, { shouldValidate: true })}
-                placeholder="—"
+                placeholder={dict.forms.select}
                 options={[
                   { value: "mr", label: dict.forms.titleMr },
                   { value: "mrs", label: dict.forms.titleMrs },
@@ -512,7 +512,7 @@ export default function TestDriveForm() {
           </FormField>
           <div className="sm:col-span-2">
             <div className="mb-2 flex items-baseline justify-between">
-              <label htmlFor="td-notes" className="text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+              <label htmlFor="td-notes" className="text-sm font-semibold uppercase text-lepas-steel">
                 {dict.testDrive.additionalNotes} <span className="normal-case tracking-normal">({t.optional})</span>
               </label>
               <span className="text-xs text-lepas-ash">{notes.length}/2000</span>

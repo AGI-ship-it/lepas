@@ -27,8 +27,8 @@ function Field({
   return (
     <div>
       <label
-        className={`mb-2 block text-xs font-medium uppercase tracking-widest2 ${
-          light ? "text-lepas-ash" : "text-white/70"
+        className={`mb-2 block text-sm font-semibold uppercase ${
+          light ? "text-lepas-steel" : "text-white/80"
         }`}
       >
         {label}
@@ -109,8 +109,8 @@ export default function PlateNumberField({
 
       <div>
         <p
-          className={`mb-2 block text-xs font-medium uppercase tracking-widest2 ${
-            light ? "text-lepas-ash" : "text-white/70"
+          className={`mb-2 block text-sm font-semibold uppercase ${
+            light ? "text-lepas-steel" : "text-white/80"
           }`}
         >
           {dict.forms.platePreview}

@@ -84,7 +84,6 @@ export default function OfferBanner({ offer, meta, modelName, labels, priority, 
             </ul>
           )}
           {actions && <div className="mt-8 flex flex-wrap gap-4">{actions}</div>}
-          <p className="mt-4 text-xs text-white/50">{labels.terms}</p>
         </div>
       </div>
     </div>

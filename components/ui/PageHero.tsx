@@ -81,7 +81,7 @@ export default function PageHero({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-            className={compact ? "mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-xl" : "mt-4 max-w-xl text-white/70"}
+            className={compact ? "mt-2 max-w-4xl text-lg leading-relaxed text-white/75" : "mt-2 max-w-4xl text-lg text-white/70"}
           >
             {description}
           </motion.p>

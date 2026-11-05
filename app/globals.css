@@ -116,20 +116,22 @@
   }
 
   .input-field {
-    @apply w-full rounded-none border border-white/15 bg-lepas-form-ink px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-lepas-amber;
+    @apply w-full rounded-none border border-white/30 bg-lepas-form-ink px-4 py-3 text-base font-medium text-white outline-none transition-colors placeholder:text-white/40 focus:border-lepas-amber;
   }
 
   .input-field-light {
-    @apply w-full rounded-none border border-lepas-fog bg-white px-4 py-3 text-sm text-lepas-ink outline-none transition-colors placeholder:text-lepas-ash focus:border-lepas-amber;
+    @apply w-full rounded-none border border-lepas-mist px-4 py-3 text-base font-medium text-lepas-ink outline-none transition-colors placeholder:text-lepas-ash focus:border-lepas-amber;
+    background-color: var(--field-bg, theme("colors.lepas.sand"));
   }
 
   /* Phone number: country prefix and input share one bordered field. */
   .phone-field-light {
-    @apply flex w-full overflow-hidden rounded-none border border-lepas-fog bg-white transition-colors focus-within:border-lepas-amber;
+    @apply flex w-full overflow-hidden rounded-none border border-lepas-mist transition-colors focus-within:border-lepas-amber;
+    background-color: var(--field-bg, theme("colors.lepas.sand"));
   }
 
   .phone-field {
-    @apply flex w-full overflow-hidden rounded-none border border-white/15 bg-lepas-form-ink transition-colors focus-within:border-lepas-amber;
+    @apply flex w-full overflow-hidden rounded-none border border-white/30 bg-lepas-form-ink transition-colors focus-within:border-lepas-amber;
   }
 
   .phone-prefix {
@@ -137,15 +139,15 @@
   }
 
   .phone-field-light .phone-prefix {
-    @apply border-lepas-fog bg-lepas-sand/60 text-lepas-steel;
+    @apply border-lepas-mist bg-lepas-fog/50 text-lepas-steel;
   }
 
   .phone-field .phone-prefix {
-    @apply border-white/15 text-white/70;
+    @apply border-white/30 text-white/70;
   }
 
   .phone-input {
-    @apply min-w-0 flex-1 bg-transparent px-4 py-3 text-sm outline-none;
+    @apply min-w-0 flex-1 bg-transparent px-4 py-3 text-base font-medium outline-none;
   }
 
   .phone-field-light .phone-input {
@@ -171,7 +173,7 @@
   }
 
   .checkbox-field-light {
-    @apply h-4 w-4 rounded-none border-lepas-fog bg-white text-lepas-amber accent-lepas-amber;
+    @apply h-4 w-4 rounded-none border-lepas-mist bg-white text-lepas-amber accent-lepas-amber;
   }
 
   .range-field {
@@ -261,4 +263,13 @@
   to {
     transform: translateY(200%);
   }
+}
+
+/* Light input fill follows the surface it sits on: light grey on white, white on the sand background. */
+.bg-white {
+  --field-bg: theme("colors.lepas.sand");
+}
+.bg-lepas-sand,
+.\!bg-lepas-sand {
+  --field-bg: #fff;
 }

@@ -183,14 +183,13 @@ export default function HeroSlider() {
                     {slide.secondaryCta.label}
                   </Link>
                 </div>
-                <p className="mt-4 text-xs text-white/50">{offers.terms}</p>
               </>
             ) : (
               <>
                 <h1 className="heading-1 text-white">
                   {slide.title}
                 </h1>
-                <p className="mt-5 text-base text-white/70 md:text-lg">
+                <p className="mt-2 text-lg text-white/70">
                   {slide.description}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">

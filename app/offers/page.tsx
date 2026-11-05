@@ -27,7 +27,7 @@ export default function OffersPage() {
         <div className="container-lepas relative">
           <Breadcrumb className="mb-6" items={[{ label: dict.testDriveFlow.home, href: "/" }, { label: dict.offers.title }]} />
           <h1 className="heading-1">{dict.offers.title}</h1>
-          <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">{dict.offers.description}</p>
+          <p className="mt-2 max-w-4xl text-lg text-white/70">{dict.offers.description}</p>
         </div>
       </section>
       <Section>
@@ -72,7 +72,6 @@ export default function OffersPage() {
             );
           })}
         </div>
-        <p className="mt-10 text-xs text-lepas-ash">{t.termsApply}</p>
       </Section>
     </>
   );

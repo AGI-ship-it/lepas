@@ -46,8 +46,8 @@ export default function ContactPage() {
         <div className="container-lepas grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
           <div>
             <h2 className="heading-2">{t.enquiriesTitle}</h2>
-            <p className="mt-4 max-w-md text-base text-lepas-steel">{t.getInTouchIntro}</p>
-            <ul className="mt-12 md:mt-16 divide-y divide-lepas-black/10 border-y border-lepas-black/10">
+            <p className="mt-2 max-w-4xl text-lg text-lepas-steel">{t.getInTouchIntro}</p>
+            <ul className="mt-8 md:mt-10 divide-y divide-lepas-black/10 border-y border-lepas-black/10">
               {channels.map((c) => (
                 <li key={c.label} className="py-5">
                   <p className="text-xs uppercase tracking-widest2 text-lepas-steel">{c.label}</p>
@@ -89,8 +89,8 @@ export default function ContactPage() {
       <section id="locations" className="scroll-mt-20 bg-lepas-black py-16 text-white md:py-24">
         <div className="container-lepas">
           <h2 className="heading-2 max-w-2xl">{t.locationsTitle}</h2>
-          <p className="mt-4 max-w-2xl text-base text-white/60">{t.locationsIntro}</p>
-          <div className="mt-12 md:mt-16">
+          <p className="mt-2 max-w-4xl text-lg text-white/60">{t.locationsIntro}</p>
+          <div className="mt-8 md:mt-10">
             <LocationsGrid />
           </div>
         </div>

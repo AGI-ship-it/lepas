@@ -137,9 +137,9 @@ export default function InstagramFeed() {
 
       <div className="container-lepas relative">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
+          <div className="max-w-4xl">
             <h2 className="heading-2">{t.instagramTitle}</h2>
-            <p className="mt-4 max-w-xl text-base text-white/60">{t.instagramDescription}</p>
+            <p className="mt-2 max-w-4xl text-lg text-white/60">{t.instagramDescription}</p>
           </div>
           <a
             href={INSTAGRAM_URL}

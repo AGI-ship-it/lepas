@@ -23,7 +23,7 @@ export default function CtaBand({
       />
       <div className="container-lepas relative flex flex-col items-center text-center">
         <h2 className="heading-2 !text-center max-w-3xl">{title}</h2>
-        {description && <p className="mt-6 max-w-xl text-base text-white/60 md:text-lg">{description}</p>}
+        {description && <p className="mt-2 max-w-4xl text-lg text-white/60">{description}</p>}
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link href={primary.href} className="btn-primary px-10 py-4 uppercase tracking-[0.2em]">
             {primary.label}

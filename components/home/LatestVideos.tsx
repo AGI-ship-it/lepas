@@ -41,7 +41,7 @@ export default function LatestVideos() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <h2 className="heading-2">{dict.discover.blogTitle}</h2>
-            <p className="mt-4 max-w-md text-base text-lepas-steel">{dict.discover.videosIntro}</p>
+            <p className="mt-2 max-w-4xl text-lg text-lepas-steel">{dict.discover.videosIntro}</p>
           </div>
           <Link href="/discover/blog" className="btn-primary">
             {dict.site.news.exploreMore}
@@ -52,7 +52,7 @@ export default function LatestVideos() {
           ref={rowRef}
           onScroll={updateFade}
           style={{ maskImage: mask, WebkitMaskImage: mask }}
-          className="no-scrollbar -mx-5 mt-12 md:mt-16 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 md:mx-0 md:px-0"
+          className="no-scrollbar -mx-5 mt-8 md:mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 md:mx-0 md:px-0"
         >
           {videos.map((video) => (
             <li key={video.slug} className="w-[80%] shrink-0 snap-start sm:w-[45%] lg:w-[31%]">

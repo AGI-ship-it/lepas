@@ -48,20 +48,21 @@ export default function Footer() {
     { label: dict.nav.modelsLinks.model2Terrain, href: "/models/l4" },
   ];
 
+  /* Same order as the header: Models menu extras, Services, Offers, Discover menu; then FAQs. */
   const discoverPrimary: FooterLink[] = [
-    { label: f.offers, href: "/offers" },
-    { label: f.bookService, href: "/after-sales/book-service" },
-    { label: f.services, href: "/after-sales" },
-    { label: f.aboutUs, href: "/discover/about" },
+    { label: f.compareModels, href: "/models/compare" },
     { label: f.financeCalculator, href: "/models/finance-calculator" },
+    { label: f.services, href: "/after-sales" },
+    { label: f.bookService, href: "/after-sales/book-service" },
+    { label: f.offers, href: "/offers" },
   ];
 
   const discoverSecondary: FooterLink[] = [
-    { label: f.compareModels, href: "/models/compare" },
+    { label: f.aboutUs, href: "/discover/about" },
     { label: f.latestNews, href: "/discover/news" },
     { label: f.latestVideos, href: "/discover/blog" },
-    { label: f.faqs, href: "/faqs" },
     { label: f.alGhurairMobility, href: AL_GHURAIR_MOBILITY_URL, external: true, icon: true },
+    { label: f.faqs, href: "/faqs" },
   ];
 
   const getInTouch: FooterLink[] = [
@@ -98,8 +99,8 @@ export default function Footer() {
           <div>
             <FooterHeading>{f.discover}</FooterHeading>
             <div className="mt-8 grid grid-cols-2 gap-x-12">
-              <FooterLinks links={discoverPrimary} />
               <FooterLinks links={discoverSecondary} />
+              <FooterLinks links={discoverPrimary} />
             </div>
           </div>
 

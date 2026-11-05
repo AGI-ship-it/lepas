@@ -2,11 +2,14 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { FiAlertTriangle, FiCheck, FiCheckCircle, FiChevronDown, FiInfo, FiRefreshCw, FiX } from "react-icons/fi";
+import { FiAlertTriangle, FiCheck, FiCheckCircle, FiChevronDown, FiInfo, FiMail, FiMessageSquare } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import SelectField from "@/components/forms/SelectField";
 import DatePicker from "@/components/forms/DatePicker";
 import BrandLoader from "@/components/ui/BrandLoader";
+import ReCaptcha from "@/components/forms/ReCaptcha";
+import { getModels } from "@/lib/i18n/data";
 import {
   BOOKING_CONFIG,
   MOCK_CUSTOMER,
@@ -18,7 +21,7 @@ import {
   TITLES,
   TRANSPORT_OPTIONS,
   fill,
-  makeCaptcha,
+  isoFlag,
   maskEmail,
   maskPhone,
   maskPlate,
@@ -59,7 +62,7 @@ function Field({
 }) {
   return (
     <div data-field={id}>
-      <label htmlFor={id} className="mb-2 block text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+      <label htmlFor={id} className="mb-2 block text-sm font-semibold uppercase text-lepas-steel">
         {label}
         {required && (
           <>
@@ -122,53 +125,134 @@ function Options<T extends string>({
   );
 }
 
+/** White card with an accordion header, as in the reference booking form. */
 function Accordion({
   index,
   title,
   open,
   onToggle,
   children,
+  locked,
+  lockedNote,
 }: {
   index: number;
   title: string;
   open: boolean;
   onToggle: () => void;
   children: React.ReactNode;
+  /** Greyed out and closed until earlier required sections are complete. */
+  locked?: boolean;
+  lockedNote?: string;
 }) {
   const panelId = useId();
+  const isOpen = open && !locked;
   return (
-    <section className="border-b border-lepas-fog" data-index={index}>
+    <section className="border border-lepas-fog bg-white p-5 md:p-6" data-index={index}>
       <h3>
         <button
           type="button"
-          aria-expanded={open}
+          aria-expanded={isOpen}
           aria-controls={panelId}
-          onClick={onToggle}
-          className="flex w-full items-center gap-3 py-6 text-start"
+          aria-disabled={locked}
+          onClick={() => !locked && onToggle()}
+          className={`flex w-full items-center gap-3 border-b border-lepas-fog pb-3 text-start ${locked ? "cursor-not-allowed opacity-50" : ""}`}
         >
           <span className={ROW_TITLE + " flex-1"}>{title}</span>
-          <FiChevronDown aria-hidden="true" className={`h-5 w-5 text-lepas-amber transition-transform ${open ? "rotate-180" : ""}`} />
+          <FiChevronDown
+            aria-hidden="true"
+            className={`h-5 w-5 text-lepas-amber transition-transform ${isOpen ? "" : "-rotate-90 rtl:rotate-90"}`}
+          />
         </button>
       </h3>
-      <div id={panelId} hidden={!open} className="pb-8">
+      {locked && lockedNote && (
+        <p className="mt-3 flex items-start gap-2 text-sm text-lepas-steel">
+          <FiInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-lepas-amber" />
+          {lockedNote}
+        </p>
+      )}
+      <div id={panelId} hidden={!isOpen} className="pt-6">
         {children}
       </div>
     </section>
   );
 }
 
-function Notice({ tone, children }: { tone: "info" | "warn" | "success"; children: React.ReactNode }) {
+function Notice({ tone, title, children }: { tone: "info" | "warn" | "success"; title?: string; children: React.ReactNode }) {
   const styles = {
     info: "border-lepas-fog bg-lepas-sand/60 text-lepas-steel",
     warn: "border-lepas-amber/60 bg-lepas-amber/10 text-lepas-ink",
-    success: "border-lepas-success/40 bg-lepas-success/10 text-lepas-ink",
+    success: "border-lepas-amber bg-white text-lepas-ink",
   }[tone];
   const Icon = tone === "success" ? FiCheckCircle : tone === "warn" ? FiAlertTriangle : FiInfo;
   return (
     <div role={tone === "info" ? undefined : "status"} className={`flex items-start gap-3 border p-4 text-sm ${styles}`}>
       <Icon aria-hidden="true" className={`mt-0.5 h-4 w-4 shrink-0 ${tone === "success" ? "text-lepas-success" : "text-lepas-amber"}`} />
-      <div>{children}</div>
+      <div>
+        {title && <p className="mb-1 text-xs font-bold uppercase tracking-widest2 text-lepas-black">{title}</p>}
+        {children}
+      </div>
     </div>
+  );
+}
+
+/** Native radio buttons drawn as Lepas circles (amber dot when selected). */
+function Radios<T extends string>({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: T | "";
+  options: { value: T; label: string; disabled?: boolean }[];
+  onChange: (v: T) => void;
+}) {
+  const name = useId();
+  return (
+    <div role="radiogroup" aria-label={label} className="flex flex-wrap gap-x-7 gap-y-3">
+      {options.map((o) => {
+        const on = o.value === value;
+        return (
+          <label
+            key={o.value}
+            className={`inline-flex items-center gap-2.5 text-sm text-lepas-ink ${o.disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
+          >
+            <input
+              type="radio"
+              name={name}
+              value={o.value}
+              checked={on}
+              disabled={o.disabled}
+              onChange={() => onChange(o.value)}
+              className="peer sr-only"
+            />
+            <span
+              aria-hidden="true"
+              className={`flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-lepas-amber peer-focus-visible:ring-offset-2 ${
+                on ? "border-lepas-black" : "border-lepas-black/40"
+              }`}
+            >
+              {on && <span className="h-2.5 w-2.5 rounded-full bg-lepas-amber" />}
+            </span>
+            {o.label}
+          </label>
+        );
+      })}
+    </div>
+  );
+}
+
+/** Checkbox inside a white bordered box; the border turns amber once ticked. */
+function CheckBox({ checked, onChange, children }: { checked: boolean; onChange: (v: boolean) => void; children: React.ReactNode }) {
+  return (
+    <label
+      className={`flex cursor-pointer items-start gap-3 border bg-white p-4 text-sm text-lepas-steel transition-colors ${
+        checked ? "border-lepas-amber" : "border-lepas-fog"
+      }`}
+    >
+      <input type="checkbox" className="checkbox-field-light mt-0.5" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+      <span>{children}</span>
+    </label>
   );
 }
 
@@ -233,7 +317,7 @@ function PhoneInput({
           dir="ltr"
         >
           <span>
-            {current.iso} ({current.dial})
+            <span aria-hidden="true">{current.flag}</span> {current.iso} ({current.dial})
           </span>
           <FiChevronDown aria-hidden="true" className={`h-4 w-4 text-lepas-amber transition-transform ${open ? "rotate-180" : ""}`} />
         </button>
@@ -374,6 +458,8 @@ export default function ServiceBookingForm() {
   const [foundVehicle, setFoundVehicle] = useState("");
   const [searching, setSearching] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [checkingLocation, setCheckingLocation] = useState(false);
+  const [loadingPurpose, setLoadingPurpose] = useState(false);
 
   // Personal and vehicle
   const [personal, setPersonal] = useState({ title: "", firstName: "", lastName: "", phoneCountry: "AE", phone: "", email: "" });
@@ -398,9 +484,7 @@ export default function ServiceBookingForm() {
 
   // Consent, CAPTCHA, submission
   const [privacy, setPrivacy] = useState(false);
-  const [captcha, setCaptcha] = useState("");
-  const [captchaInput, setCaptchaInput] = useState("");
-  useEffect(() => setCaptcha(makeCaptcha()), []); // client-only so SSR and hydration agree
+  const [recaptchaToken, setRecaptchaToken] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [reference, setReference] = useState("");
   const [successOpen, setSuccessOpen] = useState(false);
@@ -411,13 +495,33 @@ export default function ServiceBookingForm() {
 
   /* derived */
   const location = BOOKING_CONFIG.locations.find((l) => l.id === locationId);
-  const transportEnabled = Boolean(location && date && location.transportAvailable);
+  // Collision damage and reported faults can't be collected by a driver, so transport is off for them.
+  const collision = purpose === "Collision Damage" || purpose === "Report a Fault";
+  const transportEnabled = Boolean(location && date && location.transportAvailable && !collision);
   const transportActive = transport !== "none" && transportEnabled;
   const showTransportDetails = transportActive && termsAck;
-  const captchaValid = captchaInput.length === 6 && captchaInput === captcha;
+  const captchaValid = Boolean(recaptchaToken);
   const canSubmit = captchaValid && privacy && (!transportActive || termsAck);
   const showForm = customerType === "new" || (customerType === "existing" && verified);
   const isExisting = customerType === "existing" && verified;
+  // New customers must complete the mandatory personal and vehicle fields before the appointment opens.
+  const personalComplete = Boolean(
+    personal.title &&
+      personal.firstName.trim() &&
+      personal.lastName.trim() &&
+      !hasLetters(personal.phone) &&
+      personal.phone.replace(/\D/g, "").length >= 7 &&
+      /^\S+@\S+\.\S+$/.test(personal.email),
+  );
+  const vehicleComplete = Boolean(vehicle.country && vehicle.city && vehicle.prefix && vehicle.plate && vehicle.model);
+  const appointmentLocked = !isExisting && !(personalComplete && vehicleComplete);
+  // Move the customer along: finishing personal opens vehicle; finishing both opens the appointment.
+  useEffect(() => {
+    if (!isExisting && personalComplete) setOpenSection((s) => ({ ...s, vehicle: true }));
+  }, [personalComplete, isExisting]);
+  useEffect(() => {
+    if (!appointmentLocked) setOpenSection((s) => ({ ...s, appointment: true }));
+  }, [appointmentLocked]);
   const slots = useMemo(() => pickupSlots(date), [date]);
   const charge = location
     ? transport === "pickup"
@@ -458,7 +562,7 @@ export default function ServiceBookingForm() {
   const chooseNew = () => {
     setCustomerType("new");
     resetLookup();
-    setOpenSection((s) => ({ ...s, personal: true, vehicle: false, appointment: false }));
+    setOpenSection((s) => ({ ...s, personal: true, vehicle: false, appointment: true }));
   };
 
   /* existing-customer verification, in the spec's order */
@@ -509,9 +613,17 @@ export default function ServiceBookingForm() {
 
   /* appointment dependencies */
   const choosePurpose = (p: Purpose) => {
+    // Loader while the purpose's options are "loaded" (simulates the round trip).
+    setLoadingPurpose(true);
+    window.setTimeout(() => setLoadingPurpose(false), 1200);
     setPurpose(p);
-    setInterval("");
+    // Service starts on the first interval; the customer can change it.
+    setInterval(p === "Service" ? `${SERVICE_INTERVALS[0]} Kilometer Mileage Service` : "");
     setSpecify("");
+    if (p === "Collision Damage" || p === "Report a Fault") {
+      setTransport("none");
+      resetTerms();
+    }
     clearError("purpose", "interval", "specify");
   };
   const resetTerms = () => {
@@ -520,6 +632,9 @@ export default function ServiceBookingForm() {
     setTermsOpen(false);
   };
   const chooseLocation = (id: string) => {
+    // Loader while the location's availability is "checked" (simulates the round trip).
+    setCheckingLocation(true);
+    window.setTimeout(() => setCheckingLocation(false), 1200);
     setLocationId(id);
     setDate("");
     setPickup((p) => ({ ...p, time: "" }));
@@ -612,10 +727,6 @@ export default function ServiceBookingForm() {
   const shownPhone = isExisting ? maskPhone(personal.phone) : personal.phone;
   const shownEmail = isExisting ? maskEmail(personal.email) : personal.email;
   const shownPlate = isExisting ? maskPlate(vehicle.plate) : vehicle.plate;
-  const regCountryName = (iso: string) => {
-    const c = REG_COUNTRIES.find((x) => x.iso === iso);
-    return c ? L(c) : iso;
-  };
   const cityName = (iso: string, en: string) => {
     const c = regCities(iso).find((x) => x.en === en);
     return c ? L(c) : en;
@@ -626,15 +737,28 @@ export default function ServiceBookingForm() {
   const termsLabelId = useId();
   const successLabelId = useId();
 
+  // Model buttons from the site's model data: models sold in several variants (L8 ICE / Super Hybrid) list each variant.
+  const modelOptions = useMemo(() => {
+    const en = getModels("en");
+    const local = getModels(locale);
+    return en.flatMap((m, i) =>
+      m.variants.length > 1
+        ? m.variants.map((v, j) => ({ value: `Lepas ${v.name}`, label: `Lepas ${local[i]?.variants[j]?.name ?? v.name}` }))
+        : [{ value: m.name, label: local[i]?.name ?? m.name }],
+    );
+  }, [locale]);
+
   /* ------------------------------------------------------------ render */
+  const labelCls = "mb-2 block text-sm font-semibold uppercase text-lepas-steel";
+  const readOnlyCls = "input-field-light cursor-not-allowed truncate !bg-lepas-fog/50 text-lepas-steel";
+  const isOther = purpose === "Collision Damage" || purpose === "Report a Fault";
+  const channelIcons = [FiMail, FiMessageSquare, FaWhatsapp];
+
   return (
-    <form onSubmit={onSubmit} noValidate className="border-t border-lepas-fog">
-      {/* Existing customer? */}
-      <div className={`${ROW} flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between`}>
-        <div>
-          <p className={ROW_TITLE}>{t.existingQuestion}</p>
-          <p className="mt-1 text-xs text-lepas-ash">{t.existingHint}</p>
-        </div>
+    <form onSubmit={onSubmit} noValidate>
+      {/* Existing customer? Question left, Yes / No right. */}
+      <div className={`${ROW} flex flex-col gap-4 pt-0 sm:flex-row sm:items-center sm:justify-between`}>
+        <p className={ROW_TITLE}>{t.existingQuestion}</p>
         <div className="shrink-0">
           <Options
             label={t.existingQuestion}
@@ -651,7 +775,7 @@ export default function ServiceBookingForm() {
       {customerType === "existing" && !verified && (
         <>
           <div className={ROW}>
-            <p className="mb-4 text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+            <p className={`${ROW_TITLE} mb-4`}>
               {t.vehicle}
               <span aria-hidden="true" className="text-lepas-amber"> *</span>
             </p>
@@ -661,7 +785,7 @@ export default function ServiceBookingForm() {
                   value={lookup.country}
                   onChange={(v) => setLookup((l) => ({ ...l, country: v, city: "" }))}
                   placeholder={t.selectCountry}
-                  options={REG_COUNTRIES.map((c) => ({ value: c.iso, label: c.iso, description: L(c) }))}
+                  options={REG_COUNTRIES.map((c) => ({ value: c.iso, label: `${isoFlag(c.iso)} ${L(c)}`, selectedLabel: `${isoFlag(c.iso)} ${c.iso}` }))}
                 />
               </Field>
               <Field label={t.regCity} required>
@@ -698,7 +822,7 @@ export default function ServiceBookingForm() {
 
           {/* Mobile number: label left; code, number and Verify right */}
           <div className={`${ROW} flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between`}>
-            <label htmlFor="lookupPhone" className="text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+            <label htmlFor="lookupPhone" className={ROW_TITLE}>
               {t.mobile}
               <span aria-hidden="true" className="text-lepas-amber"> *</span>
             </label>
@@ -732,34 +856,31 @@ export default function ServiceBookingForm() {
           <Notice tone="success">{fill(t.vehicleFound, { vehicle: foundVehicle })}</Notice>
         </div>
       )}
-      {saudiRedirect && customerType === "new" && (
-        <div className="pt-6">
-          <Notice tone="warn">{t.saudiRedirect}</Notice>
-        </div>
-      )}
 
       {showForm && (
-        <>
+        <div className="mt-8 flex flex-col gap-4">
+          {saudiRedirect && customerType === "new" && <Notice tone="warn">{t.saudiRedirect}</Notice>}
+
           {!isExisting && (
             <Accordion index={1} title={t.personal} open={openSection.personal} onToggle={() => toggle("personal")}>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div className="sm:col-span-2 sm:max-w-xs">
-                  <Field id="title" label={t.title} required error={errors.title}>
-                    <SelectField
-                      value={personal.title}
-                      onChange={(v) => {
-                        setPersonal((p) => ({ ...p, title: v }));
-                        clearError("title");
-                      }}
-                      placeholder="—"
-                      options={TITLES.map((v) => ({ value: v, label: t.titles[v] }))}
-                    />
-                  </Field>
-                </div>
+              {/* Title | First name | Last name */}
+              <div className="grid gap-5 md:grid-cols-[150px_1fr_1fr]">
+                <Field id="title" label={t.title} required error={errors.title}>
+                  <SelectField
+                    value={personal.title}
+                    onChange={(v) => {
+                      setPersonal((p) => ({ ...p, title: v }));
+                      clearError("title");
+                    }}
+                    placeholder={t.selectPlaceholder}
+                    options={TITLES.map((v) => ({ value: v, label: t.titles[v] }))}
+                  />
+                </Field>
                 <Field id="firstName" label={t.firstName} required error={errors.firstName}>
                   <input
                     id="firstName"
                     className="input-field-light"
+                    placeholder={t.firstNamePlaceholder}
                     value={personal.firstName}
                     onChange={(e) => {
                       setPersonal((p) => ({ ...p, firstName: e.target.value }));
@@ -771,6 +892,7 @@ export default function ServiceBookingForm() {
                   <input
                     id="lastName"
                     className="input-field-light"
+                    placeholder={t.lastNamePlaceholder}
                     value={personal.lastName}
                     onChange={(e) => {
                       setPersonal((p) => ({ ...p, lastName: e.target.value }));
@@ -778,6 +900,9 @@ export default function ServiceBookingForm() {
                     }}
                   />
                 </Field>
+              </div>
+              {/* Phone (code + number) | Email */}
+              <div className="mt-5 grid gap-5 md:grid-cols-2">
                 <Field id="phone" label={t.mobile} required error={errors.phone ?? (hasLetters(personal.phone) ? t.errInvalidPhone : undefined)}>
                   <PhoneInput
                     id="phone"
@@ -790,7 +915,7 @@ export default function ServiceBookingForm() {
                     }}
                     locale={locale}
                     searchLabel={t.searchCountry}
-                    placeholder={t.mobilePlaceholder}
+                    placeholder={t.phonePlaceholder}
                     invalid={Boolean(errors.phone) || hasLetters(personal.phone)}
                   />
                 </Field>
@@ -800,6 +925,7 @@ export default function ServiceBookingForm() {
                     type="email"
                     dir="ltr"
                     className="input-field-light"
+                    placeholder="name@example.com"
                     value={personal.email}
                     onChange={(e) => {
                       setPersonal((p) => ({ ...p, email: e.target.value }));
@@ -813,13 +939,13 @@ export default function ServiceBookingForm() {
 
           {!isExisting && (
             <Accordion index={2} title={t.vehicle} open={openSection.vehicle} onToggle={() => toggle("vehicle")}>
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 <Field id="vCountry" label={t.regCountry} required error={errors.vCountry}>
                   <SelectField
                     value={vehicle.country}
                     onChange={(v) => setVehicle((x) => ({ ...x, country: v, city: "" }))}
                     placeholder={t.selectCountry}
-                    options={REG_COUNTRIES.map((c) => ({ value: c.iso, label: c.iso, description: L(c) }))}
+                    options={REG_COUNTRIES.map((c) => ({ value: c.iso, label: `${isoFlag(c.iso)} ${L(c)}`, selectedLabel: `${isoFlag(c.iso)} ${c.iso}` }))}
                   />
                 </Field>
                 <Field id="vCity" label={t.regCity} required error={errors.vCity}>
@@ -860,34 +986,34 @@ export default function ServiceBookingForm() {
                     }}
                   />
                 </Field>
-                <div className="sm:col-span-2">
-                  <Field label={t.transmission} required>
-                    <Options
-                      label={t.transmission}
-                      value={vehicle.transmission as "Automatic" | "Manual"}
-                      fadeOthers
-                      options={[
-                        { value: "Automatic", label: t.automatic },
-                        { value: "Manual", label: t.manual },
-                      ]}
-                      onChange={(v) => setVehicle((x) => ({ ...x, transmission: v }))}
-                    />
-                  </Field>
-                </div>
-                <div className="sm:col-span-2">
-                  <Field id="vModel" label={t.model} required error={errors.vModel}>
-                    <Options
-                      label={t.model}
-                      value={vehicle.model}
-                      fadeOthers
-                      options={BOOKING_CONFIG.models.map((m) => ({ value: m, label: m }))}
-                      onChange={(v) => {
-                        setVehicle((x) => ({ ...x, model: v }));
-                        clearError("vModel");
-                      }}
-                    />
-                  </Field>
-                </div>
+              </div>
+              <div className="mt-6">
+                <Field label={t.transmission} required>
+                  <Options
+                    label={t.transmission}
+                    value={vehicle.transmission as "Automatic" | "Manual"}
+                    fadeOthers
+                    options={[
+                      { value: "Automatic", label: t.automatic },
+                      { value: "Manual", label: t.manual },
+                    ]}
+                    onChange={(v) => setVehicle((x) => ({ ...x, transmission: v }))}
+                  />
+                </Field>
+              </div>
+              <div className="mt-6">
+                <Field id="vModel" label={t.model} required error={errors.vModel}>
+                  <Options
+                    label={t.model}
+                    value={vehicle.model}
+                    fadeOthers
+                    options={modelOptions}
+                    onChange={(v) => {
+                      setVehicle((x) => ({ ...x, model: v }));
+                      clearError("vModel");
+                    }}
+                  />
+                </Field>
               </div>
             </Accordion>
           )}
@@ -898,7 +1024,16 @@ export default function ServiceBookingForm() {
             open={openSection.appointment}
             onToggle={() => toggle("appointment")}
           >
-            <div className="grid gap-5 sm:grid-cols-2">
+            {/* Open but disabled until personal and vehicle details are complete. */}
+            {appointmentLocked && (
+              <p className="mb-5 flex items-start gap-2 text-sm text-lepas-steel">
+                <FiInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-lepas-amber" />
+                {t.appointmentLocked}
+              </p>
+            )}
+            <fieldset disabled={appointmentLocked} className={`min-w-0 ${appointmentLocked ? "pointer-events-none opacity-50" : ""}`}>
+            {/* Purpose | Service interval | Please specify */}
+            <div className="grid gap-5 lg:grid-cols-3">
               <Field id="purpose" label={t.purpose} required error={errors.purpose}>
                 <SelectField
                   value={purpose}
@@ -913,9 +1048,12 @@ export default function ServiceBookingForm() {
                 required={purpose === "Service"}
                 error={errors.interval}
                 hint={
-                  purpose === "Service" && (
-                    <p className="mt-1.5 text-xs text-lepas-steel">
-                      {isExisting ? fill(t.previousService, { record: L(MOCK_CUSTOMER.previousService) }) : t.noPreviousService}
+                  !isOther && (
+                    <p className="mt-1.5 flex items-start gap-1.5 text-xs text-lepas-steel">
+                      <FiInfo aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-lepas-amber" />
+                      {isExisting && purpose === "Service"
+                        ? fill(t.previousService, { record: L(MOCK_CUSTOMER.previousService) })
+                        : t.noPreviousService}
                     </p>
                   )
                 }
@@ -935,21 +1073,23 @@ export default function ServiceBookingForm() {
                   />
                 </div>
               </Field>
-              <div className="sm:col-span-2">
-                <Field id="specify" label={t.specify} required={purpose === "Collision Damage" || purpose === "Report a Fault"} error={errors.specify}>
-                  <textarea
-                    id="specify"
-                    disabled={!(purpose === "Collision Damage" || purpose === "Report a Fault")}
-                    className="input-field-light min-h-[80px] disabled:cursor-not-allowed disabled:opacity-40"
-                    placeholder={t.specifyPlaceholder}
-                    value={specify}
-                    onChange={(e) => {
-                      setSpecify(e.target.value);
-                      clearError("specify");
-                    }}
-                  />
-                </Field>
-              </div>
+              <Field id="specify" label={t.specify} required={isOther} error={errors.specify}>
+                <input
+                  id="specify"
+                  disabled={!isOther}
+                  className="input-field-light disabled:cursor-not-allowed disabled:opacity-40"
+                  placeholder={t.specifyPlaceholder}
+                  value={specify}
+                  onChange={(e) => {
+                    setSpecify(e.target.value);
+                    clearError("specify");
+                  }}
+                />
+              </Field>
+            </div>
+
+            {/* Location | Date */}
+            <div className="mt-5 grid gap-5 sm:grid-cols-2">
               <Field id="location" label={t.location} required error={errors.location}>
                 <SelectField
                   value={locationId}
@@ -973,85 +1113,88 @@ export default function ServiceBookingForm() {
                   isDateDisabled={isWeekend}
                 />
               </Field>
-              {locationId && (
-                <div className="sm:col-span-2">
-                  <Notice tone="info">{t.arrival}</Notice>
-                </div>
-              )}
-              <div className="sm:col-span-2">
-                <Field label={t.wait}>
-                  <Options
-                    label={t.wait}
-                    value={wait}
-                    options={[
-                      { value: "yes", label: t.yes },
-                      { value: "no", label: t.no },
-                    ]}
-                    onChange={setWait}
-                  />
-                </Field>
-              </div>
-              <div className="sm:col-span-2">
-                <Field id="message" label={t.message}>
-                  <textarea
-                    id="message"
-                    className="input-field-light min-h-[100px]"
-                    placeholder={t.messagePlaceholder}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                </Field>
-              </div>
             </div>
+
+            {locationId && (
+              <div className="mt-5">
+                <Notice tone="warn" title={t.important}>
+                  {t.arrivalBefore}
+                  <strong className="font-semibold text-lepas-black">{t.arrivalTime}</strong>
+                  {t.arrivalAfter}
+                </Notice>
+              </div>
+            )}
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-3">
+              <span className="text-sm font-semibold uppercase text-lepas-steel">{t.wait}</span>
+              <Radios
+                label={t.wait}
+                value={wait}
+                options={[
+                  { value: "yes", label: t.yes },
+                  { value: "no", label: t.no },
+                ]}
+                onChange={setWait}
+              />
+            </div>
+
+            <div className="mt-6">
+              <Field id="message" label={t.message}>
+                <textarea
+                  id="message"
+                  className="input-field-light min-h-[100px]"
+                  placeholder={t.messagePlaceholder}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+              </Field>
+            </div>
+            </fieldset>
           </Accordion>
 
           {/* Pickup / drop-off */}
-          <div className={ROW}>
-            <p className={`${ROW_TITLE} mb-4`}>{t.transportTitle}</p>
-            {location && !location.transportAvailable ? (
-              <div className="mb-4">
-                <Notice tone="warn">{t.transportUnavailable}</Notice>
-              </div>
-            ) : (
-              !transportEnabled && (
-                <div className="mb-4">
-                  <Notice tone="info">{t.transportHint}</Notice>
-                </div>
-              )
-            )}
-            <Options
-              label={t.transportTitle}
-              value={transport}
-              options={TRANSPORT_OPTIONS.map((o) => ({ value: o, label: t.transport[o], disabled: o !== "none" && !transportEnabled }))}
-              onChange={chooseTransport}
-            />
-
-            {transportActive && (
-              <div data-field="terms" className="mt-5">
-                <label className="flex cursor-pointer items-start gap-3 text-sm text-lepas-steel">
-                  <input
-                    type="checkbox"
-                    className="checkbox-field-light mt-0.5"
-                    checked={termsChecked}
-                    onChange={(e) => onTermsCheckbox(e.target.checked)}
-                  />
-                  <span>
-                    {t.termsCheckbox}{" "}
+          <section className="pt-4">
+            <h3 className={`${ROW_TITLE} border-b border-lepas-fog pb-3`}>{t.transportTitle}</h3>
+            <div className="mt-4 flex flex-col gap-4">
+              {collision ? (
+                <Notice tone="warn" title={t.important}>
+                  {t.transportCollision}
+                </Notice>
+              ) : location && !location.transportAvailable ? (
+                <Notice tone="warn" title={t.important}>
+                  {t.transportUnavailable}
+                </Notice>
+              ) : (
+                !transportEnabled && <Notice tone="info">{t.transportHint}</Notice>
+              )}
+              <Radios
+                label={t.transportTitle}
+                value={transport}
+                options={TRANSPORT_OPTIONS.map((o) => ({ value: o, label: t.transport[o], disabled: o !== "none" && !transportEnabled }))}
+                onChange={chooseTransport}
+              />
+              {transportActive && (
+                <div data-field="terms">
+                  <CheckBox checked={termsChecked} onChange={onTermsCheckbox}>
+                    {t.termsAckPrefix}{" "}
                     <button
                       type="button"
-                      onClick={() => setTermsOpen(true)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setTermsOpen(true);
+                      }}
                       className="font-semibold text-lepas-ink underline decoration-lepas-amber decoration-2 underline-offset-4"
                     >
                       {t.termsLink}
                     </button>
-                  </span>
-                </label>
-              </div>
-            )}
-
-            {showTransportDetails && charge > 0 && location && (
-              <div className="mt-5">
-                <Notice tone="warn">
+                    {t.termsAckSuffix}{" "}
+                    <strong className="font-semibold text-lepas-black">{fill(t.termsAckFee, { fee: BOOKING_CONFIG.cancellationFee })}</strong>{" "}
+                    {t.termsAckEnd}
+                  </CheckBox>
+                </div>
+              )}
+              {showTransportDetails && charge > 0 && location && (
+                <Notice tone="warn" title={t.chargeTitle}>
                   {fill(transport === "pickup" ? t.chargePickup : transport === "dropoff" ? t.chargeDropoff : t.chargeBoth, {
                     pickup: location.pickupCharge,
                     dropoff: location.dropoffCharge,
@@ -1059,20 +1202,20 @@ export default function ServiceBookingForm() {
                     location: location.label[locale],
                   })}
                 </Notice>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          </section>
 
           {showTransportDetails && (transport === "pickup" || transport === "both") && (
             <Accordion index={isExisting ? 2 : 4} title={t.pickupDetails} open={openSection.pickup} onToggle={() => toggle("pickup")}>
               <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div className="sm:col-span-2">
-                    <Field id="pickupAddress" label={`${t.from} — ${t.yourAddress}`} required error={errors.pickupAddress}>
+                <div className="flex min-w-0 flex-col gap-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field id="pickupAddress" label={t.pickupAddress} required error={errors.pickupAddress}>
                       <input
                         id="pickupAddress"
                         className="input-field-light"
-                        placeholder={t.addressPlaceholder}
+                        placeholder={t.pickupAddressPlaceholder}
                         value={pickup.address}
                         onChange={(e) => {
                           const v = e.target.value;
@@ -1082,44 +1225,38 @@ export default function ServiceBookingForm() {
                         }}
                       />
                     </Field>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <Field label={t.to}>
-                      <input className="input-field-light cursor-not-allowed bg-lepas-sand/60 text-lepas-steel" readOnly value={centre} />
+                    <Field label={t.dropoffAddress}>
+                      <input className={readOnlyCls} readOnly value={centre} title={centre} />
                     </Field>
                   </div>
-                  <Field label={t.pickupDate}>
-                    <input className="input-field-light cursor-not-allowed bg-lepas-sand/60 text-lepas-steel" readOnly dir="ltr" value={formatDate(date)} />
-                  </Field>
-                  <Field id="pickupTime" label={t.pickupTime} required error={errors.pickupTime}>
-                    <SelectField
-                      value={pickup.time}
-                      onChange={(v) => {
-                        setPickup((p) => ({ ...p, time: v }));
-                        clearError("pickupTime");
-                      }}
-                      placeholder={t.selectTime}
-                      options={slots.map((s) => ({ value: s, label: s }))}
-                    />
-                  </Field>
-                  <div className="sm:col-span-2">
-                    <Field id="pickupInstructions" label={t.instructions}>
-                      <textarea
-                        id="pickupInstructions"
-                        className="input-field-light min-h-[80px]"
-                        placeholder={t.instructionsPlaceholder}
-                        value={pickup.instructions}
-                        onChange={(e) => setPickup((p) => ({ ...p, instructions: e.target.value }))}
+                  <Notice tone="info">{t.pickupInfo}</Notice>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label={t.pickupDate}>
+                      <input className={readOnlyCls} readOnly dir="ltr" value={formatDate(date)} />
+                    </Field>
+                    <Field id="pickupTime" label={t.pickupTime} required error={errors.pickupTime}>
+                      <SelectField
+                        value={pickup.time}
+                        onChange={(v) => {
+                          setPickup((p) => ({ ...p, time: v }));
+                          clearError("pickupTime");
+                        }}
+                        placeholder={t.selectTime}
+                        options={slots.map((s) => ({ value: s, label: s }))}
                       />
                     </Field>
                   </div>
+                  <Field id="pickupInstructions" label={t.instructions}>
+                    <input
+                      id="pickupInstructions"
+                      className="input-field-light"
+                      placeholder={t.instructionsPlaceholder}
+                      value={pickup.instructions}
+                      onChange={(e) => setPickup((p) => ({ ...p, instructions: e.target.value }))}
+                    />
+                  </Field>
                 </div>
-                <iframe
-                  src={BOOKING_CONFIG.serviceCentreMap}
-                  title={centre}
-                  loading="lazy"
-                  className="h-48 w-full border-0 lg:h-full lg:min-h-[280px]"
-                />
+                <iframe src={BOOKING_CONFIG.serviceCentreMap} title={centre} loading="lazy" className="h-52 w-full border-0 lg:h-full lg:min-h-[300px]" />
               </div>
             </Accordion>
           )}
@@ -1132,18 +1269,16 @@ export default function ServiceBookingForm() {
               onToggle={() => toggle("dropoff")}
             >
               <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div className="sm:col-span-2">
-                    <Field label={t.from}>
-                      <input className="input-field-light cursor-not-allowed bg-lepas-sand/60 text-lepas-steel" readOnly value={centre} />
+                <div className="flex min-w-0 flex-col gap-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label={t.pickupAddress}>
+                      <input className={readOnlyCls} readOnly value={centre} title={centre} />
                     </Field>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <Field id="dropoffAddress" label={`${t.to} — ${t.yourAddress}`} required error={errors.dropoffAddress}>
+                    <Field id="dropoffAddress" label={t.dropoffAddress} required error={errors.dropoffAddress}>
                       <input
                         id="dropoffAddress"
                         className="input-field-light"
-                        placeholder={t.addressPlaceholder}
+                        placeholder={t.dropoffAddressPlaceholder}
                         value={dropoff.address}
                         onChange={(e) => {
                           setDropoff((d) => ({ ...d, address: e.target.value }));
@@ -1152,109 +1287,66 @@ export default function ServiceBookingForm() {
                       />
                     </Field>
                   </div>
-                  <Field label={t.dropoffDate}>
-                    <input className="input-field-light cursor-not-allowed bg-lepas-sand/60 text-lepas-steel" readOnly dir="ltr" value={formatDate(date)} />
-                  </Field>
-                  <div className="sm:col-span-2">
-                    <Field id="dropoffInstructions" label={t.instructions}>
-                      <textarea
-                        id="dropoffInstructions"
-                        className="input-field-light min-h-[80px]"
-                        placeholder={t.instructionsPlaceholder}
-                        value={dropoff.instructions}
-                        onChange={(e) => setDropoff((d) => ({ ...d, instructions: e.target.value }))}
-                      />
+                  <Notice tone="info">{t.dropoffInfo}</Notice>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label={t.dropoffDate}>
+                      <input className={readOnlyCls} readOnly dir="ltr" value={formatDate(date)} />
                     </Field>
                   </div>
+                  <Field id="dropoffInstructions" label={t.instructions}>
+                    <input
+                      id="dropoffInstructions"
+                      className="input-field-light"
+                      placeholder={t.instructionsPlaceholder}
+                      value={dropoff.instructions}
+                      onChange={(e) => setDropoff((d) => ({ ...d, instructions: e.target.value }))}
+                    />
+                  </Field>
                 </div>
-                <iframe
-                  src={BOOKING_CONFIG.serviceCentreMap}
-                  title={centre}
-                  loading="lazy"
-                  className="h-48 w-full border-0 lg:h-full lg:min-h-[280px]"
-                />
+                <iframe src={BOOKING_CONFIG.serviceCentreMap} title={centre} loading="lazy" className="h-52 w-full border-0 lg:h-full lg:min-h-[300px]" />
               </div>
             </Accordion>
           )}
 
-          {/* Privacy, CAPTCHA, submit */}
-          <div className="py-6">
-            <label className="flex cursor-pointer items-start gap-3 text-sm text-lepas-steel">
-              <input type="checkbox" className="checkbox-field-light mt-0.5" checked={privacy} onChange={(e) => setPrivacy(e.target.checked)} />
-              <span>
-                {t.privacyPrefix}{" "}
-                <a
-                  href="/privacy-policy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-lepas-ink underline decoration-lepas-amber decoration-2 underline-offset-4"
-                >
-                  {t.privacyLink}
-                </a>
-              </span>
-            </label>
+          {/* Privacy */}
+          <CheckBox checked={privacy} onChange={setPrivacy}>
+            {t.privacyPrefix}{" "}
+            <a
+              href="/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-lepas-ink underline decoration-lepas-amber decoration-2 underline-offset-4"
+            >
+              {t.privacyLink}
+            </a>
+          </CheckBox>
 
-            <div className="mt-6 border-t border-lepas-fog pt-6">
-              <Field id="captcha" label={t.captcha} required>
-                <div className="flex flex-wrap items-center gap-3">
-                  <span
-                    aria-hidden="true"
-                    dir="ltr"
-                    className="flex h-[46px] min-w-[150px] select-none items-center justify-center border border-lepas-fog bg-lepas-sand/60 px-5 font-mono text-xl font-bold italic tracking-[0.35em] text-lepas-black"
-                  >
-                    {captcha}
-                  </span>
-                  <span className="sr-only">{captcha.split("").join(" ")}</span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCaptcha(makeCaptcha());
-                      setCaptchaInput("");
-                    }}
-                    aria-label={t.captchaRefresh}
-                    className="flex h-[46px] w-[46px] items-center justify-center border border-lepas-fog text-lepas-steel transition-colors hover:border-lepas-amber hover:text-lepas-ink"
-                  >
-                    <FiRefreshCw aria-hidden="true" />
-                  </button>
-                  <input
-                    id="captcha"
-                    dir="ltr"
-                    autoComplete="off"
-                    className="input-field-light w-44 uppercase"
-                    placeholder={t.captchaPlaceholder}
-                    maxLength={6}
-                    value={captchaInput}
-                    onChange={(e) => setCaptchaInput(e.target.value.toUpperCase().slice(0, 6))}
-                  />
-                </div>
-                <p aria-live="polite" className="mt-2 min-h-[1.25rem] text-xs font-medium">
-                  {captchaInput.length === 6 &&
-                    (captchaValid ? (
-                      <span className="inline-flex items-center gap-1.5 text-lepas-ink">
-                        <FiCheck aria-hidden="true" className="text-lepas-success" /> {t.captchaOk}
-                      </span>
-                    ) : (
-                      <span className="text-lepas-error">{t.captchaWrong}</span>
-                    ))}
-                </p>
-              </Field>
+          {/* Verification: Google reCAPTCHA, with Submit beside it */}
+          <div className="pt-2">
+            <p className={labelCls}>
+              {t.verification}
+              <span aria-hidden="true" className="text-lepas-amber"> *</span>
+              <span className="sr-only"> (required)</span>
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <ReCaptcha locale={locale} onChange={setRecaptchaToken} />
+              <button type="submit" disabled={!canSubmit || submitting} className="btn-primary h-[46px]">
+                {t.submit}
+              </button>
             </div>
-
             {Object.keys(errors).length > 0 && (
-              <p role="alert" className="mt-4 text-sm font-medium text-lepas-error">
+              <p role="alert" className="mt-2 text-sm font-medium text-lepas-error">
                 {t.fixErrors}
               </p>
             )}
-
-            <button type="submit" disabled={!canSubmit || submitting} className="btn-primary mt-6 w-full sm:w-auto">
-              {t.submit}
-            </button>
           </div>
-        </>
+        </div>
       )}
 
       {searching && <BrandLoader label={t.searching} />}
       {submitting && <BrandLoader label={t.submitting} />}
+      {checkingLocation && <BrandLoader label={t.checkingLocation} />}
+      {loadingPurpose && <BrandLoader label={t.loadingPurpose} />}
 
       {/* Terms & Conditions */}
       <Dialog open={termsOpen} labelId={termsLabelId} onEscape={resetTerms} wide>
@@ -1275,7 +1367,7 @@ export default function ServiceBookingForm() {
               <li key={i}>{i}</li>
             ))}
           </ul>
-          <div className="mt-8 flex flex-wrap justify-end gap-3">
+          <div className="mt-8 grid grid-cols-2 gap-3">
             <button type="button" onClick={resetTerms} className="btn-outline">
               {t.cancel}
             </button>
@@ -1298,61 +1390,90 @@ export default function ServiceBookingForm() {
       {/* Success */}
       <Dialog open={successOpen} labelId={successLabelId} onEscape={() => setSuccessOpen(false)}>
         <div className="p-6 md:p-8">
-          <div className="flex items-start justify-between gap-4">
-            <FiCheckCircle aria-hidden="true" className="h-10 w-10 text-lepas-success" />
-            <button
-              type="button"
-              onClick={() => setSuccessOpen(false)}
-              aria-label={t.close}
-              className="flex h-10 w-10 items-center justify-center border border-lepas-fog text-lepas-steel hover:border-lepas-amber"
-            >
-              <FiX aria-hidden="true" />
-            </button>
-          </div>
-          <h2 id={successLabelId} className="heading-3 mt-4">
-            {t.successTitle}
-          </h2>
-          <p className="mt-2 text-sm text-lepas-steel">{t.successBody}</p>
-          <p className="mt-1 text-sm text-lepas-steel">{t.successSent}</p>
-          <p className="mt-4 text-sm">
-            <span className="text-lepas-ash">{t.reference}: </span>
-            <span dir="ltr" className="font-bold tracking-wider text-lepas-black">
-              {reference}
+          <div className="flex items-start gap-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lepas-success text-white">
+              <FiCheck aria-hidden="true" className="h-5 w-5" />
             </span>
-          </p>
+            <div className="min-w-0 flex-1">
+              <h2 id={successLabelId} className="text-lg font-semibold text-lepas-black">
+                {t.successTitle}
+              </h2>
+              <p className="text-sm text-lepas-steel">{t.successBody}</p>
+              <p className="mt-3 text-xs text-lepas-steel">{t.successSentVia}</p>
+              <ul className="mt-2 flex flex-wrap gap-2">
+                {t.channels.map((ch, i) => {
+                  const Icon = channelIcons[i];
+                  return (
+                    <li key={ch} className="inline-flex items-center gap-1.5 border border-lepas-amber bg-lepas-amber/10 px-2.5 py-1.5 text-xs font-medium text-lepas-black">
+                      <Icon aria-hidden="true" className="h-3.5 w-3.5" />
+                      {ch}
+                    </li>
+                  );
+                })}
+              </ul>
+              <p className="mt-2 inline-flex border border-lepas-amber bg-lepas-amber/10 px-2.5 py-1.5 text-xs font-semibold text-lepas-black">
+                {t.reference}:&nbsp;
+                <span dir="ltr" className="tracking-wider">
+                  {reference}
+                </span>
+              </p>
+            </div>
+          </div>
 
-          <dl className="mt-6 divide-y divide-lepas-fog border-y border-lepas-fog text-sm">
-            {[
-              [t.summaryName, [personal.title && t.titles[personal.title as keyof typeof t.titles], personal.firstName, personal.lastName].filter(Boolean).join(" ") || "—"],
-              [t.summaryPhone, <span key="p" dir="ltr">{`${phoneCountry.flag} ${phoneCountry.dial} ${shownPhone}`}</span>],
-              [t.summaryEmail, <span key="e" dir="ltr">{shownEmail || "—"}</span>],
-              [
-                t.summaryVehicle,
-                `${regCountryName(vehicle.country)}, ${cityName(vehicle.country, vehicle.city)} · ${vehicle.prefix} ${shownPlate}`,
-              ],
-              [t.summaryPurpose, purpose ? t.purposes[purpose] : "—"],
-              ...(purpose === "Service" && interval
-                ? [[t.summaryInterval, fill(t.km, { n: parseInt(interval, 10).toLocaleString(locale === "ar" ? "ar-AE" : "en-US") })]]
-                : []),
-              ...(purpose && purpose !== "Service" && specify ? [[t.summarySpecify, specify]] : []),
-              [t.summaryLocation, locationName],
-              [t.summaryDate, <span key="d" dir="ltr">{formatDate(date)}</span>],
-              ...(message.trim() ? [[t.summaryMessage, message]] : []),
-              ...(transportActive && (transport === "pickup" || transport === "both")
-                ? [[t.summaryPickup, `${pickup.address || "—"} → ${centre}`]]
-                : []),
-              ...(transportActive && (transport === "dropoff" || transport === "both")
-                ? [[t.summaryDropoff, `${centre} → ${dropoff.address || "—"}`]]
-                : []),
-            ].map(([k, v], i) => (
-              <div key={i} className="grid gap-1 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
-                <dt className="text-xs font-medium uppercase tracking-widest2 text-lepas-ash">{k}</dt>
-                <dd className="text-lepas-ink">{v}</dd>
+          <p className="mt-6 text-xs font-bold uppercase tracking-widest2 text-lepas-black">{t.summaryTitle}</p>
+          {(() => {
+            const Item = ({ k, v, full }: { k: string; v: React.ReactNode; full?: boolean }) => (
+              <div className={`flex gap-3 py-2 text-sm ${full ? "sm:col-span-2" : ""}`}>
+                <dt className="w-24 shrink-0 text-lepas-ash">{k}</dt>
+                <dd className="min-w-0 break-words text-lepas-ink">{v}</dd>
               </div>
-            ))}
-          </dl>
+            );
+            const group = "grid border-b border-lepas-fog py-2 sm:grid-cols-2 sm:gap-x-6";
+            return (
+              <div className="mt-2">
+                <dl className={group}>
+                  <Item
+                    full
+                    k={t.summaryName}
+                    v={[personal.title && t.titles[personal.title as keyof typeof t.titles], personal.firstName, personal.lastName].filter(Boolean).join(" ") || "—"}
+                  />
+                  <Item k={t.summaryPhone} v={<span dir="ltr">{`${phoneCountry.flag} ${phoneCountry.dial} ${shownPhone}`}</span>} />
+                  <Item k={t.summaryEmail} v={<span dir="ltr">{shownEmail || "—"}</span>} />
+                </dl>
+                <dl className={group}>
+                  <Item k={t.summaryRegistration} v={`${isoFlag(vehicle.country)} ${vehicle.country} · ${cityName(vehicle.country, vehicle.city)}`} />
+                  <Item k={t.summaryPlate} v={<span dir="ltr">{`${vehicle.prefix} ${shownPlate}`.trim() || "—"}</span>} />
+                </dl>
+                <dl className={group}>
+                  <Item k={t.summaryPurpose} v={purpose ? t.purposes[purpose] : "—"} />
+                  {purpose === "Service" && interval ? (
+                    <Item k={t.summaryInterval} v={fill(t.km, { n: parseInt(interval, 10).toLocaleString(locale === "ar" ? "ar-AE" : "en-US") })} />
+                  ) : isOther && specify ? (
+                    <Item k={t.summarySpecify} v={specify} />
+                  ) : (
+                    <div className="hidden sm:block" />
+                  )}
+                  <Item full k={t.summaryLocation} v={locationName} />
+                  <Item full k={t.summaryDate} v={<span dir="ltr">{formatDate(date)}</span>} />
+                  {message.trim() && <Item full k={t.summaryMessage} v={message} />}
+                </dl>
+                {transportActive && (transport === "pickup" || transport === "both") && (
+                  <dl className={group}>
+                    <Item k={t.summaryTransport} v={t.transport.pickup} />
+                    <Item k={t.summaryAddress} v={`${pickup.address || "—"} → ${centre}`} />
+                  </dl>
+                )}
+                {transportActive && (transport === "dropoff" || transport === "both") && (
+                  <dl className={group}>
+                    <Item k={t.summaryTransport} v={t.transport.dropoff} />
+                    <Item k={t.summaryAddress} v={`${centre} → ${dropoff.address || "—"}`} />
+                  </dl>
+                )}
+              </div>
+            );
+          })()}
 
-          <button type="button" onClick={() => setSuccessOpen(false)} className="btn-primary mt-6 w-full sm:w-auto">
+          <button type="button" onClick={() => setSuccessOpen(false)} className="btn-primary mt-6 w-full">
             {t.close}
           </button>
         </div>

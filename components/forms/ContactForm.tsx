@@ -52,7 +52,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-2 block text-xs font-medium uppercase tracking-widest2 text-lepas-ash">
+      <label className="mb-2 block text-sm font-semibold uppercase text-lepas-steel">
         {label}
         {required && " *"}
       </label>
@@ -108,7 +108,7 @@ export default function ContactForm() {
                 render={({ field }) => (
                   <SelectField
                     {...field}
-                    placeholder={"—"}
+                    placeholder={dict.forms.select}
                     options={[
                       { value: "mr", label: dict.forms.titleMr },
                       { value: "mrs", label: dict.forms.titleMrs },
@@ -127,14 +127,14 @@ export default function ContactForm() {
             <input className="input-field-light" placeholder={dict.forms.lastName} {...register("lastName")} />
           </Field>
           <Field label={dict.forms.emailAddress} required error={errors.email?.message}>
-            <input className="input-field-light" type="email" placeholder={dict.forms.emailAddress} {...register("email")} />
+            <input className="input-field-light" type="email" dir="ltr" placeholder="name@example.com" {...register("email")} />
           </Field>
           <Field label={dict.forms.phoneNumber}>
             <div className="phone-field-light">
               <span className="phone-prefix">
                 🇦🇪 +971
               </span>
-              <input className="phone-input" type="tel" placeholder="50 123 4567" {...register("phone")} />
+              <input className="phone-input" type="tel" placeholder="55 00 00 000" {...register("phone")} />
             </div>
           </Field>
         </div>

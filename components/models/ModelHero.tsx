@@ -81,7 +81,7 @@ export default function ModelHero({
             {isPhev && <span className="text-lepas-amber"> {phev?.label}</span>}
             <span className="sr-only"> — {d.heroHeadline}</span>
           </h1>
-          <p className="mt-5 max-w-xl text-base text-white/85 md:text-xl">{model.tagline}</p>
+          <p className="mt-2 max-w-4xl text-lg text-white/85">{model.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href={`/models/test-drive?model=${model.slug}${active ? `&variant=${active.id}` : ""}`} className="btn-primary text-center">
               {dict.common.bookTestDrive}

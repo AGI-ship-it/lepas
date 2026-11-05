@@ -28,7 +28,7 @@ export default function Section({
     >
       <div className="container-lepas">
         {(title || description) && (
-          <div className="mb-12 max-w-2xl text-start md:mb-16">
+          <div className="mb-8 max-w-4xl text-start md:mb-10">
             {title && (
               <h2 className="heading-2 text-start">
                 {title}
@@ -36,7 +36,7 @@ export default function Section({
             )}
             {description && (
               <p
-                className={`mt-4 text-base md:text-lg ${
+                className={`mt-2 text-lg ${
                   light ? "text-lepas-steel" : "text-white/60"
                 }`}
               >

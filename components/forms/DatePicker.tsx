@@ -124,7 +124,7 @@ export default function DatePicker({
         aria-expanded={open}
         disabled={fieldDisabled}
         onClick={() => setOpen((o) => !o)}
-        className={`input-field-light flex items-center justify-between bg-lepas-sand/60 text-start disabled:cursor-not-allowed disabled:opacity-50 ${
+        className={`input-field-light flex items-center justify-between text-start disabled:cursor-not-allowed disabled:opacity-50 ${
           open ? "border-lepas-amber" : invalid ? "border-lepas-error" : ""
         }`}
       >

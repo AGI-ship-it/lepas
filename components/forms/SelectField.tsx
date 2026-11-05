@@ -5,6 +5,8 @@ import { forwardRef, useEffect, useId, useRef, useState } from "react";
 export interface SelectOption {
   value: string;
   label: string;
+  /** Shorter text for the closed field (e.g. "🇦🇪 AE" while the list shows the full country name). */
+  selectedLabel?: string;
   description?: string;
   badge?: string;
   disabled?: boolean;
@@ -90,7 +92,7 @@ const SelectField = forwardRef<
 
   const tone = light
     ? {
-        field: "input-field-light bg-white",
+        field: "input-field-light",
         value: "text-lepas-black",
         placeholder: "text-lepas-ash",
         list: "border-lepas-fog bg-white shadow-lg",
@@ -124,7 +126,7 @@ const SelectField = forwardRef<
         className={`${tone.field} flex w-full items-center justify-between gap-3 text-start`}
       >
         <span className={`truncate ${selected?.value ? tone.value : tone.placeholder}`}>
-          {selected?.value ? selected.label : placeholder}
+          {selected?.value ? selected.selectedLabel ?? selected.label : placeholder}
         </span>
         <SelectChevron open={open} />
       </button>

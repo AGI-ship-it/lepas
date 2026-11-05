@@ -20,14 +20,14 @@ export default function FeaturedNews() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="heading-2">{t.title}</h2>
-            <p className="mt-4 max-w-md text-base text-lepas-steel">{t.sectionIntro}</p>
+            <p className="mt-2 max-w-4xl text-lg text-lepas-steel">{t.sectionIntro}</p>
           </div>
           <Link href="/discover/news" className="btn-outline w-full uppercase sm:w-auto">
             {t.viewAllNews}
           </Link>
         </div>
 
-        <ul className="mt-12 grid grid-cols-1 gap-6 md:mt-16 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
+        <ul className="mt-8 grid grid-cols-1 gap-6 md:mt-10 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
           {news.map((article) => {
             const image = getNewsImage(article.slug);
             return (

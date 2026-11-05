@@ -52,8 +52,8 @@ export default function BookServicePage() {
       <Section light className="!bg-lepas-sand">
         <div className="mx-auto max-w-[1080px]">
           <h2 className="heading-2">{dict.afterSales.requestServiceSlot}</h2>
-          <p className="mt-4 text-base text-lepas-steel">{dict.afterSales.requestServiceSlotDescription}</p>
-          <div className="mt-12 md:mt-16">
+          <p className="mt-2 text-lg text-lepas-steel">{dict.afterSales.requestServiceSlotDescription}</p>
+          <div className="mt-8 md:mt-10">
             <ServiceBookingForm />
           </div>
         </div>
