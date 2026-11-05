@@ -56,7 +56,7 @@ export default function HotspotFeature({
     <section
       id={id}
       aria-label={title}
-      className="relative min-h-[520px] scroll-mt-36 overflow-hidden bg-lepas-ink text-white md:aspect-[1440/607] md:min-h-0"
+      className="relative min-h-[520px] scroll-mt-[8.5rem] overflow-hidden bg-lepas-ink text-white md:aspect-[1440/607] md:min-h-0"
     >
       {image ? (
         <Image src={image} alt={imageLabel} fill sizes="100vw" className="object-cover" />
@@ -64,6 +64,11 @@ export default function HotspotFeature({
         <PlaceholderImage label={imageLabel} aspect="aspect-auto h-full" className="absolute inset-0 h-full" />
       )}
       <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent rtl:bg-gradient-to-l" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/40 to-transparent" />
+
+      <div className="container-lepas pointer-events-none relative pt-6">
+        <h2 className="heading-2">{title}</h2>
+      </div>
 
       {features.map((f, i) => {
         const on = i === activeIndex;
@@ -94,7 +99,6 @@ export default function HotspotFeature({
       })}
 
       <div className="container-lepas pointer-events-none absolute inset-x-0 bottom-0 pb-12 md:pb-24">
-        <h2 className="sr-only">{title}</h2>
         <div className="max-w-xs">
           <AnimatePresence mode="wait">
             <motion.div

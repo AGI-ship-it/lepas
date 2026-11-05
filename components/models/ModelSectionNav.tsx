@@ -38,15 +38,15 @@ export default function ModelSectionNav({
 
   return (
     <nav aria-label={label} className="sticky top-20 z-40 bg-lepas-black text-white">
-      <ul ref={listRef} className="container-lepas no-scrollbar flex h-14 items-center gap-8 overflow-x-auto">
+      <ul ref={listRef} className="container-lepas no-scrollbar flex h-14 items-stretch gap-8 overflow-x-auto">
         {links.map((l) => {
           const on = l.id === active;
           return (
-            <li key={l.id} className="shrink-0">
+            <li key={l.id} className="flex shrink-0">
               <a
                 href={`#${l.id}`}
                 aria-current={on}
-                className={`relative block py-2 text-sm transition-colors ${on ? "text-white" : "text-white/60 hover:text-white"}`}
+                className={`relative flex items-center text-sm transition-colors ${on ? "text-white" : "text-white/60 hover:text-white"}`}
               >
                 {l.label}
                 <span

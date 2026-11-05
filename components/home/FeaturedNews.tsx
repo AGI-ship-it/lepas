@@ -69,6 +69,32 @@ export default function FeaturedNews() {
               </li>
             );
           })}
+          {/* Placeholder cards keep the row at three until more stories are published. */}
+          {Array.from({ length: Math.max(0, 3 - news.length) }, (_, i) => (
+            <li key={`placeholder-${i}`} className="h-full">
+              <Link
+                href="/discover/news"
+                className="group flex h-full flex-col overflow-hidden border border-lepas-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-lepas-amber/50 hover:shadow-xl"
+              >
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-lepas-black">
+                  <PlaceholderImage label={`Lepas news placeholder ${i + 1}`} aspect="h-full" tone="dark" />
+                </div>
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider">
+                    <span className="border border-lepas-amber/60 px-2 py-0.5 text-[10px] text-lepas-steel">
+                      {dict.testDriveFlow.comingSoon}
+                    </span>
+                  </p>
+                  <h3 className="heading-3 mt-3">{t.placeholderTitle}</h3>
+                  <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-lepas-steel">{t.placeholderBody}</p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-lepas-amber transition-colors group-hover:text-lepas-black">
+                    {t.viewAllNews}
+                    <FiArrowRight aria-hidden="true" className="transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+                  </span>
+                </div>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

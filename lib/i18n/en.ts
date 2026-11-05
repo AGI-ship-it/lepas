@@ -767,6 +767,8 @@ const en = {
       listIntro:
         "Step inside the world of Lepas. From international showcases to launch stories, discover the latest updates from across the brand.",
       exploreMore: "Explore more",
+      placeholderTitle: "More stories coming soon",
+      placeholderBody: "Stay tuned for the latest Lepas launches, events and stories from across the UAE.",
       viewAllNews: "View all news",
       readMore: "Read more",
       relatedNews: "Related News",
