@@ -47,6 +47,8 @@ export default function DatePicker({
   todayLabel,
   closeLabel,
   invalid,
+  isDateDisabled,
+  disabled: fieldDisabled,
 }: {
   value: string;
   onChange: (iso: string) => void;
@@ -57,6 +59,10 @@ export default function DatePicker({
   todayLabel: string;
   closeLabel: string;
   invalid?: boolean;
+  /** Extra blocked days (e.g. weekends); shown struck through. */
+  isDateDisabled?: (d: Date) => boolean;
+  /** Disables the whole field (e.g. until a location is chosen). */
+  disabled?: boolean;
 }) {
   const intlLocale = locale === "ar" ? "ar-AE" : "en-GB";
   const [open, setOpen] = useState(false);
@@ -116,8 +122,9 @@ export default function DatePicker({
         type="button"
         aria-haspopup="dialog"
         aria-expanded={open}
+        disabled={fieldDisabled}
         onClick={() => setOpen((o) => !o)}
-        className={`input-field-light flex items-center justify-between bg-lepas-sand/60 text-start ${
+        className={`input-field-light flex items-center justify-between bg-lepas-sand/60 text-start disabled:cursor-not-allowed disabled:opacity-50 ${
           open ? "border-lepas-amber" : invalid ? "border-lepas-error" : ""
         }`}
       >
@@ -165,7 +172,8 @@ export default function DatePicker({
             {cells.map((d, i) => {
               if (!d) return <span key={`blank-${i}`} />;
               const iso = toIso(d);
-              const disabled = d < minDate || d > maxDate;
+              const blocked = isDateDisabled?.(d) ?? false;
+              const disabled = d < minDate || d > maxDate || blocked;
               const selected = iso === value;
               return (
                 <button
@@ -178,7 +186,7 @@ export default function DatePicker({
                     selected
                       ? "bg-lepas-amber text-lepas-black ring-2 ring-lepas-amber/40 ring-offset-2"
                       : disabled
-                      ? "cursor-not-allowed text-lepas-mist"
+                      ? `cursor-not-allowed text-lepas-mist ${blocked ? "line-through" : ""}`
                       : "text-lepas-ink hover:bg-lepas-amber/15"
                   }`}
                 >
@@ -192,8 +200,11 @@ export default function DatePicker({
             <button
               type="button"
               onClick={() => {
-                setView(new Date(minDate.getFullYear(), minDate.getMonth(), 1));
-                pick(minDate);
+                // First selectable day from today (skips blocked days such as weekends).
+                const first = new Date(minDate);
+                while (isDateDisabled?.(first) && first <= maxDate) first.setDate(first.getDate() + 1);
+                setView(new Date(first.getFullYear(), first.getMonth(), 1));
+                pick(first);
               }}
               className="font-semibold text-lepas-ink underline decoration-lepas-amber decoration-2 underline-offset-4"
             >

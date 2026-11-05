@@ -157,7 +157,7 @@ const SelectField = forwardRef<
                 <span>
                   <span className="block">{o.label}</span>
                   {o.description && (
-                    <span className={`mt-0.5 block text-xs ${isSelected && !o.disabled ? "text-white/80" : tone.muted}`}>
+                    <span className={`mt-0.5 block text-xs ${isSelected && !o.disabled ? "text-lepas-black/70" : tone.muted}`}>
                       {o.description}
                     </span>
                   )}

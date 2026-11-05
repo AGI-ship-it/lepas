@@ -264,8 +264,8 @@ const en = {
     flexibleTimingBody: "10 years / 1,000,000 km engine warranty, 7 years / 200,000 km vehicle warranty and 8 years / 160,000 km PHEV battery warranty.",
     pickupDropoffTitle: "Genuine Parts",
     pickupDropoffBody: "Servicing and genuine Lepas parts through Al Ghurair Mobility's authorised service network across the UAE.",
-    requestServiceSlot: "Request a Service Slot",
-    requestServiceSlotDescription: "Complete the form and our service team will contact you to confirm timing and location.",
+    requestServiceSlot: "Vehicle Service Appointment Booking",
+    requestServiceSlotDescription: "Book your next service with ease. Fields marked with * are required.",
   },
   offers: {
     eyebrow: "Offers",

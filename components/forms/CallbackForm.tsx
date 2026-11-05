@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getModels } from "@/lib/i18n/data";
 import SelectField from "@/components/forms/SelectField";
+import BrandLoader from "@/components/ui/BrandLoader";
 
 const schema = z.object({
   firstName: z.string().min(1, "Required"),
@@ -56,7 +57,7 @@ export default function CallbackForm({ defaultModel = "" }: { defaultModel?: str
   } = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: { model: defaultModel } });
 
   const onSubmit = async () => {
-    await new Promise((r) => setTimeout(r, 600));
+    await new Promise((r) => setTimeout(r, 1400));
     setSubmitted(true);
     reset();
   };
@@ -145,6 +146,7 @@ export default function CallbackForm({ defaultModel = "" }: { defaultModel?: str
         <button type="submit" disabled={isSubmitting} className="btn-primary">
           {isSubmitting ? dict.forms.sending : t.submit}
         </button>
+        {isSubmitting && <BrandLoader label={dict.forms.sending} />}
       </div>
     </form>
   );

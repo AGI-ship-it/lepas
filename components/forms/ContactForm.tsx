@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getModels } from "@/lib/i18n/data";
 import SelectField from "@/components/forms/SelectField";
+import BrandLoader from "@/components/ui/BrandLoader";
 
 const LOCATIONS = [
   { value: "deira", en: "Lepas Deira Showroom — Port Saeed, Dubai", ar: "صالة عرض ليباس ديرة — بورسعيد، دبي" },
@@ -74,7 +75,7 @@ export default function ContactForm() {
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   const onSubmit = async () => {
-    await new Promise((r) => setTimeout(r, 600));
+    await new Promise((r) => setTimeout(r, 1400));
     setSubmitted(true);
     reset();
   };
@@ -187,6 +188,7 @@ export default function ContactForm() {
         <button type="submit" disabled={isSubmitting} className="btn-primary shrink-0">
           {isSubmitting ? dict.forms.sending : dict.forms.sendMessage}
         </button>
+        {isSubmitting && <BrandLoader label={dict.forms.sending} />}
       </div>
     </form>
   );

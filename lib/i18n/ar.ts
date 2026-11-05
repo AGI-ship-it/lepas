@@ -266,8 +266,8 @@ const ar: Dictionary = {
     flexibleTimingBody: "ضمان المحرك 10 سنوات / 1,000,000 كم، وضمان السيارة 7 سنوات / 200,000 كم، وضمان بطارية الهجين القابل للشحن 8 سنوات / 160,000 كم.",
     pickupDropoffTitle: "قطع غيار أصلية",
     pickupDropoffBody: "الصيانة وقطع غيار ليباس الأصلية عبر شبكة الخدمة المعتمدة من الغرير للتنقل في جميع أنحاء الإمارات.",
-    requestServiceSlot: "اطلب موعد خدمة",
-    requestServiceSlotDescription: "أكمل النموذج وسيتواصل معك فريق الخدمة لتأكيد الموعد والموقع.",
+    requestServiceSlot: "حجز موعد صيانة المركبة",
+    requestServiceSlotDescription: "احجز موعد الصيانة التالي بسهولة. الحقول المميزة بـ * إلزامية.",
   },
   offers: {
     eyebrow: "العروض",

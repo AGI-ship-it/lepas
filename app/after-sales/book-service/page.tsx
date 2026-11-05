@@ -33,7 +33,7 @@ export default function BookServicePage() {
       />
 
       <div className="border-b border-lepas-fog bg-white">
-        <div className="container-lepas grid gap-8 py-12 sm:grid-cols-3">
+        <div className="container-lepas"><div className="mx-auto grid max-w-[1080px] gap-8 py-12 sm:grid-cols-3">
           {stats.map((stat, i) => (
             <div key={stat.title} className="flex gap-3">
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lepas-black text-xs font-bold text-white">
@@ -45,17 +45,17 @@ export default function BookServicePage() {
               </div>
             </div>
           ))}
-        </div>
+        </div></div>
       </div>
 
-      <Section
-        light
-        eyebrow={dict.afterSales.scheduleEyebrow}
-        title={dict.afterSales.requestServiceSlot}
-        description={dict.afterSales.requestServiceSlotDescription}
-      >
-        <div className="mx-auto max-w-4xl">
-          <ServiceBookingForm />
+      {/* Centred booking column, as on exeed-uae.com: heading and form share one 1080px column. */}
+      <Section light className="!bg-lepas-sand">
+        <div className="mx-auto max-w-[1080px]">
+          <h2 className="heading-2">{dict.afterSales.requestServiceSlot}</h2>
+          <p className="mt-4 text-base text-lepas-steel">{dict.afterSales.requestServiceSlotDescription}</p>
+          <div className="mt-12 md:mt-16">
+            <ServiceBookingForm />
+          </div>
         </div>
       </Section>
     </>

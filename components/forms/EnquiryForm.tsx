@@ -7,6 +7,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FormField } from "@/components/forms/TestDriveForm";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import BrandLoader from "@/components/ui/BrandLoader";
 
 const schema = z.object({
   fullName: z.string().min(2, "Please enter your full name"),
@@ -29,7 +30,7 @@ export default function EnquiryForm({ subject }: { subject: string }) {
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   const onSubmit = async () => {
-    await new Promise((r) => setTimeout(r, 600));
+    await new Promise((r) => setTimeout(r, 1400));
     setSubmitted(true);
     reset();
   };
@@ -96,6 +97,7 @@ export default function EnquiryForm({ subject }: { subject: string }) {
                   <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
                     {isSubmitting ? dict.forms.sending : dict.common.enquireNow}
                   </button>
+        {isSubmitting && <BrandLoader label={dict.forms.sending} />}
                 </form>
               )}
             </motion.div>

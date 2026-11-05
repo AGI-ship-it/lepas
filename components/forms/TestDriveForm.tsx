@@ -12,6 +12,7 @@ import { getModels } from "@/lib/i18n/data";
 import { NO_PREFERENCE, locationOptions } from "@/components/forms/locations";
 import DatePicker from "@/components/forms/DatePicker";
 import SelectField from "@/components/forms/SelectField";
+import BrandLoader from "@/components/ui/BrandLoader";
 
 // Hourly appointments 10:00–17:00, plus two broader windows as a fallback.
 const TIME_SLOTS = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
@@ -231,7 +232,7 @@ export default function TestDriveForm() {
   }, [selectedDate, noPreference, setValue]);
 
   const onSubmit = async () => {
-    await new Promise((r) => setTimeout(r, 600));
+    await new Promise((r) => setTimeout(r, 1400));
     setSubmitted(true);
     reset({
       model: "",
@@ -550,6 +551,7 @@ export default function TestDriveForm() {
         <button type="submit" disabled={isSubmitting || !unlocked} className="btn-primary shrink-0 uppercase tracking-[0.15em]">
           {isSubmitting ? dict.forms.booking : dict.testDrive.confirmRequest}
         </button>
+        {isSubmitting && <BrandLoader label={dict.forms.booking} />}
       </div>
     </form>
   );
