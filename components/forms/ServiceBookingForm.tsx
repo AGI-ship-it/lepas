@@ -525,9 +525,9 @@ function BookingForm({ onDone }: { onDone: () => void }) {
       personal.lastName.trim() &&
       !hasLetters(personal.phone) &&
       personal.phone.replace(/\D/g, "").length >= 7 &&
-      /^\S+@\S+\.\S+$/.test(personal.email),
+      (!personal.email.trim() || /^\S+@\S+\.\S+$/.test(personal.email.trim())),
   );
-  const vehicleComplete = Boolean(vehicle.country && vehicle.city && vehicle.prefix && vehicle.plate && vehicle.model);
+  const vehicleComplete = Boolean(vehicle.country && vehicle.city && vehicle.plate && vehicle.model);
   const appointmentLocked = !isExisting && !(personalComplete && vehicleComplete);
   // Move the customer along: finishing personal opens vehicle; finishing both opens the appointment.
   useEffect(() => {
@@ -592,7 +592,7 @@ function BookingForm({ onDone }: { onDone: () => void }) {
   };
   const runVerify = () => {
     const { country, city, prefix, plate, phone } = lookup;
-    if (!country || !city || !prefix.trim() || !plate.trim()) return setLookupError(t.errFillVehicle);
+    if (!country || !city || !plate.trim()) return setLookupError(t.errFillVehicle);
     if (country === "SA") {
       setCustomerType("new");
       setLookupError("");
@@ -606,7 +606,7 @@ function BookingForm({ onDone }: { onDone: () => void }) {
       (v) =>
         v.country === country &&
         v.city === city &&
-        v.prefix.toUpperCase() === prefix.trim().toUpperCase() &&
+        (!prefix.trim() || v.prefix.toUpperCase() === prefix.trim().toUpperCase()) &&
         v.plate === plate.trim(),
     );
     if (!match) return setLookupError(t.errNoVehicle);
@@ -685,10 +685,9 @@ function BookingForm({ onDone }: { onDone: () => void }) {
       if (!personal.firstName.trim()) e.firstName = req;
       if (!personal.lastName.trim()) e.lastName = req;
       if (!personal.phone.trim() || hasLetters(personal.phone) || personal.phone.replace(/\D/g, "").length < 7) e.phone = t.errInvalidPhone;
-      if (!/^\S+@\S+\.\S+$/.test(personal.email)) e.email = req;
+      if (personal.email.trim() && !/^\S+@\S+\.\S+$/.test(personal.email.trim())) e.email = t.errInvalidEmail; // optional
       if (!vehicle.country) e.vCountry = req;
       if (!vehicle.city) e.vCity = req;
-      if (!vehicle.prefix) e.vPrefix = req;
       if (!vehicle.plate) e.vPlate = req;
       if (!vehicle.model) e.vModel = req;
     }
@@ -814,7 +813,7 @@ function BookingForm({ onDone }: { onDone: () => void }) {
                   options={regCities(lookup.country).map((c) => ({ value: c.en, label: L(c) }))}
                 />
               </Field>
-              <Field id="lookupPrefix" label={t.prefix} required>
+              <Field id="lookupPrefix" label={t.prefix}>
                 <input
                   id="lookupPrefix"
                   className="input-field-light uppercase"
@@ -937,7 +936,7 @@ function BookingForm({ onDone }: { onDone: () => void }) {
                     invalid={Boolean(errors.phone) || hasLetters(personal.phone)}
                   />
                 </Field>
-                <Field id="email" label={t.email} required error={errors.email}>
+                <Field id="email" label={t.email} error={errors.email}>
                   <input
                     id="email"
                     type="email"
@@ -977,7 +976,7 @@ function BookingForm({ onDone }: { onDone: () => void }) {
                     options={regCities(vehicle.country).map((c) => ({ value: c.en, label: L(c) }))}
                   />
                 </Field>
-                <Field id="vPrefix" label={t.prefix} required error={errors.vPrefix}>
+                <Field id="vPrefix" label={t.prefix} error={errors.vPrefix}>
                   <input
                     id="vPrefix"
                     className="input-field-light uppercase"
@@ -1417,7 +1416,7 @@ function BookingForm({ onDone }: { onDone: () => void }) {
                 {t.successTitle}
               </h2>
               <p className="mt-1 text-base text-lepas-steel">{t.successBody}</p>
-              <p className="mt-3 text-sm text-lepas-steel">{t.successSent}</p>
+              <p className="mt-3 text-sm text-lepas-steel">{personal.email.trim() ? t.successSent : t.successSentNoEmail}</p>
               <p className="mt-3 inline-flex border border-lepas-amber bg-lepas-amber/10 px-4 py-2.5 text-sm font-semibold text-lepas-black">
                 {t.reference}:&nbsp;
                 <span dir="ltr" className="tracking-wider">

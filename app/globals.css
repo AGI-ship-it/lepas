@@ -121,13 +121,13 @@
 
   .input-field-light {
     @apply w-full rounded-none border border-lepas-mist px-4 py-3 text-base font-medium text-lepas-ink outline-none transition-colors placeholder:text-lepas-ash focus:border-lepas-amber;
-    background-color: var(--field-bg, theme("colors.lepas.sand"));
+    @apply bg-white;
   }
 
   /* Phone number: country prefix and input share one bordered field. */
   .phone-field-light {
     @apply flex w-full overflow-hidden rounded-none border border-lepas-mist transition-colors focus-within:border-lepas-amber;
-    background-color: var(--field-bg, theme("colors.lepas.sand"));
+    @apply bg-white;
   }
 
   .phone-field {
@@ -139,7 +139,7 @@
   }
 
   .phone-field-light .phone-prefix {
-    @apply border-lepas-mist bg-lepas-fog/50 text-lepas-steel;
+    @apply border-lepas-mist bg-white text-lepas-steel;
   }
 
   .phone-field .phone-prefix {
@@ -263,13 +263,4 @@
   to {
     transform: translateY(200%);
   }
-}
-
-/* Light input fill follows the surface it sits on: light grey on white, white on the sand background. */
-.bg-white {
-  --field-bg: theme("colors.lepas.sand");
-}
-.bg-lepas-sand,
-.\!bg-lepas-sand {
-  --field-bg: #fff;
 }
