@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -11,27 +11,6 @@ export default function LatestVideos() {
   const { locale, dict } = useLocale();
   const videos = getBlog(locale).filter((v) => v.youtubeId);
   const [playing, setPlaying] = useState<string | null>(null);
-
-  // Fade whichever edge still has cards beyond it (works in RTL, where scrollLeft is negative).
-  const rowRef = useRef<HTMLUListElement>(null);
-  const [fade, setFade] = useState({ left: false, right: false });
-  const updateFade = useCallback(() => {
-    const el = rowRef.current;
-    if (!el) return;
-    const rtl = getComputedStyle(el).direction === "rtl";
-    const scrolled = Math.abs(el.scrollLeft) > 4;
-    const more = Math.abs(el.scrollLeft) + el.clientWidth < el.scrollWidth - 4;
-    const next = rtl ? { left: more, right: scrolled } : { left: scrolled, right: more };
-    setFade((f) => (f.left === next.left && f.right === next.right ? f : next));
-  }, []);
-  useEffect(() => {
-    updateFade();
-    window.addEventListener("resize", updateFade);
-    return () => window.removeEventListener("resize", updateFade);
-  }, [updateFade]);
-  const mask = `linear-gradient(to right, ${fade.left ? "transparent" : "#000"} 0, #000 72px, #000 calc(100% - 72px), ${
-    fade.right ? "transparent" : "#000"
-  } 100%)`;
 
   if (videos.length === 0) return null;
 
@@ -49,13 +28,10 @@ export default function LatestVideos() {
         </div>
 
         <ul
-          ref={rowRef}
-          onScroll={updateFade}
-          style={{ maskImage: mask, WebkitMaskImage: mask }}
           className="no-scrollbar -mx-5 -mb-6 mt-5 flex snap-x pb-6 pt-3 md:mt-7 snap-mandatory gap-6 overflow-x-auto px-5 md:mx-0 md:px-0"
         >
           {videos.map((video) => (
-            <li key={video.slug} className="group w-[80%] shrink-0 snap-start overflow-hidden border border-lepas-black/10 bg-white card-hover sm:w-[45%] lg:w-[31%]">
+            <li key={video.slug} className="group w-[80%] shrink-0 snap-start overflow-hidden border border-lepas-black/10 bg-white card-hover sm:w-[38%] lg:w-[27%]">
               <div className="relative aspect-video overflow-hidden bg-lepas-black">
                 {playing === video.youtubeId ? (
                   <iframe
