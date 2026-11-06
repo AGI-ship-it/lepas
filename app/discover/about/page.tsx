@@ -30,17 +30,20 @@ function SplitSection({
   image,
   imageAlt,
   textFirst = false,
+  alignTop = false,
   children,
 }: {
   id: string;
   image: string;
   imageAlt: string;
   textFirst?: boolean;
+  /** Pin the image to the top so it stays put when the text column grows (e.g. an accordion opens). */
+  alignTop?: boolean;
   children: ReactNode;
 }) {
   return (
     <section id={id} className="scroll-mt-24 bg-white py-16 text-lepas-black md:py-24">
-      <div className="container-lepas grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className={`container-lepas grid gap-10 lg:grid-cols-2 lg:gap-16 ${alignTop ? "items-start" : "items-center"}`}>
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-lepas-fog">
           <Image src={image} alt={imageAlt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
         </div>
@@ -113,13 +116,14 @@ export default function AboutPage() {
       <SplitSection
         id="designed-around-you"
         textFirst
+        alignTop
         image="/design/assets/interior/l8/twotone-a.webp"
         imageAlt={a.designedImageAlt}
       >
         <h2 className="heading-2">{a.designedTitle}</h2>
         <div className="mt-8 md:mt-10 border-t border-lepas-black/15">
           {pillars.map((p, i) => (
-            <details key={p.title} open={i === 0} className="group border-b border-lepas-black/15">
+            <details key={p.title} name="designed-pillars" open={i === 0} className="group border-b border-lepas-black/15">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
                 <h3 className="heading-3">{p.title}</h3>
                 <span
