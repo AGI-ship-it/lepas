@@ -12,7 +12,7 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-function SelectChevron({ open }: { open: boolean }) {
+function SelectChevron({ open, className }: { open: boolean; className: string }) {
   return (
     <svg
       width="12"
@@ -20,7 +20,7 @@ function SelectChevron({ open }: { open: boolean }) {
       viewBox="0 0 12 8"
       fill="none"
       aria-hidden="true"
-      className={`shrink-0 text-lepas-amber transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+      className={`shrink-0 ${className} transition-transform duration-300 ${open ? "rotate-180" : ""}`}
     >
       <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -99,6 +99,7 @@ const SelectField = forwardRef<
         option: "text-lepas-black",
         hover: "bg-lepas-amber/15",
         muted: "text-lepas-ash",
+        chevron: "text-lepas-steel",
       }
     : {
         field: "input-field",
@@ -108,6 +109,7 @@ const SelectField = forwardRef<
         option: "text-white",
         hover: "bg-white/10",
         muted: "text-white/40",
+        chevron: "text-white/60",
       };
 
   return (
@@ -128,7 +130,7 @@ const SelectField = forwardRef<
         <span className={`truncate ${selected?.value ? tone.value : tone.placeholder}`}>
           {selected?.value ? selected.selectedLabel ?? selected.label : placeholder}
         </span>
-        <SelectChevron open={open} />
+        <SelectChevron open={open} className={tone.chevron} />
       </button>
 
       {open && (

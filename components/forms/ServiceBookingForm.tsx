@@ -159,7 +159,7 @@ function Accordion({
           <span className={ROW_TITLE + " flex-1"}>{title}</span>
           <FiChevronDown
             aria-hidden="true"
-            className={`h-5 w-5 text-lepas-amber transition-transform ${isOpen ? "" : "-rotate-90 rtl:rotate-90"}`}
+            className={`h-5 w-5 text-lepas-steel transition-transform ${isOpen ? "" : "-rotate-90 rtl:rotate-90"}`}
           />
         </button>
       </h3>
@@ -318,7 +318,7 @@ function PhoneInput({
           <span>
             <span aria-hidden="true">{current.flag}</span> {current.iso} ({current.dial})
           </span>
-          <FiChevronDown aria-hidden="true" className={`h-4 w-4 text-lepas-amber transition-transform ${open ? "rotate-180" : ""}`} />
+          <FiChevronDown aria-hidden="true" className={`h-4 w-4 text-lepas-steel transition-transform ${open ? "rotate-180" : ""}`} />
         </button>
         <input
           id={id}

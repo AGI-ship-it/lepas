@@ -158,13 +158,17 @@
     @apply text-white placeholder:text-white/40;
   }
 
-  /* Native selects: replace the browser arrow with a spaced amber chevron. */
+  /* Native selects: replace the browser arrow with a spaced dark grey chevron. */
   select.input-field-light,
   select.input-field {
     @apply cursor-pointer appearance-none bg-no-repeat pe-11;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23eb9201' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23404040' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-position: right 1rem center;
     background-size: 12px 8px;
+  }
+
+  select.input-field {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23ffffff99' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
 
   [dir="rtl"] select.input-field-light,
