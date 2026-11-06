@@ -88,14 +88,14 @@ export default function BlogDetailPage({
               <Link
                 key={p.slug}
                 href={`/discover/blog/${p.slug}`}
-                className="group block overflow-hidden border border-lepas-fog bg-white"
+                className="group block overflow-hidden border border-lepas-fog bg-white card-hover"
               >
                 {p.image && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={p.image}
                     alt={p.title}
-                    className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="aspect-video w-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105"
                     loading="lazy"
                   />
                 )}

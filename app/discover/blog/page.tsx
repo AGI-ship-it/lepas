@@ -35,20 +35,20 @@ export default function BlogListPage() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <Card key={post.slug}>
-              <Link href={`/discover/blog/${post.slug}`} className="relative block">
+              <Link href={`/discover/blog/${post.slug}`} className="relative block overflow-hidden">
                 {post.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="aspect-video w-full object-cover"
+                    className="aspect-video w-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105"
                     loading="lazy"
                   />
                 ) : (
                   <PlaceholderImage label={post.imageLabel} aspect="aspect-video" />
                 )}
                 <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/40">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-lepas-amber text-lepas-black">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-lepas-amber text-lepas-black transition-transform duration-300 group-hover:scale-110">
                     <svg viewBox="0 0 24 24" className="ms-1 h-6 w-6" fill="currentColor" aria-hidden="true">
                       <path d="M8 5v14l11-7z" />
                     </svg>

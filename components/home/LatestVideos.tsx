@@ -52,10 +52,10 @@ export default function LatestVideos() {
           ref={rowRef}
           onScroll={updateFade}
           style={{ maskImage: mask, WebkitMaskImage: mask }}
-          className="no-scrollbar -mx-5 mt-8 md:mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 md:mx-0 md:px-0"
+          className="no-scrollbar -mx-5 -mb-6 mt-5 flex snap-x pb-6 pt-3 md:mt-7 snap-mandatory gap-6 overflow-x-auto px-5 md:mx-0 md:px-0"
         >
           {videos.map((video) => (
-            <li key={video.slug} className="w-[80%] shrink-0 snap-start sm:w-[45%] lg:w-[31%]">
+            <li key={video.slug} className="group w-[80%] shrink-0 snap-start overflow-hidden border border-lepas-black/10 bg-white card-hover sm:w-[45%] lg:w-[31%]">
               <div className="relative aspect-video overflow-hidden bg-lepas-black">
                 {playing === video.youtubeId ? (
                   <iframe
@@ -70,11 +70,11 @@ export default function LatestVideos() {
                     type="button"
                     onClick={() => setPlaying(video.youtubeId!)}
                     aria-label={dict.discover.playVideo.replace("{title}", video.title)}
-                    className="group absolute inset-0"
+                    className="absolute inset-0"
                   >
                     {video.image ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={video.image} alt="" className="h-full w-full object-cover" loading="lazy" />
+                      <img src={video.image} alt="" className="h-full w-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105" loading="lazy" />
                     ) : (
                       <PlaceholderImage label={video.imageLabel} aspect="h-full" tone="dark" />
                     )}
@@ -88,7 +88,7 @@ export default function LatestVideos() {
                   </button>
                 )}
               </div>
-              <h3 className="heading-3 mt-5">
+              <h3 className="heading-3 p-5 sm:p-6">
                 {video.title}
               </h3>
             </li>

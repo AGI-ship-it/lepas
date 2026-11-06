@@ -66,10 +66,6 @@ export default function HotspotFeature({
       <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent rtl:bg-gradient-to-l" />
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/40 to-transparent" />
 
-      <div className="container-lepas pointer-events-none relative pt-16 md:pt-24">
-        <h2 className="heading-2">{title}</h2>
-      </div>
-
       {features.map((f, i) => {
         const on = i === activeIndex;
         return (
@@ -99,7 +95,8 @@ export default function HotspotFeature({
       })}
 
       <div className="container-lepas pointer-events-none absolute inset-x-0 bottom-0 pb-16 md:pb-24">
-        <div className="max-w-xs">
+        <h2 className="heading-2 mb-4">{title}</h2>
+        <div aria-live="polite" className="max-w-xs">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}

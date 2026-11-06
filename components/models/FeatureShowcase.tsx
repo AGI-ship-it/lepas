@@ -51,12 +51,10 @@ export default function FeatureShowcase({
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/30" />
 
       <div className="container-lepas relative flex flex-1 flex-col pb-16 pt-16 md:pb-24 md:pt-24">
-        <h2 className="heading-2">
-          {title}
-        </h2>
-
         <div className="mt-auto flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <div aria-live="polite" className="max-w-xl">
+          <div className="max-w-xl">
+            <h2 className="heading-2 mb-4">{title}</h2>
+            <div aria-live="polite">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -75,6 +73,7 @@ export default function FeatureShowcase({
                 )}
               </motion.div>
             </AnimatePresence>
+            </div>
           </div>
 
           <div role="tablist" aria-label={title} className="no-scrollbar -mx-4 flex gap-6 overflow-x-auto px-4 md:gap-5 lg:mx-0 lg:px-0">
