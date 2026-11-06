@@ -43,7 +43,7 @@ export default function LocationsGrid() {
         {visible.map((loc) => {
           const open = loc.status === "open";
           return (
-            <div key={loc.name} className="flex flex-col overflow-hidden border border-white/10 bg-lepas-ink text-white shadow-lg shadow-black/40">
+            <div key={loc.name} className="group flex flex-col overflow-hidden border border-white/10 bg-lepas-ink text-white shadow-lg shadow-black/40 card-hover">
               <div className="relative aspect-[16/10] bg-lepas-black">
                 {loc.embed ? (
                   <iframe
