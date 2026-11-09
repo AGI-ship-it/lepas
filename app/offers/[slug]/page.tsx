@@ -114,7 +114,7 @@ export default function OfferDetailPage({
           {meta && (
             <Link
               href={meta.modelHref}
-              className="btn border-2 border-lepas-amber text-lepas-black hover:bg-lepas-amber hover:text-white"
+              className="btn-outline"
             >
               {t.explore.replace("{model}", meta.modelShort)}
             </Link>
